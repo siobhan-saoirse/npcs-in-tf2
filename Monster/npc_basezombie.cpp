@@ -759,11 +759,6 @@ int CNPC_BaseZombie::OnTakeDamage_Alive( const CTakeDamageInfo &inputInfo )
 		case RELEASE_VAPORIZE:
 			RemoveHead();
 			break;
-
-		case RELEASE_SCHEDULED:
-			SetCondition( COND_ZOMBIE_RELEASECRAB );
-			break;
-
 		default:
 			break;
 		}

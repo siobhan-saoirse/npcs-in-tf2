@@ -949,13 +949,12 @@ void CBaseHeadcrab::GatherConditions( void )
 	}
 
 	BaseClass::GatherConditions();
-	/*
+	
 	if( m_lifeState == LIFE_ALIVE && GetWaterLevel() > 1 )
 	{
 		// Start Drowning!
 		SetCondition( COND_HEADCRAB_IN_WATER );
 	}
-	*/
 
 	// See if I've landed on an NPC or player or something else illegal
 	ClearCondition( COND_HEADCRAB_ILLEGAL_GROUNDENT );
@@ -2311,7 +2310,7 @@ void CBaseHeadcrab::BuildScheduleTestBits( void )
 		// Don't stop drowning just because you're in water!
 		ClearCustomInterruptCondition( COND_HEADCRAB_IN_WATER );
 	}
-
+	
 	if( !IsCurSchedule(SCHED_HEADCRAB_HOP_RANDOMLY) )
 	{
 		SetCustomInterruptCondition( COND_HEADCRAB_ILLEGAL_GROUNDENT );

@@ -1877,7 +1877,7 @@
 			"ScheduledFollowPath"
 			{
 				"windows"	"493"
-				"linux"	"608"
+				"linux"	"508"
 			}
 			"GetEnemies"
 			{
@@ -1922,7 +1922,7 @@
 			"SquadSlotName"
 			{
 				"windows"	"504"
-				"linux"	"508"
+				"linux"	"519"
 			}
 			"SetSquad"
 			{
@@ -2802,7 +2802,7 @@
 			"m_CustomInterruptConditions" // inside CAI_BaseNPC::ClearCustomInterruptCondition
 			{
 				"windows"	"2192" //2244
-				"linux"	"2304"
+				"linux"	"2292"
 			}
 			"m_poseMove_Yaw" // move_yaw
 			{
@@ -3235,7 +3235,7 @@
 			{
 				"library"	"server"
 				"windows"	"\x55\x8B\xEC\x53\x56\xFF\x75\x08\x8B\xF1\xE8"
-				"linux" "@_ZN11CAI_BaseNPC11SetScheduleEi"
+				"linux" "@_ZN11CAI_BaseNPC11SetScheduleEP12CAI_Schedule"
 			}
 			"CAI_BaseNPC::Precache"
 			{

@@ -3285,3 +3285,7 @@ bool AIStrongOpt( void )
 	return ai_strong_optimizations->GetBool();
 }
 
+bool CAI_NPC::ShouldPickADeathPose( void ) 
+{ 
+	return false; 
+}

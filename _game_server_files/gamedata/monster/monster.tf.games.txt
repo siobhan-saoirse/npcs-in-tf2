@@ -691,7 +691,7 @@
 			"CalculateIKLocks"
 			{
 				"windows"	"201"
-				"linux"	"202"
+				"linux"	"212"
 			}
 			"DispatchAnimEvents"
 			{
@@ -756,12 +756,12 @@
 			"FInViewCone_Entity"
 			{
 				"windows"	"237"
-				"linux"	"2317"
+				"linux"	"237"
 			}
 			"FInAimCone_Vector"
 			{
 				"windows"	"238"
-				"linux"	"240"
+				"linux"	"238"
 			}
 			"FInAimCone_Entity"
 			{
@@ -2739,7 +2739,7 @@
 			"m_nTargetNodeID" // "Node is visible to player"
 			{
 				"windows"	"884"
-				"linux"	"904"
+				"linux"	"980"
 			}
 			"m_pNetwork" // "****** MAP CONTAINS DUPLICATE HAMMER NODE IDS! CHECK FOR PROBLEM", 8B 80 ? ? ? ? 3B 58 04 0F 8C ? ? ? ? F6 45 D9 01 
 			{
@@ -2797,32 +2797,32 @@
 			"m_pSquad" // above "*Squad Leader**"
 			{
 				"windows"	"2748"
-				"linux"	"2768"
+				"linux"	"2848"
 			}
 			"m_CustomInterruptConditions" // inside CAI_BaseNPC::ClearCustomInterruptCondition
 			{
 				"windows"	"2192" //2244
-				"linux"	"2260"
+				"linux"	"2304"
 			}
 			"m_poseMove_Yaw" // move_yaw
 			{
 				"windows"	"2156"
-				"linux"	"2176"
+				"linux"	"2384"
 			}
 			"m_InverseIgnoreConditions" // 81 C6 ? ? ? ? 74 37 C7 06
 			{
 				"windows"	"2256"
-				"linux"	"2276"
+				"linux"	"2768"
 			}
 			"m_poseAim_Pitch" // aim_pitch (or - 2*sizeof(int) from m_poseMove_Yaw)
 			{
 				"windows"	"2148"
-				"linux"	"2168"
+				"linux"	"2252"
 			}
 			"m_poseAim_Yaw" // aim_yaw
 			{
 				"windows"	"2152"
-				"linux"	"2172"
+				"linux"	"2256"
 			}
 			"m_ConditionsPreIgnore" // 85 84 B7 ? ? ? ? 5F 0F 95 C0 5E  (not 100% sure)
 			{
@@ -2832,7 +2832,7 @@
 			"m_bInChoreo" // not used
 			{
 				// TODO: "windows"	"2092"
-				"linux"	"2320"
+				"linux"	"2244"
 			}
 
 

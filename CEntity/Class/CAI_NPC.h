@@ -725,6 +725,8 @@ public:
 
 	inline int UsableNPCObjectCaps( int baseCaps );
 
+	virtual bool	ShouldPickADeathPose( void );
+
 protected:
 	void				ChainStartTask( int task, float taskData = 0 )	{ Task_t tempTask = { task, taskData }; StartTask( (const Task_t *)&tempTask ); }
 	void				ChainRunTask( int task, float taskData = 0 )	{ Task_t tempTask = { task, taskData }; RunTask( (const Task_t *)	&tempTask );	}

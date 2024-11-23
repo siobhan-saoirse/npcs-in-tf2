@@ -300,6 +300,9 @@ void CNPC_Manhack::TraceAttack( const CTakeDamageInfo &info, const Vector &vecDi
 void CNPC_Manhack::DeathSound( const CTakeDamageInfo &info )
 {
 	StopSound("NPC_Manhack.Stunned");
+	StopSound("NPC_Manhack.BladeSound");
+	StopSound("NPC_Manhack.EngineSound1");
+	StopSound("NPC_Manhack.EngineSound2");
 	CPASAttenuationFilter filter2( this, "NPC_Manhack.Die" );
 	EmitSound( filter2, entindex(), "NPC_Manhack.Die" );
 }
@@ -2379,6 +2382,9 @@ void CNPC_Manhack::Spawn(void)
 	m_bHeld = false;
 	m_bHackedByAlyx = false;
 	StopLoitering();
+	EmitSound("NPC_Manhack.BladeSound");
+	EmitSound("NPC_Manhack.EngineSound1");
+	EmitSound("NPC_Manhack.EngineSound2");
 }
 
 //-----------------------------------------------------------------------------

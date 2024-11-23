@@ -92,7 +92,7 @@ enum ManhackTasks
 	TASK_MANHACK_MOVEAT_SAVEPOSITION,
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_manhack, monster_generic, CNPC_Manhack );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_manhack, cycler_actor, CNPC_Manhack );
 
 
 BEGIN_DATADESC( CNPC_Manhack )

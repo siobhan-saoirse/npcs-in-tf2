@@ -5,7 +5,7 @@
 #include "CAI_tacticalservices.h"
 
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_stalker, monster_generic, CNPC_Stalker );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_stalker, cycler_actor, CNPC_Stalker );
 
 
 #define	MIN_STALKER_FIRE_RANGE		64

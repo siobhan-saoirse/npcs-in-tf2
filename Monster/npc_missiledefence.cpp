@@ -65,7 +65,7 @@ public:
 	float		m_flReloadedTime;
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_missiledefense, monster_generic, CNPC_MissileDefense );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_missiledefense, cycler_actor, CNPC_MissileDefense );
 
 //=========================================================
 //=========================================================

@@ -127,7 +127,7 @@ BEGIN_DATADESC( CNPC_FloorTurret )
 
 END_DATADESC()
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_turret_floor, monster_generic, CNPC_FloorTurret);
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_turret_floor, cycler_actor, CNPC_FloorTurret);
 
 
 //-----------------------------------------------------------------------------

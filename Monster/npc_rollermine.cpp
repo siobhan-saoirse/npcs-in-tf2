@@ -332,7 +332,7 @@ protected:
 
 string_t CNPC_RollerMine::gm_iszDropshipClassname;
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_rollermine, monster_generic, CNPC_RollerMine );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_rollermine, cycler_actor, CNPC_RollerMine );
 
 
 //-----------------------------------------------------------------------------

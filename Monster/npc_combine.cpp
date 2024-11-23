@@ -113,7 +113,7 @@ enum PathfindingVariant_T
 #define bits_MEMORY_PLAYER_HURT				bits_MEMORY_CUSTOM3
 
 // This entity crashes because it has no model! (hence it is disabled)
-//LINK_ENTITY_TO_CUSTOM_CLASS( npc_combine, monster_generic, CNPC_Combine );
+//LINK_ENTITY_TO_CUSTOM_CLASS( npc_combine, cycler_actor, CNPC_Combine );
 
 //---------------------------------------------------------
 // Save/Restore

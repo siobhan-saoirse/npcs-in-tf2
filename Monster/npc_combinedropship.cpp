@@ -733,7 +733,7 @@ void CCombineDropshipContainer::AddSmokeTrail( const Vector &vecPos )
 // Combine Dropship implementation:
 //
 //------------------------------------------------------------------------------
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_combinedropship, monster_generic, CNPC_CombineDropship );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_combinedropship, cycler_actor, CNPC_CombineDropship );
 
 BEGIN_DATADESC( CNPC_CombineDropship )
 

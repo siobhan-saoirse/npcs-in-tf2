@@ -149,8 +149,8 @@ private:
 	Vector				 m_vPositionCharged;
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_zombie, monster_generic, CZombie );
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_zombie_torso, monster_generic, CZombie );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_zombie, cycler_actor, CZombie );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_zombie_torso, cycler_actor, CZombie );
 
 
 

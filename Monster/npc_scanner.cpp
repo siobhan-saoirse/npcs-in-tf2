@@ -177,7 +177,7 @@ BEGIN_DATADESC( CNPC_CScanner )
 END_DATADESC()
 
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_cscanner, monster_generic, CNPC_CScanner );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_cscanner, cycler_actor, CNPC_CScanner );
 
 
 //-----------------------------------------------------------------------------
@@ -3041,7 +3041,7 @@ BEGIN_DATADESC( CNPC_ClawScanner )
 END_DATADESC()
 
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_clawscanner, monster_generic, CNPC_ClawScanner );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_clawscanner, cycler_actor, CNPC_ClawScanner );
 
 //-----------------------------------------------------------------------------
 // Purpose: 

@@ -154,7 +154,7 @@ int ACT_MELEE_ATTACK_THRUST;
 int ACT_ACTIVATE_BATON;
 int ACT_DEACTIVATE_BATON;
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_metropolice, monster_generic, CNPC_MetroPolice );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_metropolice, cycler_actor, CNPC_MetroPolice );
 
 BEGIN_DATADESC( CNPC_MetroPolice )
 

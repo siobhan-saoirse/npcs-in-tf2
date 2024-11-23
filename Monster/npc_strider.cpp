@@ -42,7 +42,7 @@ int g_interactionPlayerLaunchedRPG = 0;
 // Changing this classname avoids bugs where ai_relationship entities that change the
 // strider's relationship with bullseyes would affect its relationship with the focus
 
-LINK_ENTITY_TO_CUSTOM_CLASS( bullseye_strider_focus, monster_generic, CNPC_Bullseye );
+LINK_ENTITY_TO_CUSTOM_CLASS( bullseye_strider_focus, cycler_actor, CNPC_Bullseye );
 
 //-----------------------------------------------------------------------------
 
@@ -259,7 +259,7 @@ enum
 
 //-------------------------------------
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_strider, monster_generic, CNPC_Strider );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_strider, cycler_actor, CNPC_Strider );
 
 //-------------------------------------
 

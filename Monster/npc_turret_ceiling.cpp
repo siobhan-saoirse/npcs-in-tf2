@@ -219,7 +219,7 @@ BEGIN_DATADESC( CNPC_CeilingTurret )
 
 END_DATADESC()
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_turret_ceiling, monster_generic, CNPC_CeilingTurret );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_turret_ceiling, cycler_actor, CNPC_CeilingTurret );
 
 //-----------------------------------------------------------------------------
 // Constructor

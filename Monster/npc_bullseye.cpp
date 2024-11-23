@@ -64,7 +64,7 @@ BEGIN_DATADESC( CNPC_Bullseye )
 
 END_DATADESC()
 
-LINK_ENTITY_TO_CUSTOM_CLASS(npc_bullseye, monster_generic, CNPC_Bullseye);
+LINK_ENTITY_TO_CUSTOM_CLASS(npc_bullseye, cycler_actor, CNPC_Bullseye);
 
 
 CNPC_Bullseye::CNPC_Bullseye()

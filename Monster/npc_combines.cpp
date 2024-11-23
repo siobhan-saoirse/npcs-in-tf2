@@ -34,7 +34,7 @@ extern ConVar sk_plr_num_shotgun_pellets;
 //Whether or not the combine should spawn health on death
 ConVar	combine_spawn_health( "combine_spawn_health", "1" );
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_combine_s, monster_generic, CNPC_CombineS );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_combine_s, cycler_actor, CNPC_CombineS );
 
 
 #define AE_SOLDIER_BLOCK_PHYSICS		20 // trying to block an incoming physics object
@@ -413,4 +413,4 @@ public:
 	}
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_combine_elite, monster_generic, CNPC_CombineElite );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_combine_elite, cycler_actor, CNPC_CombineElite );

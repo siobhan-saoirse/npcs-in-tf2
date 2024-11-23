@@ -923,7 +923,7 @@ void CAI_BaseActor::UpdateHeadControl( const Vector &vHeadTarget, float flHeadIn
 	if (iEyes <= 0 || iForward <= 0)
 	{
 		// Head control on model without "eyes" or "forward" attachment
-		// Most likely this is a cheaple or a monster_generic set to a model that doesn't support head/eye turning.
+		// Most likely this is a cheaple or a cycler_actor set to a model that doesn't support head/eye turning.
 		// DevWarning( "%s using model \"%s\" that doesn't support head turning\n", GetClassname(), STRING( GetModelName() ) );
 		CapabilitiesRemove( bits_CAP_TURN_HEAD );
 		return;

@@ -140,7 +140,7 @@ void CNPC_Houndeye::InitCustomSchedules(void)
 	AI_LOAD_SCHEDULE(CNPC_Houndeye,	SCHED_HOUND_GROUP_RALLEY);
 }
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_houndeye, monster_generic, CNPC_Houndeye );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_houndeye, cycler_actor, CNPC_Houndeye );
 IMPLEMENT_CUSTOM_AI( npc_houndeye, CNPC_Houndeye );
 
 BEGIN_DATADESC( CNPC_Houndeye )

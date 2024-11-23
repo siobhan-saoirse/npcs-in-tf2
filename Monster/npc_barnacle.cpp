@@ -55,7 +55,7 @@ int	g_interactionBarnacleVictimReleased	= 0;
 int	g_interactionBarnacleVictimGrab		= 0;
 int g_interactionBarnacleVictimBite     = 0;
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_barnacle, monster_generic, CNPC_Barnacle );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_barnacle, cycler_actor, CNPC_Barnacle );
 
 // Tongue Spring constants
 #define BARNACLE_TONGUE_SPRING_CONSTANT_HANGING			10000

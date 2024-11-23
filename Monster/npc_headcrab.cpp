@@ -949,12 +949,13 @@ void CBaseHeadcrab::GatherConditions( void )
 	}
 
 	BaseClass::GatherConditions();
-
+	/*
 	if( m_lifeState == LIFE_ALIVE && GetWaterLevel() > 1 )
 	{
 		// Start Drowning!
 		SetCondition( COND_HEADCRAB_IN_WATER );
 	}
+	*/
 
 	// See if I've landed on an NPC or player or something else illegal
 	ClearCondition( COND_HEADCRAB_ILLEGAL_GROUNDENT );
@@ -2328,7 +2329,7 @@ void CBaseHeadcrab::BuildScheduleTestBits( void )
 
 
 // Headcrab
-LINK_ENTITY_TO_CUSTOM_CLASS(npc_headcrab, monster_generic, CHeadcrab);
+LINK_ENTITY_TO_CUSTOM_CLASS(npc_headcrab, cycler_actor, CHeadcrab);
 
 void CHeadcrab::Precache(void)
 {
@@ -2483,7 +2484,7 @@ float CHeadcrab::MaxYawSpeed ( void )
 
 
 // Fast Headcrab
-LINK_ENTITY_TO_CUSTOM_CLASS(npc_headcrab_fast, monster_generic, CFastHeadcrab);
+LINK_ENTITY_TO_CUSTOM_CLASS(npc_headcrab_fast, cycler_actor, CFastHeadcrab);
 
 
 //-----------------------------------------------------------------------------
@@ -2898,8 +2899,8 @@ bool CFastHeadcrab::QuerySeeEntity(CBaseEntity *pSightEnt, bool bOnlyHateOrFearI
 
 
 // Black Headcrab
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_headcrab_black, monster_generic, CBlackHeadcrab );
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_headcrab_poison, monster_generic, CBlackHeadcrab );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_headcrab_black, cycler_actor, CBlackHeadcrab );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_headcrab_poison, cycler_actor, CBlackHeadcrab );
 
 int ACT_BLACKHEADCRAB_RUN_PANIC;
 

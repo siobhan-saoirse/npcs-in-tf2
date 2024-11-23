@@ -380,7 +380,7 @@ public:
 
 
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_antlionguard, monster_generic, CNPC_AntlionGuard );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_antlionguard, cycler_actor, CNPC_AntlionGuard );
 
 
 

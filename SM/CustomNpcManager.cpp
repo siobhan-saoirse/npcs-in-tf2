@@ -28,22 +28,22 @@ public:
 
 	IServerNetworkable *Create( const char *pClassName )
 	{
-		IEntityFactoryReal *pFactory = (IEntityFactoryReal *)EntityFactoryDictionary_CE()->FindFactory("monster_generic");
+		IEntityFactoryReal *pFactory = (IEntityFactoryReal *)EntityFactoryDictionary_CE()->FindFactory("cycler_actor");
 		//assert(pFactory);
 
-		return pFactory->Create("monster_generic");
+		return pFactory->Create("cycler_actor");
 	}
 
 	void Destroy( IServerNetworkable *pNetworkable )
 	{
-		IEntityFactoryReal *pFactory = (IEntityFactoryReal *)EntityFactoryDictionary_CE()->FindFactory("monster_generic");
+		IEntityFactoryReal *pFactory = (IEntityFactoryReal *)EntityFactoryDictionary_CE()->FindFactory("cycler_actor");
 		//assert(pFactory);
 		return pFactory->Destroy(pNetworkable);
 	}
 
 	virtual size_t GetEntitySize()
 	{
-		IEntityFactoryReal *pFactory = (IEntityFactoryReal *)EntityFactoryDictionary_CE()->FindFactory("monster_generic");
+		IEntityFactoryReal *pFactory = (IEntityFactoryReal *)EntityFactoryDictionary_CE()->FindFactory("cycler_actor");
 		//assert(pFactory);
 		return pFactory->GetEntitySize();
 	}

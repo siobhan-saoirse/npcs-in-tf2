@@ -124,8 +124,10 @@ const char *GetTypeName(const std::type_info &type)
 #ifdef WIN32
 #include <windows.h>
 #include <new>
-#include <assert.h>
 #include <extension.h>
+
+#define NDEBUG 1
+#include <assert.h>
 
 using namespace std;
 

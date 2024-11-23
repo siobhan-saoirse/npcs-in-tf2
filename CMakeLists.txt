@@ -1,5 +1,5 @@
 #
-# npcs-in-css CMake file (based on SourceMod CMake Template)
+# npcs-in-tf2 CMake file (based on SourceMod CMake Template)
 # Copyright (C) 2024 bezdmn
 # Copyright (C) 2024 Michael Pekar
 # =============================================================================
@@ -18,7 +18,7 @@
 #
 
 cmake_minimum_required(VERSION 3.30)
-project(npcs-in-css)
+project(npcs-in-tf2)
 
 set(CMAKE_C_COMPILER "clang")
 set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
@@ -49,7 +49,7 @@ endif()
 MESSAGE(STATUS "Found HL2SDK directory at ${HL2SDK}")
 
 ### Add source files
-add_library(npcs-in-css
+add_library(npcs-in-tf2
     SHARED
         extension.cpp
         ${SM}/public/smsdk_ext.cpp
@@ -381,12 +381,12 @@ add_library(npcs-in-css
         Monster/npc_combinedropship.cpp
 ) 
 
-target_compile_definitions(npcs-in-css
+target_compile_definitions(npcs-in-tf2
     PRIVATE $<$<COMPILE_LANGUAGE:CXX>:
             _DEBUG
             >)
 
-target_compile_options(npcs-in-css
+target_compile_options(npcs-in-tf2
         PRIVATE $<$<COMPILE_LANGUAGE:C>:
         -m32
         $<$<CONFIG:Release>:
@@ -395,7 +395,7 @@ target_compile_options(npcs-in-css
         >
 )
 
-target_compile_options(npcs-in-css
+target_compile_options(npcs-in-tf2
     PRIVATE $<$<COMPILE_LANGUAGE:CXX>:
                 -m32 -msse -fno-exceptions -fno-threadsafe-statics
                 -Wno-overloaded-virtual -fvisibility-inlines-hidden
@@ -409,7 +409,7 @@ target_compile_options(npcs-in-css
             >
 )
 
-target_compile_definitions(npcs-in-css
+target_compile_definitions(npcs-in-tf2
     PRIVATE $<$<COMPILE_LANGUAGE:CXX>: 
                 GNUC -D_LINUX -DPOSIX -Dstricmp=strcasecmp 
                 -D_stricmp=strcasecmp -D_snprintf=snprintf
@@ -425,7 +425,7 @@ target_compile_definitions(npcs-in-css
 )
 
 # includes some questionable compiler settings
-target_compile_options(npcs-in-css
+target_compile_options(npcs-in-tf2
         PRIVATE $<$<COMPILE_LANGUAGE:CXX>:
             -Wno-unused-parameter
             -Wno-deprecated-copy
@@ -446,19 +446,19 @@ target_compile_options(npcs-in-css
         >
 )
 
-#target_link_libraries(npcs-in-css
+#target_link_libraries(npcs-in-tf2
 #    PRIVATE $<$<CONFIG:Debug>: -static-libasan -fsanitize=address >
 #            -lm -m32 "-Wl,--exclude-libs,ALL" -shared
 #)
 
-target_link_libraries(npcs-in-css
+target_link_libraries(npcs-in-tf2
      PRIVATE -lm -m32 "-Wl,--exclude-libs,ALL" -shared
 )
 
 # source libs
 if(LINUX)
     set(HL2LIB ${HL2SDK}/lib/linux)
-    target_link_libraries(npcs-in-css
+    target_link_libraries(npcs-in-tf2
             PRIVATE ${HL2LIB}/tier1_i486.a ${HL2LIB}/tier2_i486.a ${HL2LIB}/tier3_i486.a ${HL2LIB}/mathlib_i486.a
             ${HL2LIB}/libtier0_srv.so ${HL2LIB}/libvstdlib_srv.so
     )
@@ -468,12 +468,12 @@ else()
 endif()
 
 #if (CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "GNU")
-target_link_libraries(npcs-in-css
+target_link_libraries(npcs-in-tf2
     PRIVATE -static-libgcc -static-libstdc++
 )
 #endif()
 
-target_include_directories(npcs-in-css PUBLIC
+target_include_directories(npcs-in-tf2 PUBLIC
         CDetour
         CEntity/modify
         CEntity/stuff

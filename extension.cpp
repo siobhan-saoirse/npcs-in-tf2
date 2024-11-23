@@ -6,6 +6,9 @@
 #include "scenefilecache/ISceneFileCache.h"
 #include "item_ammo.h"
 
+#define NDEBUG 1
+
+#include <assert.h>
 Monster g_Monster;
 
 bool g_bUseNetworkVars = false;

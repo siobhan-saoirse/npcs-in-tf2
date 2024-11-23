@@ -18,6 +18,8 @@
  * @brief Contains all of the object structures used in the SourcePawn API.
  */
 
+#define NDEBUG 1
+
 #include <assert.h>
 #include <stdio.h>
 #include "sp_vm_types.h"

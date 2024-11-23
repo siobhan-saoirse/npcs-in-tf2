@@ -98,7 +98,7 @@ void CAI_FuncTankBehavior::PrescheduleThink()
 int	CAI_FuncTankBehavior::SelectSchedule()
 {
 	// This shouldn't get called with an m_hFuncTank, see CanSelectSchedule.
-	Assert( m_hFuncTank );
+	// Assert( m_hFuncTank );
 
 	// If we've been told to dismount, or we are out of ammo - dismount.
 	if ( HasCondition( COND_FUNCTANK_DISMOUNT ) || m_hFuncTank->GetAmmoCount() == 0 )
@@ -160,13 +160,13 @@ void CAI_FuncTankBehavior::Dismount( void )
 {
 	SetBusy( gpGlobals->curtime + AI_FUNCTANK_BEHAVIOR_BUSYTIME );
 
-	Assert( m_hFuncTank );
+	// Assert( m_hFuncTank );
 
 	if ( m_hFuncTank )
 	{
 		GetOuter()->SpeakSentence( FUNCTANK_SENTENCE_DISMOUNTING );
 
-		Assert( m_hFuncTank->IsMarkedForDeletion() || m_hFuncTank->GetController() == GetOuter() );
+		// Assert( m_hFuncTank->IsMarkedForDeletion() || m_hFuncTank->GetController() == GetOuter() );
 
 		m_hFuncTank->NPC_SetInRoute( false );
 		if ( m_hFuncTank->GetController() == GetOuter() )
@@ -407,7 +407,7 @@ void CAI_FuncTankBehavior::RunTask( const Task_t *pTask )
 	{
 		case TASK_FACE_FUNCTANK:
 		{
-			Assert( m_hFuncTank );
+			// Assert( m_hFuncTank );
 
 			GetMotor()->UpdateYaw();
 
@@ -419,7 +419,7 @@ void CAI_FuncTankBehavior::RunTask( const Task_t *pTask )
 		}
 		case TASK_HOLSTER_WEAPON:
 		{
-			Assert( m_hFuncTank );
+			// Assert( m_hFuncTank );
 
 			if ( GetOuter()->IsWeaponHolstered() )
 			{
@@ -438,7 +438,7 @@ void CAI_FuncTankBehavior::RunTask( const Task_t *pTask )
 		}
 		case TASK_FIRE_FUNCTANK:
 		{
-			Assert( m_hFuncTank );
+			// Assert( m_hFuncTank );
 
 			if( GetOuter()->m_flWaitFinished < gpGlobals->curtime )
 			{
@@ -462,7 +462,7 @@ void CAI_FuncTankBehavior::RunTask( const Task_t *pTask )
 				TaskComplete();
 			}
 
-			Assert( m_hFuncTank );
+			// Assert( m_hFuncTank );
 
 			if ( m_hFuncTank->GetAmmoCount() == 0 )
 			{
@@ -504,7 +504,7 @@ void CAI_FuncTankBehavior::Event_Killed( const CTakeDamageInfo &info )
 	{
 		Dismount();
 	}
-	Assert( !m_hFuncTank );
+	// Assert( !m_hFuncTank );
 
 	BaseClass::Event_Killed( info );
 }

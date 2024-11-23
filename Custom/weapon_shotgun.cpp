@@ -157,7 +157,7 @@ void CNPCWeapon_ShotGun::FireNPCPrimaryAttack( CCombatCharacter *pOperator, bool
 {
 	Vector vecShootOrigin, vecShootDir;
 	CAI_NPC *npc = pOperator->MyNPCPointer();
-	Assert( npc != NULL );
+	// Assert( npc != NULL );
 
 	pOperator->DoMuzzleFlash();
 	m_iClip1 = *(m_iClip1) - 1;

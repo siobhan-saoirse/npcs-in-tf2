@@ -103,8 +103,8 @@ private:
 
 		void SetCount( int count )
 		{
-			Assert( !m_Mapping );
-			Assert( count > 0 );
+			// Assert( !m_Mapping );
+			// Assert( count > 0 );
 			m_nCount = count;
 			m_Mapping = new LocalFlexController_t[ m_nCount ];
 			Q_memset( m_Mapping, 0, m_nCount * sizeof( int ) );

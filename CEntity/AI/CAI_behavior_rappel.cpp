@@ -297,7 +297,7 @@ void CAI_RappelBehavior::GatherConditions()
 		if( (GetAbsOrigin().z - GetEnemy()->GetAbsOrigin().z >= 36.0f) && GetOuter()->GetShotRegulator()->ShouldShoot() )
 		{
 			Activity activity = GetOuter()->TranslateActivity( ACT_GESTURE_RANGE_ATTACK1 );
-			Assert( activity != ACT_INVALID );
+			// Assert( activity != ACT_INVALID );
 			GetOuter()->AddGesture( activity );
 			// FIXME: this seems a bit wacked
 			GetOuter()->Weapon_SetActivity( GetOuter()->Weapon_TranslateActivity( ACT_RANGE_ATTACK1, NULL ), 0 );

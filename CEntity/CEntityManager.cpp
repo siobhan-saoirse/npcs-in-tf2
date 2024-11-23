@@ -195,7 +195,7 @@ void CEntityManager::Shutdown()
 
 void CEntityManager::LinkEntityToClass(IEntityFactory_CE *pFactory, const char *className)
 {
-	assert(pFactory);
+	//assert(pFactory);
 	pFactoryTrie.insert(className, pFactory);
 }
 
@@ -208,7 +208,7 @@ void CEntityManager::LinkEntityToClass(IEntityFactory_CE *pFactory, const char *
 CEntity *CEntityManager::CBaseEntityPostConstructor(CBaseEntity *pEntity, const char * szClassname )
 {
 	IServerNetworkable *pNetworkable = pEntity->GetNetworkable();
-	Assert(pNetworkable);
+	// Assert(pNetworkable);
 
 	edict_t *pEdict = pNetworkable->GetEdict();
 
@@ -252,11 +252,11 @@ CEntity *CEntityManager::CBaseEntityPostConstructor(CBaseEntity *pEntity, const 
 	{
 		/* No specific handler for this entity */
 		value = pFactoryTrie.retrieve("baseentity");
-		assert(value);
+		//assert(value);
 	}
 
 	IEntityFactory_CE *pFactory = *value;
-	assert(pFactory);
+	//assert(pFactory);
 
 	if(m_bShouldAddToCache)
 	{
@@ -287,8 +287,8 @@ void CEntityManager::RemoveEdict(edict_t *e)
 	CEntity *pEnt = CEntity::Instance(e);
 	if (pEnt)
 	{
-		g_pSM->LogMessage(myself, "Edict Removed, removing CEntity");
-		assert(0);
+		//g_pSM->LogMessage(myself, "Edict Removed, removing CEntity");
+		//assert(0);
 		pEnt->Destroy();
 	}
 }

@@ -75,7 +75,7 @@ private:
 	DEFINE_CUSTOM_AI;
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS(npc_enemyfinder, cycler, CNPC_EnemyFinder);
+LINK_ENTITY_TO_CUSTOM_CLASS(npc_enemyfinder, monster_generic, CNPC_EnemyFinder);
 
 //-----------------------------------------------------------------------------
 // Custom schedules.
@@ -499,7 +499,7 @@ public:
 };
 
 
-LINK_ENTITY_TO_CUSTOM_CLASS(npc_enemyfinder_combinecannon, cycler, CNPC_EnemyFinderCombineCannon);
+LINK_ENTITY_TO_CUSTOM_CLASS(npc_enemyfinder_combinecannon, monster_generic, CNPC_EnemyFinderCombineCannon);
 
 
 BEGIN_DATADESC( CNPC_EnemyFinderCombineCannon )

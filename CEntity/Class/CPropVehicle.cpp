@@ -250,7 +250,7 @@ void CE_CPropVehicleDriveable::CreateDriverRagdoll(CPlayer *pPlayer)
 
 	if(m_hDriverRagdoll)
 	{
-		Assert(0);
+		// Assert(0);
 		UTIL_Remove(m_hDriverRagdoll);
 		m_hDriverRagdoll.Set(NULL);
 	}

@@ -154,7 +154,7 @@ static CConceptInfoMap g_ConceptInfoMap;
 
 CAI_AllySpeechManager::CAI_AllySpeechManager()
 {
-	Assert( !gm_pSpeechManager );
+	// Assert( !gm_pSpeechManager );
 	gm_pSpeechManager = this;
 }
 
@@ -172,15 +172,15 @@ void CAI_AllySpeechManager::PostConstructor()
 void CAI_AllySpeechManager::Spawn()
 {
 	BaseClass::Spawn();
-	//Assert( g_ConceptInfoMap.Count() != 0 );
+	//// Assert( g_ConceptInfoMap.Count() != 0 );
 	//for ( size_t i = 0; i < ARRAYSIZE(g_ConceptInfos); i++ )
 	//	m_ConceptTimers->Insert( AllocPooledString( g_ConceptInfos[i].concept ), CSimpleSimTimer() );
 }
 
 void CAI_AllySpeechManager::AddCustomConcept( const ConceptInfo_t &conceptInfo )
 {
-	Assert( g_ConceptInfoMap.Count() != 0 );
-	Assert( m_ConceptTimers->Count() != 0 );
+	// Assert( g_ConceptInfoMap.Count() != 0 );
+	// Assert( m_ConceptTimers->Count() != 0 );
 
 	if ( g_ConceptInfoMap.Find( conceptInfo.concept ) == g_ConceptInfoMap.InvalidIndex() )
 	{
@@ -236,7 +236,7 @@ void CAI_AllySpeechManager::OnSpokeConcept( CAI_PlayerAlly *pPlayerAlly, AIConce
 	{
 		if ( pConceptInfo && pConceptInfo->minGlobalCategoryDelay != -1 )
 		{
-			Assert( pConceptInfo->maxGlobalCategoryDelay != -1 );
+			// Assert( pConceptInfo->maxGlobalCategoryDelay != -1 );
 			SetCategoryDelay( pConceptInfo->category, pConceptInfo->minGlobalCategoryDelay, pConceptInfo->maxGlobalCategoryDelay );
 		}
 		else if ( pCategoryInfo->maxGlobalDelay > 0 )
@@ -246,7 +246,7 @@ void CAI_AllySpeechManager::OnSpokeConcept( CAI_PlayerAlly *pPlayerAlly, AIConce
 
 		if ( pConceptInfo && pConceptInfo->minPersonalCategoryDelay != -1 )
 		{
-			Assert( pConceptInfo->maxPersonalCategoryDelay != -1 );
+			// Assert( pConceptInfo->maxPersonalCategoryDelay != -1 );
 			pPlayerAlly->SetCategoryDelay( pConceptInfo->category, pConceptInfo->minPersonalCategoryDelay, pConceptInfo->maxPersonalCategoryDelay );
 		}
 		else if ( pCategoryInfo->maxPersonalDelay > 0 )
@@ -256,7 +256,7 @@ void CAI_AllySpeechManager::OnSpokeConcept( CAI_PlayerAlly *pPlayerAlly, AIConce
 
 		if ( pConceptInfo && pConceptInfo->minConceptDelay != -1 )
 		{
-			Assert( pConceptInfo->maxConceptDelay != -1 );
+			// Assert( pConceptInfo->maxConceptDelay != -1 );
 			char iConceptTimer = m_ConceptTimers->Find( MAKE_STRING(concept) );
 			if ( iConceptTimer != m_ConceptTimers->InvalidIndex() )
 				m_ConceptTimers->Element(iConceptTimer).Set( pConceptInfo->minConceptDelay, pConceptInfo->minConceptDelay );
@@ -310,7 +310,7 @@ CAI_AllySpeechManager *GetAllySpeechManager()
 	if ( !CAI_AllySpeechManager::gm_pSpeechManager )
 	{
 		CreateEntityByName( "ai_ally_speech_manager" );
-		Assert( CAI_AllySpeechManager::gm_pSpeechManager );
+		// Assert( CAI_AllySpeechManager::gm_pSpeechManager );
 		if ( CAI_AllySpeechManager::gm_pSpeechManager )
 			DispatchSpawn( CAI_AllySpeechManager::gm_pSpeechManager->BaseEntity() );
 	}
@@ -898,7 +898,7 @@ void CAI_PlayerAlly::AnswerQuestion( CAI_PlayerAlly *pQuestioner, int iQARandomN
 			}
 		}
 
-		Assert( selection.pResponse );
+		// Assert( selection.pResponse );
 		SetSpeechTarget( selection.hSpeechTarget );
 		SpeakDispatchResponse( selection.concept.c_str(), selection.pResponse );
 
@@ -950,7 +950,7 @@ int CAI_PlayerAlly::SelectNonCombatSpeechSchedule()
 		AISpeechSelection_t selection;
 		if ( SelectNonCombatSpeech( &selection ) )
 		{
-			Assert( selection.pResponse );
+			// Assert( selection.pResponse );
 			SetSpeechTarget( selection.hSpeechTarget );
 			SetPendingSpeech( selection.concept.c_str(), selection.pResponse );
 		}

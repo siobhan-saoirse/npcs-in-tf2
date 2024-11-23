@@ -402,7 +402,7 @@ private:
 	CEFakeHandle<CE_CSprite>		m_hFireSprite;
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_combinegunship, cycler, CNPC_CombineGunship );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_combinegunship, monster_generic, CNPC_CombineGunship );
 
 
 BEGIN_DATADESC( CNPC_CombineGunship )

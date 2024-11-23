@@ -49,7 +49,7 @@ string_t Templates_FindByTargetName(const char *pszName)
 //-----------------------------------------------------------------------------
 string_t Templates_FindByIndex( int iIndex )
 {
-	Assert( iIndex < g_Templates->Count() );
+	// Assert( iIndex < g_Templates->Count() );
 
 	TemplateEntityData_t *pTemplate = g_Templates->Element(iIndex);
 	// First time through we alloc the mapdata onto the pool.

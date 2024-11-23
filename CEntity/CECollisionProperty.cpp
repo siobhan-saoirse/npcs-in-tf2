@@ -137,12 +137,12 @@ void CECollisionProperty::SetSurroundingBoundsType( SurroundingBoundsType_t type
 	centity->m_nSurroundType = type;
 	if (type != USE_SPECIFIED_BOUNDS)
 	{
-		Assert( !pMins && !pMaxs );
+		// Assert( !pMins && !pMaxs );
 		MarkSurroundingBoundsDirty();
 	}
 	else
 	{
-		Assert( pMins && pMaxs );
+		// Assert( pMins && pMaxs );
 		centity->m_vecSpecifiedSurroundingMinsPreScaled = *pMins;
 		centity->m_vecSpecifiedSurroundingMaxsPreScaled = *pMaxs;
 
@@ -283,12 +283,12 @@ void CECollisionProperty::SetCollisionBounds( const Vector& mins, const Vector &
 
 void CECollisionProperty::UseTriggerBounds( bool bEnable, float flBloat )
 {
-	Assert( flBloat <= 127.0f );
+	// Assert( flBloat <= 127.0f );
 	centity->m_triggerBloat = (char )flBloat;
 	if ( bEnable )
 	{
 		centity->AddSolidFlags( FSOLID_USE_TRIGGER_BOUNDS );
-		Assert( flBloat > 0.0f );
+		// Assert( flBloat > 0.0f );
 	}
 	else
 	{

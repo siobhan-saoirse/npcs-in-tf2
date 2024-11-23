@@ -807,7 +807,7 @@ void CNPC_BaseScanner::PlayFlySound(void)
 
 		m_pEngineSound = g_SoundController->SoundCreate( filter, entindex(), CHAN_STATIC, GetEngineSound(), ATTN_NORM );
 
-		Assert(m_pEngineSound);
+		// Assert(m_pEngineSound);
 
 		// Start the engine sound
 		g_SoundController->Play( m_pEngineSound, 0.0f, 100.0f );

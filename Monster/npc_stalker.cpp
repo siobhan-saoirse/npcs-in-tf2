@@ -5,7 +5,7 @@
 #include "CAI_tacticalservices.h"
 
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_stalker, cycler, CNPC_Stalker );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_stalker, monster_generic, CNPC_Stalker );
 
 
 #define	MIN_STALKER_FIRE_RANGE		64
@@ -831,7 +831,7 @@ void CNPC_Stalker::CalcBeamPosition(void)
 		// Must be scaled with distance 
 		// -----------------------------------------
 		float fTargetDist = (GetAbsOrigin() - m_vLaserTargetPos).Length();
-		float noiseScale		= std::atanf(0.2f/fTargetDist);
+		float noiseScale		= atanf(0.2f/fTargetDist);
 		float m_fNoiseModX		= 5;
 		float m_fNoiseModY		= 5;
 		float m_fNoiseModZ		= 5;

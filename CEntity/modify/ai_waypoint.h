@@ -77,8 +77,8 @@ public:
 	void AssertValid() const
 	{
 #ifdef DEBUG
-		Assert( !pNext || pNext->pPrev == this );
-		Assert( !pPrev || pPrev->pNext == this );
+		// Assert( !pNext || pNext->pPrev == this );
+		// Assert( !pPrev || pPrev->pNext == this );
 #endif
 	}
 

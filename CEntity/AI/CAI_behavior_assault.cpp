@@ -255,7 +255,7 @@ CE_CAssaultPoint *CAI_AssaultBehavior::FindAssaultPoint( string_t iszAssaultPoin
 		}
 	}
 
-	Assert( iMostRecentIndex > -1 );
+	// Assert( iMostRecentIndex > -1 );
 
 	// Remove the most recently used 
 	pClearAssaultPoints.Remove( iMostRecentIndex );

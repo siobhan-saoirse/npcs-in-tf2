@@ -29,7 +29,7 @@ CE_NPC_Custom::~CE_NPC_Custom()
 
 void CE_NPC_Custom::StartCallSpFunction()
 {
-	assert(sm_npc);
+	//assert(sm_npc);
 	if(sm_npc->member_data_size == 0)
 		return;
 	
@@ -53,7 +53,7 @@ void CE_NPC_Custom::StartCallSpFunction()
 
 void CE_NPC_Custom::EndCallSpFunction()
 {
-	assert(sm_npc);
+	//assert(sm_npc);
 	if(sm_npc->member_data_size == 0)
 		return;
 	

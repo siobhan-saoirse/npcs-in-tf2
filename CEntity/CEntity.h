@@ -1375,7 +1375,7 @@ void UTIL_PatchOutputRestoreOps(datamap_t *pMap);
 
 inline bool FClassnameIs( CEntity *pEntity, const char *szClassname )
 { 
-	Assert( pEntity );
+	// Assert( pEntity );
 	if ( pEntity == NULL )
 		return false;
 

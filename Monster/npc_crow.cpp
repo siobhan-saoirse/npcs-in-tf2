@@ -38,9 +38,9 @@ static int AE_CROW_HOP;
 ConVar sk_crow_health( "sk_crow_health","1");
 ConVar sk_crow_melee_dmg( "sk_crow_melee_dmg","0");
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_crow, cycler, CNPC_Crow );
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_seagull, cycler, CNPC_Seagull );
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_pigeon, cycler, CNPC_Pigeon );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_crow, monster_generic, CNPC_Crow );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_seagull, monster_generic, CNPC_Seagull );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_pigeon, monster_generic, CNPC_Pigeon );
 
 BEGIN_DATADESC( CNPC_Crow )
 

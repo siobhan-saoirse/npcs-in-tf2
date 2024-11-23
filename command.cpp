@@ -32,7 +32,6 @@ ConVar *ai_follow_use_points = NULL;
 ConVar *ai_LOS_mode = NULL;
 ConVar *ai_follow_use_points_when_moving = NULL;
 
-ConVar *ammo_hegrenade_max = NULL;
 ConVar *sk_autoaim_mode = NULL;
 
 ConVar *sv_strict_notarget = NULL;
@@ -93,7 +92,6 @@ ConVar *xbox_steering_deadzone = NULL;
 
 ConVar *g_debug_vehicledriver = NULL;
 ConVar *g_debug_npc_vehicle_roles = NULL;
-ConVar *g_jeepexitspeed = NULL;
 
 ConVar npc_create_equipment("npc_create_equipment", "");
 
@@ -372,7 +370,6 @@ bool CommandInitialize()
 	GET_CONVAR(ai_LOS_mode);
 	GET_CONVAR(ai_follow_use_points_when_moving);
 
-	GET_CONVAR(ammo_hegrenade_max);
 	GET_CONVAR(sk_autoaim_mode);
 
 	GET_CONVAR(sv_strict_notarget);
@@ -433,7 +430,6 @@ bool CommandInitialize()
 
 	GET_CONVAR(g_debug_vehicledriver);
 	GET_CONVAR(g_debug_npc_vehicle_roles);
-	GET_CONVAR(g_jeepexitspeed);
 
 	return true;
 }

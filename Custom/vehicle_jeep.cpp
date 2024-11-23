@@ -89,7 +89,6 @@ const char *g_pJeepThinkContext = "JeepSeagullThink";
 #define JEEP_SEAGULL_MAX_TIME			60.0		// Time at which a seagull will definately perch on the jeep
 
 ConVar	sk_jeep_gauss_damage( "sk_jeep_gauss_damage", "15" );
-extern ConVar *g_jeepexitspeed;
 
 // CE
 ConVar monster_jeep_gun("monster_jeep_gun", "1", 0, "Whether or not to enable jeep gun");
@@ -1129,7 +1128,7 @@ void CPropJeep::ChargeCannon( void )
 			pPlayer->RumbleEffect( RUMBLE_FLAT_LEFT, (int)(0.1 * 100), RUMBLE_FLAG_RESTART | RUMBLE_FLAG_LOOP | RUMBLE_FLAG_INITIAL_SCALE );
 		}
 
-		Assert(m_sndCannonCharge!=NULL);
+		// Assert(m_sndCannonCharge!=NULL);
 		if ( m_sndCannonCharge != NULL )
 		{
 			g_SoundController->Play( m_sndCannonCharge, 1.0f, 50 );
@@ -1217,8 +1216,8 @@ void CPropJeep::Use( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE use
 		// Player's using the crate.
 		CAmmoDef *def = GetAmmoDef();
 		if (def)
-		{
-			pPlayer->GiveAmmo(30, def->Index("BULLET_PLAYER_9MM"));
+		{ 
+			pPlayer->GiveAmmo(30, def->Index("TF_AMMO_PRIMARY"));
 		}
 
 		if ( ( GetSequence() != LookupSequence( "ammo_open" ) ) && ( GetSequence() != LookupSequence( "ammo_close" ) ) )
@@ -1246,7 +1245,7 @@ void CPropJeep::Use( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE use
 //-----------------------------------------------------------------------------
 bool CPropJeep::CanExitVehicle( CBaseEntity *pEntity )
 {
-	if ( !m_bEnterAnimOn && !m_bExitAnimOn && !m_bLocked && (m_nSpeed <= g_jeepexitspeed->GetFloat() ) )
+	if ( !m_bEnterAnimOn && !m_bExitAnimOn && !m_bLocked && (m_nSpeed <= 100.f ) )
 	{
 		return BaseClass::CanExitVehicle(pEntity);
 	}
@@ -1788,7 +1787,7 @@ void CJeepFourWheelServerVehicle::HandleEntryExitFinish( bool bExitAnimOn, bool 
 		// CE_TODO ??
 		/*CPlayer *pPlayer = ToBasePlayer( CEntity::Instance(GetDriver()) );
 		CPropJeep *jeep = dynamic_cast<CPropJeep *>(GetFourWheelVehicle());
-		Assert(jeep);
+		// Assert(jeep);
 		if(jeep)
 		{
 			jeep->SetPointViewControl(pPlayer);
@@ -1842,7 +1841,7 @@ int CJeepFourWheelServerVehicle::GetExitAnimToUse( Vector &vecEyeExitEndpoint, b
 		Vector vecEnd = vehicleExitOrigin - vecMove;
 		UTIL_TraceHull( vecStart, vecEnd, g_ViewVectors->m_vHullMin , g_ViewVectors->m_vHullMax, MASK_SOLID, NULL, COLLISION_GROUP_NONE, &tr );
 
-		Assert( !tr.startsolid && tr.fraction < 1.0 );
+		// Assert( !tr.startsolid && tr.fraction < 1.0 );
 		m_vecCurrentExitEndPoint = vecStart + ((vecEnd - vecStart) * tr.fraction);
 		vecEyeExitEndpoint = m_vecCurrentExitEndPoint + g_ViewVectors->m_vView;
 		m_iCurrentExitAnim = 0;

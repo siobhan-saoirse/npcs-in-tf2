@@ -370,7 +370,7 @@ AI_Waypoint_t* CAI_Pathfinder::MakeRouteFromParents( int *parentArray, int endID
 		// pNPC->CapabilitiesGet() in ComputeWaypointType() above filters it out). 
 		// It's also possible if none of the lines have an appropriate DestNodeID.
 		// Um, shouldn't such a waypoint not be allowed?!?!?
-		Assert( waypointType != NAV_NONE );
+		// Assert( waypointType != NAV_NONE );
 
 		pNewWaypoint = new AI_Waypoint_t( pAInode[currentID]->GetPosition(GetHullType()),
 			pAInode[currentID]->GetYaw(), waypointType, bits_WP_TO_NODE, currentID );
@@ -450,7 +450,7 @@ Navigation_t MoveBitsToNavType( int fBits )
 
 	default:
 		// This will only happen if more than one bit is set
-		Assert(0);
+		// Assert(0);
 		return NAV_NONE;
 	}
 }
@@ -478,14 +478,14 @@ Navigation_t CAI_Pathfinder::ComputeWaypointType( CAI_Node **ppNodes, int parent
 			int moveTypeBits = ( linkMoveTypeBits & CapabilitiesGet());
 			if ( !moveTypeBits && linkMoveTypeBits == bits_CAP_MOVE_JUMP )
 			{
-				Assert( pNode->GetHint() && pNode->GetHint()->HintType() == HINT_JUMP_OVERRIDE );
+				// Assert( pNode->GetHint() && pNode->GetHint()->HintType() == HINT_JUMP_OVERRIDE );
 				ppNodes[destID]->Lock(0.3);
 				moveTypeBits = linkMoveTypeBits;
 			}
 			Navigation_t linkType = MoveBitsToNavType( moveTypeBits );
 
 			// This will only trigger if the links disagree about their nav type
-			Assert( (navType == NAV_NONE) || (navType == linkType) );
+			// Assert( (navType == NAV_NONE) || (navType == linkType) );
 			navType = linkType; 
 			break;
 		}
@@ -507,7 +507,7 @@ Navigation_t CAI_Pathfinder::ComputeWaypointType( CAI_Node **ppNodes, int parent
 				int moveTypeBits = ( npcMoveBits & nodeMoveBits );
 				Navigation_t linkType = MoveBitsToNavType( moveTypeBits );
 
-				Assert( (navType == NAV_NONE) || (navType == linkType) );
+				// Assert( (navType == NAV_NONE) || (navType == linkType) );
 				navType = linkType; 
 
 				DevMsg( "Note: Strange link found between nodes in AI node graph\n" );
@@ -539,7 +539,7 @@ bool CAI_Pathfinder::Triangulate( Navigation_t navType, const Vector &vecStart, 
 	if ( GetOuter()->IsFlaggedEfficient() )
 		return false;
 
-	Assert( pApex );
+	// Assert( pApex );
 
 	Vector vecForward, vecUp, vecPerpendicular;
 	VectorSubtract( vecEndIn, vecStart, vecForward );
@@ -1228,7 +1228,7 @@ AI_Waypoint_t *CAI_Pathfinder::BuildRadialRoute( const Vector &vStartPos, const 
 	Vector			vNextPos;
 
 	// Make sure that we've got somewhere to go.  This generally means your trying to walk too small an arc.
-	Assert( ( bClockwise && flCurAngle > flEndAngle ) || ( !bClockwise && flCurAngle < flEndAngle ) );
+	// Assert( ( bClockwise && flCurAngle > flEndAngle ) || ( !bClockwise && flCurAngle < flEndAngle ) );
 
 	// Start iterating through our arc
 	while( 1 )
@@ -1474,7 +1474,7 @@ AI_Waypoint_t *CAI_Pathfinder::BuildSimpleRoute( Navigation_t navType, const Vec
 												 const Vector &vEnd, const CEntity *pTarget, int endFlags, int nodeID,
 												 int nodeTargetType, float flYaw )
 {
-	Assert( navType == NAV_JUMP || navType == NAV_CLIMB ); // this is what this here function is for
+	// Assert( navType == NAV_JUMP || navType == NAV_CLIMB ); // this is what this here function is for
 	// Only allowed to jump to ground nodes
 	if ((nodeID == NO_NODE)	|| (GetNetwork()->GetNode(nodeID)->GetType() == nodeTargetType) )
 	{

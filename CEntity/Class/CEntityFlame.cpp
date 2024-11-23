@@ -28,7 +28,7 @@ void CE_CEntityFlame::PostConstructor()
 			memcpy(&CEntityFlameFlameThink, &ptr, sizeof(void *));
 		}
 	}
-	Assert(CEntityFlameFlameThink);
+	// Assert(CEntityFlameFlameThink);
 }
 
 

@@ -364,7 +364,7 @@ bool CE_AI_Hint::HintMatchesCriteria( CAI_NPC *pNPC, const CHintCriteria &hintCr
 		//AssertIsValidString( hintCriteria.GetGroup() );
 		if ( GetGroup() == NULL_STRING || GetGroup() != hintCriteria.GetGroup() )
 		{
-			Assert(GetGroup() == NULL_STRING || strcmp( STRING(GetGroup()), STRING(hintCriteria.GetGroup())) != 0 );
+			// Assert(GetGroup() == NULL_STRING || strcmp( STRING(GetGroup()), STRING(hintCriteria.GetGroup())) != 0 );
 			return false;
 		}
 	}
@@ -512,7 +512,7 @@ bool CE_AI_Hint::HintMatchesCriteria( CAI_NPC *pNPC, const CHintCriteria &hintCr
 	// See if this is our next, closest node
 	if ( hintCriteria.HasFlag( bits_HINT_NODE_NEAREST ) )
 	{
-		Assert( flNearestDistance );
+		// Assert( flNearestDistance );
 
 		// Calculate our distance
 		float distance = (GetAbsOrigin() - position).Length();
@@ -712,7 +712,7 @@ int CAI_HintManager::GetFlags( const char *token )
 //-----------------------------------------------------------------------------
 CE_AI_Hint* CAI_HintManager::FindHint( CAI_NPC *pNPC, Hint_e nHintType, int nFlags, float flMaxDist, const Vector *pMaxDistFrom )
 {
-	assert( pNPC != NULL );
+	//assert( pNPC != NULL );
 	if ( pNPC == NULL )
 		return NULL;
 
@@ -751,7 +751,7 @@ CE_AI_Hint *CAI_HintManager::FindHint( CAI_NPC *pNPC, const Vector &position, co
 
 CE_AI_Hint *CAI_HintManager::FindHint( CAI_NPC *pNPC, const CHintCriteria &hintCriteria )
 {
-	assert( pNPC != NULL );
+	//assert( pNPC != NULL );
 	if ( pNPC == NULL )
 		return NULL;
 
@@ -794,7 +794,7 @@ int CAI_HintManager::FindAllHints( CAI_NPC *pNPC, const Vector &position, const 
 	for ( int i = 0; i < c; ++i )
 	{
 		pTestHint = (CE_AI_Hint *)CEntity::Instance(CAI_HintManager::gm_AllHints->Element(i));
-		Assert( pTestHint );
+		// Assert( pTestHint );
 		if ( pTestHint->HintMatchesCriteria( pNPC, hintCriteria, position, NULL ) )
 			pResult->AddToTail( pTestHint );
 	}

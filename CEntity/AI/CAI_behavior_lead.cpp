@@ -1040,7 +1040,7 @@ bool CAI_LeadBehavior::IsSpeaking()
 
 bool CAI_LeadBehavior::Disconnect( CAI_LeadBehaviorHandler *pSink )
 {
-	Assert( pSink == m_pSink );
+	// Assert( pSink == m_pSink );
 	m_pSink = NULL;
 	m_hSinkImplementor = NULL;
 	return true;

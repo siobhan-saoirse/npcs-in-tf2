@@ -75,7 +75,7 @@ bool CAI_MoveSolver::Solve( const AI_MoveSuggestion_t *pSuggestions, int nSugges
 	// The first thing we do is reweight and normalize the weights into a range of [-1..1], where
 	// a negative weight is a repulsion. This becomes a bias for the solver.
 	// @TODO (toml 06-18-02): this can be made sligtly more optimal by precalculating regulation adjusted weights
-	Assert( suggestions.Count() >= 1 );
+	// Assert( suggestions.Count() >= 1 );
 	NormalizeSuggestions( &suggestions[0], (&suggestions[0]) + suggestions.Count() );
 
 	//
@@ -201,7 +201,7 @@ void CAI_MoveSolver::NormalizeSuggestions( AI_MoveSuggestion_t *pBegin, AI_MoveS
 		const float min = g_AI_MoveSuggWeights[pBegin->type].min;
 		const float max = g_AI_MoveSuggWeights[pBegin->type].max;
 
-		Assert( pBegin->weight >= -AIMS_EPS && pBegin->weight <= 1.0 + AIMS_EPS );
+		// Assert( pBegin->weight >= -AIMS_EPS && pBegin->weight <= 1.0 + AIMS_EPS );
 
 		if ( pBegin->weight < AIMS_EPS ) // zero normalizes to zero
 			pBegin->weight = 0.0;

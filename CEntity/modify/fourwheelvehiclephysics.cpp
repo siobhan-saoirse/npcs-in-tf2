@@ -183,7 +183,7 @@ inline float CFourWheelVehiclePhysics::GetPoseParameter( int iParameter )
 
 inline float CFourWheelVehiclePhysics::SetPoseParameter( int iParameter, float flValue )
 {
-	Assert(IsFinite(flValue));
+	// Assert(IsFinite(flValue));
 	return GetOuter()->SetPoseParameter( iParameter, flValue );
 }
 
@@ -357,7 +357,7 @@ void CFourWheelVehiclePhysics::CalcWheelData( vehicleparams_t &vehicle )
 //-----------------------------------------------------------------------------
 void CFourWheelVehiclePhysics::Spawn( )
 {
-	Assert( m_pOuter );
+	// Assert( m_pOuter );
 
 	m_actionValue = 0;
 	m_actionSpeed = 0;

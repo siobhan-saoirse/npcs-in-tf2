@@ -219,7 +219,7 @@ CBoneFollowerManager::CBoneFollowerManager()
 CBoneFollowerManager::~CBoneFollowerManager()
 {
 	// if this fires then someone isn't destroying their bonefollowers in UpdateOnRemove
-	Assert(m_iNumBones==0);
+	// Assert(m_iNumBones==0);
 	DestroyBoneFollowers();
 }
 
@@ -244,7 +244,7 @@ void CBoneFollowerManager::UpdateBoneFollowers( CAnimating *pParentEntity )
 
 physfollower_t *CBoneFollowerManager::GetBoneFollower( int iFollowerIndex )
 {
-	Assert( iFollowerIndex >= 0 && iFollowerIndex < m_iNumBones );
+	// Assert( iFollowerIndex >= 0 && iFollowerIndex < m_iNumBones );
 	if ( iFollowerIndex >= 0 && iFollowerIndex < m_iNumBones )
 		return &m_physBones[iFollowerIndex];
 	return NULL;

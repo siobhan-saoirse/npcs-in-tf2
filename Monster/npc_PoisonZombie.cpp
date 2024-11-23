@@ -206,7 +206,7 @@ private:
 	int m_nThrowCrab;				// The crab we are about to throw.
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_poisonzombie, cycler, CNPC_PoisonZombie );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_poisonzombie, monster_generic, CNPC_PoisonZombie );
 
 BEGIN_DATADESC( CNPC_PoisonZombie )
 
@@ -584,7 +584,7 @@ int CNPC_PoisonZombie::RangeAttack2Conditions( float flDot, float flDist )
 Vector CNPC_PoisonZombie::HeadTarget( const Vector &posSrc )
 {
 	int iCrabAttachment = LookupAttachment( "headcrab1" );
-	Assert( iCrabAttachment > 0 );
+	// Assert( iCrabAttachment > 0 );
 
 	Vector vecPosition;
 

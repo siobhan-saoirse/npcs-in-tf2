@@ -10,7 +10,7 @@
 #include "pickup.h"
 
 
-CE_LINK_ENTITY_TO_CLASS( weapon_c4, CWeaponPhysCannon );
+CE_LINK_ENTITY_TO_CLASS( tf_weapon_mechanical_arm, CWeaponPhysCannon );
 
 
 extern CSoundEnvelopeController *g_SoundController;
@@ -475,7 +475,7 @@ void CWeaponPhysCannon::PuntVPhysics( CEntity *pEntity, const Vector &vecForward
 void CWeaponPhysCannon::ApplyVelocityBasedForce( CEntity *pEntity, const Vector &forward )
 {
 	IPhysicsObject *pPhysicsObject = pEntity->VPhysicsGetObject();
-	Assert(pPhysicsObject); // Shouldn't ever get here with a non-vphysics object.
+	// Assert(pPhysicsObject); // Shouldn't ever get here with a non-vphysics object.
 	if (!pPhysicsObject)
 		return;
 
@@ -532,7 +532,7 @@ void CWeaponPhysCannon::PrimaryAttack()
 
 		// Validate the item is within punt range
 		CEntity *pHeld = m_grabController.GetAttached();
-		Assert( pHeld != NULL );
+		// Assert( pHeld != NULL );
 
 		if ( pHeld != NULL )
 		{
@@ -760,7 +760,7 @@ CWeaponPhysCannon::FindObjectResult_t CWeaponPhysCannon::FindObject( void )
 {
 	CPlayer *pPlayer = ToBasePlayer( GetOwner() );
 
-	Assert( pPlayer );
+	// Assert( pPlayer );
 	if ( pPlayer == NULL )
 		return OBJECT_NOT_FOUND;
 
@@ -920,7 +920,7 @@ CEntity *CWeaponPhysCannon::FindObjectInCone( const Vector &vecOrigin, const Vec
 void CWeaponPhysCannon::UpdateObject( void )
 {
 	CPlayer *pPlayer = ToBasePlayer( GetOwner() );
-	Assert( pPlayer );
+	// Assert( pPlayer );
 
 	float flError = 12;
 	if ( !m_grabController.UpdateObject( pPlayer, flError ) )

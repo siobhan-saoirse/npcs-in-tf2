@@ -127,7 +127,7 @@ BEGIN_DATADESC( CNPC_FloorTurret )
 
 END_DATADESC()
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_turret_floor, cycler, CNPC_FloorTurret);
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_turret_floor, monster_generic, CNPC_FloorTurret);
 
 
 //-----------------------------------------------------------------------------
@@ -291,7 +291,7 @@ void CNPC_FloorTurret::Spawn( void )
 	SetPoseParameter( m_poseAim_Yaw, 0 );
 	SetPoseParameter( m_poseAim_Pitch, 0 );
 
-	m_iAmmoType = GetAmmoDef()->Index( "BULLET_PLAYER_45ACP" );
+	m_iAmmoType = GetAmmoDef()->Index( "TF_AMMO_PRIMARY" );
 
 	m_iMuzzleAttachment = LookupAttachment( "eyes" );
 	m_iEyeAttachment = LookupAttachment( "light" );
@@ -481,7 +481,7 @@ void CNPC_FloorTurret::OnPhysGunPickup( CBaseEntity *pPhysGunUser, PhysGunPickup
 	// Drop our mass a lot so that we can be moved easily with +USE
 	if ( reason != PUNTED_BY_CANNON )
 	{
-		Assert( VPhysicsGetObject() );
+		// Assert( VPhysicsGetObject() );
 
 		m_bCarriedByPlayer = true;
 		m_OnPhysGunPickup.FireOutput( this, this );
@@ -532,7 +532,7 @@ void CNPC_FloorTurret::OnPhysGunDrop( CBaseEntity *pPhysGunUser, PhysGunDrop_t R
 	}
 
 	// Restore our mass to the original value
-	Assert( VPhysicsGetObject() );
+	// Assert( VPhysicsGetObject() );
 }
 
 //-----------------------------------------------------------------------------

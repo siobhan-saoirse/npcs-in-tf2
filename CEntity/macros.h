@@ -197,7 +197,6 @@ public: \
 	} \
 	void AddHook(CEntity *pEnt) \
 	{ \
-		assert(m_offset >= 0); \
 		cl *pThisType = dynamic_cast<cl *>(pEnt); \
 		if (pThisType && m_bShouldHook) \
 		{ \
@@ -860,11 +859,9 @@ ret Static_##name params \
 	SET_META_RESULT(MRES_SUPERCEDE); \
 	type2 *pointer = META_IFACEPTR(type2); \
 	CBaseEntity *cbase = dynamic_cast<CBaseEntity*>(pointer); \
-	Assert(cbase); \
 	if(!cbase) \
 		RETURN_META_VALUE(MRES_IGNORED, (ret)0); \
 	type1 *pEnt = dynamic_cast<type1 *>(CEntity::Instance(cbase)); \
-	Assert(pEnt); \
 	if(!pEnt) \
 		RETURN_META_VALUE(MRES_IGNORED, (ret)0); \
 	int __index = pEnt->entindex_non_network(); \
@@ -900,13 +897,11 @@ void Static_##name params \
 	SET_META_RESULT(MRES_SUPERCEDE); \
 	type2 *pointer = META_IFACEPTR(type2); \
 	CBaseEntity *cbase = dynamic_cast<CBaseEntity*>(pointer); \
-	Assert(cbase); \
 	if(!cbase) { \
 		SET_META_RESULT(MRES_IGNORED); \
 		return; \
 	} \
 	type1 *pEnt = dynamic_cast<type1 *>(CEntity::Instance(cbase)); \
-	Assert(pEnt); \
 	if(!pEnt) { \
 		SET_META_RESULT(MRES_IGNORED); \
 		return; \
@@ -933,7 +928,6 @@ void type::Internal##name params \
 		(this->*name##_Actual) paramscall;\
 		return;\
 	}\
-	assert(pEnt); \
 	pEnt->name paramscall; \
 } \
 void (type::* type::name##_Actual) params = NULL; \
@@ -949,7 +943,6 @@ ret type::Internal##name params \
 	if(!pEnt) {\
 		return (this->*name##_Actual) paramscall;\
 	}\
-	assert(pEnt); \
 	return pEnt->name paramscall; \
 } \
 ret (type::* type::name##_Actual) params = NULL;
@@ -1004,7 +997,6 @@ ret type::Internal##name (CBaseEntity *thisptr) \
 	name##_fail:\
 		META_CONPRINT("Fail\n");\
 		g_pSM->LogError(myself,"Unable getting %s",#name);\
-		Assert(0);\
 		return ret;\
 	name##_success:\
 		META_CONPRINT("Success\n");

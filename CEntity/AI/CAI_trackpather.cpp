@@ -285,7 +285,7 @@ CE_CPathTrack *CAI_TrackPather::BestPointOnPath( CE_CPathTrack *pPath, const Vec
 	if ( CE_CPathTrack::ValidPath( pPath ) == NULL )
 	{
 		//FIXME: Implement
-		Assert(0);
+		// Assert(0);
 		return NULL;
 	}
 
@@ -443,7 +443,7 @@ float CAI_TrackPather::ComputeDistanceAlongPathToPoint( CE_CPathTrack *pStartTra
 
 		pNextPath = bMovingForward ? pTravPath->GetNext() : pTravPath->GetPrevious();
 		pTestPath = pTravPath;
-		Assert( pTestPath );
+		// Assert( pTestPath );
 
 		if ( pTravPath == pDestTrack )
 		{
@@ -591,7 +591,7 @@ float CAI_TrackPather::ComputeDistanceToLeadingPosition()
 //-----------------------------------------------------------------------------
 float CAI_TrackPather::ComputeDistanceToTargetPosition()
 {
-	Assert( m_pTargetNearestPath );
+	// Assert( m_pTargetNearestPath );
 
 	CE_CPathTrack *pDest = m_bMovingForward ? m_pTargetNearestPath.Get() : m_pTargetNearestPath->GetPrevious();
 	if ( !pDest )
@@ -783,7 +783,7 @@ CE_CPathTrack *CAI_TrackPather::FindClosestPointOnPath( CE_CPathTrack *pPath,
 	if ( CE_CPathTrack::ValidPath( pPath ) == NULL )
 	{
 		//FIXME: Implement
-		Assert(0);
+		// Assert(0);
 		return NULL;
 	}
 
@@ -1145,7 +1145,7 @@ void CAI_TrackPather::UpdateTargetPositionLeading( void )
 		if ( bMovingForward != m_bMovingForward )
 		{
 			// As a result of the tricky note above, this should never occur
-			Assert( pAdjustedDest != m_pCurrentPathTarget );
+			// Assert( pAdjustedDest != m_pCurrentPathTarget );
 
 			// Oops! Need to reverse direction
 			m_bMovingForward = bMovingForward;
@@ -1200,7 +1200,7 @@ void CAI_TrackPather::UpdateTargetPosition( void )
 	if ( CE_CPathTrack::ValidPath( pDest ) == NULL )
 	{
 		// This means that a valid path could not be found to our target!
-//		Assert(0);
+//		// Assert(0);
 		return;
 	}
 
@@ -1344,7 +1344,7 @@ void CAI_TrackPather::SetFarthestPathDist( float flMaxPathDist )
 //------------------------------------------------------------------------------
 void CAI_TrackPather::SetupNewCurrentTarget( CE_CPathTrack *pTrack )
 {
-	Assert( pTrack );
+	// Assert( pTrack );
 	m_vecSegmentStartPoint = GetAbsOrigin();
 	VectorMA( m_vecSegmentStartPoint, -2.0f, GetAbsVelocity(), m_vecSegmentStartSplinePoint );
 	m_pCurrentPathTarget.Set(pTrack->BaseEntity());
@@ -1508,7 +1508,7 @@ bool CAI_TrackPather::IsForwardAlongPath( CE_CPathTrack *pPath, CE_CPathTrack *p
 	float flForwardDist = ComputePathDistance( pPath, pPathTest, true );
 	float flReverseDist = ComputePathDistance( pPath, pPathTest, false );
 
-	Assert( ( flForwardDist != FLT_MAX ) || ( flReverseDist != FLT_MAX ) );
+	// Assert( ( flForwardDist != FLT_MAX ) || ( flReverseDist != FLT_MAX ) );
 	return ( flForwardDist <= flReverseDist );
 }
 

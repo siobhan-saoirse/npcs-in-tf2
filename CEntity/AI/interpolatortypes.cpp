@@ -1,4 +1,4 @@
-//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//====== Copyright ï¿½ 1996-2005, Valve Corporation, All rights reserved. =======
 //
 // Purpose: 
 //
@@ -48,7 +48,7 @@ int Interpolator_InterpolatorForName( char const *name )
 			return slot->type;
 	}
 	
-	Assert( !"Interpolator_InterpolatorForName failed!!!" );
+	// Assert( !"Interpolator_InterpolatorForName failed!!!" );
 	return INTERPOLATE_DEFAULT;
 }
 
@@ -58,7 +58,7 @@ char const *Interpolator_NameForInterpolator( int type, bool printname )
 	int c = ARRAYSIZE( g_InterpolatorNameMap );
 	if ( i < 0 || i >= c )
 	{
-		Assert( "!Interpolator_NameForInterpolator:  bogus type!" );
+		// Assert( "!Interpolator_NameForInterpolator:  bogus type!" );
 		// returns "unspecified!!!";
 		return printname ? g_InterpolatorNameMap[ 0 ].printname : g_InterpolatorNameMap[ 0 ].name;
 	}
@@ -171,7 +171,7 @@ void Interpolator_GetKochanekBartelsParams( int interpolationType, float& tensio
 		tension = 0.0f;
 		bias = 0.0f;
 		continuity = 0.0f;
-		Assert( 0 );
+		// Assert( 0 );
 		break;
 	case INTERPOLATE_KOCHANEK_BARTELS:
         tension		= 0.77f;

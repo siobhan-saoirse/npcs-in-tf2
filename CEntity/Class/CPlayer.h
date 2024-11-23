@@ -107,8 +107,8 @@ public:
 	void	VelocityPunch( const Vector &vecForce );
 	bool	IsHLTV( void ) const { return pl.ptr->hltv; }
 	bool	IsPlayer() { return true; }
-	int		ArmorValue() const		{ return m_ArmorValue; }
-	void	SetArmorValue(int value) {  m_ArmorValue = value; }
+	int		ArmorValue() const		{ return 0; }
+	void	SetArmorValue(int value) { }
 	bool	IsSuitEquipped() const	{ return m_bWearingSuit; }
 	void	SetSuitEquipped(bool value) { m_bWearingSuit = value; }
 
@@ -203,7 +203,6 @@ public:
 protected: //Sendprops
 	DECLARE_SENDPROP(QAngle, m_vecPunchAngle);
 	DECLARE_SENDPROP(QAngle, m_vecPunchAngleVel);
-	DECLARE_SENDPROP(int, m_ArmorValue);
 	DECLARE_SENDPROP(bool, m_bWearingSuit);
 	DECLARE_SENDPROP(CFakeHandle, m_hUseEntity);
 	DECLARE_SENDPROP(float, m_flFallVelocity);
@@ -214,7 +213,6 @@ protected: //Sendprops
 	DECLARE_SENDPROP(int, m_iFOV);
 	DECLARE_SENDPROP(float, m_flFOVTime);
 	DECLARE_SENDPROP(int, m_iFOVStart);
-	DECLARE_SENDPROP(bool, m_bInBombZone);
 
 protected: //Datamaps
 	DECLARE_DATAMAP(CPlayerState, pl);

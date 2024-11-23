@@ -326,3 +326,5 @@ ASALocalRun/
 # CLion CMake default dirs
 cmake-build-debug/
 cmake-build-release/
+*Zone.Identifier
+CMakeFiles/*.*

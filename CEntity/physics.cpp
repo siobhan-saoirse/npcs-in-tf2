@@ -214,7 +214,7 @@ bool PhysModelParseSolidByIndex( solid_t &solid, CBaseEntity *pEntity, int model
 				parsed = true;
 				solid = tmpSolid;
 				// just to be sure we aren't ever getting a non-zero solid by accident
-				Assert( solidIndex >= 0 || solid.index == 0 );
+				// Assert( solidIndex >= 0 || solid.index == 0 );
 				break;
 			}
 		}
@@ -472,7 +472,7 @@ void PostSimulation_SetVelocityEvent( IPhysicsObject *pPhysicsObject, const Vect
 
 void PhysCallbackSetVelocity( IPhysicsObject *pPhysicsObject, const Vector &vecVelocity )
 {
-	Assert( physenv->IsInSimulation() );
+	// Assert( physenv->IsInSimulation() );
 	g_PostSimulationQueue->QueueCall( PostSimulation_SetVelocityEvent, pPhysicsObject, RefToVal(vecVelocity) );
 }
 

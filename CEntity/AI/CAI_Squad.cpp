@@ -326,7 +326,7 @@ void CAI_Squad::AddToSquad(CAI_NPC *pNPC)
 {
 	if ( !pNPC || !pNPC->IsAlive() )
 	{
-		Assert(0);
+		// Assert(0);
 		return;
 	}
 
@@ -485,7 +485,7 @@ CAI_NPC *CAI_Squad::GetSquadMemberNearestTo( const Vector &vecLocation )
 		}
 	}
 
-	Assert( pNearest != NULL );
+	// Assert( pNearest != NULL );
 	return pNearest;
 }
 

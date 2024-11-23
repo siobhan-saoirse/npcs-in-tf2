@@ -464,7 +464,7 @@ inline bool CCollisionProperty::DoesRotationInvalidateSurroundingBox( ) const
 		return false;
 
 	default:
-		Assert(0);
+		// Assert(0);
 		return true;
 	}
 }

@@ -91,13 +91,13 @@ Vector CAI_Network::GetNodePosition( Hull_t hull, int nodeID )
 {
 	if ( !m_pAInode )
 	{
-		Assert( 0 );
+		// Assert( 0 );
 		return vec3_origin;
 	}
 	
 	if ( ( nodeID < 0 ) || ( nodeID > m_iNumNodes ) )
 	{
-		Assert( 0 );
+		// Assert( 0 );
 		return vec3_origin;
 	}
 
@@ -110,7 +110,7 @@ Vector CAI_Network::GetNodePosition( CCombatCharacter *pNPC, int nodeID )
 {
 	if ( pNPC == NULL )
 	{
-		Assert( 0 );
+		// Assert( 0 );
 		return vec3_origin;
 	}
 
@@ -401,13 +401,13 @@ float CAI_Network::GetNodeYaw( int nodeID )
 {
 	if ( !m_pAInode )
 	{
-		Assert( 0 );
+		// Assert( 0 );
 		return 0.0f;
 	}
 	
 	if ( ( nodeID < 0 ) || ( nodeID > m_iNumNodes ) )
 	{
-		Assert( 0 );
+		// Assert( 0 );
 		return 0.0f;
 	}
 

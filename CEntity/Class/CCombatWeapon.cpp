@@ -268,7 +268,7 @@ END_DATADESC()
 #endif
 
 BEGIN_DATADESC( CCombatWeapon )
-	DEFINE_KEYFIELD( CItem<Template_CCombatWeapon>::m_bRespawn,		FIELD_BOOLEAN,	"mm_respawn" ),
+//	DEFINE_KEYFIELD( CItem<Template_CCombatWeapon>::m_bRespawn,		FIELD_BOOLEAN,	"mm_respawn" ),
 END_DATADESC()
 
 class CWeaponList : public CBaseGameSystem

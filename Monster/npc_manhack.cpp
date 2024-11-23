@@ -92,7 +92,7 @@ enum ManhackTasks
 	TASK_MANHACK_MOVEAT_SAVEPOSITION,
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_manhack, cycler, CNPC_Manhack );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_manhack, monster_generic, CNPC_Manhack );
 
 
 BEGIN_DATADESC( CNPC_Manhack )
@@ -413,7 +413,7 @@ void CNPC_Manhack::TakeDamageFromVehicle( int index, gamevcollisionevent_t *pEve
 		// Use the velocity of the entity that hit us instead.
 		damageForce = 2.0f * pEvent->postVelocity[!index] * pEvent->pObjects[!index]->GetMass();
 	}
-	Assert( damageForce != vec3_origin );
+	// Assert( damageForce != vec3_origin );
 	CTakeDamageInfo dmgInfo( pOther, pOther, damageForce, damagePos, flDamage, DMG_CRUSH );
 	TakeDamage( dmgInfo );
 }
@@ -1302,7 +1302,7 @@ void CNPC_Manhack::Splash( const Vector &vecSplashPos )
 		if ( !(tr.contents&(CONTENTS_WATER|CONTENTS_SLIME)) )
 		{
 			//NOTENOTE: We called a splash but we don't seem to be near water?
-			Assert( 0 );
+			// Assert( 0 );
 			return;
 		}
 
@@ -2651,7 +2651,7 @@ void CNPC_Manhack::StartTask( const Task_t *pTask )
 				count += 4;
 			}
 
-			Assert( count != 0 );
+			// Assert( count != 0 );
 			if(count == 0)
 				count = 1;
 			m_vSavePosition = *(m_vSavePosition) * (1.0 / count);

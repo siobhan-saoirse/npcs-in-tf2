@@ -59,7 +59,7 @@ public:
 
 	IBaseType *GetBaseClass(size_t num)
 	{
-		assert(num<GetNumBaseClasses());
+		//assert(num<GetNumBaseClasses());
 		return &m_Bases[num];
 	}
 

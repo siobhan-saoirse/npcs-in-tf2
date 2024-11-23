@@ -57,7 +57,7 @@ int CAI_BehaviorBase::DrawDebugTextOverlays( int text_offset )
 
 void CAI_BehaviorBase::GatherConditions()
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 	
 	m_pBackBridge->BackBridge_GatherConditions();
 }
@@ -84,7 +84,7 @@ void CAI_BehaviorBase::OnStartSchedule( int scheduleType )
 
 int CAI_BehaviorBase::SelectSchedule()
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 	
 	return m_pBackBridge->BackBridge_SelectSchedule();
 }
@@ -122,7 +122,7 @@ void CAI_BehaviorBase::AimGun( void )
 
 int CAI_BehaviorBase::TranslateSchedule( int scheduleType )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 	
 	return m_pBackBridge->BackBridge_TranslateSchedule( scheduleType );
 }
@@ -168,7 +168,7 @@ const char *CAI_BehaviorBase::GetSchedulingErrorName()
 
 Activity CAI_BehaviorBase::NPC_TranslateActivity( Activity activity )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 	
 	return m_pBackBridge->BackBridge_NPC_TranslateActivity( activity );
 }
@@ -185,7 +185,7 @@ bool CAI_BehaviorBase::IsCurTaskContinuousMove()
 
 float CAI_BehaviorBase::GetDefaultNavGoalTolerance()
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 	
 	return m_pBackBridge->BackBridge_GetDefaultNavGoalTolerance();
 }
@@ -202,7 +202,7 @@ bool CAI_BehaviorBase::FValidateHintType( CBaseEntity *pHint )
 
 bool CAI_BehaviorBase::IsValidEnemy( CBaseEntity *pEnemy )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 	
 	return m_pBackBridge->BackBridge_IsValidEnemy( pEnemy );
 }
@@ -211,7 +211,7 @@ bool CAI_BehaviorBase::IsValidEnemy( CBaseEntity *pEnemy )
 
 CBaseEntity *CAI_BehaviorBase::BestEnemy( void )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 	
 	return m_pBackBridge->BackBridge_BestEnemy();
 }
@@ -220,7 +220,7 @@ CBaseEntity *CAI_BehaviorBase::BestEnemy( void )
 
 bool CAI_BehaviorBase::IsValidCover( const Vector &vLocation, CBaseEntity const *pHint )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 	
 	return m_pBackBridge->BackBridge_IsValidCover( vLocation, pHint );
 }
@@ -229,7 +229,7 @@ bool CAI_BehaviorBase::IsValidCover( const Vector &vLocation, CBaseEntity const 
 
 bool CAI_BehaviorBase::IsValidShootPosition( const Vector &vLocation, CAI_Node *pNode, CBaseEntity const *pHint )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 	
 	return m_pBackBridge->BackBridge_IsValidShootPosition( vLocation, pNode, pHint );
 }
@@ -238,7 +238,7 @@ bool CAI_BehaviorBase::IsValidShootPosition( const Vector &vLocation, CAI_Node *
 
 float CAI_BehaviorBase::GetMaxTacticalLateralMovement( void )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 
 	return m_pBackBridge->BackBridge_GetMaxTacticalLateralMovement();
 }
@@ -247,7 +247,7 @@ float CAI_BehaviorBase::GetMaxTacticalLateralMovement( void )
 
 bool CAI_BehaviorBase::ShouldIgnoreSound( CSound *pSound )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 	
 	return m_pBackBridge->BackBridge_ShouldIgnoreSound( pSound );
 }
@@ -256,7 +256,7 @@ bool CAI_BehaviorBase::ShouldIgnoreSound( CSound *pSound )
 
 void CAI_BehaviorBase::OnSeeEntity( CBaseEntity *pEntity )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 
 	m_pBackBridge->BackBridge_OnSeeEntity( pEntity );
 }
@@ -265,7 +265,7 @@ void CAI_BehaviorBase::OnSeeEntity( CBaseEntity *pEntity )
 
 void CAI_BehaviorBase::OnFriendDamaged( CBaseEntity *pSquadmate, CBaseEntity *pAttacker )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 
 	m_pBackBridge->BackBridge_OnFriendDamaged( pSquadmate, pAttacker );
 }
@@ -274,7 +274,7 @@ void CAI_BehaviorBase::OnFriendDamaged( CBaseEntity *pSquadmate, CBaseEntity *pA
 
 bool CAI_BehaviorBase::IsInterruptable( void )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 	
 	return m_pBackBridge->BackBridge_IsInterruptable();
 }
@@ -283,7 +283,7 @@ bool CAI_BehaviorBase::IsInterruptable( void )
 
 bool CAI_BehaviorBase::IsNavigationUrgent( void )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 
 	return m_pBackBridge->BackBridge_IsNavigationUrgent();
 }
@@ -292,7 +292,7 @@ bool CAI_BehaviorBase::IsNavigationUrgent( void )
 
 bool CAI_BehaviorBase::CanFlinch( void )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 
 	return m_pBackBridge->BackBridge_CanFlinch();
 }
@@ -301,7 +301,7 @@ bool CAI_BehaviorBase::CanFlinch( void )
 
 bool CAI_BehaviorBase::IsCrouching( void )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 
 	return m_pBackBridge->BackBridge_IsCrouching();
 }
@@ -310,7 +310,7 @@ bool CAI_BehaviorBase::IsCrouching( void )
 
 bool CAI_BehaviorBase::IsCrouchedActivity( Activity activity )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 
 	return m_pBackBridge->BackBridge_IsCrouchedActivity( activity );
 }
@@ -319,7 +319,7 @@ bool CAI_BehaviorBase::IsCrouchedActivity( Activity activity )
 
 bool CAI_BehaviorBase::QueryHearSound( CSound *pSound )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 
 	return m_pBackBridge->BackBridge_QueryHearSound( pSound );
 }
@@ -328,7 +328,7 @@ bool CAI_BehaviorBase::QueryHearSound( CSound *pSound )
 
 bool CAI_BehaviorBase::CanRunAScriptedNPCInteraction( bool bForced )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 
 	return m_pBackBridge->BackBridge_CanRunAScriptedNPCInteraction( bForced );
 }
@@ -337,7 +337,7 @@ bool CAI_BehaviorBase::CanRunAScriptedNPCInteraction( bool bForced )
 
 bool CAI_BehaviorBase::ShouldPlayerAvoid( void )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 	
 	return m_pBackBridge->BackBridge_ShouldPlayerAvoid();
 }
@@ -346,7 +346,7 @@ bool CAI_BehaviorBase::ShouldPlayerAvoid( void )
 
 int CAI_BehaviorBase::OnTakeDamage_Alive( const CTakeDamageInfo &info )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 	
 	return m_pBackBridge->BackBridge_OnTakeDamage_Alive( info );
 }
@@ -355,7 +355,7 @@ int CAI_BehaviorBase::OnTakeDamage_Alive( const CTakeDamageInfo &info )
 
 float CAI_BehaviorBase::GetReasonableFacingDist( void )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 	
 	return m_pBackBridge->BackBridge_GetReasonableFacingDist();
 }
@@ -372,7 +372,7 @@ bool CAI_BehaviorBase::ShouldAlwaysThink()
 
 Activity CAI_BehaviorBase::GetFlinchActivity( bool bHeavyDamage, bool bGesture )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 
 	return m_pBackBridge->BackBridge_GetFlinchActivity( bHeavyDamage, bGesture );
 }
@@ -381,7 +381,7 @@ Activity CAI_BehaviorBase::GetFlinchActivity( bool bHeavyDamage, bool bGesture )
 
 bool CAI_BehaviorBase::OnCalcBaseMove( AILocalMoveGoal_t *pMoveGoal, float distClear, AIMoveResult_t *pResult )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 
 	return m_pBackBridge->BackBridge_OnCalcBaseMove( pMoveGoal, distClear, pResult );
 }
@@ -390,7 +390,7 @@ bool CAI_BehaviorBase::OnCalcBaseMove( AILocalMoveGoal_t *pMoveGoal, float distC
 
 void CAI_BehaviorBase::ModifyOrAppendCriteria( AI_CriteriaSet& criteriaSet )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 
 	return m_pBackBridge->BackBridge_ModifyOrAppendCriteria( criteriaSet );
 }
@@ -399,7 +399,7 @@ void CAI_BehaviorBase::ModifyOrAppendCriteria( AI_CriteriaSet& criteriaSet )
 
 void CAI_BehaviorBase::Teleport( const Vector *newPosition, const QAngle *newAngles, const Vector *newVelocity )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 
 	return m_pBackBridge->BackBridge_Teleport( newPosition, newAngles, newVelocity );
 }
@@ -408,7 +408,7 @@ void CAI_BehaviorBase::Teleport( const Vector *newPosition, const QAngle *newAng
 
 void CAI_BehaviorBase::HandleAnimEvent( animevent_t *pEvent )
 {
-	Assert( m_pBackBridge != NULL );
+	// Assert( m_pBackBridge != NULL );
 
 	m_pBackBridge->BackBridge_HandleAnimEvent( pEvent );
 }

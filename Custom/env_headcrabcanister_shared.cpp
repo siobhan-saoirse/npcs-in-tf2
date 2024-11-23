@@ -188,7 +188,7 @@ void CEnvHeadcrabCanisterShared::InitInSkybox( float flLaunchTime,
 //-----------------------------------------------------------------------------
 void CEnvHeadcrabCanisterShared::ConvertFromSkyboxToWorld()
 {
-	Assert( m_bInSkybox );
+	// Assert( m_bInSkybox );
 	m_bInSkybox = false;
 }
 

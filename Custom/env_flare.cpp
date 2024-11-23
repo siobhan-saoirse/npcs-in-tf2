@@ -338,7 +338,7 @@ void CFlare::FlareBurnTouch( CEntity *pOther )
 //-----------------------------------------------------------------------------
 void CFlare::FlareTouch( CEntity *pOther )
 {
-	Assert( pOther );
+	// Assert( pOther );
 	if ( !pOther->IsSolid() )
 		return;
 

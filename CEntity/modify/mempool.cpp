@@ -8,7 +8,7 @@ void* CEMemoryPool::Alloc(size_t amount)
 	{
 		if(!g_pGameConf->GetMemSig("CUtlMemoryPool::Alloc_uint", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -25,7 +25,7 @@ void CEMemoryPool::Free(void *pMem)
 	{
 		if(!g_pGameConf->GetMemSig("CUtlMemoryPool::Free", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}

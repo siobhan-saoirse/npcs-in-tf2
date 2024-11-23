@@ -672,7 +672,7 @@ void CPropCombineBall::WhizSoundThink()
 	if ( pPhysicsObject == NULL )
 	{
 		//NOTENOTE: We should always have been created at this point
-		Assert( 0 );
+		// Assert( 0 );
 		SetContextThink( &CPropCombineBall::WhizSoundThink, gpGlobals->curtime + 2.0f * TICK_INTERVAL, s_pWhizThinkContext );
 		return;
 	}
@@ -1873,7 +1873,7 @@ void CFuncCombineBallSpawner::GrabBallTouch( CEntity *pOther )
 		return;
 
 	CPropCombineBall *pBall = dynamic_cast<CPropCombineBall*>( pOther );
-	Assert( pBall );
+	// Assert( pBall );
 
 	// Don't grab AR2 alt-fire
 	if ( pBall->WasWeaponLaunched() || !pBall->VPhysicsGetObject() )

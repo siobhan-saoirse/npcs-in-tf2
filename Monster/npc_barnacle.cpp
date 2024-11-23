@@ -55,7 +55,7 @@ int	g_interactionBarnacleVictimReleased	= 0;
 int	g_interactionBarnacleVictimGrab		= 0;
 int g_interactionBarnacleVictimBite     = 0;
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_barnacle, cycler, CNPC_Barnacle );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_barnacle, monster_generic, CNPC_Barnacle );
 
 // Tongue Spring constants
 #define BARNACLE_TONGUE_SPRING_CONSTANT_HANGING			10000
@@ -318,7 +318,7 @@ void CNPC_Barnacle::DropTongue( void )
 	m_hTongueRoot.Set(CBarnacleTongueTip::CreateTongueRoot( m_vecRoot, QAngle(90,0,0) )->BaseEntity());
 	m_hTongueTip.Set(CBarnacleTongueTip::CreateTongueTip( this, m_hTongueRoot, m_vecTip, QAngle(0,0,0) )->BaseEntity());
 	m_nSpitAttachment = LookupAttachment( "StrikeHeadAttach" );
-	Assert( m_hTongueRoot && m_hTongueTip );
+	// Assert( m_hTongueRoot && m_hTongueTip );
 
 	RemoveSpawnFlags( SF_BARNACLE_AMBUSH );
 }
@@ -660,7 +660,7 @@ bool CNPC_Barnacle::CanPickup( CCombatCharacter *pBCC )
 	{
 		CPlayer *pPlayer = dynamic_cast<CPlayer*>(pBCC);
 	
-		Assert( pPlayer != NULL );
+		// Assert( pPlayer != NULL );
 
 		// Don't pick up a player held by another barnacle
 		if( pPlayer->HasPhysicsFlag(PFLAG_ONBARNACLE) )
@@ -1096,7 +1096,7 @@ void CNPC_Barnacle::LiftRagdoll( float flBiteZOffset )
 
 			// Apply the forces to the ragdoll
 			ragdoll_t *pRagdoll = g_helpfunc.Ragdoll_GetRagdoll(m_hRagdoll->BaseEntity());
-			Assert(pRagdoll);
+			// Assert(pRagdoll);
 			RagdollApplyAnimationAsVelocity( *pRagdoll, m_pRagdollBones, pBoneToWorld, 0.2 );
 
 			// Store off the current bone matrix for next time
@@ -1198,7 +1198,7 @@ void CNPC_Barnacle::LiftPhysicsObject( float flBiteZOffset )
 void CNPC_Barnacle::LiftPrey( void )
 {
 	CEntity *pVictim = GetEnemy();
-	Assert( pVictim );
+	// Assert( pVictim );
 
 	// Drop the prey if it's been obscured by something
 	trace_t tr;
@@ -1499,7 +1499,7 @@ You can use this stanza to try to counterplace the constraint on the player's he
 	}
 
 	CAnimating *pAnimating = dynamic_cast<CAnimating*>(pTouchEnt);
-	Assert(pAnimating);
+	// Assert(pAnimating);
 
 	// NPC case...
 	pAnimating->InvalidateBoneCache();
@@ -1578,7 +1578,7 @@ void CNPC_Barnacle::SpitPrey()
 //-----------------------------------------------------------------------------
 void CNPC_Barnacle::BitePrey( void )
 {
-	Assert( GetEnemy() );
+	// Assert( GetEnemy() );
 
 	CCombatCharacter *pVictim = GetEnemyCombatCharacterPointer();
 
@@ -1614,7 +1614,7 @@ void CNPC_Barnacle::BitePrey( void )
 	}
 #endif
 	
-	Assert( pVictim );
+	// Assert( pVictim );
 	if ( !pVictim )
 	{	
 		return;
@@ -2645,8 +2645,8 @@ bool CBarnacleTongueTip::CreateSpring( CAnimating *pTongueRoot )
 {
 	IPhysicsObject *pPhysObject = VPhysicsGetObject();
 	IPhysicsObject *pRootPhysObject = pTongueRoot->VPhysicsGetObject();
-	Assert( pRootPhysObject );
-	Assert( pPhysObject );
+	// Assert( pRootPhysObject );
+	// Assert( pPhysObject );
 
 	// Root has huge mass, tip has little
 	pRootPhysObject->SetMass( VPHYSICS_MAX_MASS );

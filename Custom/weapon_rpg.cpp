@@ -413,7 +413,7 @@ void CMissile::Explode( void )
 //-----------------------------------------------------------------------------
 void CMissile::MissileTouch( CEntity *pOther )
 {
-	Assert( pOther );
+	// Assert( pOther );
 
 	// Don't touch triggers (but DO hit weapons)
 	if ( pOther->IsSolidFlagSet(FSOLID_TRIGGER|FSOLID_VOLUME_CONTENTS) && pOther->GetCollisionGroup() != COLLISION_GROUP_WEAPON )
@@ -1126,7 +1126,7 @@ BEGIN_DATADESC( CAPCMissile )
 
 END_DATADESC()
 
-LINK_ENTITY_TO_CUSTOM_CLASS( apc_missile, cycler, CAPCMissile );
+LINK_ENTITY_TO_CUSTOM_CLASS( apc_missile, monster_generic, CAPCMissile );
 
 CAPCMissile *CAPCMissile::Create( const Vector &vecOrigin, const QAngle &vecAngles, const Vector &vecVelocity, CEntity *pOwner )
 {
@@ -1183,7 +1183,7 @@ void CAPCMissile::AimAtSpecificTarget( CBaseEntity *pTarget )
 //-----------------------------------------------------------------------------
 void CAPCMissile::APCMissileTouch( CEntity *pOther )
 {
-	Assert( pOther );
+	// Assert( pOther );
 	if ( !pOther->IsSolid() && !pOther->IsSolidFlagSet(FSOLID_VOLUME_CONTENTS) )
 		return;
 

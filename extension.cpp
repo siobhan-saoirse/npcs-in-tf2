@@ -194,7 +194,7 @@ bool Monster::SDK_OnLoad(char *error, size_t maxlength, bool late)
 	   stricmp(game_foler,"obsidian") == 0
 	)*/
 
-	if(stricmp(game_foler,"cstrike") != 0)
+	if(stricmp(game_foler,"tf") != 0)
 	{
 		g_pSM->Format(error, maxlength, "Unsupported Game: %s", game_foler);
 		return false;

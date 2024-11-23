@@ -92,7 +92,7 @@ public:
 		}
 		if ( m_ScriptStack.Count() <= 0 )
 		{
-			Assert( 0 );
+			// Assert( 0 );
 			return false;
 		}
 
@@ -110,7 +110,7 @@ public:
 	{
 		if ( m_ScriptStack.Count() <= 0 )
 		{
-			Assert( 0 );
+			// Assert( 0 );
 			return false;
 		}
 
@@ -229,7 +229,7 @@ public:
 
 	virtual void Release()
 	{
-		Assert( 0 );
+		// Assert( 0 );
 	}
 
 	void AddInstancedResponseSystem( const char *scriptfile, CInstancedResponseSystem *sys );

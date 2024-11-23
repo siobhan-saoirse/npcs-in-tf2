@@ -22,29 +22,29 @@ public:
 
 	void AddToList(char *pClassName)
 	{
-		assert(EntityFactoryDictionary_CE);
+		//assert(EntityFactoryDictionary_CE);
 		EntityFactoryDictionary_CE()->InstallFactory((IEntityFactory_CE *)this, pClassName );
 	}
 
 	IServerNetworkable *Create( const char *pClassName )
 	{
-		IEntityFactoryReal *pFactory = (IEntityFactoryReal *)EntityFactoryDictionary_CE()->FindFactory("cycler");
-		assert(pFactory);
+		IEntityFactoryReal *pFactory = (IEntityFactoryReal *)EntityFactoryDictionary_CE()->FindFactory("monster_generic");
+		//assert(pFactory);
 
-		return pFactory->Create("cycler");
+		return pFactory->Create("monster_generic");
 	}
 
 	void Destroy( IServerNetworkable *pNetworkable )
 	{
-		IEntityFactoryReal *pFactory = (IEntityFactoryReal *)EntityFactoryDictionary_CE()->FindFactory("cycler");
-		assert(pFactory);
+		IEntityFactoryReal *pFactory = (IEntityFactoryReal *)EntityFactoryDictionary_CE()->FindFactory("monster_generic");
+		//assert(pFactory);
 		return pFactory->Destroy(pNetworkable);
 	}
 
 	virtual size_t GetEntitySize()
 	{
-		IEntityFactoryReal *pFactory = (IEntityFactoryReal *)EntityFactoryDictionary_CE()->FindFactory("cycler");
-		assert(pFactory);
+		IEntityFactoryReal *pFactory = (IEntityFactoryReal *)EntityFactoryDictionary_CE()->FindFactory("monster_generic");
+		//assert(pFactory);
 		return pFactory->GetEntitySize();
 	}
 };

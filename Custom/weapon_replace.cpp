@@ -24,13 +24,13 @@ public:
 		AddReplace("weapon_shotgun",WEAPON_SHOTGUN_REPLACE_NAME);
 		AddReplace("weapon_ar2",WEAPON_AR2_REPLACE_NAME);
 		AddReplace("weapon_357", WEAPON_PISTOL_REPLACE_NAME);
-		AddReplace("weapon_crossbow","weapon_awp");
-		AddReplace("weapon_rpg","weapon_flashbang");
-		AddReplace("weapon_slam","weapon_hegrenade");
-		AddReplace("weapon_frag","weapon_hegrenade");
-		AddReplace("weapon_crowbar","weapon_knife");
-		AddReplace("weapon_pistol","weapon_usp");
-		AddReplace("weapon_physcannon","weapon_c4");
+		AddReplace("weapon_crossbow","tf_weapon_jar_gas");
+		AddReplace("weapon_rpg","tf_weapon_rocketlauncher_fireball");
+		AddReplace("weapon_slam","tf_weapon_stickbomb");
+		AddReplace("weapon_frag","tf_weapon_jar");
+		AddReplace("weapon_crowbar","tf_weapon_cleaver");
+		AddReplace("weapon_pistol","tf_weapon_raygun");
+		AddReplace("weapon_physcannon","tf_weapon_mechanical_arm");
 	}
 
 	void LevelShutdownPostEntity()

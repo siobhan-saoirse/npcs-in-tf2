@@ -22,8 +22,8 @@ void CEAI_NetworkManager::InitializeAINetworks()
 {
 	CEAI_NetworkManager *pNetwork;
 	g_pAINetworkManager = pNetwork = dynamic_cast<CEAI_NetworkManager *>(g_helpfunc.FindEntityByClassname((CBaseEntity *)NULL, "ai_network"));
-	Assert(pNetwork);
-
+	// Assert(pNetwork);
+	
 	g_pBigAINet = pNetwork->GetNetwork();
 
 }

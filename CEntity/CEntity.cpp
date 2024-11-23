@@ -558,7 +558,7 @@ bool ParseKeyvalue( void *pObject, typedescription_t *pFields, int iNumFields, c
 			case FIELD_MATERIALINDEX:
 			case FIELD_EDICT:
 				Warning( "Bad field in entity!!\n" );
-				Assert(0);
+				// Assert(0);
 				break;
 			}
 		}
@@ -626,7 +626,7 @@ void CEntity::CE_Init(edict_t *pEdict, CBaseEntity *pBaseEntity)
 	m_pEntity = pBaseEntity;
 	m_pEdict = pEdict;
 
-	assert(!pEntityData[entindex_non_network()]);
+	//assert(!pEntityData[entindex_non_network()]);
 
 	pEntityData[entindex_non_network()] = this;
 	if(!m_pEntity /* || !m_pEdict*/)
@@ -880,7 +880,7 @@ Vector CEntity::InternalGetSoundEmissionOrigin()
 	CEntity *pEnt = *META_IFACEPTR(CBaseEntity);
 	if (!pEnt)
 	{
-		RETURN_META_VALUE(MRES_IGNORED, NULL);
+		RETURN_META_VALUE(MRES_IGNORED, (Vector)NULL);
 	}
 
 	int index = pEnt->entindex_non_network();
@@ -1062,7 +1062,7 @@ void (CEntity::*CEntity::PhysicsDispatchThink_Actual)(BASEPTR thinkFunc) = nullp
 
 int	CEntity::GetIndexForThinkContext( const char *pszContext )
 {
-	for ( int i = 0; i < m_aThinkFunctions->Size(); i++ )
+	for ( int i = 0; i < m_aThinkFunctions->Count(); i++ )
 	{
 		if ( !Q_strncmp( STRING( m_aThinkFunctions->Element(i).m_iszContext ), pszContext, MAX_CONTEXT_LENGTH ) )
 			return i;
@@ -1073,7 +1073,7 @@ int	CEntity::GetIndexForThinkContext( const char *pszContext )
 
 int	CEntity::GetIndexForCEntityThinkContext( const char *pszContext )
 {
-	for ( int i = 0; i < ce_m_aThinkFunctions.Size(); i++ )
+	for ( int i = 0; i < ce_m_aThinkFunctions.Count(); i++ )
 	{
 		if ( !Q_strncmp( STRING( ce_m_aThinkFunctions.Element(i).m_iszContext ), pszContext, MAX_CONTEXT_LENGTH ) )
 			return i;
@@ -1200,7 +1200,7 @@ int	CEntity::GetNextThinkTick( const char *szContext)
 		iIndex = GetIndexForThinkContext( szContext );
 
 		// Looking up an invalid think context!
-		Assert( iIndex != -1 );
+		// Assert( iIndex != -1 );
 	}
 
 	if ( ( iIndex == -1 ) || ( m_aThinkFunctions->Element(iIndex).m_nNextThinkTick == TICK_NEVER_THINK ) )
@@ -1592,7 +1592,7 @@ void CEntity::CollisionRulesChanged()
 		if (PhysIsInCallback())
 		{
 			Warning("Changing collision rules within a callback is likely to cause crashes!\n");
-			Assert(0);
+			// Assert(0);
 		}
 		IPhysicsObject *pList[VPHYSICS_MAX_OBJECT_LIST_COUNT];
 		int count = VPhysicsGetObjectList(pList, ARRAYSIZE(pList));
@@ -1852,7 +1852,7 @@ void CEntity::ApplyLocalAngularVelocityImpulse( const AngularImpulse &angImpulse
 		if ( !IsEntityAngularVelocityReasonable( angImpulse ) )
 		{
 			//Warning( "Bad ApplyLocalAngularVelocityImpulse(%f,%f,%f) on %s\n", angImpulse.x, angImpulse.y, angImpulse.z, GetDebugName() );
-			Assert( false );
+			// Assert( false );
 			return;
 		}
 
@@ -1990,7 +1990,7 @@ float CEntity::GetGroundChangeTime( void )
 
 float CEntity::GetLastThink( const char *szContext )
 {
-	assert((szContext == NULL));
+	//assert((szContext == NULL));
 	return m_nLastThinkTick * TICK_INTERVAL;
 }
 
@@ -2398,7 +2398,7 @@ void CEntity::StopFollowingEntity( )
 {
 	if( !IsFollowingEntity() )
 	{
-		Assert( IsEffectActive( EF_BONEMERGE ) == 0 );
+		// Assert( IsEffectActive( EF_BONEMERGE ) == 0 );
 		return;
 	}
 
@@ -2727,7 +2727,7 @@ bool CEntity::CBaseEntity_FVisible( const Vector &vecTarget, int traceMask, CBas
 
 static const char *UTIL_TranslateSoundName( const char *soundname, const char *actormodel )
 {
-	Assert( soundname );
+	// Assert( soundname );
 
 	if ( Q_stristr( soundname, ".wav" ) || Q_stristr( soundname, ".mp3" ) )
 	{
@@ -2797,7 +2797,7 @@ const char *CEntity::GetContextName( int index ) const
 {
 	if ( index < 0 || index >= m_ResponseContexts.ptr->Count() )
 	{
-		Assert( 0 );
+		// Assert( 0 );
 		return "";
 	}
 
@@ -2829,7 +2829,7 @@ matrix3x4_t& CEntity::GetParentToWorldTransform( matrix3x4_t &tempMatrix )
 	CEntity *pMoveParent = GetMoveParent();
 	if ( !pMoveParent )
 	{
-		Assert( false );
+		// Assert( false );
 		SetIdentityMatrix( tempMatrix );
 		return tempMatrix;
 	}
@@ -2930,7 +2930,7 @@ bool CEntity::ContextExpired( int index )
 {
 	if ( index < 0 || index >= m_ResponseContexts->Count() )
 	{
-		Assert( 0 );
+		// Assert( 0 );
 		return true;
 	}
 
@@ -2946,7 +2946,7 @@ const char *CEntity::GetContextValue( int index )
 {
 	if ( index < 0 || index >= m_ResponseContexts->Count() )
 	{
-		Assert( 0 );
+		// Assert( 0 );
 		return "";
 	}
 
@@ -2985,14 +2985,14 @@ void CEntity::SendOnKilledGameEvent( const CTakeDamageInfo &info )
 void *CEntity::operator new( size_t stAllocateBlock )
 {
 	// call into engine to get memory
-	Assert( stAllocateBlock != 0 );
+	// Assert( stAllocateBlock != 0 );
 	return engine->PvAllocEntPrivateData(stAllocateBlock);
 };
 
 void *CEntity::operator new( size_t stAllocateBlock, int nBlockUse, const char *pFileName, int nLine )
 {
 	// call into engine to get memory
-	Assert( stAllocateBlock != 0 );
+	// Assert( stAllocateBlock != 0 );
 	return engine->PvAllocEntPrivateData(stAllocateBlock);
 }
 

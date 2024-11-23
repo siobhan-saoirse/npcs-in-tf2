@@ -102,7 +102,7 @@ AI_Response::AI_Response()
 
 AI_Response::AI_Response( const AI_Response &from )
 {
-	Assert( (void*)(&m_Type) == (void*)this );
+	// Assert( (void*)(&m_Type) == (void*)this );
 	m_pCriteria = NULL;
 	memcpy( this, &from, sizeof(*this) );
 	m_pCriteria = NULL;
@@ -144,7 +144,7 @@ void AI_Response::SetContext( const char *context )
 
 AI_Response &AI_Response::operator=( const AI_Response &from )
 {
-	Assert( (void*)(&m_Type) == (void*)this );
+	// Assert( (void*)(&m_Type) == (void*)this );
 	if(m_pCriteria)
 	{
 		//g_pMemAlloc->Free(m_pCriteria);

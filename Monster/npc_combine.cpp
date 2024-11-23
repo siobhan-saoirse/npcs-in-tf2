@@ -113,7 +113,7 @@ enum PathfindingVariant_T
 #define bits_MEMORY_PLAYER_HURT				bits_MEMORY_CUSTOM3
 
 // This entity crashes because it has no model! (hence it is disabled)
-//LINK_ENTITY_TO_CUSTOM_CLASS( npc_combine, cycler, CNPC_Combine );
+//LINK_ENTITY_TO_CUSTOM_CLASS( npc_combine, monster_generic, CNPC_Combine );
 
 //---------------------------------------------------------
 // Save/Restore
@@ -756,7 +756,7 @@ void CNPC_Combine::StartTask( const Task_t *pTask )
 				CSound *pSound;
 				pSound = GetBestSound();
 
-				Assert( pSound != NULL );
+				// Assert( pSound != NULL );
 
 				if ( pSound )
 				{
@@ -1607,7 +1607,7 @@ int CNPC_Combine::SelectCombatSchedule()
 		else
 		{
 			// How am I wounded in combat with no enemy?
-			Assert( GetEnemy() != NULL );
+			// Assert( GetEnemy() != NULL );
 		}
 	}
 
@@ -1770,7 +1770,7 @@ int CNPC_Combine::SelectSchedule( void )
 				CSound *pSound;
 				pSound = GetBestSound();
 
-				Assert( pSound != NULL );
+				// Assert( pSound != NULL );
 				if ( pSound)
 				{
 					if (pSound->m_iType & SOUND_DANGER)
@@ -2953,7 +2953,7 @@ bool CNPC_Combine::CanGrenadeEnemy( bool bUseFreeKnowledge )
 
 	CEntity *pEnemy = GetEnemy();
 
-	Assert( pEnemy != NULL );
+	// Assert( pEnemy != NULL );
 
 	if( pEnemy )
 	{
@@ -3044,7 +3044,7 @@ Vector CNPC_Combine::EyePosition( void )
 //-----------------------------------------------------------------------------
 Vector CNPC_Combine::GetAltFireTarget()
 {
-	Assert( IsElite() );
+	// Assert( IsElite() );
 
 	return m_vecAltFireTarget;
 }

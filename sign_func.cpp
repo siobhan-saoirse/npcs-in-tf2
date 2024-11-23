@@ -61,7 +61,6 @@ int *g_interactionHitByPlayerThrownPhysObj = NULL;
 extern CMultiDamage *my_g_MultiDamage;
 extern CUtlVector<TemplateEntityData_t *> *g_Templates;
 extern CEMemoryPool *g_EntityListPool;
-extern ConVar *ammo_hegrenade_max;
 extern ConVar *sk_autoaim_mode;
 extern trace_t *g_TouchTrace;
 extern INetworkStringTable *g_pStringTableParticleEffectNames;
@@ -143,7 +142,7 @@ HelperFunction::HelperFunction()
 template<typename T>
 static bool GetPointerViaGameConf(const char *name, T& ptr)
 {
-	static_assert(std::is_pointer<T>::value, "Expected a pointer");
+	//static_assert(std::is_pointer<T>::value, "Expected a pointer");
 	char* addr = nullptr;
 
 	META_CONPRINTF("[%s] Getting %s - ", g_Monster.GetLogTag(), name);
@@ -445,18 +444,6 @@ bool HelperFunction::Initialize()
 	g_CGameMovement = (CGameMovement *)g_pGameMovement;
 
 	SH_ADD_MANUALHOOK_MEMFUNC(OnLadderHook, g_CGameMovement, &g_helpfunc, &HelperFunction::OnLadder, false);
-
-	CAmmoDef *def = GetAmmoDef();
-	int grenade = def->Index("AMMO_TYPE_HEGRENADE");
-	if(grenade > 0)
-	{
-		Ammo_t *ammo = def->GetAmmoOfIndex(grenade);
-		if(ammo)
-		{
-			ammo->pMaxCarry = -1;
-			ammo->pMaxCarryCVar = ammo_hegrenade_max;
-		}
-	}
 
 	IGameSystem::HookValveSystem();
 
@@ -782,7 +769,7 @@ bool HelperFunction::GameRules_ShouldCollide(int collisionGroup0, int collisionG
 	{
 		if(!g_pGameConf->GetOffset("GameRules_ShouldCollide", &offset))
 		{
-			assert(0);
+			//assert(0);
 			return false;
 		}
 	}
@@ -797,7 +784,7 @@ bool HelperFunction::GameRules_Damage_NoPhysicsForce(int iDmgType)
 	{
 		if(!g_pGameConf->GetOffset("GameRules_Damage_NoPhysicsForce", &offset))
 		{
-			assert(0);
+			//assert(0);
 			return false;
 		}
 	}
@@ -812,7 +799,7 @@ bool HelperFunction::GameRules_IsSkillLevel(int iLevel)
 	{
 		if(!g_pGameConf->GetOffset("GameRules_IsSkillLevel", &offset))
 		{
-			assert(0);
+			//assert(0);
 			return false;
 		}
 	}
@@ -827,7 +814,7 @@ bool HelperFunction::GameRules_IsTeamplay()
 	{
 		if(!g_pGameConf->GetOffset("GameRules_IsTeamplay", &offset))
 		{
-			assert(0);
+			//assert(0);
 			return false;
 		}
 	}
@@ -842,7 +829,7 @@ void HelperFunction::GameRules_RadiusDamage(const CTakeDamageInfo &info, const V
 	{
 		if(!g_pGameConf->GetMemSig("CGameRules::RadiusDamage", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -858,7 +845,7 @@ CCombatWeapon *HelperFunction::GameRules_GetNextBestWeapon(CBaseEntity *pPlayer,
 	{
 		if(!g_pGameConf->GetOffset("GameRules_GetNextBestWeapon", &offset))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -874,7 +861,7 @@ bool HelperFunction::GameRules_FPlayerCanTakeDamage(CBaseEntity *pPlayer, CBaseE
 	{
 		if(!g_pGameConf->GetOffset("GameRules_FPlayerCanTakeDamage", &offset))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -889,7 +876,7 @@ void HelperFunction::GameRules_EndMultiplayerGame()
 	{
 		if(!g_pGameConf->GetOffset("GameRules_EndMultiplayerGame", &offset))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -910,7 +897,7 @@ CViewVectors *HelperFunction::GameRules_GetViewVectors()
 	{
 		if(!g_pGameConf->GetOffset("GameRules_GetViewVectors", &offset))
 		{
-			assert(0);
+			//assert(0);
 			return nullptr;
 		}
 	}
@@ -925,7 +912,7 @@ Activity HelperFunction::ActivityList_RegisterPrivateActivity( const char *pszAc
 	{
 		if(!g_pGameConf->GetMemSig("ActivityList_RegisterPrivateActivity", &func))
 		{
-			assert(0);
+			//assert(0);
 			return ACT_INVALID;
 		}
 	}
@@ -942,7 +929,7 @@ Animevent HelperFunction::EventList_RegisterPrivateEvent( const char *pszEventNa
 	{
 		if(!g_pGameConf->GetMemSig("EventList_RegisterPrivateEvent", &func))
 		{
-			assert(0);
+			//assert(0);
 			return AE_INVALID;
 		}
 	}
@@ -959,7 +946,7 @@ CBaseEntity *HelperFunction::NPCPhysics_CreateSolver(CBaseEntity *pNPC, CBaseEnt
 	{
 		if(!g_pGameConf->GetMemSig("NPCPhysics_CreateSolver", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -978,7 +965,7 @@ HSOUNDSCRIPTHANDLE HelperFunction::PrecacheScriptSound(const char *soundname)
 	{
 		if(!g_pGameConf->GetMemSig("PrecacheScriptSound", &func))
 		{
-			assert(0);
+			//assert(0);
 			return SOUNDEMITTER_INVALID_HANDLE;
 		}
 	}
@@ -1000,7 +987,7 @@ void HelperFunction::EmitSoundByHandle( IRecipientFilter& filter, int entindex, 
 	{
 		if(!g_pGameConf->GetMemSig("EmitSoundByHandle", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1022,7 +1009,7 @@ void HelperFunction::PhysicsImpactSound(CBaseEntity *pEntity, IPhysicsObject *pP
 	{
 		if(!g_pGameConf->GetMemSig("PhysicsImpactSound", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1039,7 +1026,7 @@ CEntity *HelperFunction::CreateRagGib( const char *szModel, const Vector &vecOri
 	{
 		if(!g_pGameConf->GetMemSig("CreateRagGib", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -1058,7 +1045,7 @@ void HelperFunction::VerifySequenceIndex(void *ptr)
 	{
 		if(!g_pGameConf->GetMemSig("VerifySequenceIndex", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1075,7 +1062,7 @@ void HelperFunction::DispatchEffect( const char *pName, const CEffectData &data 
 	{
 		if(!g_pGameConf->GetMemSig("DispatchEffect", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1092,7 +1079,7 @@ CAmmoDef *HelperFunction::GetAmmoDef()
 	{
 		if(!g_pGameConf->GetMemSig("GetAmmoDef", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -1109,7 +1096,7 @@ CEntity *HelperFunction::CreateNoSpawn( const char *szName, const Vector &vecOri
 	{
 		if(!g_pGameConf->GetMemSig("CreateNoSpawn", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -1127,7 +1114,7 @@ void HelperFunction::SetMinMaxSize(CBaseEntity *pEnt, const Vector &vecMin, cons
 	{
 		if(!g_pGameConf->GetMemSig("SetMinMaxSize", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1144,7 +1131,7 @@ float HelperFunction::CalculateDefaultPhysicsDamage( int index, gamevcollisionev
 	{
 		if(!g_pGameConf->GetMemSig("CalculateDefaultPhysicsDamage", &func))
 		{
-			assert(0);
+			//assert(0);
 			return 0.0f;
 		}
 	}
@@ -1161,7 +1148,7 @@ void HelperFunction::PhysCallbackDamage( CBaseEntity *pEntity, const CTakeDamage
 	{
 		if(!g_pGameConf->GetMemSig("PhysCallbackDamage", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1178,7 +1165,7 @@ void HelperFunction::PropBreakableCreateAll( int modelindex, IPhysicsObject *pPh
 	{
 		if(!g_pGameConf->GetMemSig("PropBreakableCreateAll", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1195,7 +1182,7 @@ int HelperFunction::PropBreakablePrecacheAll( string_t modelName )
 	{
 		if(!g_pGameConf->GetMemSig("PropBreakablePrecacheAll", &func))
 		{
-			assert(0);
+			//assert(0);
 			return 0;
 		}
 	}
@@ -1232,7 +1219,7 @@ CEntity *HelperFunction::CAI_HintManager_FindHint(CBaseEntity *pNPC, const Vecto
 	{
 		if(!g_pGameConf->GetMemSig("CAI_HintManager::FindHint", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -1252,7 +1239,7 @@ CEntity *HelperFunction::CAI_HintManager_FindHintRandom(CBaseEntity *pNPC, const
 	{
 		if(!g_pGameConf->GetMemSig("CAI_HintManager::FindHintRandom", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -1273,7 +1260,7 @@ int HelperFunction::SelectWeightedSequence(void *pstudiohdr, int activity, int c
 	{
 		if(!g_pGameConf->GetMemSig("SelectWeightedSequence", &func))
 		{
-			assert(0);
+			//assert(0);
 			return 0;
 		}
 	}
@@ -1292,7 +1279,7 @@ void HelperFunction::SetNextThink(CBaseEntity *pEntity, float thinkTime, const c
 	{
 		if(!g_pGameConf->GetMemSig("SetNextThink", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1314,7 +1301,7 @@ CSimThinkManager *HelperFunction::GetSimThinkMngr()
 	{
 		if(!g_pGameConf->GetOffset("g_SimThinkManagerOffs", &offs))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -1325,7 +1312,7 @@ CSimThinkManager *HelperFunction::GetSimThinkMngr()
 	{
 		if(!g_pGameConf->GetMemSig("g_SimThinkManager", (void**)&addr))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -1347,13 +1334,13 @@ void HelperFunction::SimThink_EntityChanged(CBaseEntity *pEntity)
 		DWORD call_ptr;
 		if(!g_pGameConf->GetMemSig("SimThink_EntityChanged_cdecl", (void**)&call_ptr))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 		int call_offs = -1;
 		if(!g_pGameConf->GetOffset("SimThink_CallOffs", &call_offs))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 
@@ -1372,7 +1359,7 @@ void HelperFunction::SimThink_EntityChanged(CBaseEntity *pEntity)
 	{
 		if(!g_pGameConf->GetMemSig("SimThink_EntityChanged_cdecl", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1393,7 +1380,7 @@ void HelperFunction::SetGroundEntity(CBaseEntity *pEntity, CBaseEntity *ground)
 	{
 		if(!g_pGameConf->GetMemSig("SetGroundEntity", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1414,7 +1401,7 @@ void HelperFunction::SetAbsVelocity(CBaseEntity *pEntity, const Vector &vecAbsVe
 	{
 		if(!g_pGameConf->GetMemSig("SetAbsVelocity", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1435,7 +1422,7 @@ void HelperFunction::SetAbsAngles(CBaseEntity *pEntity, const QAngle& absAngles)
 	{
 		if(!g_pGameConf->GetMemSig("SetAbsAngles", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1456,7 +1443,7 @@ IServerVehicle *HelperFunction::GetServerVehicle(CBaseEntity *pEntity)
 	{
 		if(!g_pGameConf->GetOffset("GetServerVehicle", &offset))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -1474,7 +1461,7 @@ IServerVehicle *HelperFunction::GetVehicle(CBaseEntity *pEntity)
 	{
 		if(!g_pGameConf->GetOffset("GetVehicle", &offset))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -1492,7 +1479,7 @@ void HelperFunction::EmitSound(CBaseEntity *pEntity, const char *soundname, floa
 	{
 		if(!g_pGameConf->GetMemSig("EmitSound_char_float_pfloat", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1513,7 +1500,7 @@ void HelperFunction::EmitSound(IRecipientFilter& filter, int iEntIndex, const Em
 	{
 		if(!g_pGameConf->GetMemSig("EmitSound_filter_int_struct", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1539,7 +1526,7 @@ void HelperFunction::EmitSound(IRecipientFilter& filter, int iEntIndex, const ch
 	{
 		if(!g_pGameConf->GetMemSig("EmitSound_filter_int_char_vector_float_pfloat", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1556,7 +1543,7 @@ void HelperFunction::RemoveDeferred(CBaseEntity *pEntity)
 	{
 		if(!g_pGameConf->GetMemSig("RemoveDeferred", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1576,7 +1563,7 @@ void HelperFunction::CBaseEntity_Use(CBaseEntity *pEntity, CBaseEntity *pActivat
 	{
 		if(!g_pGameConf->GetMemSig("CBaseEntity::Use", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1596,7 +1583,7 @@ bool HelperFunction::CBaseEntity_FVisible_Entity(CBaseEntity *the_pEntity, CBase
 	{
 		if(!g_pGameConf->GetMemSig("CBaseEntity::FVisible_Entity", &func))
 		{
-			assert(0);
+			//assert(0);
 			return false;
 		}
 	}
@@ -1616,7 +1603,7 @@ void HelperFunction::CalcAbsolutePosition(CBaseEntity *pEntity)
 	{
 		if(!g_pGameConf->GetMemSig("CalcAbsolutePosition", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1636,7 +1623,7 @@ void HelperFunction::PhysicsMarkEntitiesAsTouching( CBaseEntity *pEntity, CBaseE
 	{
 		if(!g_pGameConf->GetMemSig("PhysicsMarkEntitiesAsTouching", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1656,7 +1643,7 @@ void *HelperFunction::GetDataObject( CBaseEntity *pEntity, int type )
 	{
 		if(!g_pGameConf->GetMemSig("GetDataObject", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -1678,7 +1665,7 @@ void HelperFunction::SetMoveType( CBaseEntity *pEntity, MoveType_t val, MoveColl
 	{
 		if(!g_pGameConf->GetMemSig("SetMoveType", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1699,7 +1686,7 @@ void HelperFunction::CheckHasGamePhysicsSimulation(CBaseEntity *pEntity)
 	{
 		if(!g_pGameConf->GetMemSig("CheckHasGamePhysicsSimulation", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1719,7 +1706,7 @@ void HelperFunction::InvalidatePhysicsRecursive( CBaseEntity *pEntity, int nChan
 	{
 		if(!g_pGameConf->GetMemSig("InvalidatePhysicsRecursive", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1739,7 +1726,7 @@ void HelperFunction::PhysicsPushEntity( CBaseEntity *pEntity, const Vector& push
 	{
 		if(!g_pGameConf->GetMemSig("PhysicsPushEntity", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1759,7 +1746,7 @@ CEntity *HelperFunction::CreateServerRagdoll( CBaseEntity *pAnimating, int force
 	{
 		if(!g_pGameConf->GetMemSig("CreateServerRagdoll", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -1780,7 +1767,7 @@ ragdoll_t *HelperFunction::Ragdoll_GetRagdoll( CBaseEntity *pent )
 	{
 		if(!g_pGameConf->GetMemSig("Ragdoll_GetRagdoll", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -1800,7 +1787,7 @@ void HelperFunction::DetachAttachedRagdollsForEntity( CBaseEntity *pent )
 	{
 		if(!g_pGameConf->GetMemSig("DetachAttachedRagdollsForEntity", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1817,7 +1804,7 @@ void HelperFunction::CSoundEnt_InsertSound( int iType, const Vector &vecOrigin, 
 	{
 		if(!g_pGameConf->GetMemSig("CSoundEnt::InsertSound", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1834,7 +1821,7 @@ int	HelperFunction::PrecacheModel( const char *name )
 	{
 		if(!g_pGameConf->GetMemSig("PrecacheModel", &func))
 		{
-			assert(0);
+			//assert(0);
 			return 0;
 		}
 	}
@@ -1851,7 +1838,7 @@ const char *HelperFunction::MapEntity_ParseEntity(CEntity *&pEntity, const char 
 	{
 		if(!g_pGameConf->GetMemSig("MapEntity_ParseEntity", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -1871,7 +1858,7 @@ void HelperFunction::UTIL_PrecacheOther( const char *szClassname, const char *mo
 	{
 		if(!g_pGameConf->GetMemSig("UTIL_PrecacheOther", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1888,7 +1875,7 @@ void HelperFunction::UTIL_RemoveImmediate( CBaseEntity *oldObj )
 	{
 		if(!g_pGameConf->GetMemSig("UTIL_RemoveImmediate", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1905,7 +1892,7 @@ void HelperFunction::SetEventIndexForSequence( mstudioseqdesc_t &seqdesc )
 	{
 		if(!g_pGameConf->GetMemSig("SetEventIndexForSequence", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1922,7 +1909,7 @@ void HelperFunction::SetActivityForSequence( CStudioHdr *pstudiohdr, int seq )
 	{
 		if(!g_pGameConf->GetMemSig("SetActivityForSequence", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -1939,7 +1926,7 @@ int HelperFunction::ActivityList_IndexForName( const char *pszActivityName )
 	{
 		if(!g_pGameConf->GetMemSig("ActivityList_IndexForName", &func))
 		{
-			assert(0);
+			//assert(0);
 			return -1;
 		}
 	}
@@ -1956,7 +1943,7 @@ string_t HelperFunction::AllocPooledString( const char * pszValue )
 	{
 		if(!g_pGameConf->GetMemSig("AllocPooledString", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL_STRING;
 		}
 	}
@@ -1973,7 +1960,7 @@ string_t HelperFunction::FindPooledString( const char * pszValue )
 	{
 		if(!g_pGameConf->GetMemSig("FindPooledString", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL_STRING;
 		}
 	}
@@ -1990,7 +1977,7 @@ const char *HelperFunction::ActivityList_NameForIndex( int activityIndex )
 	{
 		if(!g_pGameConf->GetMemSig("ActivityList_NameForIndex", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -2007,7 +1994,7 @@ void HelperFunction::CGib_Spawn( CBaseEntity *gib, const char *mdl ) // UNUSED
 	{
 		if(!g_pGameConf->GetMemSig("Spawn_pchar", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2024,7 +2011,7 @@ CBaseEntity *HelperFunction::UTIL_FindClientInPVS_VecVec( const Vector &vecBoxMi
 	{
 		if(!g_pGameConf->GetMemSig("UTIL_FindClientInPVS_VecVec", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -2044,7 +2031,7 @@ CBaseEntity *HelperFunction::CreateServerRagdollAttached( CBaseAnimating *pAnima
 	{
 		if(!g_pGameConf->GetMemSig("CreateServerRagdollAttached", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -2061,7 +2048,7 @@ void HelperFunction::PrecacheInstancedScene(const char *pszScene)
 	{
 		if(!g_pGameConf->GetMemSig("PrecacheInstancedScene", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2078,7 +2065,7 @@ void HelperFunction::SetSolid(void *collision_ptr, SolidType_t val)
 	{
 		if(!g_pGameConf->GetMemSig("SetSolid", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2099,7 +2086,7 @@ void HelperFunction::SetSolidFlags(void *collision_ptr, int flags)
 	{
 		if(!g_pGameConf->GetMemSig("SetSolidFlags", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2119,7 +2106,7 @@ void HelperFunction::MarkPartitionHandleDirty(void *collision_ptr)
 	{
 		if(!g_pGameConf->GetMemSig("MarkPartitionHandleDirty", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2139,7 +2126,7 @@ void HelperFunction::ReportEntityFlagsChanged(CBaseEntity *pEntity, unsigned int
 	{
 		if(!g_pGameConf->GetMemSig("ReportEntityFlagsChanged", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2181,7 +2168,7 @@ CEntity *HelperFunction::FindEntityByClassname(CBaseEntity *pStartEntity, const 
 	{
 		if(!g_pGameConf->GetMemSig("FindEntityByClassname", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -2251,7 +2238,7 @@ void HelperFunction::AddListenerEntity( IEntityListener *pListener )
 	{
 		if(!g_pGameConf->GetMemSig("AddListenerEntity", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2268,7 +2255,7 @@ void HelperFunction::RemoveListenerEntity( IEntityListener *pListener )
 	{
 		if(!g_pGameConf->GetMemSig("RemoveListenerEntity", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2285,7 +2272,7 @@ int HelperFunction::DispatchUpdateTransmitState(CBaseEntity *pEntity)
 	{
 		if(!g_pGameConf->GetMemSig("DispatchUpdateTransmitState", &func))
 		{
-			assert(0);
+			//assert(0);
 			return 0;
 		}
 	}
@@ -2306,7 +2293,7 @@ void HelperFunction::CAI_BaseNPC_Precache(CBaseEntity *pEntity)
 	{
 		if(!g_pGameConf->GetMemSig("CAI_BaseNPC::Precache", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2327,7 +2314,7 @@ bool HelperFunction::AutoMovement(CBaseEntity *pEntity, float flInterval, CBaseE
 	{
 		if(!g_pGameConf->GetMemSig("AutoMovement", &func))
 		{
-			assert(0);
+			//assert(0);
 			return false;
 		}
 	}
@@ -2348,7 +2335,7 @@ void HelperFunction::EndTaskOverlay(CBaseEntity *pEntity)
 	{
 		if(!g_pGameConf->GetMemSig("EndTaskOverlay", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2368,7 +2355,7 @@ void HelperFunction::SetIdealActivity(CBaseEntity *pEntity, Activity NewActivity
 	{
 		if(!g_pGameConf->GetMemSig("SetIdealActivity", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2388,7 +2375,7 @@ bool HelperFunction::HaveSequenceForActivity(CBaseEntity *pEntity, Activity acti
 	{
 		if(!g_pGameConf->GetMemSig("HaveSequenceForActivity", &func))
 		{
-			assert(0);
+			//assert(0);
 			return false;
 		}
 	}
@@ -2408,7 +2395,7 @@ void HelperFunction::TestPlayerPushing(CBaseEntity *pEntity, CBaseEntity *pPlaye
 	{
 		if(!g_pGameConf->GetMemSig("TestPlayerPushing", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2428,7 +2415,7 @@ int HelperFunction::CBaseCombatCharacter_OnTakeDamage(CBaseEntity *pEntity, cons
 	{
 		if(!g_pGameConf->GetMemSig("CBaseCombatCharacter::OnTakeDamage", &func))
 		{
-			assert(0);
+			//assert(0);
 			return 0;
 		}
 	}
@@ -2448,7 +2435,7 @@ void HelperFunction::CBasePlayer_RumbleEffect(CBaseEntity *pEntity, unsigned cha
 	{
 		if(!g_pGameConf->GetMemSig("CBasePlayer::RumbleEffect", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2465,7 +2452,7 @@ void HelperFunction::CBasePlayer_SnapEyeAngles(CBaseEntity *pEntity, const QAngl
 	{
 		if(!g_pGameConf->GetMemSig("CBasePlayer::SnapEyeAngles", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2482,7 +2469,7 @@ CBaseEntity *HelperFunction::CBasePlayer_GetViewModel(CBaseEntity *pEntity, int 
 	{
 		if(!g_pGameConf->GetMemSig("CBasePlayer::GetViewModel", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -2502,7 +2489,7 @@ CBoneCache *HelperFunction::GetBoneCache(void *ptr)
 	{
 		if(!g_pGameConf->GetMemSig("GetBoneCache", &func))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -2518,7 +2505,7 @@ model_t *HelperFunction::GetModel(void *ptr)
 	{
 		if(!g_pGameConf->GetMemSig("CBaseEntity::GetModel", &func))
 		{
-			assert(0);
+			//assert(0);
 			return nullptr;
 		}
 	}
@@ -2534,7 +2521,7 @@ void HelperFunction::LockStudioHdr(void *ptr)
 	{
 		if(!g_pGameConf->GetMemSig("LockStudioHdr", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2551,7 +2538,7 @@ CStudioHdr *HelperFunction::GetModelPtr(void *ptr)
 	{
 		if(!g_pGameConf->GetOffset("CBaseAnimating::CStudioHdr", &offs))
 		{
-			assert(0);
+			//assert(0);
 			return NULL;
 		}
 	}
@@ -2569,7 +2556,7 @@ CStudioHdr *HelperFunction::GetModelPtr(void *ptr)
 	{
 		if(!g_pGameConf->GetMemSig("GetModelPtr", &func))
 		{
-			assert(0);
+			//assert(0);
 			return nullptr;
 		}
 	}
@@ -2586,7 +2573,7 @@ void HelperFunction::SetupBones( void *ptr, matrix3x4_t *pBoneToWorld, int boneM
 	{
 		if(!g_pGameConf->GetOffset("InitBoneControllers", &offset))
 		{
-			assert(0);
+			//assert(0);
 		}
 	}
 
@@ -2600,7 +2587,7 @@ void HelperFunction::VPhysicsSetObject(CBaseEntity *pEnt, IPhysicsObject *pPhysO
 	{
 		if(!g_pGameConf->GetMemSig("CBaseEntity::VPhysicsSetObject", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2616,7 +2603,7 @@ void HelperFunction::ResetClientsideFrame(CBaseEntity *pEnt)
 	{
 		if(!g_pGameConf->GetMemSig("CBaseEntity::ResetClientsideFrame", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2632,7 +2619,7 @@ void HelperFunction::SUB_StartFadeOut(CBaseEntity *pEnt, float delay, bool notSo
 	{
 		if(!g_pGameConf->GetMemSig("CBaseEntity::SUB_StartFadeOut_fb", &func))
 		{
-			assert(0);
+			//assert(0);
 			return;
 		}
 	}
@@ -2649,7 +2636,7 @@ bool HelperFunction::ShouldBrushBeIgnored(void *ptr, CBaseEntity *pEntity)
 	{
 		if(!g_pGameConf->GetMemSig("ShouldBrushBeIgnored", &func))
 		{
-			assert(0);
+			//assert(0);
 			return false;
 		}
 	}
@@ -2667,7 +2654,7 @@ bool HelperFunction::MoveLimit(void *ptr, Navigation_t navType, const Vector &ve
 	{
 		if(!g_pGameConf->GetMemSig("MoveLimit", &func))
 		{
-			assert(0);
+			//assert(0);
 			return false;
 		}
 	}
@@ -2683,7 +2670,7 @@ int HelperFunction::CAI_TacticalServices_FindLosNode( void *ptr, const Vector &v
 	{
 		if(!g_pGameConf->GetMemSig("CAI_TacticalServices::FindLosNode", &func))
 		{
-			assert(0);
+			//assert(0);
 			return 0;
 		}
 	}
@@ -2700,7 +2687,7 @@ int HelperFunction::CAI_TacticalServices_FindCoverNode( void *ptr, const Vector 
 	{
 		if(!g_pGameConf->GetMemSig("CAI_TacticalServices::FindCoverNode", &func))
 		{
-			assert(0);
+			//assert(0);
 			return 0;
 		}
 	}
@@ -2717,7 +2704,7 @@ bool HelperFunction::CAI_Navigator_UpdateGoalPos(void *ptr, const Vector &goalPo
 	{
 		if(!g_pGameConf->GetMemSig("CAI_Navigator::UpdateGoalPos", &func))
 		{
-			assert(0);
+			//assert(0);
 			return false;
 		}
 	}
@@ -2733,7 +2720,7 @@ bool HelperFunction::CAI_Navigator_SetGoal(void *ptr, const AI_NavGoal_t &goal, 
 	{
 		if(!g_pGameConf->GetMemSig("CAI_Navigator::SetGoal", &func))
 		{
-			assert(0);
+			//assert(0);
 			return false;
 		}
 	}
@@ -2749,6 +2736,6 @@ bool HelperFunction::CAI_Navigator_SetGoal(void *ptr, const AI_NavGoal_t &goal, 
 
 void HelperFunction::PhysCallbackSetVelocity( IPhysicsObject *pPhysicsObject, const Vector &vecVelocity )
 {
-	Assert( physenv->IsInSimulation() );
+	// Assert( physenv->IsInSimulation() );
 	g_PostSimulationQueue->QueueCall( PostSimulation_SetVelocityEvent, pPhysicsObject, RefToVal(vecVelocity) );
 }*/

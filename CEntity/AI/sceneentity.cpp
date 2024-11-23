@@ -326,7 +326,7 @@ CE_CSceneManager *GetSceneManager()
 	if ( s_SceneManager == NULL )
 	{
 		CE_CSceneManager *cent = ( CE_CSceneManager * )CreateEntityByName( "scene_manager" );
-		Assert( cent );
+		// Assert( cent );
 		if ( cent )
 		{
 			cent->Spawn();
@@ -334,7 +334,7 @@ CE_CSceneManager *GetSceneManager()
 		}
 	}
 
-	Assert( s_SceneManager );
+	// Assert( s_SceneManager );
 	return s_SceneManager;
 }
 

@@ -94,7 +94,7 @@ bool CAI_PlaneSolver::MoveLimit( Navigation_t navType, const Vector &target, boo
 
 	if ( ignoreTransients )
 	{
-		Assert( !ProbeForNpcs() );
+		// Assert( !ProbeForNpcs() );
 		flags |= AIMLF_IGNORE_TRANSIENTS;
 	}
 
@@ -224,7 +224,7 @@ bool CAI_PlaneSolver::RunMoveSolver( const AILocalMoveGoal_t &goal, const AIMove
 AI_SuggestorResult_t CAI_PlaneSolver::GenerateObstacleSuggestions( const AILocalMoveGoal_t &goal, const AIMoveTrace_t &directTrace,
 																   float distClear, float probeDist, float degreesToProbe, int nProbes )
 {
-	Assert( nProbes % 2 == 1 );
+	// Assert( nProbes % 2 == 1 );
 
 	AI_SuggestorResult_t seekResult = SR_NONE;
 	bool				 fNewTarget = ( !m_fSolvedPrev || m_PrevTarget != goal.target );
@@ -385,7 +385,7 @@ void CAI_PlaneSolver::AdjustSolutionForFliers( const AILocalMoveGoal_t &goal, fl
 	// Fliers should move up if there are local obstructions...
 	// A hacky solution, but the bigger the angle of deflection, the more likely
 	// we're close to a problem and the higher we should go up.
-	Assert( pSolution->z == 0.0f );
+	// Assert( pSolution->z == 0.0f );
 
 	// If we're largely needing to move down, then blow off the upward motion...
 	Vector vecDelta, vecDir;
@@ -413,7 +413,7 @@ void CAI_PlaneSolver::AdjustSolutionForFliers( const AILocalMoveGoal_t &goal, fl
 	{
 		flUpAmount = (-flRadius / vecDir.z) - 1.0f;
 		flUpAmount *= MIN_ZDIR_TO_RADIUS;
-		Assert( (flUpAmount >= 0.0f) && (flUpAmount <= 1.0f) );
+		// Assert( (flUpAmount >= 0.0f) && (flUpAmount <= 1.0f) );
 	}
 
 	// Check the deflection amount...
@@ -675,7 +675,7 @@ bool CAI_PlaneSolver::GenerateCircleObstacleSuggestions( const AILocalMoveGoal_t
 				if ( weight > 0.75 )
 					arc += (arc * 0.5) * (weight - 0.75) / 0.25;
 
-				Assert( weight >= 0.0 && weight <= 1.0 );
+				// Assert( weight >= 0.0 && weight <= 1.0 );
 
 #if DEBUG_OBSTACLES
 				// -------------------------

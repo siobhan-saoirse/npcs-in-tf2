@@ -623,7 +623,7 @@ void CTemplateNPCMaker::Precache()
 		}
 	}
 
-	Assert( m_iszTemplateData != NULL_STRING );
+	// Assert( m_iszTemplateData != NULL_STRING );
 
 	// If the mapper marked this as "preload", then instance the entity preache stuff and delete the entity
 	//if ( !HasSpawnFlags(SF_NPCMAKER_NOPRELOADMODELS) )

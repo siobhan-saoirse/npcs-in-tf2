@@ -42,7 +42,7 @@ FireOutputFuncType FireOutputFunc = NULL;
 
 void CBaseEntityOutput::FireOutput(variant_t Value, CBaseEntity *pActivator, CBaseEntity *pCaller, float fDelay)
 {
-	assert(FireOutputFunc);
+	//assert(FireOutputFunc);
 	FireOutputFunc(this, Value, pActivator, pCaller, fDelay);
 }
 

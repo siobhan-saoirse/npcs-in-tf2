@@ -733,7 +733,7 @@ void CCombineDropshipContainer::AddSmokeTrail( const Vector &vecPos )
 // Combine Dropship implementation:
 //
 //------------------------------------------------------------------------------
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_combinedropship, cycler, CNPC_CombineDropship );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_combinedropship, monster_generic, CNPC_CombineDropship );
 
 BEGIN_DATADESC( CNPC_CombineDropship )
 
@@ -2414,7 +2414,7 @@ void CNPC_CombineDropship::SpawnTroop( void )
 		return;
 	}
 	CAI_NPC	*pNPC = pEntity->MyNPCPointer();
-	Assert( pNPC );
+	// Assert( pNPC );
 
 	// Spawn an entity blocker.
 	CE_CEntityBlocker *pBlocker = CE_CEntityBlocker::Create( vecDeployEndPoint, vecNPCMins, vecNPCMaxs, pNPC->BaseEntity(), true );
@@ -2486,7 +2486,7 @@ void CNPC_CombineDropship::InputNPCFinishDustoff( inputdata_t &inputdata )
 		return;
 
 	CAI_NPC *pNPC = pEnt->MyNPCPointer();
-	Assert( pNPC );
+	// Assert( pNPC );
 
 	Vector vecOrigin = GetDropoffFinishPosition( pNPC->GetAbsOrigin(), pNPC, vec3_origin, vec3_origin );
 	pNPC->SetAbsOrigin( vecOrigin );
@@ -2756,7 +2756,7 @@ void CNPC_CombineDropship::DoCombatStuff( void )
 //-----------------------------------------------------------------------------
 void CNPC_CombineDropship::UpdateContainerGunFacing( Vector &vecMuzzle, Vector &vecToTarget, Vector &vecAimDir, float *flTargetRange )
 {
-	Assert( m_hContainer );
+	// Assert( m_hContainer );
 
 	// Get the desired aim vector
 	vecToTarget = GetEnemy()->WorldSpaceCenter( );

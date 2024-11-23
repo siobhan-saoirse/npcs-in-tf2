@@ -17,7 +17,7 @@ AI_Waypoint_t CAI_Path::gm_InvalidWaypoint( Vector(0,0,0), 0, NAV_NONE, 0, 0 );
 
 Activity CAI_Path::SetMovementActivity(Activity activity)
 { 
-	Assert( activity != ACT_RESET && activity != ACT_INVALID );
+	// Assert( activity != ACT_RESET && activity != ACT_INVALID );
 	//Msg("Set movement to %s\n", ActivityList_NameForIndex(activity) );
 
 	m_sequence = ACT_INVALID;
@@ -146,7 +146,7 @@ Vector CAI_Path::GetGoalDirection( const Vector &startPos )
 	}
 	else if (m_goalDirection == vec3_origin)
 	{
-		// Assert(0); // comment out the default directions in SetGoal() to find test cases for missing initialization
+		// // Assert(0); // comment out the default directions in SetGoal() to find test cases for missing initialization
 		AI_Waypoint_t *pLast = m_Waypoints.GetLast();
 		if ( pLast )
 		{

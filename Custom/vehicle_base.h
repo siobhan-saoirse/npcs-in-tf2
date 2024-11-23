@@ -159,8 +159,8 @@ public:
 	virtual bool			PassengerShouldReceiveDamage( CTakeDamageInfo &info );
 
 	virtual bool			IsVehicleUpright( void ) { return true; }
-	virtual bool			IsPassengerEntering( void ) { Assert( 0 ); return false; }
-	virtual bool			IsPassengerExiting( void ) { Assert( 0 ); return false; }
+	virtual bool			IsPassengerEntering( void ) { /*// Assert( 0 );*/ return false; }
+	virtual bool			IsPassengerExiting( void ) { /*// Assert( 0 );*/ return false; }
 
 	virtual void			HandlePassengerEntry( CBaseEntity *pPassenger, bool bAllowEntryOutsideZone = false );
 	virtual bool			HandlePassengerExit( CBaseEntity *pPassenger );
@@ -273,7 +273,7 @@ public:
 	{
 		m_pVehicle = pVehicle->BaseEntity();
 		m_pDrivableVehicle = dynamic_cast<IDrivableVehicle*>(pVehicle);
-		Assert( m_pDrivableVehicle );
+		// Assert( m_pDrivableVehicle );
 	}
 
 public:

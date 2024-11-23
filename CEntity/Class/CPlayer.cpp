@@ -94,7 +94,6 @@ DECLARE_DEFAULTHANDLER(Hooked_CPlayer, FlashlightIsOn, int, (), ());
 
 //Sendprops
 DEFINE_PROP(m_vecPunchAngle, CPlayer);
-DEFINE_PROP(m_ArmorValue, CPlayer);
 DEFINE_PROP(m_bWearingSuit, CPlayer);
 DEFINE_PROP(m_DmgSave, CPlayer);
 DEFINE_PROP(m_hUseEntity, CPlayer);
@@ -108,8 +107,6 @@ DEFINE_PROP(m_iDefaultFOV, CPlayer);
 DEFINE_PROP(m_iFOV, CPlayer);
 DEFINE_PROP(m_flFOVTime, CPlayer);
 DEFINE_PROP(m_iFOVStart, CPlayer);
-
-DEFINE_PROP(m_bInBombZone, CPlayer);
 
 DEFINE_PROP(m_iHideHUD, CPlayer);
 DEFINE_PROP(m_flFOVRate, CPlayer);
@@ -255,26 +252,6 @@ int CPlayer::OnTakeDamage(const CTakeDamageInfo& info)
 	if(cent_attacker)
 	{
 		CAI_NPC *npc = cent_attacker->MyNPCPointer();
-		if (npc && m_ArmorValue && !(info.GetDamageType() & (DMG_FALL | DMG_DROWN | DMG_POISON | DMG_RADIATION)) )// armor doesn't protect against fall or drown damage!
-		{
-			float flNew = info.GetDamage() * 0.4f;
-			float flArmor = (info.GetDamage() - flNew);
-			if( flArmor < 1.0 )
-				flArmor = 1.0;
-
-			// Does this use more armor than we have?
-			if (flArmor > m_ArmorValue)
-			{
-				flArmor = m_ArmorValue;
-				flNew = info.GetDamage() - flArmor;
-				m_DmgSave = m_ArmorValue;
-				m_ArmorValue = 0;
-			} else {
-				m_DmgSave = flArmor;
-				m_ArmorValue -= flArmor;
-			}			
-			newinfo.SetDamage( flNew );
-		}
 	}
 
 	if(info.GetDamageType() & DMG_FALL)
@@ -340,7 +317,7 @@ bool CPlayer::ApplyBattery( float powerMultiplier )
 
 	if ((ArmorValue() < sk_battery_max.GetInt()))
 	{
-		IncrementArmorValue( (int)(sk_battery.GetFloat() * powerMultiplier), (int)(sk_battery_max.GetFloat()) );
+		TakeHealth( (int)(sk_battery.GetFloat() * powerMultiplier), DMG_GENERIC );
 
 		CPASAttenuationFilter filter( this, "ItemBattery.Touch" );
 		EmitSound( filter, entindex(), "ItemBattery.Touch" );
@@ -352,12 +329,7 @@ bool CPlayer::ApplyBattery( float powerMultiplier )
 
 void CPlayer::IncrementArmorValue( int nCount, int nMaxValue )
 { 
-	m_ArmorValue += nCount;
-	if (nMaxValue > 0)
-	{
-		if (m_ArmorValue > nMaxValue)
-			m_ArmorValue = nMaxValue;
-	}
+	TakeHealth(nCount, DMG_GENERIC);
 }
 
 bool CPlayer::HasAnyAmmoOfType( int nAmmoIndex )
@@ -414,7 +386,7 @@ int CPlayer::GiveAmmo(int nCount, int nAmmoIndex, bool bSuppressSound)
 		if (msgid != -1) {
 			cell_t players[1] = { entindex() };
 			bf_write *bf = usermsgs->StartBitBufMessage(msgid, players, 1, 0);
-			Assert(bf);
+			// Assert(bf);
 			bf->WriteShort(nAmmoIndex);
 			usermsgs->EndMessage();
 		}
@@ -944,7 +916,7 @@ void CPlayer::PlayUseDenySound()
 
 CViewModel *CPlayer::GetViewModel( int index )
 {
-	assert(index >= 0);
+	//assert(index >= 0);
 	CBaseEntity *pBaseVM = g_helpfunc.CBasePlayer_GetViewModel(BaseEntity(), index);
 	if(!pBaseVM)
 		return NULL;

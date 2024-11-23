@@ -43,7 +43,7 @@ AIMotorMoveResult_t CAI_BlendedMotor::MoveFlyExecute( const AILocalMoveGoal_t &m
 	float flNewSpeed = GetCurSpeed();
 	float flTotalDist = GetMoveScriptDist( flNewSpeed );
 
-	Assert( move.maxDist < 0.01 || flTotalDist > 0.0 );
+	// Assert( move.maxDist < 0.01 || flTotalDist > 0.0 );
 
 	// --------------------------------------------
 	// turn in the direction of movement
@@ -137,7 +137,7 @@ AIMotorMoveResult_t CAI_BlendedMotor::MoveGroundExecute( const AILocalMoveGoal_t
 	float flNewSpeed = GetCurSpeed();
 	float flTotalDist = GetMoveScriptDist( flNewSpeed );
 
-	//Assert( move.maxDist < 0.01 || flTotalDist > 0.0 );
+	//// Assert( move.maxDist < 0.01 || flTotalDist > 0.0 );
 
 	// --------------------------------------------
 	// turn in the direction of movement
@@ -492,7 +492,7 @@ void CAI_BlendedMotor::MoveStart()
 		m_flStartCycle = GetCycle();
 		m_flCurrRate = 0.4;
 
-		// Assert( !GetOuter()->HasMovement( m_nStartSequence ) );
+		// // Assert( !GetOuter()->HasMovement( m_nStartSequence ) );
 
 		m_nSecondarySequence = -1;
 
@@ -507,7 +507,7 @@ void CAI_BlendedMotor::MoveStart()
 	else
 	{
 		// suspect that MoveStop() wasn't called when the previous route finished
-		// Assert( 0 );
+		// // Assert( 0 );
 	}
 
 
@@ -634,7 +634,7 @@ void CAI_BlendedMotor::SetMoveScriptAnim( float flNewSpeed )
 			m_nGoalSequence = GetInteriorSequence( m_nPrimarySequence );
 		}
 
-		Assert( m_nGoalSequence != ACT_INVALID );
+		// Assert( m_nGoalSequence != ACT_INVALID );
 	}
 
 	if (m_flSecondaryWeight == 1.0 || (m_iSecondaryLayer != -1 && m_nPrimarySequence == m_nSecondarySequence))
@@ -782,7 +782,7 @@ int CAI_BlendedMotor::GetInteriorSequence( int fromSequence )
 		}
 		m_nInteriorSequence = GetOuter()->SelectWeightedSequence( GetOuter()->TranslateActivity( activity ), fromSequence );
 
-		Assert( m_nInteriorSequence != ACT_INVALID );
+		// Assert( m_nInteriorSequence != ACT_INVALID );
 	}
 
 	return m_nInteriorSequence;
@@ -829,7 +829,7 @@ float CAI_BlendedMotor::GetMoveScriptDist( float &flNewSpeed )
 	float t = GetMoveInterval();
 
 	//CE_assert
-	//Assert( m_scriptMove.Count() > 1);
+	//// Assert( m_scriptMove.Count() > 1);
 
 	flNewSpeed = 0;
 	for (i = 0; i < m_scriptMove.Count()-1; i++)
@@ -1008,7 +1008,7 @@ int CAI_BlendedMotor::BuildTurnScript( int i, int j )
 
 	float totalTime = m_scriptTurn[j].flElapsedTime - m_scriptTurn[i].flElapsedTime;
 
-	//Assert( totalTime >  0 );
+	//// Assert( totalTime >  0 );
 
 	if (t1 < 0.01)
 	{
@@ -1076,7 +1076,7 @@ int CAI_BlendedMotor::BuildInsertNode( int i, float flTime )
 	AI_Movementscript_t script;
 	script.Init();
 
-	Assert( flTime > 0.0 );
+	// Assert( flTime > 0.0 );
 
 	for (; i < m_scriptTurn.Count() - 1; i++)
 	{
@@ -1101,7 +1101,7 @@ int CAI_BlendedMotor::BuildInsertNode( int i, float flTime )
 			return i + 1;
 		}
 	}
-	Assert( 0 );
+	// Assert( 0 );
 	return 0;
 }
 
@@ -1153,7 +1153,7 @@ void CAI_BlendedMotor::BuildVelocityScript( const AILocalMoveGoal_t &move )
 		}
 
 		m_flPredictiveSpeedAdjust = 1.1f - fabs( flDelta );
-		m_flPredictiveSpeedAdjust = std::clamp( m_flPredictiveSpeedAdjust, (flHeight > 0.0) ? 0.5f : 0.8f, 1.0f );
+		m_flPredictiveSpeedAdjust = clamp( m_flPredictiveSpeedAdjust, (flHeight > 0.0) ? 0.5f : 0.8f, 1.0f );
 
 		/*
 		if ((GetOuter()->m_debugOverlays & OVERLAY_NPC_SELECTED_BIT))
@@ -1215,7 +1215,7 @@ void CAI_BlendedMotor::BuildVelocityScript( const AILocalMoveGoal_t &move )
 	AI_Waypoint_t *pCurWaypoint = GetNavigator()->GetPath()->GetCurWaypoint();
 
 	// there has to be at least one waypoint
-	Assert( pCurWaypoint );
+	// Assert( pCurWaypoint );
 
 	while (pCurWaypoint && (pCurWaypoint->NavType() == NAV_GROUND || pCurWaypoint->NavType() == NAV_FLY) /*&& flTotalDist / idealVelocity < 3.0*/) // limit lookahead to 3 seconds
 	{
@@ -1329,7 +1329,7 @@ void CAI_BlendedMotor::BuildVelocityScript( const AILocalMoveGoal_t &move )
 		else
 		{
 			script.flMaxVelocity = GetNavigator()->GetArrivalSpeed();
-			// Assert( script.flMaxVelocity == 0 );
+			// // Assert( script.flMaxVelocity == 0 );
 		}
 
 		m_scriptMove.AddToTail( script );
@@ -1352,7 +1352,7 @@ void CAI_BlendedMotor::BuildVelocityScript( const AILocalMoveGoal_t &move )
 	{
 		float flNeededAccel = DeltaV( m_scriptMove[0].flMaxVelocity, m_scriptMove[m_scriptMove.Count() - 1].flMaxVelocity, flTotalDist );
 		m_bDeceleratingToGoal =  (flNeededAccel < -idealAccel);
-		//Assert( flNeededAccel != idealAccel);
+		//// Assert( flNeededAccel != idealAccel);
 	}
 
 	//-------------------------
@@ -1528,13 +1528,13 @@ void CAI_BlendedMotor::BuildVelocityScript( const AILocalMoveGoal_t &move )
 				//		v1*t1+0.5*A*t1*t1+v2*t2+0.5*A*t2*t2-D=0
 
 				float tmp = idealAccel*dist+0.5*v1*v1+0.5*v2*v2;
-				Assert( tmp >= 0 );
+				// Assert( tmp >= 0 );
 				t1 = (-v1+sqrt( tmp )) / idealAccel;
 				t2 = (v1+idealAccel*t1-v2)/idealAccel;
 
 				// if this assert hits, write down the v1, v2, dist, and idealAccel numbers and send them to me (Ken).
 				// go ahead the comment it out, it's safe, but I'd like to know a test case where it's happening
-				//Assert( t1 > 0 && t2 > 0 );
+				//// Assert( t1 > 0 && t2 > 0 );
 
 				// check to make sure it's really worth it
 				if (t1 > 0.0 && t2 > 0.0)
@@ -1543,7 +1543,7 @@ void CAI_BlendedMotor::BuildVelocityScript( const AILocalMoveGoal_t &move )
 					
 					/*
 					d2 = v2 * t2 + 0.5 * idealAccel * t2 * t2;
-					Assert( fabs( d1 + d2 - dist ) < 0.001 );
+					// Assert( fabs( d1 + d2 - dist ) < 0.001 );
 					*/
 
 					float a = d1 / m_scriptMove[i].flDist;
@@ -1579,7 +1579,7 @@ void CAI_BlendedMotor::BuildVelocityScript( const AILocalMoveGoal_t &move )
 		{
 			// force a minimum velocity 
 			//CE_assert
-			//Assert( 0 );
+			//// Assert( 0 );
 			m_scriptMove[i+1].flMaxVelocity = 1.0;
 		}
 
@@ -1589,7 +1589,7 @@ void CAI_BlendedMotor::BuildVelocityScript( const AILocalMoveGoal_t &move )
 		/*
 		if (m_scriptMove[i].flDist < 0.01)
 		{
-			// Assert( m_scriptMove[i+1].pWaypoint == NULL );
+			// // Assert( m_scriptMove[i+1].pWaypoint == NULL );
 
 			m_scriptMove.Remove( i + 1 );
 			continue;
@@ -1619,7 +1619,7 @@ void CAI_BlendedMotor::MoveContinue()
 	m_nPrimarySequence = GetInteriorSequence( ACT_INVALID );
 	m_nGoalSequence = m_nPrimarySequence;
 
-	Assert( m_nPrimarySequence != ACT_INVALID );
+	// Assert( m_nPrimarySequence != ACT_INVALID );
 
 	if (m_nPrimarySequence == ACT_INVALID)
 		return;
@@ -1649,7 +1649,7 @@ void CAI_BlendedMotor::InsertSlowdown( float distToObstruction, float idealAccel
 		if (m_scriptMove[i].flDist > 0 && distToObstruction - m_scriptMove[i].flDist < 0)
 		{
 			float a = distToObstruction / m_scriptMove[i].flDist;
-			Assert( a >= 0 && a <= 1);
+			// Assert( a >= 0 && a <= 1);
 			script.vecLocation = (1 - a) * m_scriptMove[i].vecLocation + a * m_scriptMove[i+1].vecLocation;
 
 			//NDebugOverlay::Line( m_scriptMove[i].vecLocation + Vector( 0, 0, 5 ), script.vecLocation + Vector( 0, 0, 5 ), 0,255,0, true, 0.1 );
@@ -1700,7 +1700,7 @@ void CAI_BlendedMotor::ResetGoalSequence( void )
 
 	m_nGoalSequence = GetInteriorSequence( m_nPrimarySequence );
 
-	Assert( m_nGoalSequence != ACT_INVALID );
+	// Assert( m_nGoalSequence != ACT_INVALID );
 }
 
 

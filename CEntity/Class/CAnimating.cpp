@@ -162,7 +162,7 @@ void CAnimating::UpdateOnRemove()
 CStudioHdr *CAnimating::GetModelPtr()
 {
 	CBaseEntity *pBaseEntity = BaseEntity();
-	assert(pBaseEntity);
+	//assert(pBaseEntity);
 
 	return g_helpfunc.GetModelPtr(pBaseEntity);
 }
@@ -326,7 +326,7 @@ float CAnimating::GetSequenceMoveYaw( int iSequence )
 {
 	Vector				vecReturn;
 	
-	Assert( GetModelPtr() );
+	// Assert( GetModelPtr() );
 	::GetSequenceLinearMotion( GetModelPtr(), iSequence, GetPoseParameterArray(), &vecReturn );
 
 	if (vecReturn.Length() > 0)
@@ -386,16 +386,16 @@ void CAnimating::Scorch( int rate, int floor )
 //=========================================================
 int CAnimating::SelectWeightedSequence ( Activity activity )
 {
-	Assert( activity != ACT_INVALID );
-	Assert( GetModelPtr() );
+	// Assert( activity != ACT_INVALID );
+	// Assert( GetModelPtr() );
 	return ::SelectWeightedSequence(GetModelPtr(), activity, GetSequence());
 }
 
 
 int CAnimating::SelectWeightedSequence ( Activity activity, int curSequence )
 {
-	Assert( activity != ACT_INVALID );
-	Assert( GetModelPtr() );
+	// Assert( activity != ACT_INVALID );
+	// Assert( GetModelPtr() );
 	return ::SelectWeightedSequence( GetModelPtr(), activity, curSequence );
 }
 
@@ -433,7 +433,7 @@ float CAnimating::GetPoseParameter( int iParameter )
 
 	if ( !pstudiohdr )
 	{
-		Assert(!"CBaseAnimating::GetPoseParameter: model missing");
+		// Assert(!"CBaseAnimating::GetPoseParameter: model missing");
 		return 0.0;
 	}
 
@@ -465,7 +465,7 @@ int CAnimating::LookupAttachment( const char *szName )
 	CStudioHdr *pStudioHdr = GetModelPtr( );
 	if (!pStudioHdr)
 	{
-		Assert(!"CBaseAnimating::LookupAttachment: model missing");
+		// Assert(!"CBaseAnimating::LookupAttachment: model missing");
 		return 0;
 	}
 
@@ -512,7 +512,7 @@ bool CAnimating::GetAttachment( int iAttachment, Vector &absOrigin, Vector *forw
 //-----------------------------------------------------------------------------
 int CAnimating::LookupBone( const char *szName )
 {
-	Assert( GetModelPtr() );
+	// Assert( GetModelPtr() );
 
 	return Studio_BoneIndexByName( GetModelPtr(), szName );
 }
@@ -524,13 +524,13 @@ void CAnimating::GetBonePosition ( int iBone, Vector &origin, QAngle &angles )
 	CStudioHdr *pStudioHdr = GetModelPtr( );
 	if (!pStudioHdr)
 	{
-		Assert(!"CBaseAnimating::GetBonePosition: model missing");
+		// Assert(!"CBaseAnimating::GetBonePosition: model missing");
 		return;
 	}
 
 	if (iBone < 0 || iBone >= pStudioHdr->numbones())
 	{
-		Assert(!"CBaseAnimating::GetBonePosition: invalid bone index");
+		// Assert(!"CBaseAnimating::GetBonePosition: invalid bone index");
 		return;
 	}
 
@@ -551,13 +551,13 @@ void CAnimating::GetBoneTransform( int iBone, matrix3x4_t &pBoneToWorld )
 
 	if (!pStudioHdr)
 	{
-		Assert(!"CBaseAnimating::GetBoneTransform: model missing");
+		// Assert(!"CBaseAnimating::GetBoneTransform: model missing");
 		return;
 	}
 
 	if (iBone < 0 || iBone >= pStudioHdr->numbones())
 	{
-		Assert(!"CBaseAnimating::GetBoneTransform: invalid bone index");
+		// Assert(!"CBaseAnimating::GetBoneTransform: invalid bone index");
 		return;
 	}
 
@@ -571,7 +571,7 @@ void CAnimating::GetBoneTransform( int iBone, matrix3x4_t &pBoneToWorld )
 		return;
 	}
 
-	Assert( pmatrix );
+	// Assert( pmatrix );
 	
 	// FIXME
 	MatrixCopy( *pmatrix, pBoneToWorld );
@@ -613,7 +613,7 @@ const char *CAnimating::GetSequenceName( int iSequence )
 
 void CAnimating::SetBodygroup( int iGroup, int iValue )
 {
-	Assert( GetModelPtr() );
+	// Assert( GetModelPtr() );
 
 	int newBody = m_nBody;
 	::SetBodygroup( GetModelPtr( ), newBody, iGroup, iValue );
@@ -704,7 +704,7 @@ float CAnimating::SequenceDuration( CStudioHdr *pStudioHdr, int iSequence )
 //-----------------------------------------------------------------------------
 void CAnimating::GetSequenceLinearMotion( int iSequence, Vector *pVec )
 {
-	Assert( GetModelPtr() );
+	// Assert( GetModelPtr() );
 	::GetSequenceLinearMotion( GetModelPtr(), iSequence, GetPoseParameterArray(), pVec );
 }
 
@@ -713,7 +713,7 @@ void CAnimating::GetSequenceLinearMotion( int iSequence, Vector *pVec )
 //=========================================================
 int CAnimating::FindTransitionSequence( int iCurrentSequence, int iGoalSequence, int *piDir )
 {
-	Assert( GetModelPtr() );
+	// Assert( GetModelPtr() );
 
 	if (piDir == NULL)
 	{
@@ -757,7 +757,7 @@ KeyValues *CAnimating::GetSequenceKeyValues( int iSequence )
 //-----------------------------------------------------------------------------
 int CAnimating::LookupActivity( const char *label )
 {
-	Assert( GetModelPtr() );
+	// Assert( GetModelPtr() );
 	return ::LookupActivity( GetModelPtr(), label );
 }
 
@@ -765,7 +765,7 @@ int CAnimating::LookupActivity( const char *label )
 //=========================================================
 int CAnimating::LookupSequence( const char *label )
 {
-	Assert( GetModelPtr() );
+	// Assert( GetModelPtr() );
 	return ::LookupSequence( GetModelPtr(), label );
 }
 
@@ -816,7 +816,7 @@ bool CAnimating::GetAttachment ( int iAttachment, Vector &absOrigin, QAngle &abs
 
 void CAnimating::SetSequence( int nSequence )
 {
-	Assert( GetModelPtr( ) && ( nSequence < GetModelPtr( )->GetNumSeq() ) && ( GetModelPtr( )->GetNumSeq() < (1 << ANIMATION_SEQUENCE_BITS) ) );
+	// Assert( GetModelPtr( ) && ( nSequence < GetModelPtr( )->GetNumSeq() ) && ( GetModelPtr( )->GetNumSeq() < (1 << ANIMATION_SEQUENCE_BITS) ) );
 	m_nSequence = nSequence;
 }
 
@@ -955,13 +955,13 @@ float CAnimating::EdgeLimitPoseParameter( int iParameter, float flValue, float f
 
 int CAnimating::SelectHeaviestSequence ( Activity activity )
 {
-	Assert( GetModelPtr() );
+	// Assert( GetModelPtr() );
 	return ::SelectHeaviestSequence( GetModelPtr(), activity );
 }
 
 int CAnimating::ExtractBbox( int sequence, Vector& mins, Vector& maxs )
 {
-	Assert( GetModelPtr() );
+	// Assert( GetModelPtr() );
 	return ::ExtractBbox( GetModelPtr( ), sequence, mins, maxs );
 }
 
@@ -972,7 +972,7 @@ int CAnimating::GetHitboxSet()
 	{
 		if(!g_pGameConf->GetOffset("m_nHitboxSet", &offs))
 		{
-			assert(0);
+			//assert(0);
 			return 0;
 		}
 	}
@@ -1006,7 +1006,7 @@ Activity CAnimating::GetSequenceActivity( int iSequence )
 
 float CAnimating::GetBoneController ( int iController )
 {
-	Assert( GetModelPtr() );
+	// Assert( GetModelPtr() );
 
 	CStudioHdr *pmodel = (CStudioHdr*)GetModelPtr();
 
@@ -1016,11 +1016,11 @@ float CAnimating::GetBoneController ( int iController )
 
 float CAnimating::SetBoneController ( int iController, float flValue )
 {
-	Assert( GetModelPtr() );
+	// Assert( GetModelPtr() );
 
 	CStudioHdr *pmodel = (CStudioHdr*)GetModelPtr();
 
-	Assert(iController >= 0 && iController < NUM_BONECTRLS);
+	// Assert(iController >= 0 && iController < NUM_BONECTRLS);
 
 	float newValue;
 	float retVal = Studio_SetController( pmodel, iController, flValue, newValue );

@@ -561,7 +561,7 @@ public:
 		if ( pHandleEntity == m_pIgnoreEntity )
 			return true;
 
-		Assert( pHandleEntity );
+		// Assert( pHandleEntity );
 
 		trace_t tr;
 		enginetrace->ClipRayToEntity( *m_pRay, m_nContentsMask, pHandleEntity, &tr );

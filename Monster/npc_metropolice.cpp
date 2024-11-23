@@ -154,7 +154,7 @@ int ACT_MELEE_ATTACK_THRUST;
 int ACT_ACTIVATE_BATON;
 int ACT_DEACTIVATE_BATON;
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_metropolice, cycler, CNPC_MetroPolice );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_metropolice, monster_generic, CNPC_MetroPolice );
 
 BEGIN_DATADESC( CNPC_MetroPolice )
 
@@ -1380,8 +1380,8 @@ void CNPC_MetroPolice::AimBurstRandomly( int nMinCount, int nMaxCount, float flM
 //-----------------------------------------------------------------------------
 void CNPC_MetroPolice::RandomDirectionBetweenVectors( const Vector &vecStart, const Vector &vecEnd, Vector *pResult )
 {
-	Assert( fabs( vecStart.Length() - 1.0f ) < 1e-3 );
-	Assert( fabs( vecEnd.Length() - 1.0f ) < 1e-3 );
+	// Assert( fabs( vecStart.Length() - 1.0f ) < 1e-3 );
+	// Assert( fabs( vecEnd.Length() - 1.0f ) < 1e-3 );
 
 	float flCosAngle = DotProduct( vecStart, vecEnd );
 	if ( fabs( flCosAngle - 1.0f ) < 1e-3 )
@@ -2344,7 +2344,7 @@ Vector CNPC_MetroPolice::GetActualShootTrajectory( const Vector &shootOrigin )
 			return ComputeTightBurstTrajectory( shootOrigin );
 	}
 
-	Assert(0);
+	// Assert(0);
 	return vec3_origin;
 }
 
@@ -2739,7 +2739,7 @@ Disposition_t CNPC_MetroPolice::IRelationType(CBaseEntity *pTarget)
 //-----------------------------------------------------------------------------
 void CNPC_MetroPolice::OnAnimEventStartDeployManhack( void )
 {
-	Assert( m_iManhacks );
+	// Assert( m_iManhacks );
 
 	if ( m_iManhacks <= 0 )
 	{
@@ -3025,7 +3025,7 @@ Activity CNPC_MetroPolice::NPC_TranslateActivity( Activity newActivity )
 //-----------------------------------------------------------------------------
 void CNPC_MetroPolice::ReleaseManhack( void )
 {
-	Assert( m_hManhack );
+	// Assert( m_hManhack );
 
 	// Make us physical
 	m_hManhack->RemoveSpawnFlags( SF_MANHACK_CARRIED );
@@ -3746,7 +3746,7 @@ int CNPC_MetroPolice::SelectAirboatCombatSchedule()
 		return nResult;
 
 	// We're assuming here that the cops who attack airboats have SMGs
-//	Assert( Weapon_OwnsThisType( WEAPON_SMG1_REPLACE_NAME ) );
+//	// Assert( Weapon_OwnsThisType( WEAPON_SMG1_REPLACE_NAME ) );
 
 	if ( HasCondition( COND_SEE_ENEMY ) )
 	{
@@ -3938,7 +3938,7 @@ void CNPC_MetroPolice::AdministerJustice( void )
 		if ( !pPlayer )
 			pPlayer = UTIL_GetNearestPlayer(GetAbsOrigin());
 
-		Assert(pPlayer);
+		// Assert(pPlayer);
 		if(pPlayer)
 		{
 			SetEnemy( pPlayer->BaseEntity() );
@@ -3966,7 +3966,7 @@ void CNPC_MetroPolice::AdministerJustice( void )
 				{
 					// Is he within site & range?
 					CPlayer *pPlayer = UTIL_GetNearestVisiblePlayer(this);
-					Assert(pPlayer);
+					// Assert(pPlayer);
 					if ( FVisible_Entity(pNPC->BaseEntity()) && pNPC->FVisible_Entity( (pPlayer)?pPlayer->BaseEntity():NULL ) &&
 						 UTIL_DistApprox( WorldSpaceCenter(), pNPC->WorldSpaceCenter() ) < 512 )
 					{
@@ -4082,7 +4082,7 @@ int CNPC_MetroPolice::SelectSchedule( void )
 		CSound *pSound;
 		pSound = GetBestSound();
 
-		Assert( pSound != NULL );
+		// Assert( pSound != NULL );
 		if ( pSound )
 		{
 			if (pSound->m_iType & SOUND_DANGER)
@@ -4245,7 +4245,7 @@ int CNPC_MetroPolice::TranslateSchedule( int scheduleType )
 			return SCHED_RUN_RANDOM;
 
 		case SCHED_RANGE_ATTACK1:
-			Assert( !HasCondition( COND_NO_PRIMARY_AMMO ) );
+			// Assert( !HasCondition( COND_NO_PRIMARY_AMMO ) );
 
 			if( !m_fWeaponDrawn )
 			{
@@ -4358,7 +4358,7 @@ void CNPC_MetroPolice::StartTask( const Task_t *pTask )
 
 		case TASK_METROPOLICE_GET_PATH_TO_PRECHASE:
 		{
-			Assert( m_vecPreChaseOrigin != vec3_origin );
+			// Assert( m_vecPreChaseOrigin != vec3_origin );
 			if ( GetNavigator()->SetGoal( m_vecPreChaseOrigin ) )
 			{
 				QAngle vecAngles( 0, m_flPreChaseYaw, 0 );
@@ -5008,7 +5008,7 @@ void CNPC_MetroPolice::GatherConditions( void )
 				m_BatonSwingTimer.Set( 1.0, 1.75 );
 
 				Activity activity = TranslateActivity( ACT_MELEE_ATTACK_SWING_GESTURE );
-				Assert( activity != ACT_INVALID );
+				// Assert( activity != ACT_INVALID );
 				AddGesture( activity );
 			}
 		}

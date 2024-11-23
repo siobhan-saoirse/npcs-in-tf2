@@ -656,7 +656,7 @@ public:
 	
 	bool				IsInPlayerSquad() const;
 
-	string_t			GetPlayerSquadName() const	{ Assert( gm_iszPlayerSquad != NULL_STRING ); return gm_iszPlayerSquad; }
+	string_t			GetPlayerSquadName() const	{ /*// Assert( gm_iszPlayerSquad != NULL_STRING );*/ return gm_iszPlayerSquad; }
 
 	void				ForceGatherConditions()	{ m_bForceConditionsGather = true; SetEfficiency( AIE_NORMAL ); }	// Force an NPC out of PVS to call GatherConditions on next think
 

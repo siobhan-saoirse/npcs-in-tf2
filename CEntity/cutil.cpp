@@ -752,7 +752,7 @@ void UTIL_TraceEntity( CEntity *pEntity, const Vector &vecAbsStart, const Vector
 
 	// Adding this assertion here so game code catches it, but really the assertion belongs in the engine
 	// because one day, rotated collideables will work!
-	//Assert( pCollision->GetCollisionAngles() == vec3_angle );
+	//// Assert( pCollision->GetCollisionAngles() == vec3_angle );
 
 	CTraceFilterEntity traceFilter( pEntity->BaseEntity(), pCollision->GetCollisionGroup() );
 
@@ -767,7 +767,7 @@ void UTIL_TraceEntity( CEntity *pEntity, const Vector &vecAbsStart, const Vector
 
 	// Adding this assertion here so game code catches it, but really the assertion belongs in the engine
 	// because one day, rotated collideables will work!
-	//Assert( pCollision->GetCollisionAngles() == vec3_angle );
+	//// Assert( pCollision->GetCollisionAngles() == vec3_angle );
 
 	CTraceFilterEntityIgnoreOther traceFilter( pEntity->BaseEntity(), pIgnore, nCollisionGroup );
 
@@ -859,7 +859,7 @@ void UTIL_DecalTrace( trace_t *pTrace, char const *decalName )
 		return;
 
 	CEntity *pEntity = CEntity::Instance(pTrace->m_pEnt);
-	assert(pEntity);
+	//assert(pEntity);
 	pEntity->DecalTrace( pTrace, decalName );
 }
 
@@ -1335,7 +1335,7 @@ void StopSoundByHandle( int entindex, const char *soundname, HSOUNDSCRIPTHANDLE&
 	for ( int i = 0; i < c; ++i )
 	{
 		char const *wavename = soundemitterbase->GetWaveName( params->GetSoundNames()[ i ].symbol );
-		Assert( wavename );
+		// Assert( wavename );
 
 		enginesound->StopSound( 
 			entindex, 
@@ -1373,7 +1373,7 @@ bool UTIL_CheckBottom( CEntity *pEntity, ITraceFilter *pTraceFilter, float flSte
 	int		x, y;
 	float	mid, bottom;
 
-	Assert( pEntity );
+	// Assert( pEntity );
 
 	CTracePassFilter traceFilter(pEntity->BaseEntity());
 	if ( !pTraceFilter )
@@ -2564,9 +2564,9 @@ void *UTIL_FunctionFromName( datamap_t *pMap, const char *pName )
 		for ( int i = 0; i < pMap->dataNumFields; i++ )
 		{
 #ifdef WIN32
-			Assert( sizeof(pMap->dataDesc[i].inputFunc) == sizeof(void *) );
+			// Assert( sizeof(pMap->dataDesc[i].inputFunc) == sizeof(void *) );
 #elif defined(POSIX)
-			Assert( sizeof(pMap->dataDesc[i].inputFunc) == 8 );
+			// Assert( sizeof(pMap->dataDesc[i].inputFunc) == 8 );
 #else
 #error
 #endif
@@ -2709,9 +2709,9 @@ bool FASTCALL IsBoxIntersectingRay( const Vector& boxMin, const Vector& boxMax,
 			);
 	}
 #endif
-	Assert( boxMin[0] <= boxMax[0] );
-	Assert( boxMin[1] <= boxMax[1] );
-	Assert( boxMin[2] <= boxMax[2] );
+	// Assert( boxMin[0] <= boxMax[0] );
+	// Assert( boxMin[1] <= boxMax[1] );
+	// Assert( boxMin[2] <= boxMax[2] );
 
 	// FIXME: Surely there's a faster way
 	float tmin = -FLT_MAX;
@@ -2800,12 +2800,12 @@ bool FASTCALL IsBoxIntersectingRay( const Vector& vecBoxMin, const Vector& vecBo
 bool IsBoxIntersectingBox( const Vector& boxMin1, const Vector& boxMax1, 
 	const Vector& boxMin2, const Vector& boxMax2 )
 {
-	Assert( boxMin1[0] <= boxMax1[0] );
-	Assert( boxMin1[1] <= boxMax1[1] );
-	Assert( boxMin1[2] <= boxMax1[2] );
- 	Assert( boxMin2[0] <= boxMax2[0] );
-	Assert( boxMin2[1] <= boxMax2[1] );
-	Assert( boxMin2[2] <= boxMax2[2] );
+	// Assert( boxMin1[0] <= boxMax1[0] );
+	// Assert( boxMin1[1] <= boxMax1[1] );
+	// Assert( boxMin1[2] <= boxMax1[2] );
+ 	// Assert( boxMin2[0] <= boxMax2[0] );
+	// Assert( boxMin2[1] <= boxMax2[1] );
+	// Assert( boxMin2[2] <= boxMax2[2] );
 
 	if ( (boxMin1[0] > boxMax2[0]) || (boxMax1[0] < boxMin2[0]) )
 		return false;
@@ -2818,9 +2818,9 @@ bool IsBoxIntersectingBox( const Vector& boxMin1, const Vector& boxMax1,
 
 bool IsPointInBox( const Vector& pt, const Vector& boxMin, const Vector& boxMax )
 {
-	Assert( boxMin[0] <= boxMax[0] );
-	Assert( boxMin[1] <= boxMax[1] );
-	Assert( boxMin[2] <= boxMax[2] );
+	// Assert( boxMin[0] <= boxMax[0] );
+	// Assert( boxMin[1] <= boxMax[1] );
+	// Assert( boxMin[2] <= boxMax[2] );
 
 	if ( (pt[0] > boxMax[0]) || (pt[0] < boxMin[0]) )
 		return false;

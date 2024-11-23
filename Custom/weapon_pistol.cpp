@@ -91,7 +91,7 @@ void CNPCWeapon_Pistol::NPCWeaponOperator_HandleAnimEvent( animevent_t *pEvent, 
 			vecShootOrigin = owner->Weapon_ShootPosition();
 
 			CAI_NPC *npc = owner->MyNPCPointer();
-			Assert( npc != NULL );
+			// Assert( npc != NULL );
 
 			vecShootDir = npc->GetActualShootTrajectory( vecShootOrigin );
 

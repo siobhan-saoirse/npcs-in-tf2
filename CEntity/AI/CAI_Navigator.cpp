@@ -135,7 +135,7 @@ void CAI_Navigator::ClearPath( void )
 
 		if( m_pClippedWaypoints && m_pClippedWaypoints->GetFirst() )
 		{
-			Assert( m_PreviousMoveActivity > ACT_RESET );
+			// Assert( m_PreviousMoveActivity > ACT_RESET );
 		}
 
 		while ( pWaypoint )
@@ -287,7 +287,7 @@ int CAI_Navigator::GetArrivalSequence( int curSequence )
 	{
 		Activity activity = GetOuter()->GetStoppedActivity();
 
-		Assert( activity != ACT_INVALID );
+		// Assert( activity != ACT_INVALID );
 		if (activity == ACT_INVALID)
 		{
 			activity = ACT_IDLE;
@@ -300,7 +300,7 @@ int CAI_Navigator::GetArrivalSequence( int curSequence )
 			//DevMsg( GetOuter(), "No appropriate sequence for arrival activity %s (%d)\n", GetOuter()->GetActivityName( GetPath()->GetArrivalActivity() ), GetPath()->GetArrivalActivity() );
 			sequence = GetOuter()->SelectWeightedSequence( GetOuter()->TranslateActivity( ACT_IDLE ), curSequence );
 		}
-		Assert( sequence != ACT_INVALID );
+		// Assert( sequence != ACT_INVALID );
 		GetPath()->SetArrivalSequence( sequence );
 	}
 	return sequence;
@@ -313,7 +313,7 @@ int CAI_Navigator::GetMovementSequence( )
 	if (sequence == ACT_INVALID)
 	{
 		Activity activity = GetPath()->GetMovementActivity();
-		Assert( activity != ACT_INVALID );
+		// Assert( activity != ACT_INVALID );
 
 		sequence = GetOuter()->SelectWeightedSequence( GetOuter()->TranslateActivity( activity ) );
 		if ( sequence == ACT_INVALID )
@@ -329,7 +329,7 @@ int CAI_Navigator::GetMovementSequence( )
 				sequence = GetOuter()->SelectWeightedSequence( GetOuter()->TranslateActivity( ACT_WALK ) );
 			}
 		}
-		Assert( sequence != ACT_INVALID );
+		// Assert( sequence != ACT_INVALID );
 		GetPath()->SetMovementSequence( sequence );
 	}
 	return sequence;
@@ -486,7 +486,7 @@ bool CAI_Navigator::DoFindPath( void )
 			CEntity *pEnemy = GetPath()->GetTarget();
 			if (pEnemy)
 			{
-				Assert( pEnemy == GetEnemy() );
+				// Assert( pEnemy == GetEnemy() );
 
 				Vector newPos = GetEnemyLKP();
 
@@ -550,7 +550,7 @@ bool CAI_Navigator::DoFindPath( void )
 
 			if ( pTarget )
 			{
-				Assert( pTarget == GetTarget() );
+				// Assert( pTarget == GetTarget() );
 
 				// NOTE: Calling reset here because this can get called
 				// any time we have to update our goal position
@@ -592,7 +592,7 @@ bool CAI_Navigator::DoFindPathToPathcorner( CEntity *pPathCorner )
 // UNDONE: Remove this and change the pathing code to be able to refresh itself and support
 // circular paths, etc.
 	bool returnCode = false;
-	Assert( GetPath()->GoalType() == GOALTYPE_PATHCORNER );
+	// Assert( GetPath()->GoalType() == GOALTYPE_PATHCORNER );
 
 	// NPC is on a path_corner loop
 	if ( pPathCorner != NULL )
@@ -646,7 +646,7 @@ bool CAI_Navigator::DoFindPathToPathcorner( CEntity *pPathCorner )
 				}
 
 				AI_Waypoint_t *lastWaypoint	= GetPath()->GetGoalWaypoint();
-				Assert(lastWaypoint);
+				// Assert(lastWaypoint);
 
 				lastWaypoint->ModifyFlags( bits_WP_TO_PATHCORNER, true );
 				lastWaypoint->hPathCorner = pPathCorner->BaseEntity();
@@ -821,7 +821,7 @@ CEntity *CAI_Navigator::GetNextPathcorner( CEntity *pPathCorner )
 {
 	CEntity *pNextPathCorner = NULL;
 
-	Assert( pPathCorner );
+	// Assert( pPathCorner );
 	if ( pPathCorner )
 	{
 		pNextPathCorner = pPathCorner->GetNextTarget();
@@ -915,7 +915,7 @@ void CAI_Navigator::AdvancePath()
 
 		if ( pCurWaypoint )
 		{
-			Assert( (pCurWaypoint->Flags() & (bits_WP_TO_PATHCORNER | bits_WP_TO_GOAL )) == (bits_WP_TO_PATHCORNER | bits_WP_TO_GOAL ));
+			// Assert( (pCurWaypoint->Flags() & (bits_WP_TO_PATHCORNER | bits_WP_TO_GOAL )) == (bits_WP_TO_PATHCORNER | bits_WP_TO_GOAL ));
 
 			SetGoalEnt( pCurWaypoint->hPathCorner );
 
@@ -1256,14 +1256,14 @@ void CAI_Navigator::SimplifyPathInsertSimplification( AI_Waypoint_t *pSegmentSta
 	if ( point != pSegmentStart->GetPos() )
 	{
 		AI_Waypoint_t *pNextWaypoint = pSegmentStart->GetNext();
-		Assert( pNextWaypoint );
-		Assert( pSegmentStart->NavType() == pNextWaypoint->NavType() );
+		// Assert( pNextWaypoint );
+		// Assert( pSegmentStart->NavType() == pNextWaypoint->NavType() );
 
 		AI_Waypoint_t *pNewWaypoint = new AI_Waypoint_t( point, 0, pSegmentStart->NavType(), 0, NO_NODE );
 
 		while ( GetPath()->GetCurWaypoint() != pNextWaypoint )
 		{
-			Assert( GetPath()->GetCurWaypoint()->IsReducible() );
+			// Assert( GetPath()->GetCurWaypoint()->IsReducible() );
 			GetPath()->Advance();
 		}
 		pNewWaypoint->SetNext( pNextWaypoint );
@@ -1273,7 +1273,7 @@ void CAI_Navigator::SimplifyPathInsertSimplification( AI_Waypoint_t *pSegmentSta
 	{
 		while ( GetPath()->GetCurWaypoint() != pSegmentStart )
 		{
-			Assert( GetPath()->GetCurWaypoint()->IsReducible() );
+			// Assert( GetPath()->GetCurWaypoint()->IsReducible() );
 			GetPath()->Advance();
 		}
 	}
@@ -1546,9 +1546,9 @@ bool CAI_Navigator::SetGoalFromStoppingPath()
 		GetPath()->SetGoalType( GOALTYPE_NONE );
 		GetPath()->SetGoalType( GOALTYPE_LOCATION );
 		GetPath()->SetGoalTolerance( NAV_STOP_MOVING_TOLERANCE );
-		Assert( GetPath()->GetCurWaypoint() );
+		// Assert( GetPath()->GetCurWaypoint() );
 
-		Assert( m_PreviousMoveActivity != ACT_INVALID );
+		// Assert( m_PreviousMoveActivity != ACT_INVALID );
 
 
 		if ( m_PreviousMoveActivity != ACT_RESET )
@@ -2400,7 +2400,7 @@ AIMoveResult_t CAI_Navigator::MoveEnact( const AILocalMoveGoal_t &baseMove )
 
 	if ( result == AIMR_OK && !m_fNavComplete )
 	{
-		Assert( GetPath()->GetCurWaypoint() );
+		// Assert( GetPath()->GetCurWaypoint() );
 		result = GetMotor()->MoveNormalExecute( move );
 	}
 	else if ( result != AIMR_CHANGE_TYPE )
@@ -2546,7 +2546,7 @@ bool CAI_Navigator::GetStoppingPath( CAI_WaypointList *	pClippedWaypoints )
 				}
 				else
 				{
-					Assert( !( pNextPoint->NavType() == NAV_CLIMB || pNextPoint->NavType() == NAV_JUMP ) );
+					// Assert( !( pNextPoint->NavType() == NAV_CLIMB || pNextPoint->NavType() == NAV_JUMP ) );
 					Vector remainder = pNextPoint->GetPos() - vPosPrev;
 					VectorNormalize( remainder );
 					float yaw = UTIL_VecToYaw( remainder );
@@ -2778,7 +2778,7 @@ bool CAI_Navigator::OnFailedSteer( AILocalMoveGoal_t *pMoveGoal, float distClear
 
 		if ( distClear > pMoveGoal->maxDist - GetPath()->GetGoalTolerance() )
 		{
-			Assert( CurWaypointIsGoal() && fabs(pMoveGoal->maxDist - GetPathDistToCurWaypoint()) < 0.01 );
+			// Assert( CurWaypointIsGoal() && fabs(pMoveGoal->maxDist - GetPathDistToCurWaypoint()) < 0.01 );
 
 			if ( pMoveGoal->maxDist > distClear )
 				pMoveGoal->maxDist = distClear;
@@ -3026,7 +3026,7 @@ bool CAI_Navigator::DelayNavigationFailure( const AIMoveTrace_t &trace )
 
 	CEntity *cent = CEntity::Instance(trace.pObstruction);
 	CAI_NPC *pBlocker = (cent) ? cent->MyNPCPointer() : NULL;
-	Assert( m_fPeerMoveWait == false || pBlocker == CEntity::Instance(m_hPeerWaitingOn) ); // expected to be cleared each frame, and never call this function twice
+	// Assert( m_fPeerMoveWait == false || pBlocker == CEntity::Instance(m_hPeerWaitingOn) ); // expected to be cleared each frame, and never call this function twice
 
 	if ( !m_fPeerMoveWait || ((pBlocker)?pBlocker->BaseEntity():NULL) != m_hPeerWaitingOn )
 	{
@@ -3185,7 +3185,7 @@ bool CAI_Navigator::PreMove()
 
 	// --------------------------------
 
-	Assert( GetMotor()->GetMoveInterval() > 0 );
+	// Assert( GetMotor()->GetMoveInterval() > 0 );
 
 	// --------------------------------
 

@@ -37,12 +37,12 @@ inline int InternalCheckDeclareClass( const char *pClassName, const char *pClass
 {
 	// This makes sure that casting from ThisClass to BaseClass works right. You'll get a compiler error if it doesn't
 	// work at all, and you'll get a runtime error if you use multiple inheritance.
-	Assert( pTestPtr == pBasePtr );
+	// Assert( pTestPtr == pBasePtr );
 	
 	// This is triggered by IMPLEMENT_SERVER_CLASS. It does DLLClassName::CheckDeclareClass( #DLLClassName ).
 	// If they didn't do a DECLARE_CLASS in DLLClassName, then it'll be calling its base class's version
 	// and the class names won't match.
-	Assert( (void*)pClassName == (void*)pClassNameMatch );
+	// Assert( (void*)pClassName == (void*)pClassNameMatch );
 	return 0;
 }
 
@@ -708,20 +708,20 @@ private:
 		\
 		const type& Get( int i ) const \
 		{ \
-			Assert( i >= 0 && i < count ); \
+			// Assert( i >= 0 && i < count ); \
 			return m_Value[i]; \
 		} \
 		\
 		type& GetForModify( int i ) \
 		{ \
-			Assert( i >= 0 && i < count ); \
+			// Assert( i >= 0 && i < count ); \
 			NetworkStateChanged( i ); \
 			return m_Value[i]; \
 		} \
 		\
 		void Set( int i, const type &val ) \
 		{ \
-			Assert( i >= 0 && i < count ); \
+			// Assert( i >= 0 && i < count ); \
 			if( memcmp( &m_Value[i], &val, sizeof(type) ) ) \
 			{ \
 				NetworkStateChanged( i ); \

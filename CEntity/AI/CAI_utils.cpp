@@ -227,7 +227,7 @@ CTraceFilterSkipTwoEntities::CTraceFilterSkipTwoEntities( const IHandleEntity *p
 
 bool CTraceFilterSkipTwoEntities::ShouldHitEntity( IHandleEntity *pHandleEntity, int contentsMask )
 {
-	Assert( pHandleEntity );
+	// Assert( pHandleEntity );
 	if ( !PassServerEntityFilter( pHandleEntity, m_pPassEnt2 ) )
 		return false;
 

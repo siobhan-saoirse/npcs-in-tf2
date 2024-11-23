@@ -219,7 +219,7 @@ BEGIN_DATADESC( CNPC_CeilingTurret )
 
 END_DATADESC()
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_turret_ceiling, cycler, CNPC_CeilingTurret );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_turret_ceiling, monster_generic, CNPC_CeilingTurret );
 
 //-----------------------------------------------------------------------------
 // Constructor
@@ -303,7 +303,7 @@ void CNPC_CeilingTurret::Spawn( void )
 	SetPoseParameter( m_poseAim_Yaw, 0 );
 	SetPoseParameter( m_poseAim_Pitch, 0 );
 
-	m_iAmmoType = GetAmmoDef()->Index( "BULLET_PLAYER_762MM" );
+	m_iAmmoType = GetAmmoDef()->Index( "TF_AMMO_PRIMARY" );
 
 	//Create our eye sprite
 	m_pEyeGlow = CE_CSprite::SpriteCreate( CEILING_TURRET_GLOW_SPRITE, GetLocalOrigin(), false );

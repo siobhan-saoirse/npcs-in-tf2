@@ -48,7 +48,7 @@ void CE_CBeam::Set_m_hAttachEntity(int index, CBaseEntity *pEntity)
 	CBaseHandle &hndl = *(CBaseHandle *) (((uint8_t *) (BaseEntity())) + m_hAttachEntity.offset + (index * 4));
 	if (pEntity) {
 		IServerNetworkable *pNetworkable = pEntity->GetNetworkable();
-		Assert(pNetworkable);
+		// Assert(pNetworkable);
 
 		edict_t *pEdict = pNetworkable->GetEdict();
 		hndl.Set((pEdict) ? pEdict->GetIServerEntity() : nullptr);
@@ -128,7 +128,7 @@ void CE_CBeam::EntsInit( CEntity *pStartEntity, CEntity *pEndEntity )
 
 void CE_CBeam::SetType( int type )		
 { 
-	Assert( type < NUM_BEAM_TYPES );
+	// Assert( type < NUM_BEAM_TYPES );
 	m_nBeamType = type;
 }
 
@@ -140,7 +140,7 @@ int CE_CBeam::GetType( void ) const
 
 void CE_CBeam::SetStartEntity( CEntity *pEntity )
 { 
-	Assert( m_nNumBeamEnts >= 2 );
+	// Assert( m_nNumBeamEnts >= 2 );
 	Set_m_hAttachEntity(0, pEntity->BaseEntity());
 	SetOwnerEntity( pEntity->BaseEntity() );
 	RelinkBeam();
@@ -149,7 +149,7 @@ void CE_CBeam::SetStartEntity( CEntity *pEntity )
 
 void CE_CBeam::SetEndEntity( CEntity *pEntity ) 
 { 
-	Assert( m_nNumBeamEnts >= 2 );
+	// Assert( m_nNumBeamEnts >= 2 );
 	int v = m_nNumBeamEnts;
 	Set_m_hAttachEntity(v-1, pEntity->BaseEntity());
 	m_hEndEntity.ptr->Set(pEntity->BaseEntity());

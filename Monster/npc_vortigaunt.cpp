@@ -9,7 +9,7 @@
 #include "CE_recipientfilter.h"
 #include "effect_dispatch_data.h"
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_vortigaunt, cycler, CNPC_Vortigaunt );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_vortigaunt, monster_generic, CNPC_Vortigaunt );
 
 #define HAND_LEFT	0
 #define HAND_RIGHT	1
@@ -1323,7 +1323,7 @@ void CNPC_Vortigaunt::StartHandGlow( int beamType, int nHand )
 		break;
 
 	case VORTIGAUNT_BEAM_ALL:
-		Assert( 0 );
+		// Assert( 0 );
 		break;
 	}	
 }

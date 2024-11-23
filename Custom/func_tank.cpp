@@ -650,9 +650,9 @@ void CFuncTank::Spawn( void )
 #ifdef HL2_EPISODIC
 	m_iAmmoType = GetAmmoDef()->Index( STRING( m_iszAmmoType ) );
 #else
-	m_iSmallAmmoType	= GetAmmoDef()->Index("BULLET_PLAYER_45ACP");
-	m_iMediumAmmoType	= GetAmmoDef()->Index("BULLET_PLAYER_9MM");
-	m_iLargeAmmoType	= GetAmmoDef()->Index("BULLET_PLAYER_762MM");
+	m_iSmallAmmoType	= GetAmmoDef()->Index("TF_AMMO_PRIMARY");
+	m_iMediumAmmoType	= GetAmmoDef()->Index("TF_AMMO_SECONDARY");
+	m_iLargeAmmoType	= GetAmmoDef()->Index("TF_AMMO_METAL");
 #endif // HL2_EPISODIC
 
 	SetMoveType( MOVETYPE_PUSH );  // so it doesn't get pushed by anything
@@ -1044,7 +1044,7 @@ void CFuncTank::StopControl()
 void CFuncTank::ControllerPostFrame( void )
 {
 	// Make sure we have a contoller.
-	Assert( m_hController != NULL );
+	// Assert( m_hController != NULL );
 
 	// Control the firing rate.
 	if ( gpGlobals->curtime < m_flNextAttack )
@@ -1252,7 +1252,7 @@ bool CFuncTank::NPC_HasEnemy( void )
 		return false;
 
 	CAI_NPC *pNPC = m_hController->MyNPCPointer();
-	Assert( pNPC );
+	// Assert( pNPC );
 
 	return ( pNPC->GetEnemy() != NULL );
 }
@@ -1324,7 +1324,7 @@ bool CFuncTank::NPC_InterruptController( void )
 //-----------------------------------------------------------------------------
 float CFuncTank::GetRandomFireTime( void )
 {
-	Assert( m_fireRate != 0 );
+	// Assert( m_fireRate != 0 );
 	float flOOFireRate = 1.0f / m_fireRate;
 	float flOOFireRateBy2 = flOOFireRate * 0.5f;
 	float flOOFireRateBy4 = flOOFireRate * 0.25f;

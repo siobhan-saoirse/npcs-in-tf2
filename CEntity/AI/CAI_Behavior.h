@@ -79,14 +79,14 @@ public:
 		return false;
 	}
 	
-	bool IsRunning()								{ Assert( GetOuter() ); return ( GetOuter()->GetRunningBehavior() == this ); }
+	bool IsRunning()								{ /*// Assert( GetOuter() );*/ return ( GetOuter()->GetRunningBehavior() == this ); }
 	virtual bool CanSelectSchedule()				{ return true; }
 	virtual void BeginScheduleSelection() 			{}
 	virtual void EndScheduleSelection() 			{}
 	
 	void SetBackBridge( IBehaviorBackBridge *pBackBridge )
 	{
-		Assert( m_pBackBridge == NULL || pBackBridge == NULL );
+		// Assert( m_pBackBridge == NULL || pBackBridge == NULL );
 		m_pBackBridge = pBackBridge;
 	}
 

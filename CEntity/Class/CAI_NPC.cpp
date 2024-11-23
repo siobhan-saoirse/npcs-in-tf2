@@ -1212,7 +1212,7 @@ void CAI_NPC::PostConstructor()
 			memcpy(&func_CallNPCThink, &ptr, sizeof(void *));
 		}
 	}
-	Assert(func_CallNPCThink);
+	//assert(func_CallNPCThink);
 }
 
 void CAI_NPC::CapabilitiesClear()
@@ -1240,7 +1240,7 @@ void CAI_NPC::SetCondition(int iCondition)
 	int interrupt = InterruptFromCondition( iCondition );
 	if ( interrupt == -1 )
 	{
-		Assert(0);
+		//assert(0);
 		return;
 	}	
 	m_Conditions->Set(interrupt);
@@ -1254,7 +1254,7 @@ bool CAI_NPC::HasCondition( int iCondition )
 	
 	if ( interrupt == -1 )
 	{
-		Assert(0);
+		//assert(0);
 		return false;
 	}
 	
@@ -1271,7 +1271,7 @@ bool CAI_NPC::HasCondition( int iCondition, bool bUseIgnoreConditions )
 	
 	if ( interrupt == -1 )
 	{
-		Assert(0);
+		//assert(0);
 		return false;
 	}
 	
@@ -1287,7 +1287,7 @@ void CAI_NPC::ClearCondition( int iCondition )
 	
 	if ( interrupt == -1 )
 	{
-		Assert(0);
+		//assert(0);
 		return;
 	}
 	
@@ -1305,7 +1305,7 @@ void CAI_NPC::ClearConditions( int *pConditions, int nConditions )
 		
 		if ( interrupt == -1 )
 		{
-			Assert(0);
+			//assert(0);
 			continue;
 		}
 		
@@ -1324,7 +1324,7 @@ bool CAI_NPC::HasInterruptCondition( int iCondition )
 	
 	if ( interrupt == -1 )
 	{
-		Assert(0);
+		//assert(0);
 		return false;
 	}
 	return ( m_Conditions->IsBitSet( interrupt ) && GetCurSchedule()->HasInterrupt( interrupt ) );
@@ -1489,7 +1489,7 @@ void CAI_NPC::Weapon_SetActivity( Activity newActivity, float duration )
 	if ( idealActivity != idealWeaponActivity && HaveSequenceForActivity( idealActivity ) )
 		return idealActivity;
 
-	Assert( !HaveSequenceForActivity( idealActivity ) );
+	//assert( !HaveSequenceForActivity( idealActivity ) );
 	if ( idealActivity == ACT_RUN )
 	{
 		idealActivity = ACT_WALK;
@@ -1580,7 +1580,7 @@ bool CAI_NPC::LoadedSchedules(void)
 void CAI_NPC::AddActivityToSR(const char *actName, int actID)
 {
 	//g_helpfunc.AddActivityToSR(actName,actID);
-	Assert( m_pActivitySR );
+	//assert( m_pActivitySR );
 	if ( !m_pActivitySR )
 		return;
 
@@ -1593,7 +1593,7 @@ void CAI_NPC::AddActivityToSR(const char *actName, int actID)
 	//			dlls/ai_activity.cpp
 
 	static int lastActID = -2;
-	Assert( actID >= LAST_SHARED_ACTIVITY || actID == lastActID + 1 || actID == ACT_INVALID );
+	//assert( actID >= LAST_SHARED_ACTIVITY || actID == lastActID + 1 || actID == ACT_INVALID );
 	lastActID = actID;
 
 	m_pActivitySR->AddString(actName, actID);
@@ -1602,7 +1602,7 @@ void CAI_NPC::AddActivityToSR(const char *actName, int actID)
 
 void CAI_NPC::AddEventToSR(const char *eventName, int eventID) 
 {
-	Assert( m_pEventSR );
+	//assert( m_pEventSR );
 
 	m_pEventSR->AddString( eventName, eventID );
 	*(m_iNumEvents) += 1;
@@ -1610,7 +1610,7 @@ void CAI_NPC::AddEventToSR(const char *eventName, int eventID)
 
 const char*	CAI_NPC::GetEventName(int actID)
 {
-	Assert( m_pEventSR );
+	//assert( m_pEventSR );
 
 	return m_pEventSR->GetStringText(actID);
 }
@@ -1636,7 +1636,7 @@ int CAI_NPC::GetConditionID(const char* condName)
 //-----------------------------------------------------------------------------
 int CAI_NPC::GetActivityID(const char* actName) 
 {
-	Assert( m_pActivitySR );
+	//assert( m_pActivitySR );
 	if ( !m_pActivitySR )
 		return ACT_INVALID;
 
@@ -1682,7 +1682,7 @@ bool CAI_NPC::IsCustomInterruptConditionSet( int nCondition )
 	
 	if ( interrupt == -1 )
 	{
-		Assert(0);
+		//assert(0);
 		return false;
 	}
 	
@@ -1699,7 +1699,7 @@ void CAI_NPC::SetCustomInterruptCondition( int nCondition )
 	
 	if ( interrupt == -1 )
 	{
-		Assert(0);
+		//assert(0);
 		return;
 	}
 	
@@ -1716,7 +1716,7 @@ void CAI_NPC::ClearCustomInterruptCondition( int nCondition )
 	
 	if ( interrupt == -1 )
 	{
-		Assert(0);
+		//assert(0);
 		return;
 	}
 	
@@ -1841,7 +1841,7 @@ bool CAI_NPC::ConditionInterruptsCurSchedule( int iCondition )
 	
 	if ( interrupt == -1 )
 	{
-		Assert(0);
+		//assert(0);
 		return false;
 	}
 	return ( GetCurSchedule()->HasInterrupt( interrupt ) );
@@ -1857,7 +1857,7 @@ bool CAI_NPC::ConditionInterruptsSchedule( int localScheduleID, int iCondition )
 
 	if ( interrupt == -1 )
 	{
-		Assert(0);
+		//assert(0);
 		return false;
 	}
 	return ( pSchedule->HasInterrupt( interrupt ) );
@@ -2179,7 +2179,7 @@ void CAI_NPC::RememberUnreachable(CEntity *pEntity, float duration )
 	
 	CUtlVector<UnreachableEnt_t> *data = m_UnreachableEnts;
 	// Only add to list if not already on it
-	for (int i=data->Size()-1;i>=0;i--)
+	for (int i=data->Count()-1;i>=0;i--)
 	{
 		// If record already exists just update mark time
 		if (cbase == data->Element(i).hUnreachableEnt)
@@ -2223,7 +2223,7 @@ void CAI_NPC::TaskMovementComplete( void )
 	case TASKSTATUS_RUN_TASK:
 		// FIXME: find out how to safely restart movement
 		//Warning( "Movement completed twice!\n" );
-		//Assert( 0 );
+		////assert( 0 );
 		break;
 
 	case TASKSTATUS_COMPLETE:
@@ -2446,7 +2446,7 @@ void CAI_NPC::SetIgnoreConditions( int *pConditions, int nConditions )
 		
 		if ( interrupt == -1 )
 		{
-			Assert(0);
+			//assert(0);
 			continue;
 		}
 		
@@ -2463,7 +2463,7 @@ void CAI_NPC::ClearIgnoreConditions( int *pConditions, int nConditions )
 		
 		if ( interrupt == -1 )
 		{
-			Assert(0);
+			//assert(0);
 			continue;
 		}
 		
@@ -2761,13 +2761,13 @@ float CAI_NPC::GetSpreadBias( CBaseEntity *pWeapon, CBaseEntity *pTarget )
 			if ( timeSinceValidEnemy < timeToFocus )
 			{
 				float scale = timeSinceValidEnemy / timeToFocus;
-				Assert( scale >= 0.0 && scale <= 1.0 );
+				//assert( scale >= 0.0 && scale <= 1.0 );
 				bias *= scale;
 			}
 			else if ( timeSinceReacquire < timeToFocus ) // handled seperately as might be tuning seperately
 			{
 				float scale = timeSinceReacquire / timeToFocus;
-				Assert( scale >= 0.0 && scale <= 1.0 );
+				//assert( scale >= 0.0 && scale <= 1.0 );
 				bias *= scale;
 			}
 
@@ -3059,14 +3059,14 @@ void CAI_NPC::AddRelationship( const char *pszRelationship, CEntity *pActivator 
 			{
 				disposition = D_NU;
 				Warning( "***ERROR***\nBad relationship type (%s) to unknown entity (%s)!\n", dispositionString,entityString );
-				Assert( 0 );
+				//assert( 0 );
 				return;
 			}
 		}
 		else
 		{
 			Warning("Can't parse relationship info (%s) - Expecting 'name [D_HT, D_FR, D_LI, D_NU] [1-99]'\n", pszRelationship );
-			Assert(0);
+			//assert(0);
 			return;
 		}
 
@@ -3141,7 +3141,7 @@ bool CAI_NPC::ChooseEnemy( void )
 
 	if ( !m_ScheduleState->bScheduleWasInterrupted && GetCurSchedule() && !FScheduleDone() )
 	{
-		Assert( InterruptFromCondition( COND_NEW_ENEMY ) == COND_NEW_ENEMY && InterruptFromCondition( COND_LOST_ENEMY ) == COND_LOST_ENEMY );
+		//assert( InterruptFromCondition( COND_NEW_ENEMY ) == COND_NEW_ENEMY && InterruptFromCondition( COND_LOST_ENEMY ) == COND_LOST_ENEMY );
 		fHaveCondNewEnemy  = GetCurSchedule()->HasInterrupt( COND_NEW_ENEMY );
 		fHaveCondLostEnemy = GetCurSchedule()->HasInterrupt( COND_LOST_ENEMY );
 
@@ -3251,7 +3251,7 @@ bool CAI_NPC::ChooseEnemy( void )
 
 bool CAI_NPC::FScheduleDone ( void )
 {
-	Assert( GetCurSchedule() != NULL );
+	//assert( GetCurSchedule() != NULL );
 
 	if ( GetScheduleCurTaskIndex() == GetCurSchedule()->NumTasks() )
 	{

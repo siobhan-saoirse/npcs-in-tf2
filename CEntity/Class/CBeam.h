@@ -123,13 +123,13 @@ protected: //Datamaps
 
 inline void CE_CBeam::SetWidth( float width )				
 {
-	Assert( width <= MAX_BEAM_WIDTH );
+	// Assert( width <= MAX_BEAM_WIDTH );
 	m_fWidth = MIN( MAX_BEAM_WIDTH, width );
 }
 
 inline void CE_CBeam::SetEndWidth( float endWidth )		
 { 
-	Assert( endWidth <= MAX_BEAM_WIDTH );
+	// Assert( endWidth <= MAX_BEAM_WIDTH );
 	m_fEndWidth	= MIN( MAX_BEAM_WIDTH, endWidth );
 }
 
@@ -190,13 +190,13 @@ inline void CE_CBeam::SetEndPos( const Vector &pos )
 
 inline void CE_CBeam::SetStartAttachment( int attachment )	
 {
-	Assert( (attachment & ~ATTACHMENT_INDEX_MASK) == 0 );
+	// Assert( (attachment & ~ATTACHMENT_INDEX_MASK) == 0 );
 	Set_m_nAttachIndex(0, attachment);
 }
 
 inline void CE_CBeam::SetEndAttachment( int attachment )		
 { 
-	Assert( (attachment & ~ATTACHMENT_INDEX_MASK) == 0 );
+	// Assert( (attachment & ~ATTACHMENT_INDEX_MASK) == 0 );
 	int v = m_nNumBeamEnts;
 	Set_m_nAttachIndex(v-1, attachment);
 }
@@ -227,7 +227,7 @@ inline void	CE_CBeam::SetFireTime( float flFireTime )
 
 inline void CE_CBeam::SetBeamFlags( int flags )	
 { 
-	Assert( flags < (1 << NUM_BEAM_FLAGS) );
+	// Assert( flags < (1 << NUM_BEAM_FLAGS) );
 	m_nBeamFlags = flags;
 }
 

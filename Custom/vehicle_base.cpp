@@ -100,7 +100,7 @@ static int SoundStateIndexFromName( const char *pName )
 {
 	for ( size_t i = 0; i < SS_NUM_STATES; i++ )
 	{
-		Assert( i < ARRAYSIZE(pSoundStateNames) );
+		// Assert( i < ARRAYSIZE(pSoundStateNames) );
 		if ( !stricmp( pSoundStateNames[i], pName ) )
 			return i;
 	}
@@ -159,7 +159,7 @@ void CVehicleSoundsParser::ParseKeyValue( void *pData, const char *pKey, const c
 		// Are we currently in a gear block?
 		if ( m_iCurrentGear >= 0 )
 		{
-			Assert( m_iCurrentGear < pSounds->pGears.Count() );
+			// Assert( m_iCurrentGear < pSounds->pGears.Count() );
 
 			// Check gear keys
 			if ( !stricmp( pKey, "max_speed" ) )
@@ -287,7 +287,7 @@ void CFourWheelServerVehicle::GetVehicleViewPosition( int nRole, Vector *pAbsOri
 	else
 	{
 		// NPCs are not supported
-		Assert( 0 );
+		// Assert( 0 );
 	}
 }
 
@@ -381,7 +381,7 @@ void CFourWheelServerVehicle::NPC_DriveVehicle( void )
 void CFourWheelServerVehicle::SetVehicle( CBaseEntity *pVehicle )
 {
 	CEntity *cent = CEntity::Instance(pVehicle);
-	Assert( dynamic_cast<CE_CPropVehicleDriveable*>(cent) );
+	// Assert( dynamic_cast<CE_CPropVehicleDriveable*>(cent) );
 	BaseClass::SetVehicle( pVehicle );
 
 	// Save this for view smoothing
@@ -517,7 +517,7 @@ void CBaseServerVehicle::SetVehicle( CBaseEntity *pVehicle )
 {
 	m_pVehicle = pVehicle;
 	m_pDrivableVehicle = dynamic_cast<IDrivableVehicle*>(m_pVehicle);
-	Assert( m_pDrivableVehicle );
+	// Assert( m_pDrivableVehicle );
 }
 
 //-----------------------------------------------------------------------------
@@ -525,7 +525,7 @@ void CBaseServerVehicle::SetVehicle( CBaseEntity *pVehicle )
 //-----------------------------------------------------------------------------
 IDrivableVehicle *CBaseServerVehicle::GetDrivableVehicle( void )
 {
-	Assert( m_pDrivableVehicle );
+	// Assert( m_pDrivableVehicle );
 	return m_pDrivableVehicle;
 }
 
@@ -543,7 +543,7 @@ CBaseEntity	*CBaseServerVehicle::GetDriver( void )
 //-----------------------------------------------------------------------------
 CBaseEntity *CBaseServerVehicle::GetPassenger( int nRole )
 {
-	Assert( nRole == VEHICLE_ROLE_DRIVER );
+	// Assert( nRole == VEHICLE_ROLE_DRIVER );
 	CBaseEntity *pDriver = GetDrivableVehicle()->GetDriver();
 
 	if ( pDriver == NULL )
@@ -574,7 +574,7 @@ bool CBaseServerVehicle::NPC_AddPassenger( CBaseEntity *pPassenger, string_t str
 {
 	CCombatCharacter *cent = (CCombatCharacter *)CEntity::Instance(pPassenger);
 	// Players cannot yet use this code! - jdw
-	Assert( pPassenger != NULL && cent->IsPlayer() == false );
+	// Assert( pPassenger != NULL && cent->IsPlayer() == false );
 	if ( pPassenger == NULL || cent->IsPlayer() )
 		return false;
 
@@ -614,7 +614,7 @@ bool CBaseServerVehicle::NPC_RemovePassenger( CBaseEntity *pPassenger )
 {
 	CCombatCharacter *cent = (CCombatCharacter *)CEntity::Instance(pPassenger);
 	// Players cannot yet use this code! - jdw
-	Assert( pPassenger != NULL && cent->IsPlayer() == false );
+	// Assert( pPassenger != NULL && cent->IsPlayer() == false );
 	if ( pPassenger == NULL || cent->IsPlayer() )
 		return false;
 
@@ -764,13 +764,13 @@ const PassengerSeatAnims_t *CBaseServerVehicle::NPC_GetPassengerSeatAnims( CBase
 void CBaseServerVehicle::SetPassenger( int nRole, CBaseEntity *pPassenger )
 {
 	// Baseclass only handles vehicles with a single passenger
-	Assert( nRole == VEHICLE_ROLE_DRIVER );
+	// Assert( nRole == VEHICLE_ROLE_DRIVER );
 
 	CCombatCharacter *cent = (CCombatCharacter *)CEntity::Instance(pPassenger);
 	if ( cent != NULL && cent->IsPlayer() == false )
 	{
 		// Use NPC_AddPassenger() for NPCs at the moment, these will all be collapsed into one system -- jdw
-		Assert( 0 );
+		// Assert( 0 );
 		return;
 	}
 
@@ -826,7 +826,7 @@ void CBaseServerVehicle::SetPassenger( int nRole, CBaseEntity *pPassenger )
 //-----------------------------------------------------------------------------
 void CBaseServerVehicle::GetPassengerSeatPoint( int nRole, Vector *pPoint, QAngle *pAngles )
 {
-	Assert( nRole == VEHICLE_ROLE_DRIVER );
+	// Assert( nRole == VEHICLE_ROLE_DRIVER );
 
 	CAnimating *pAnimating = dynamic_cast<CAnimating *>(CEntity::Instance(m_pVehicle));
 	if ( pAnimating )
@@ -907,7 +907,7 @@ bool CBaseServerVehicle::CheckExitPoint( float yaw, int distance, Vector *pEndPo
 //-----------------------------------------------------------------------------
 bool CBaseServerVehicle::GetPassengerExitPoint( int nRole, Vector *pExitPoint, QAngle *pAngles )
 {
-	Assert( nRole == VEHICLE_ROLE_DRIVER );
+	// Assert( nRole == VEHICLE_ROLE_DRIVER );
 
 	CEntity *cent = CEntity::Instance(m_pVehicle);
 	// First, see if we've got an attachment point
@@ -1035,14 +1035,14 @@ void CBaseServerVehicle::ParseNPCPassengerSeat( KeyValues *pSetKeyValues, CPasse
 		if ( Q_stricmp( lpszName, "entry" ) == 0 )
 		{
 			int nIndex = pSeat->m_EntryTransitions.AddToTail();
-			Assert( pSeat->m_EntryTransitions.IsValidIndex( nIndex ) );
+			// Assert( pSeat->m_EntryTransitions.IsValidIndex( nIndex ) );
 
 			ParseNPCSeatTransition( pKey, &pSeat->m_EntryTransitions[nIndex] );
 		}
 		else if ( Q_stricmp( lpszName, "exit" ) == 0 )
 		{
 			int nIndex = pSeat->m_ExitTransitions.AddToTail();
-			Assert( pSeat->m_ExitTransitions.IsValidIndex( nIndex ) );
+			// Assert( pSeat->m_ExitTransitions.IsValidIndex( nIndex ) );
 
 			ParseNPCSeatTransition( pKey, &pSeat->m_ExitTransitions[nIndex] );
 		}
@@ -1082,7 +1082,7 @@ CPassengerRole *CBaseServerVehicle::FindOrCreatePassengerRole( string_t strName,
 
 	// Create a new container
 	int nNewIndex = m_PassengerRoles.AddToTail();
-	Assert( m_PassengerRoles.IsValidIndex( nNewIndex ) );
+	// Assert( m_PassengerRoles.IsValidIndex( nNewIndex ) );
 
 	m_PassengerRoles[nNewIndex].m_strName = strName;
 
@@ -1107,13 +1107,13 @@ void CBaseServerVehicle::ParseNPCRoles( KeyValues *pkvPassengerList )
 
 	// Get our animating class
 	CAnimating *pAnimating = dynamic_cast<CAnimating *>(CEntity::Instance(m_pVehicle));
-	Assert( pAnimating != NULL );
+	// Assert( pAnimating != NULL );
 	if ( pAnimating == NULL )
 		return;
 
 	// For attachment polling
 	CStudioHdr *pStudioHdr = pAnimating->GetModelPtr();
-	Assert( pStudioHdr != NULL );
+	// Assert( pStudioHdr != NULL );
 	if ( pStudioHdr == NULL )
 		return;
 
@@ -1131,7 +1131,7 @@ void CBaseServerVehicle::ParseNPCRoles( KeyValues *pkvPassengerList )
 
 		// Add a new role
 		int nSeatIndex = pRole->m_PassengerSeats.AddToTail();
-		Assert( pRole->m_PassengerSeats.IsValidIndex( nSeatIndex ) );
+		// Assert( pRole->m_PassengerSeats.IsValidIndex( nSeatIndex ) );
 
 		// Parse the information
 		ParseNPCPassengerSeat( pkvPassengerKey, &pRole->m_PassengerSeats[nSeatIndex] );
@@ -1392,7 +1392,7 @@ void CBaseServerVehicle::HandlePassengerEntry( CBaseEntity *pPassenger, bool bAl
 	else
 	{
 		// NPCs handle transitioning themselves, they should NOT call this function
-		Assert( 0 );
+		// Assert( 0 );
 	}
 }
 
@@ -1482,7 +1482,7 @@ bool CBaseServerVehicle::HandlePassengerExit( CBaseEntity *pPassenger )
 	else
 	{
 		// NPCs handle transitioning themselves, they should NOT call this function
-		Assert( 0 );
+		// Assert( 0 );
 	}
 
 	return false;
@@ -1798,9 +1798,9 @@ void CBaseServerVehicle::HandleEntryExitFinish( bool bExitAnimOn, bool bResetAni
 //-----------------------------------------------------------------------------
 void CBaseServerVehicle::GetVehicleViewPosition( int nRole, Vector *pAbsOrigin, QAngle *pAbsAngles, float *pFOV /*= NULL*/ )
 {
-	Assert( nRole == VEHICLE_ROLE_DRIVER );
+	// Assert( nRole == VEHICLE_ROLE_DRIVER );
 	CCombatCharacter *pPassenger = (CCombatCharacter *)CEntity::Instance(GetPassenger( VEHICLE_ROLE_DRIVER ));
-	Assert( pPassenger );
+	// Assert( pPassenger );
 
 	CPlayer *pPlayer = ToBasePlayer( pPassenger );
 	if ( pPlayer != NULL )
@@ -1824,7 +1824,7 @@ void CBaseServerVehicle::GetVehicleViewPosition( int nRole, Vector *pAbsOrigin, 
 	else
 	{
 		// NPCs are not supported
-		Assert( 0 );
+		// Assert( 0 );
 	}
 }
 
@@ -1874,7 +1874,7 @@ void CBaseServerVehicle::FinishMove( CBaseEntity *player, CUserCmd *ucmd, CMoveD
 //-----------------------------------------------------------------------------
 void CBaseServerVehicle::ItemPostFrame( CBaseEntity *player )
 {
-	Assert( player == GetDriver() );
+	// Assert( player == GetDriver() );
 
 	GetDrivableVehicle()->ItemPostFrame( player );
 
@@ -2662,7 +2662,7 @@ int CBaseServerVehicle::NPC_GetAvailableSeat_Any( CBaseEntity *pPassenger, int n
 int CBaseServerVehicle::NPC_GetAvailableSeat_Nearest( CBaseEntity *pPassenger, int nRoleID )
 {
 	// Not yet implemented
-	Assert( 0 );
+	// Assert( 0 );
 	return -1;
 }
 
@@ -2699,7 +2699,7 @@ int CBaseServerVehicle::NPC_GetAvailableSeat( CBaseEntity *pPassenger, string_t 
 			break;
 
 		default:
-			Assert( 0 );
+			// Assert( 0 );
 			break;
 	};
 
@@ -2799,14 +2799,14 @@ void CBaseServerVehicle::RestorePassengerInfo( void )
 			{
 				// The seat attachment was not found.  This most likely means that the seat attachment name has changed
 				// in the target vehicle and the NPC passenger is now stranded!
-				Assert( 0 );
+				// Assert( 0 );
 			}
 		}
 		else
 		{
 			// The role was not found.  This most likely means that the role names have changed
 			// in the target vehicle and the NPC passenger is now stranded!
-			Assert( 0 );
+			// Assert( 0 );
 		}
 	}
 }

@@ -4,21 +4,21 @@
 
 class CCombatWeapon;
 
-#define WEAPON_SMG1_REPLACE			weapon_ak47
-#define WEAPON_AR2_REPLACE			weapon_p90
-#define WEAPON_SHOTGUN_REPLACE		weapon_m3
-#define WEAPON_RPG_REPLACE			weapon_flashbang
-#define WEAPON_STUNSTICK_REPLACE	weapon_knife
-#define WEAPON_ALYXGUN_REPLACE		weapon_p228
-#define WEAPON_PISTOL_REPLACE		weapon_deagle
+#define WEAPON_SMG1_REPLACE			tf_weapon_crossbow
+#define WEAPON_AR2_REPLACE			tf_weapon_charged_smg
+#define WEAPON_SHOTGUN_REPLACE		tf_weapon_sentry_revenge
+#define WEAPON_RPG_REPLACE			tf_weapon_rocketlauncher_fireball
+#define WEAPON_STUNSTICK_REPLACE	tf_weapon_breakable_sign
+#define WEAPON_ALYXGUN_REPLACE		tf_weapon_pep_brawler_blaster
+#define WEAPON_PISTOL_REPLACE		tf_weapon_raygun
 
-#define WEAPON_SMG1_REPLACE_NAME		"weapon_ak47"
-#define WEAPON_AR2_REPLACE_NAME			"weapon_p90"
-#define WEAPON_SHOTGUN_REPLACE_NAME		"weapon_m3"
-#define WEAPON_RPG_REPLACE_NAME			"weapon_flashbang"
-#define WEAPON_STUNSTICK_REPLACE_NAME	"weapon_knife"
-#define WEAPON_ALYXGUN_REPLACE_NAME		"weapon_p228"
-#define WEAPON_PISTOL_REPLACE_NAME		"weapon_deagle"
+#define WEAPON_SMG1_REPLACE_NAME		"tf_weapon_crossbow"
+#define WEAPON_AR2_REPLACE_NAME			"tf_weapon_charged_smg"
+#define WEAPON_SHOTGUN_REPLACE_NAME		"tf_weapon_sentry_revenge"
+#define WEAPON_RPG_REPLACE_NAME			"tf_weapon_rocketlauncher_fireball"
+#define WEAPON_STUNSTICK_REPLACE_NAME	"tf_weapon_breakable_sign"
+#define WEAPON_ALYXGUN_REPLACE_NAME		"tf_weapon_pep_brawler_blaster"
+#define WEAPON_PISTOL_REPLACE_NAME		"tf_weapon_raygun"
 
 const char *GetWeaponReplaceName(const char *name);
 const char *NPC_WeaponReplace(const char *classname);

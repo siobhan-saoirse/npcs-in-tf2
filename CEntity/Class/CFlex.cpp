@@ -117,7 +117,7 @@ bool CFlex::EnterSceneSequence( CChoreoScene *scene, CChoreoEvent *event, bool b
 	{
 		if (myNpc->Get_m_hCine())
 		{
-			// Assert( !(myNpc->GetFlags() & FL_FLY ) );
+			// // Assert( !(myNpc->GetFlags() & FL_FLY ) );
 			myNpc->ExitScriptedSequence( );
 		}
 
@@ -235,7 +235,7 @@ public:
 	{
 		// See if it's already loaded
 		int i;
-		for ( i = 0; i < m_FileList.Size(); i++ )
+		for ( i = 0; i < m_FileList.Count(); i++ )
 		{
 			CFlexSceneFile *file = m_FileList[ i ];
 			if ( file && !stricmp( file->filename, filename ) )
@@ -331,7 +331,7 @@ LocalFlexController_t CFlex::FlexControllerLocalToGlobal( const flexsettinghdr_t
 	if ( idx == m_LocalToGlobal->InvalidIndex() )
 	{
 		// This should never happen!!!
-		Assert( 0 );
+		// Assert( 0 );
 		Warning( "Unable to find mapping for flexcontroller %i, settings %p on %i/%s\n", key, pSettinghdr, entindex(), GetClassname() );
 		EnsureTranslations( pSettinghdr );
 		idx = m_LocalToGlobal->Find( entry );
@@ -343,14 +343,14 @@ LocalFlexController_t CFlex::FlexControllerLocalToGlobal( const flexsettinghdr_t
 
 	FS_LocalToGlobal_t& result = m_LocalToGlobal->Element(idx);
 	// Validate lookup
-	Assert( result.m_nCount != 0 && key < result.m_nCount );
+	// Assert( result.m_nCount != 0 && key < result.m_nCount );
 	LocalFlexController_t index = result.m_Mapping[ key ];
 	return index;
 }
 
 void CFlex::EnsureTranslations( const flexsettinghdr_t *pSettinghdr )
 {
-	Assert( pSettinghdr );
+	// Assert( pSettinghdr );
 
 	FS_LocalToGlobal_t entry( pSettinghdr );
 

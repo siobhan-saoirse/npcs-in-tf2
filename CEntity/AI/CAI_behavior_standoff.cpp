@@ -874,7 +874,7 @@ void CAI_StandoffBehavior::StartTask( const Task_t *pTask )
 							{
 								if ( !GetTacticalServices()->FindLateralCover( enemyEyePos, 0, &coverPos ) )
 								{
-									Assert( coverPos == vec3_origin );
+									// Assert( coverPos == vec3_origin );
 								}
 							}
 							m_fIgnoreFronts = false;
@@ -1048,7 +1048,7 @@ void CAI_MappedActivityBehavior_Temporary::UpdateTranslateActivityMap()
 		{
 			if ( HaveSequenceForActivity( mappings[i].translation ) || HaveSequenceForActivity( GetOuter()->Weapon_TranslateActivity( mappings[i].translation, NULL ) ) )
 			{
-				Assert( m_ActivityMap.Find( MAKE_ACTMAP_KEY( mappings[i].posture, mappings[i].activity ) ) == m_ActivityMap.InvalidIndex() );
+				// Assert( m_ActivityMap.Find( MAKE_ACTMAP_KEY( mappings[i].posture, mappings[i].activity ) ) == m_ActivityMap.InvalidIndex() );
 				m_ActivityMap.Insert( MAKE_ACTMAP_KEY( mappings[i].posture, mappings[i].activity ), mappings[i].translation );
 			}
 		}

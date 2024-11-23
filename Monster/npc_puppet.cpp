@@ -26,7 +26,7 @@ private:
 	DECLARE_DATADESC();
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_puppet, cycler, CNPC_Puppet );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_puppet, monster_generic, CNPC_Puppet );
 
 BEGIN_DATADESC( CNPC_Puppet )
 					DEFINE_KEYFIELD( m_sAnimTargetname, FIELD_STRING,	"animationtarget" ),

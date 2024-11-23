@@ -180,7 +180,7 @@ CRocketTrail* CRocketTrail::CreateRocketTrail()
 	if( pEnt != NULL )
 	{
 		CRocketTrail *pTrail = dynamic_cast<CRocketTrail*>(pEnt);
-		Assert(pTrail);
+		// Assert(pTrail);
 
 		if( pTrail != NULL )
 		{

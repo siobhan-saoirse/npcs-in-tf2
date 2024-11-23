@@ -104,7 +104,7 @@ void CAnimatingOverlay::SetLayerPlaybackRate( int iLayer, float flPlaybackRate )
 	if (!IsValidLayer( iLayer ))
 		return;
 
-	Assert( flPlaybackRate > -1.0 && flPlaybackRate < 40.0);
+	// Assert( flPlaybackRate > -1.0 && flPlaybackRate < 40.0);
 
 	CAnimationLayer	*p_m_AnimOverlay = &m_AnimOverlay->Element(iLayer);
 	p_m_AnimOverlay->m_flPlaybackRate = flPlaybackRate;
@@ -284,7 +284,7 @@ int CAnimatingOverlay::AddGestureSequence( int sequence, bool autokill /*= true*
 int CAnimatingOverlay::AddGestureSequence( int nSequence, float flDuration, bool autokill /*= true*/ )
 {
 	int iLayer = AddGestureSequence( nSequence, autokill );
-	Assert( iLayer != -1 );
+	// Assert( iLayer != -1 );
 
 	if (iLayer >= 0 && flDuration > 0)
 	{

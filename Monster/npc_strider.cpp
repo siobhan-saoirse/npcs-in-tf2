@@ -42,7 +42,7 @@ int g_interactionPlayerLaunchedRPG = 0;
 // Changing this classname avoids bugs where ai_relationship entities that change the
 // strider's relationship with bullseyes would affect its relationship with the focus
 
-LINK_ENTITY_TO_CUSTOM_CLASS( bullseye_strider_focus, cycler, CNPC_Bullseye );
+LINK_ENTITY_TO_CUSTOM_CLASS( bullseye_strider_focus, monster_generic, CNPC_Bullseye );
 
 //-----------------------------------------------------------------------------
 
@@ -259,7 +259,7 @@ enum
 
 //-------------------------------------
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_strider, cycler, CNPC_Strider );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_strider, monster_generic, CNPC_Strider );
 
 //-------------------------------------
 
@@ -674,7 +674,7 @@ void CNPC_Strider::Activate()
 	{
 		// Have to create a virgin strider to ensure proper pose
 		CNPC_Strider *pStrider = (CNPC_Strider *)CreateEntityByName( "npc_strider" );
-		Assert(pStrider);
+		// Assert(pStrider);
 		pStrider->m_bDisableBoneFollowers = true; // don't create these since we're just going to destroy him
 		DispatchSpawn( pStrider->BaseEntity() );
 
@@ -758,7 +758,7 @@ const Vector &CNPC_Strider::GetViewOffset()
 	vOffset.y = 0;
 	vOffset.z = ( GetHeight() - GetMaxHeightModel() ) + gm_zMinigunDist;
 
-	Assert( VectorsAreEqual( GetAbsOrigin() + vOffset, EyePosition(), 0.1 ));
+	// Assert( VectorsAreEqual( GetAbsOrigin() + vOffset, EyePosition(), 0.1 ));
 
 	SetViewOffset( vOffset );
 
@@ -775,7 +775,7 @@ void CNPC_Strider::CalculateIKLocks( float currentTime )
 
 	if ( temp_m_pIk && temp_m_pIk->m_target.Count() )
 	{
-		Assert(temp_m_pIk->m_target.Count() > STOMP_IK_SLOT);
+		// Assert(temp_m_pIk->m_target.Count() > STOMP_IK_SLOT);
 		// HACKHACK: Hardcoded 11???  Not a cleaner way to do this
 		CIKTarget &target = temp_m_pIk->m_target[STOMP_IK_SLOT];
 		target.SetPos( m_vecHitPos );
@@ -1467,7 +1467,7 @@ void CNPC_Strider::StartTask( const Task_t *pTask )
 			break;
 
 		case TASK_STRIDER_REFRESH_HUNT_PATH:
-			Assert( GetGoalEnt() );
+			// Assert( GetGoalEnt() );
 			if ( GetGoalEnt() )
 			{
 				AI_NavGoal_t goal(GOALTYPE_PATHCORNER, GetGoalEnt()->GetLocalOrigin(), ACT_WALK, AIN_DEF_TOLERANCE, AIN_YAW_TO_DEST);
@@ -1638,7 +1638,7 @@ void CNPC_Strider::RunTask( const Task_t *pTask )
 			if ( IsActivityFinished() )
 			{
 				// UNDONE: Fix this bug!
-				//Assert(!IsMarkedForDeletion());
+				//// Assert(!IsMarkedForDeletion());
 				if ( !IsMarkedForDeletion() )
 				{
 					CTakeDamageInfo info;
@@ -2032,7 +2032,7 @@ void CNPC_Strider::InputDisableCollisionWith( inputdata_t &inputdata )
 	for (idx = 0 ; pFol = GetBoneFollowerByIndex(idx) ; ++idx) // stop when the function starts returning null (idx is no longer good)
 	{
 		IPhysicsObject *pFollowPhys = pFol->VPhysicsGetObject();
-		Assert(pFollowPhys);
+		// Assert(pFollowPhys);
 		PhysDisableEntityCollisions( pIgnorePhys, pFollowPhys );
 	}
 }
@@ -2054,7 +2054,7 @@ void CNPC_Strider::InputDisableCollisionWith( inputdata_t &inputdata )
 	for (int idx = m_BoneFollowerManager.GetNumBoneFollowers() - 1 ; idx >= 0 ; --idx) // stop when the function starts returning null (idx is no longer good)
 	{
 		IPhysicsObject *pFollowPhys = GetBoneFollowerByIndex(idx)->VPhysicsGetObject();
-		Assert(pFollowPhys);
+		// Assert(pFollowPhys);
 		PhysDisableEntityCollisions( pIgnorePhys, pFollowPhys );
 	}
 }
@@ -2076,9 +2076,9 @@ void CNPC_Strider::InputEnableCollisionWith( inputdata_t &inputdata )
 	{
 		/*
 		pFol = GetBoneFollowerByIndex(idx);
-		Assert(pFol);
+		// Assert(pFol);
 		IPhysicsObject *pFollowPhys = pFol->VPhysicsGetObject();
-		Assert(pFollowPhys);
+		// Assert(pFollowPhys);
 		*/
 		IPhysicsObject *pFollowPhys = GetBoneFollowerByIndex(idx)->VPhysicsGetObject();
 		PhysEnableEntityCollisions( pIgnorePhys, pFollowPhys );
@@ -2490,7 +2490,7 @@ bool CNPC_Strider::WeaponLOSCondition(const Vector &ownerPos, const Vector &targ
 	vRootOffset.x = vRootOffset.y = 0;
 	if ( GetCannonTarget() )
 	{
-		//Assert( targetPos == GetCannonTarget()->GetAbsOrigin() );
+		//// Assert( targetPos == GetCannonTarget()->GetAbsOrigin() );
 		pTargetEnt = GetCannonTarget();
 		vRootOffset.z = gm_zCannonDist;
 		vBarrelOffset = gm_vLocalRelativePositionCannon;
@@ -2711,7 +2711,7 @@ void CNPC_Strider::CreateFocus()
 {
 	CEntity *cent = CreateEntityByName( "bullseye_strider_focus" );
 
-	Assert( cent != NULL );
+	// Assert( cent != NULL );
 	m_hFocus.Set(cent->BaseEntity());
 	cent->AddSpawnFlags( SF_BULLSEYE_NONSOLID | SF_BULLSEYE_NODAMAGE );
 	cent->SetAbsOrigin( GetAbsOrigin() );
@@ -2723,7 +2723,7 @@ void CNPC_Strider::CreateFocus()
 CNPC_Bullseye *CNPC_Strider::GetFocus()
 {
 	CEntity *temp = m_hFocus;
-	Assert( temp != NULL );
+	// Assert( temp != NULL );
 	CNPC_Bullseye *pBull = dynamic_cast<CNPC_Bullseye*>(temp);
 
 	return pBull;
@@ -3230,7 +3230,7 @@ bool CNPC_Strider::BecomeRagdoll( const CTakeDamageInfo &info, const Vector &for
 				{
 					if ( pRagdoll->GetModelName() == GetModelName() && !pRagdoll->IsFading() )
 					{
-						Assert( striderRagdolls.Count() < striderRagdolls.NumAllocated() );
+						// Assert( striderRagdolls.Count() < striderRagdolls.NumAllocated() );
 						if ( striderRagdolls.Count() < striderRagdolls.NumAllocated() )
 							striderRagdolls.AddToTail( pRagdoll );
 					}
@@ -3913,7 +3913,7 @@ bool CNPC_Strider::AimCannonAt( CEntity *pEntity, float flInterval )
 //---------------------------------------------------------
 void CNPC_Strider::FireCannon()
 {
-	Assert( m_hCannonTarget != NULL );
+	// Assert( m_hCannonTarget != NULL );
 	if ( !m_hCannonTarget )
 	{
 		DevMsg( "Strider firing cannon at NULL target\n" );
@@ -4479,7 +4479,7 @@ bool CNPC_Strider::CNavigator::DoFindPathToPos()
 			if ( pLastNodeWaypoint && pLastNodeWaypoint->iNodeID == NO_NODE )
 			{
 				// Pathfinder triangulated to goal
-				Assert( pLastNodeWaypoint->GetPrev() );
+				// Assert( pLastNodeWaypoint->GetPrev() );
 				if ( pLastNodeWaypoint->GetPrev() )
 				{
 					pLastNodeWaypoint->GetPrev()->SetNext( pLast );
@@ -4488,10 +4488,10 @@ bool CNPC_Strider::CNavigator::DoFindPathToPos()
 				}
 			}
 
-			Assert( pLastNodeWaypoint );
+			// Assert( pLastNodeWaypoint );
 			if ( pLastNodeWaypoint )
 			{
-				Assert( pLastNodeWaypoint->iNodeID != NO_NODE );
+				// Assert( pLastNodeWaypoint->iNodeID != NO_NODE );
 				if ( pLastNodeWaypoint->iNodeID != NO_NODE )
 				{
 					CAI_Node *pLastNode = GetNetwork()->GetNode( pLastNodeWaypoint->iNodeID );
@@ -4772,7 +4772,7 @@ void CStriderMinigun::Init()
 //---------------------------------------------------------
 bool CStriderMinigun::ShouldFindTarget( IMinigunHost *pHost )
 {
-	Assert( pHost != NULL );
+	// Assert( pHost != NULL );
 
 	if( !GetTarget() )
 	{
@@ -5092,7 +5092,7 @@ bool CStriderMinigun::CanStartShooting( IStriderMinigunHost *pHost, CEntity *pTa
 		// hiding behind something breakable. If the weapon has LOS, fire away.
 		if( !pHost->GetEntity()->HasCondition( COND_SEE_ENEMY )  )
 		{
-			Assert( pStrider != NULL );
+			// Assert( pStrider != NULL );
 
 			if( !pStrider->WeaponLOSCondition( pStrider->GetAdjustedOrigin(), pTargetEnt->WorldSpaceCenter(), false ) )
 			{

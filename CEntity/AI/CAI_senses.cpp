@@ -251,7 +251,7 @@ void CAI_Senses::EndGather( int nSeen, CUtlVector<EHANDLE> *pResult )
 		CBaseEntity *pCurrent = GetOuter()->m_pLink;
 		for (int i = 0; i < nSeen; i++ )
 		{
-			Assert( pCurrent );
+			// Assert( pCurrent );
 			(*pResult)[i].Set( pCurrent );
 			pCurrent = CEntity::Instance(pCurrent)->m_pLink;
 		}

@@ -133,7 +133,7 @@ public:
 	template <typename T>
 	void					SetSquadData( unsigned slot, const T &data )
 	{
-		Assert( slot < MAX_SQUAD_DATA_SLOTS );
+		// Assert( slot < MAX_SQUAD_DATA_SLOTS );
 		if ( slot < MAX_SQUAD_DATA_SLOTS )
 		{
 			m_SquadData[slot] = *((int *)&data);
@@ -143,7 +143,7 @@ public:
 	template <typename T>
 	void					GetSquadData( unsigned slot, T *pData )
 	{
-		Assert( slot < MAX_SQUAD_DATA_SLOTS );
+		// Assert( slot < MAX_SQUAD_DATA_SLOTS );
 		if ( slot < MAX_SQUAD_DATA_SLOTS )
 		{
 			*pData = *((T *)&m_SquadData[slot]);

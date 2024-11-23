@@ -625,7 +625,7 @@ void CBaseHeadcrab::HandleAnimEvent( animevent_t *pEvent )
 
 	if ( pEvent->event == AE_HEADCRAB_BURROW_OUT )
 	{
-		Assert( m_bBurrowed );
+		// Assert( m_bBurrowed );
 		if ( m_bBurrowed )
 		{
 			EmitSound( "NPC_Headcrab.BurrowOut" );
@@ -1013,7 +1013,7 @@ void CBaseHeadcrab::PrescheduleThink( void )
 		 ( eActivity != ACT_HEADCRAB_BURROW_OUT ) &&
 		 ( eActivity != ACT_HEADCRAB_BURROW_IN) )
 	{
-		Assert( 0 );
+		// Assert( 0 );
 		SetBurrowed( false );
 	}
 }
@@ -1070,7 +1070,7 @@ void CBaseHeadcrab::EliminateRollAndPitch()
 //-----------------------------------------------------------------------------
 void CBaseHeadcrab::BeginClimbFromCanister()
 {
-	Assert( GetMoveParent() );
+	// Assert( GetMoveParent() );
 	// Compute a desired position or hint
 	Vector vecForward, vecActualForward;
 	AngleVectors( GetMoveParent()->GetAbsAngles(), &vecActualForward );
@@ -1142,7 +1142,7 @@ void CBaseHeadcrab::BeginClimbFromCanister()
 
 void CBaseHeadcrab::JumpFromCanister()
 {
-	Assert( GetMoveParent() );
+	// Assert( GetMoveParent() );
 
 	Vector vecForward, vecActualForward, vecActualRight;
 	AngleVectors( GetMoveParent()->GetAbsAngles(), &vecActualForward, &vecActualRight, NULL );
@@ -2328,7 +2328,7 @@ void CBaseHeadcrab::BuildScheduleTestBits( void )
 
 
 // Headcrab
-LINK_ENTITY_TO_CUSTOM_CLASS(npc_headcrab, cycler, CHeadcrab);
+LINK_ENTITY_TO_CUSTOM_CLASS(npc_headcrab, monster_generic, CHeadcrab);
 
 void CHeadcrab::Precache(void)
 {
@@ -2483,7 +2483,7 @@ float CHeadcrab::MaxYawSpeed ( void )
 
 
 // Fast Headcrab
-LINK_ENTITY_TO_CUSTOM_CLASS(npc_headcrab_fast, cycler, CFastHeadcrab);
+LINK_ENTITY_TO_CUSTOM_CLASS(npc_headcrab_fast, monster_generic, CFastHeadcrab);
 
 
 //-----------------------------------------------------------------------------
@@ -2898,8 +2898,8 @@ bool CFastHeadcrab::QuerySeeEntity(CBaseEntity *pSightEnt, bool bOnlyHateOrFearI
 
 
 // Black Headcrab
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_headcrab_black, cycler, CBlackHeadcrab );
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_headcrab_poison, cycler, CBlackHeadcrab );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_headcrab_black, monster_generic, CBlackHeadcrab );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_headcrab_poison, monster_generic, CBlackHeadcrab );
 
 int ACT_BLACKHEADCRAB_RUN_PANIC;
 

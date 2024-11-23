@@ -897,7 +897,7 @@ AIMoveResult_t CAI_Motor::MoveNormalExecute( const AILocalMoveGoal_t &move )
 	}
 	else
 	{
-		Assert( move.navType == NAV_FLY );
+		// Assert( move.navType == NAV_FLY );
 		fMotorResult = MoveFlyExecute( move, &moveTrace );
 	}
 
@@ -909,7 +909,7 @@ AIMoveResult_t CAI_Motor::MoveNormalExecute( const AILocalMoveGoal_t &move )
 					AIMR_BLOCKED_WORLD,                      // AIM_PARTIAL_HIT_WORLD
 					AIMR_BLOCKED_WORLD,                      // AIM_PARTIAL_HIT_TARGET
 			};
-	Assert( (AIMotorMoveResult_t)ARRAYSIZE( moveResults ) == AIM_NUM_RESULTS && fMotorResult >= 0 && fMotorResult <= (AIMotorMoveResult_t)ARRAYSIZE( moveResults ) );
+	// Assert( (AIMotorMoveResult_t)ARRAYSIZE( moveResults ) == AIM_NUM_RESULTS && fMotorResult >= 0 && fMotorResult <= (AIMotorMoveResult_t)ARRAYSIZE( moveResults ) );
 
 	AIMoveResult_t result = moveResults[fMotorResult];
 

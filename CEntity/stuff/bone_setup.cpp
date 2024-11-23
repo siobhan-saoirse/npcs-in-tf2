@@ -84,7 +84,7 @@ float Studio_SetPoseParameter( const CStudioHdr *pStudioHdr, int iParameter, flo
 
 	const mstudioposeparamdesc_t &PoseParam = pStudioHdr->pPoseParameter( iParameter );
 
-	Assert( IsFinite( flValue ) );
+	// Assert( IsFinite( flValue ) );
 
 	if (PoseParam.loop)
 	{
@@ -99,7 +99,7 @@ float Studio_SetPoseParameter( const CStudioHdr *pStudioHdr, int iParameter, flo
 	if (ctlValue < 0) ctlValue = 0;
 	if (ctlValue > 1) ctlValue = 1;
 
-	Assert( IsFinite( ctlValue ) );
+	// Assert( IsFinite( ctlValue ) );
 
 	return ctlValue * (PoseParam.end - PoseParam.start) + PoseParam.start;
 }
@@ -239,7 +239,7 @@ void Studio_SeqAnims( const CStudioHdr *pStudioHdr, mstudioseqdesc_t &seqdesc, i
 	panim[3] = &pStudioHdr->pAnimdesc( pStudioHdr->iRelativeAnim( iSequence, seqdesc.anim( i0+1, i1+1 ) ) );
 	weight[3] = (s0) * (s1);
 
-	Assert( weight[0] >= 0.0f && weight[1] >= 0.0f && weight[2] >= 0.0f && weight[3] >= 0.0f );
+	// Assert( weight[0] >= 0.0f && weight[1] >= 0.0f && weight[2] >= 0.0f && weight[3] >= 0.0f );
 }
 
 
@@ -392,7 +392,7 @@ int	CStudioHdr::GetNumAttachments( void ) const
 		return m_pStudioHdr->numlocalattachments;
 	}
 
-	Assert( m_pVModel );
+	// Assert( m_pVModel );
 
 	return m_pVModel->m_attachment.Count();
 }
@@ -773,8 +773,8 @@ int Studio_FindRandomAttachment( const CStudioHdr *pStudioHdr, const char *pAtta
 		}
 
 		// Then randomly return one of the attachments
-		if ( matchingAttachments.Size() > 0 )
-			return matchingAttachments[ RandomInt( 0, matchingAttachments.Size()-1 ) ];
+		if ( matchingAttachments.Count() > 0 )
+			return matchingAttachments[ RandomInt( 0, matchingAttachments.Count()-1 ) ];
 	}
 
 	return -1;

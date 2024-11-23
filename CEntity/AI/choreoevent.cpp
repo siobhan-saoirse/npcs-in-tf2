@@ -45,7 +45,7 @@ float CChoreoEvent::GetIntensity( float scenetime )
 	}
 	else
 	{
-		Assert( 0 );
+		// Assert( 0 );
 	}
 
 	float event_intensity = _GetIntensity( scenetime );

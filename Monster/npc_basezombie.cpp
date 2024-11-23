@@ -266,7 +266,7 @@ bool CNPC_BaseZombie::FindNearestPhysicsObject( int iMaxMass )
 	{
 		pPhysObj = pList[ i ]->VPhysicsGetObject();
 
-		Assert( !( !pPhysObj || pPhysObj->GetMass() > iMaxMass || !pPhysObj->IsAsleep() ) );
+		// Assert( !( !pPhysObj || pPhysObj->GetMass() > iMaxMass || !pPhysObj->IsAsleep() ) );
 
 		Vector center = pList[ i ]->WorldSpaceCenter();
 		flDist = UTIL_DistApprox2D( GetAbsOrigin(), center );
@@ -2327,7 +2327,7 @@ void CNPC_BaseZombie::ReleaseHeadcrab( const Vector &vecOrigin, const Vector &ve
 
 void CNPC_BaseZombie::SetHeadcrabSpawnLocation( int iCrabAttachment, CAnimating *pCrab )
 {
-	Assert( iCrabAttachment > 0 );
+	// Assert( iCrabAttachment > 0 );
 
 	// get world location of intended headcrab root bone
 	matrix3x4_t attachmentToWorld;
@@ -2464,7 +2464,7 @@ Vector CNPC_BaseZombie::BodyTarget( const Vector &posSrc, bool bNoisy )
 Vector CNPC_BaseZombie::HeadTarget( const Vector &posSrc )
 {
 	int iCrabAttachment = LookupAttachment( "headcrab" );
-	Assert( iCrabAttachment > 0 );
+	// Assert( iCrabAttachment > 0 );
 
 	Vector vecPosition;
 

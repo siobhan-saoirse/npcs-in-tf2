@@ -177,7 +177,7 @@ BEGIN_DATADESC( CNPC_CScanner )
 END_DATADESC()
 
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_cscanner, cycler, CNPC_CScanner );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_cscanner, monster_generic, CNPC_CScanner );
 
 
 //-----------------------------------------------------------------------------
@@ -290,7 +290,7 @@ void CNPC_CScanner::Spawn(void)
 	// Watch for this error state
 	if ( m_bOnlyInspectPlayers && m_bNeverInspectPlayers )
 	{
-		Assert( 0 );
+		// Assert( 0 );
 		Warning( "ERROR: Scanner set to never and always inspect players!\n" );
 	}
 }
@@ -737,7 +737,7 @@ CEntity* CNPC_CScanner::BestInspectTarget(void)
 	for ( i = 0; i < candidates.Count(); i++ )
 	{
 		pEntity = candidates[i];
-		Assert( pEntity != this && (pEntity->MyNPCPointer() || pEntity->IsPlayer() ) );
+		// Assert( pEntity != this && (pEntity->MyNPCPointer() || pEntity->IsPlayer() ) );
 
 		CAI_NPC *pNPC = pEntity->MyNPCPointer();
 		if ( ( pNPC && pNPC->Classify() == CLASS_CITIZEN_PASSIVE ) || pEntity->IsPlayer() )
@@ -3041,7 +3041,7 @@ BEGIN_DATADESC( CNPC_ClawScanner )
 END_DATADESC()
 
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_clawscanner, cycler, CNPC_ClawScanner );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_clawscanner, monster_generic, CNPC_ClawScanner );
 
 //-----------------------------------------------------------------------------
 // Purpose: 

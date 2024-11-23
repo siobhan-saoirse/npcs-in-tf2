@@ -11,7 +11,7 @@
 #include "antlion_maker.h"
 #include "globalstate.h"
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_antlion, cycler, CNPC_Antlion );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_antlion, monster_generic, CNPC_Antlion );
 
 ConVar	sk_antlion_health( "sk_antlion_health", "0" );
 ConVar	sk_antlion_swipe_damage( "sk_antlion_swipe_damage", "0" );
@@ -2980,7 +2980,7 @@ public:
 
 	bool ShouldHitEntity( IHandleEntity *pHandleEntity, int contentsMask )
 	{
-		//Assert( dynamic_cast<CBaseEntity*>(pHandleEntity) );
+		//// Assert( dynamic_cast<CBaseEntity*>(pHandleEntity) );
 		CBaseEntity *pTestEntity = static_cast<CBaseEntity*>(pHandleEntity);
 
 		if ( GetPassEntity() )
@@ -3589,7 +3589,7 @@ void CNPC_Antlion::PrescheduleThink( void )
 		 ( eActivity != ACT_ANTLION_BURROW_IN) )
 	{
 		DevMsg( "Antlion failed to unburrow properly!\n" );
-		Assert( 0 );
+		// Assert( 0 );
 		RemoveEffects( EF_NODRAW );
 		RemoveSolidFlags( FSOLID_NOT_SOLID );
 		m_takedamage	= DAMAGE_YES;

@@ -221,7 +221,7 @@ int CActBusyAnimData::FindBusyAnim( Activity iActivity, const char *pSequence )
 	for ( int i = 0; i < iCount; i++ )
 	{
 		busyanim_t *pBusyAnim = &m_ActBusyAnims[i];
-		Assert( pBusyAnim );
+		// Assert( pBusyAnim );
 
 		if ( pSequence && pBusyAnim->iszName != NULL_STRING && !Q_stricmp( STRING(pBusyAnim->iszName), pSequence ) )
 			return i;
@@ -384,7 +384,7 @@ void CAI_ActBusyBehavior::Disable( void )
 //-----------------------------------------------------------------------------
 void CAI_ActBusyBehavior::ForceActBusy( CE_AI_ActBusyGoal *pGoal, CE_AI_Hint *pHintNode, float flMaxTime, bool bVisibleOnly, bool bTeleportToBusy, bool bUseNearestBusy, CEntity *pSeeEntity, Activity activity )
 {
-	Assert( !m_bLeaving );
+	// Assert( !m_bLeaving );
 
 	if ( m_bNeedsToPlayExitAnim )
 	{
@@ -497,7 +497,7 @@ bool CAI_ActBusyBehavior::IsStopBusying()
 //-----------------------------------------------------------------------------
 CE_AI_Hint *CAI_ActBusyBehavior::FindActBusyHintNode()
 {
-	Assert( !IsCombatActBusy() );
+	// Assert( !IsCombatActBusy() );
 
 	int iBits = bits_HINT_NODE_USE_GROUP;
 	if ( m_bVisibleOnly )
@@ -532,7 +532,7 @@ CE_AI_Hint *CAI_ActBusyBehavior::FindActBusyHintNode()
 //-----------------------------------------------------------------------------
 CE_AI_Hint *CAI_ActBusyBehavior::FindCombatActBusyHintNode()
 {
-	Assert( IsCombatActBusy() );
+	// Assert( IsCombatActBusy() );
 
 	CPlayer *pPlayer = UTIL_GetNearestPlayer(GetAbsOrigin());
 
@@ -578,7 +578,7 @@ CE_AI_Hint *CAI_ActBusyBehavior::FindCombatActBusyHintNode()
 //-----------------------------------------------------------------------------
 CE_AI_Hint *CAI_ActBusyBehavior::FindCombatActBusyTeleportHintNode()
 {
-	Assert( IsCombatActBusy() );
+	// Assert( IsCombatActBusy() );
 
 	CPlayer *pPlayer = UTIL_GetNearestPlayer(GetAbsOrigin());
 
@@ -2844,7 +2844,7 @@ void CE_AI_ActBusyQueueGoal::RecalculateQueueCount( void )
 void CE_AI_ActBusyQueueGoal::InputPlayerStartedBlocking( inputdata_t &inputdata )
 {
 	int iNode = inputdata.value.Int() - 1;
-	Assert( iNode >= 0 && iNode < MAX_QUEUE_NODES );
+	// Assert( iNode >= 0 && iNode < MAX_QUEUE_NODES );
 
 	m_bPlayerBlockedNodes[iNode] = true;
 
@@ -2921,7 +2921,7 @@ void CE_AI_ActBusyQueueGoal::PushNPCBackInQueue( CAI_NPC *pNPC, int iStartingNod
 void CE_AI_ActBusyQueueGoal::InputPlayerStoppedBlocking( inputdata_t &inputdata )
 {
 	int iNode = inputdata.value.Int() - 1;
-	Assert( iNode >= 0 && iNode < MAX_QUEUE_NODES );
+	// Assert( iNode >= 0 && iNode < MAX_QUEUE_NODES );
 
 	m_bPlayerBlockedNodes[iNode] = false;
 
@@ -3132,6 +3132,6 @@ CAI_ActBusyBehavior *CE_AI_ActBusyQueueGoal::GetQueueBehaviorForNPC( CAI_NPC *pN
 {
 	CAI_ActBusyBehavior *pBehavior;
 	pNPC->GetBehavior( &pBehavior );
-	Assert( pBehavior );
+	// Assert( pBehavior );
 	return pBehavior;
 }

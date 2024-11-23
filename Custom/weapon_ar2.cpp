@@ -148,7 +148,7 @@ void CNPCWeapon_AR2::FireNPCPrimaryAttack( CCombatCharacter *pOperator, bool bUs
 	Vector vecShootOrigin, vecShootDir;
 
 	CAI_NPC *npc = pOperator->MyNPCPointer();
-	Assert( npc != NULL );
+	// Assert( npc != NULL );
 
 	if ( bUseWeaponAngles )
 	{

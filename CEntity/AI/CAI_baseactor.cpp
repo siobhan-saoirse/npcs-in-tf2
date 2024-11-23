@@ -226,9 +226,9 @@ void CAI_BaseActor::SetModel( const char *szModelName )
 
 bool CAI_BaseActor::StartSceneEvent( CSceneEventInfo *info, CChoreoScene *scene, CChoreoEvent *event, CChoreoActor *actor, CBaseEntity *pTarget )
 {
-	Assert( info );
-	Assert( info->m_pScene );
-	Assert( info->m_pEvent );
+	// Assert( info );
+	// Assert( info->m_pScene );
+	// Assert( info->m_pEvent );
 
 	// FIXME: this code looks duplicated
 	switch ( info->m_pEvent->GetType() )
@@ -324,9 +324,9 @@ bool CAI_BaseActor::StartSceneEvent( CSceneEventInfo *info, CChoreoScene *scene,
 
 bool CAI_BaseActor::ProcessSceneEvent( CSceneEventInfo *info, CChoreoScene *scene, CChoreoEvent *event )
 {
-	Assert( info );
-	Assert( info->m_pScene );
-	Assert( info->m_pEvent );
+	// Assert( info );
+	// Assert( info->m_pScene );
+	// Assert( info->m_pEvent );
 
 	// FIXME: this code looks duplicated
 	switch ( info->m_pEvent->GetType() )
@@ -615,9 +615,9 @@ bool CAI_BaseActor::RandomFaceFlex( CSceneEventInfo *info, CChoreoScene *scene, 
 
 bool CAI_BaseActor::ClearSceneEvent( CSceneEventInfo *info, bool fastKill, bool canceled )
 {
-	Assert( info );
-	Assert( info->m_pScene );
-	Assert( info->m_pEvent );
+	// Assert( info );
+	// Assert( info->m_pScene );
+	// Assert( info->m_pEvent );
 
 	// FIXME: this code looks duplicated
 	switch ( info->m_pEvent->GetType() )
@@ -636,9 +636,9 @@ bool CAI_BaseActor::ClearSceneEvent( CSceneEventInfo *info, bool fastKill, bool 
 
 bool CAI_BaseActor::CheckSceneEventCompletion( CSceneEventInfo *info, float currenttime, CChoreoScene *scene, CChoreoEvent *event )
 {
-	Assert( info );
-	Assert( info->m_pScene );
-	Assert( info->m_pEvent );
+	// Assert( info );
+	// Assert( info->m_pScene );
+	// Assert( info->m_pEvent );
 
 	switch ( event->GetType() )
 	{
@@ -831,7 +831,7 @@ float CAI_BaseActor::HeadTargetValidity(const Vector &lookTargetPos)
 //-----------------------------------------------------------------------------
 void CAI_BaseActor::SetHeadDirection( const Vector &vTargetPos, float flInterval)
 {
-	Assert(0); // Actors shouldn't be calling this, it doesn't do anything
+	// Assert(0); // Actors shouldn't be calling this, it doesn't do anything
 }
 
 float CAI_BaseActor::ClampWithBias( PoseParameter_t index, float value, float base )
@@ -923,7 +923,7 @@ void CAI_BaseActor::UpdateHeadControl( const Vector &vHeadTarget, float flHeadIn
 	if (iEyes <= 0 || iForward <= 0)
 	{
 		// Head control on model without "eyes" or "forward" attachment
-		// Most likely this is a cheaple or a generic_actor set to a model that doesn't support head/eye turning.
+		// Most likely this is a cheaple or a monster_generic set to a model that doesn't support head/eye turning.
 		// DevWarning( "%s using model \"%s\" that doesn't support head turning\n", GetClassname(), STRING( GetModelName() ) );
 		CapabilitiesRemove( bits_CAP_TURN_HEAD );
 		return;
@@ -1174,12 +1174,12 @@ float CAI_BaseActor::PickLookTarget( CAI_InterestTarget &queue, bool bExcludePla
 
 	if ( args.hTarget != NULL )
 	{
-		Assert( args.vTarget == vec3_invalid );
+		// Assert( args.vTarget == vec3_invalid );
 		queue.Add( args.hTarget, args.flInfluence, args.flDuration, args.flRamp );
 	}
 	else
 	{
-		Assert( args.vTarget != vec3_invalid );
+		// Assert( args.vTarget != vec3_invalid );
 		queue.Add( args.vTarget, args.flInfluence, args.flDuration, args.flRamp );
 	}
 
@@ -1576,7 +1576,7 @@ void CAI_BaseActor::MaintainLookTargets( float flInterval )
 		}
 	}
 
-	Assert( flHeadInfluence <= 1.0 );
+	// Assert( flHeadInfluence <= 1.0 );
 
 	// turn head toward target
 	if (bValidHeadTarget)

@@ -233,7 +233,7 @@ bool CAI_Expresser::SpeakDispatchResponse( AIConcept_t concept, AI_Response *res
 	case RESPONSE_RESPONSE:
 		{
 			// This should have been recursively resolved already
-			Assert( 0 );
+			// Assert( 0 );
 		}
 		break;
 	case RESPONSE_PRINT:
@@ -302,7 +302,7 @@ void CAI_Expresser::SetSpokeConcept( AIConcept_t concept, AI_Response *response,
 
 float CAI_Expresser::GetResponseDuration( AI_Response *result )
 {
-	Assert( result );
+	// Assert( result );
 	char response[ 256 ];
 	result->GetResponse( response, sizeof( response ) );
 
@@ -318,7 +318,7 @@ float CAI_Expresser::GetResponseDuration( AI_Response *result )
 		break;
 	case RESPONSE_SENTENCE:
 		{
-			Assert( 0 );
+			// Assert( 0 );
 			return 999.0f;
 		}
 		break;
@@ -330,7 +330,7 @@ float CAI_Expresser::GetResponseDuration( AI_Response *result )
 	case RESPONSE_RESPONSE:
 		{
 			// This should have been recursively resolved already
-			Assert( 0 );
+			// Assert( 0 );
 		}
 		break;
 	case RESPONSE_PRINT:
@@ -373,7 +373,7 @@ AI_Response *CAI_Expresser::SpeakFindResponse( AIConcept_t concept, const char *
 	IResponseSystem *rs = GetOuter()->GetResponseSystem();
 	if ( !rs )
 	{
-		Assert( !"No response system installed for CAI_Expresser::GetOuter()!!!" );
+		// Assert( !"No response system installed for CAI_Expresser::GetOuter()!!!" );
 		return NULL;
 	}
 
@@ -416,13 +416,13 @@ AI_Response *CAI_Expresser::SpeakFindResponse( AIConcept_t concept, const char *
 
 	// Now that we have a criteria set, ask for a suitable response
 	AI_Response *result = new AI_Response;
-	Assert( result && "new AI_Response: Returned a NULL AI_Response!" );
+	// Assert( result && "new AI_Response: Returned a NULL AI_Response!" );
 	bool found = rs->FindBestResponse( set, *result, this );
 
 
 	if ( !found )
 	{
-		//Assert( !"rs->FindBestResponse: Returned a NULL AI_Response!" );
+		//// Assert( !"rs->FindBestResponse: Returned a NULL AI_Response!" );
 		delete result;
 		return NULL;
 	}
@@ -455,7 +455,7 @@ bool CAI_Expresser::CanSpeakConcept( AIConcept_t concept )
 	}
 
 	ConceptHistory_t *history = &m_ConceptHistories[iter];
-	Assert( history );
+	// Assert( history );
 
 	AI_Response *response = history->response;
 	if ( !response )

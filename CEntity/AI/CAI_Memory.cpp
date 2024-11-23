@@ -43,7 +43,7 @@ void CEAI_Enemies::SetFreeKnowledgeDuration( float flDuration )
 		// If your free knowledge time is greater than your discard time,
 		// you'll forget about secondhand enemies passed to you by squadmates
 		// as soon as you're given them.
-		//Assert( m_flFreeKnowledgeDuration < m_flEnemyDiscardTime );
+		//// Assert( m_flFreeKnowledgeDuration < m_flEnemyDiscardTime );
 
 		m_flFreeKnowledgeDuration = m_flEnemyDiscardTime - .1;
 	}
@@ -81,7 +81,7 @@ AI_EnemyInfo_t *CEAI_Enemies::Find( CBaseEntity *pEntity, bool bTryDangerMemory 
 	{
 		if ( !bTryDangerMemory || ( i = m_Map.Find( NULL ) ) == m_Map.InvalidIndex() )
 			return NULL;
-		Assert(m_Map[i]->bDangerMemory == true);
+		// Assert(m_Map[i]->bDangerMemory == true);
 	}
 	return m_Map[i];
 }
@@ -96,7 +96,7 @@ void CEAI_Enemies::SetEnemyDiscardTime( float flTime )
 		// If your free knowledge time is greater than your discard time,
 		// you'll forget about secondhand enemies passed to you by squadmates
 		// as soon as you're given them.
-		Assert( m_flFreeKnowledgeDuration < m_flEnemyDiscardTime );
+		// Assert( m_flFreeKnowledgeDuration < m_flEnemyDiscardTime );
 
 		m_flFreeKnowledgeDuration = m_flEnemyDiscardTime - .1;
 	}
@@ -327,7 +327,7 @@ AI_EnemyInfo_t *CEAI_Enemies::GetDangerMemory()
 	CMemMap::IndexType_t i = m_Map.Find( NULL );
 	if ( i == m_Map.InvalidIndex() )
 		return NULL;
-	Assert(m_Map[i]->bDangerMemory == true);
+	// Assert(m_Map[i]->bDangerMemory == true);
 	return m_Map[i];
 }
 

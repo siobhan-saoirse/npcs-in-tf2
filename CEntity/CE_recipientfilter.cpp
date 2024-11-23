@@ -69,7 +69,7 @@ bool CRecipientFilter::IsReliable( void ) const
 
 int CRecipientFilter::GetRecipientCount( void ) const
 {
-	return m_Recipients.Size();
+	return m_Recipients.Count();
 }
 
 int	CRecipientFilter::GetRecipientIndex( int slot ) const
@@ -152,7 +152,7 @@ void CRecipientFilter::SetIgnorePredictionCull( bool ignore )
 
 void CRecipientFilter::RemoveRecipient( CPlayer *player )
 {
-	Assert( player );
+	// Assert( player );
 	if ( player )
 	{
 		int index = player->entindex();
@@ -164,7 +164,7 @@ void CRecipientFilter::RemoveRecipient( CPlayer *player )
 
 void CRecipientFilter::AddRecipient( CPlayer *player )
 {
-	Assert( player );
+	// Assert( player );
 
 	int index = player->entindex();
 
@@ -230,14 +230,14 @@ void CPASAttenuationFilter::Filter( const Vector& origin, float attenuation /*= 
 		CEntity *ent = CEntity::Instance( index );
 		if ( !ent || !ent->IsPlayer() )
 		{
-			Assert( 0 );
+			// Assert( 0 );
 			continue;
 		}
 
 		CPlayer *player = ToBasePlayer( ent );
 		if ( !player )
 		{
-			Assert( 0 );
+			// Assert( 0 );
 			continue;
 		}
 

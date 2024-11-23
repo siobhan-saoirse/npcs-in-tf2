@@ -447,7 +447,7 @@ void CPropVehiclePrisonerPod::EnterVehicle( CBaseEntity *pPassenger )
 	else
 	{
 		// NPCs are not supported yet - jdw
-		Assert( 0 );
+		// Assert( 0 );
 	}
 }
 
@@ -565,7 +565,7 @@ void CPropVehiclePrisonerPod::InputEnterVehicleImmediate( inputdata_t &inputdata
 	else
 	{
 		// NPCs are not currently supported - jdw
-		Assert( 0 );
+		// Assert( 0 );
 	}
 }
 
@@ -592,10 +592,10 @@ CPropVehiclePrisonerPod *CPrisonerPodServerVehicle::GetPod( void )
 //-----------------------------------------------------------------------------
 void CPrisonerPodServerVehicle::ItemPostFrame( CBaseEntity *playerbase )
 {
-	Assert( playerbase == GetDriver() );
+	// Assert( playerbase == GetDriver() );
 
 	CPlayer *player = ToBasePlayer(CEntity::Instance(playerbase));
-	Assert( player );
+	// Assert( player );
 
 	GetDrivableVehicle()->ItemPostFrame( playerbase );
 
@@ -620,9 +620,9 @@ void CPrisonerPodServerVehicle::ItemPostFrame( CBaseEntity *playerbase )
 void CPrisonerPodServerVehicle::GetVehicleViewPosition( int nRole, Vector *pAbsOrigin, QAngle *pAbsAngles, float *pFOV /*= NULL*/ )
 {
 	// FIXME: This needs to be reconciled with the other versions of this function!
-	Assert( nRole == VEHICLE_ROLE_DRIVER );
+	// Assert( nRole == VEHICLE_ROLE_DRIVER );
 	CPlayer *pPlayer = ToBasePlayer( CEntity::Instance(GetDrivableVehicle()->GetDriver()) );
-	Assert( pPlayer );
+	// Assert( pPlayer );
 
 	*pAbsAngles = pPlayer->EyeAngles(); // yuck. this is an in/out parameter.
 

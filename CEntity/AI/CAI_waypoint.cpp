@@ -46,7 +46,7 @@ AI_Waypoint_t::AI_Waypoint_t( const Vector &initPosition, float initYaw, Navigat
 void CAI_WaypointList::RemoveAll()
 {
 	DeleteAll( &m_pFirstWaypoint );
-	Assert( m_pFirstWaypoint == NULL );
+	// Assert( m_pFirstWaypoint == NULL );
 }
 
 

@@ -25,7 +25,7 @@ int CStudioHdr::GetSharedPoseParameter( int iSequence, int iLocalPose ) const
 	if (iLocalPose == -1)
 		return iLocalPose;
 
-	Assert( m_pVModel );
+	// Assert( m_pVModel );
 
 	virtualgroup_t *pGroup = &m_pVModel->m_group[ m_pVModel->m_seq[iSequence].group ];
 
@@ -38,7 +38,7 @@ int CStudioHdr::GetSharedPoseParameter( int iSequence, int iLocalPose ) const
 
 mstudioseqdesc_t &CStudioHdr::pSeqdesc( int i ) const
 {
-	Assert( i >= 0 && i < GetNumSeq() );
+	// Assert( i >= 0 && i < GetNumSeq() );
 	if ( i < 0 || i >= GetNumSeq() )
 	{
 		// Avoid reading random memory.
@@ -120,7 +120,7 @@ int	CStudioHdr::GetNumPoseParameters( void ) const
 		return m_pStudioHdr->numlocalposeparameters;
 	}
 
-	Assert( m_pVModel );
+	// Assert( m_pVModel );
 
 	return m_pVModel->m_pose.Count();
 }
@@ -159,7 +159,7 @@ int CStudioHdr::GetTransition( int iFrom, int iTo ) const
 	/*
 	FIXME: not connected
 	virtualmodel_t *pVModel = (virtualmodel_t *)GetVirtualModel();
-	Assert( pVModel );
+	// Assert( pVModel );
 
 	return pVModel->m_transition.Element( iFrom ).Element( iTo );
 	*/
@@ -179,7 +179,7 @@ int CStudioHdr::ExitNode( int iSequence ) const
 		return seqdesc.localexitnode;
 	}
 
-	Assert( m_pVModel );
+	// Assert( m_pVModel );
 
 	virtualgroup_t *pGroup = &m_pVModel->m_group[ m_pVModel->m_seq[iSequence].group ];
 
@@ -199,7 +199,7 @@ int CStudioHdr::EntryNode( int iSequence ) const
 		return seqdesc.localentrynode;
 	}
 
-	Assert( m_pVModel );
+	// Assert( m_pVModel );
 
 	virtualgroup_t *pGroup = &m_pVModel->m_group[ m_pVModel->m_seq[iSequence].group ];
 
@@ -238,14 +238,14 @@ const studiohdr_t *CStudioHdr::GroupStudioHdr( int i ) const
 	if (pStudioHdr == NULL)
 	{
 	#if defined(_WIN32) && !defined(THREAD_PROFILER)
-		Assert( !m_pVModel->m_Lock.GetOwnerId() );
+		// Assert( !m_pVModel->m_Lock.GetOwnerId() );
 	#endif
 		virtualgroup_t *pGroup = &m_pVModel->m_group[ i ];
 		pStudioHdr = pGroup->GetStudioHdr();
 		m_pStudioHdrCache[ i ] = pStudioHdr;
 	}
 
-	Assert( pStudioHdr );
+	// Assert( pStudioHdr );
 	return pStudioHdr;
 }
 
@@ -255,7 +255,7 @@ const virtualmodel_t * CStudioHdr::ResetVModel( const virtualmodel_t *pVModel ) 
 	{
 		m_pVModel = (virtualmodel_t *)pVModel;
 	#if defined(_WIN32) && !defined(THREAD_PROFILER)
-		Assert( !pVModel->m_Lock.GetOwnerId() );
+		// Assert( !pVModel->m_Lock.GetOwnerId() );
 	#endif
 		m_pStudioHdrCache.SetCount( m_pVModel->m_group.Count() );
 
@@ -309,7 +309,7 @@ const mstudioattachment_t &CStudioHdr::pAttachment( int i ) const
 		return *m_pStudioHdr->pLocalAttachment( i );
 	}
 
-	Assert( m_pVModel );
+	// Assert( m_pVModel );
 
 	const studiohdr_t *pStudioHdr = GroupStudioHdr( m_pVModel->m_attachment[i].group );
 

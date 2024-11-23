@@ -19,21 +19,6 @@ public void OnPluginStart()
 	g_Cvar_Respawn = CreateConVar("monster_respawn_on_death", "2.0", "Specifies the delay that killed players should respawn after death (0 to disable respawn)", _, true, 0.0, true);
 
 	RegServerCmd("monster_game_end", Command_MapEnd, "Function that is called to signal successfull completion of the map");
-
-	HookEvent("player_death", Event_PlayerDeath);
-
-	// Disable "fire in the hole!" voice line and chat message when throwing grenades (weapon_rpg is using flashbang)
-	UserMsg radiotext = GetUserMessageId("RadioText");
-	if(!(radiotext == INVALID_MESSAGE_ID))
-	{
-		HookUserMessage(radiotext, UserMsgRadioText, true);
-	}
-	
-	UserMsg sendaudio = GetUserMessageId("SendAudio");
-	if(!(sendaudio == INVALID_MESSAGE_ID))
-	{
-		HookUserMessage(sendaudio, UserMsgSendAudio, true);
-	}
 }
 
 public void OnMapStart()

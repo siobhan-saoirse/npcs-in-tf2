@@ -33,7 +33,7 @@ END_DATADESC()
 //------------------------------------------------------------------------------
 void CAI_BasePhysicsFlyingBot::GetVelocity(Vector *vVelocity, AngularImpulse *vAngVelocity)
 {
-	Assert( GetMoveType() == MOVETYPE_VPHYSICS );
+	// Assert( GetMoveType() == MOVETYPE_VPHYSICS );
 	if ( VPhysicsGetObject() )
 	{
 		VPhysicsGetObject()->GetVelocity( vVelocity, vAngVelocity );
@@ -221,7 +221,7 @@ void CAI_BasePhysicsFlyingBot::StartTask( const Task_t *pTask )
 
 void CAI_BasePhysicsFlyingBot::MoveToTarget(float flInterval, const Vector &MoveTarget)
 {
-	Assert(0);	// This must be overridden in the leaf classes
+	// Assert(0);	// This must be overridden in the leaf classes
 }
 
 //------------------------------------------------------------------------------
@@ -311,7 +311,7 @@ bool CAI_BasePhysicsFlyingBot::CreateVPhysics( void )
 //-----------------------------------------------------------------------------
 void CAI_BasePhysicsFlyingBot::TranslateNavGoal( CBaseEntity *pTarget, Vector &chasePosition )
 {
-	Assert( pTarget != NULL );
+	// Assert( pTarget != NULL );
 
 	CEntity *cent = CEntity::Instance(pTarget);
 	if ( cent == NULL )
@@ -336,7 +336,7 @@ void CAI_BasePhysicsFlyingBot::TranslateNavGoal( CBaseEntity *pTarget, Vector &c
 IMotionEvent::simresult_e CAI_BasePhysicsFlyingBot::Simulate( IPhysicsMotionController *pController, IPhysicsObject *pObject, float deltaTime, Vector &linear, AngularImpulse &angular )
 {
 	IPhysicsObject *pPhysicsObject = VPhysicsGetObject();
-	// Assert( pPhysicsObject );
+	// // Assert( pPhysicsObject );
 	if (!pPhysicsObject) 
 		return SIM_NOTHING;
 

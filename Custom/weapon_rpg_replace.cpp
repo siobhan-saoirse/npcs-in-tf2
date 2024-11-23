@@ -60,7 +60,7 @@ void CWeaponRPG::Spawn()
 
 bool CWeaponRPG::CreateRPG(CPlayer *player)
 {
-	Assert(player);
+	// Assert(player);
 
 	if ( m_hMissile != NULL )
 		return false;

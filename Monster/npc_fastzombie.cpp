@@ -294,8 +294,8 @@ public:
 };
 
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_fastzombie, cycler, CFastZombie );
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_fastzombie_torso, cycler, CFastZombie );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_fastzombie, monster_generic, CFastZombie );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_fastzombie_torso, monster_generic, CFastZombie );
 
 
 BEGIN_DATADESC( CFastZombie )

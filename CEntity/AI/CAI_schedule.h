@@ -136,7 +136,8 @@ public:
 
 	bool HasInterrupt( int condition ) const
 	{
-		return m_InterruptMask.IsBitSet( condition );
+		//return m_InterruptMask.IsBitSet( condition );
+		return false;
 	}
 	
 	const char *GetName() const

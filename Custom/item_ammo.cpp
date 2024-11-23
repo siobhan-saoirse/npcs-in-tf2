@@ -47,7 +47,7 @@ public:
 
 
 BEGIN_DATADESC( CAmmo )
-	DEFINE_KEYFIELD( CAmmoItem::m_bRespawn,		FIELD_BOOLEAN,	"mm_respawn" ),
+//	DEFINE_KEYFIELD( CAmmoItem::m_bRespawn,		FIELD_BOOLEAN,	"mm_respawn" ),
 END_DATADESC()
 
 
@@ -70,7 +70,7 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 10, "BULLET_PLAYER_338MAG"))
+		if (ITEM_GiveAmmo(pPlayer, 10, "TF_AMMO_PRIMARY"))
 			return this;
 		return nullptr;
 	}
@@ -95,7 +95,7 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 13, "BULLET_PLAYER_357SIG"))
+		if (ITEM_GiveAmmo(pPlayer, 13, "TF_AMMO_PRIMARY"))
 			return this;
 		return nullptr;
 	}
@@ -120,7 +120,7 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 30, "BULLET_PLAYER_45ACP"))
+		if (ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_PRIMARY"))
 			return this;
 		return nullptr;
 	}
@@ -145,7 +145,7 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 7, "BULLET_PLAYER_50AE"))
+		if (ITEM_GiveAmmo(pPlayer, 7, "TF_AMMO_PRIMARY"))
 			return this;
 		return nullptr;
 	}
@@ -170,7 +170,7 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 30, "BULLET_PLAYER_556MM"))
+		if (ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_PRIMARY"))
 			return this;
 		return nullptr;
 	}
@@ -195,7 +195,7 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 50, "BULLET_PLAYER_556MM_BOX"))
+		if (ITEM_GiveAmmo(pPlayer, 50, "TF_AMMO_PRIMARY"))
 			return this;
 		return nullptr;
 	}
@@ -209,7 +209,7 @@ public:
 public:
 	 CEntity* MyTouch( CPlayer *pPlayer )
 	 {
-		if (ITEM_GiveAmmo(pPlayer, 50, "BULLET_PLAYER_57MM"))
+		if (ITEM_GiveAmmo(pPlayer, 50, "TF_AMMO_PRIMARY"))
 			return this;
 		return nullptr;
 	 }
@@ -234,7 +234,7 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 30, "BULLET_PLAYER_762MM"))
+		if (ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_PRIMARY"))
 			return this;
 		return nullptr;
 	}
@@ -259,7 +259,7 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 30, "BULLET_PLAYER_9MM"))
+		if (ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_PRIMARY"))
 			return this;
 		return nullptr;
 	}
@@ -284,7 +284,7 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 8, "BULLET_PLAYER_BUCKSHOT"))
+		if (ITEM_GiveAmmo(pPlayer, 8, "TF_AMMO_PRIMARY"))
 			return this;
 		return nullptr;
 	}
@@ -498,8 +498,6 @@ ConVar	sk_max_gauss_round		( "sk_max_gauss_round", "0" );
 // Gunship & Dropship cannons
 ConVar	sk_npc_dmg_gunship			( "sk_npc_dmg_gunship", "0" );
 ConVar	sk_npc_dmg_gunship_to_plr	( "sk_npc_dmg_gunship_to_plr", "0" );
-
-extern ConVar *ammo_hegrenade_max;
 
 void RegisterHL2AmmoTypes()
 {

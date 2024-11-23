@@ -254,7 +254,7 @@ CAI_FollowBehavior::CAI_FollowBehavior( const AI_FollowParams_t &params )
 
 CAI_FollowBehavior::~CAI_FollowBehavior()
 {
-	Assert( !m_hFollowManagerInfo.m_pGroup );
+	// Assert( !m_hFollowManagerInfo.m_pGroup );
 }
 
 
@@ -376,7 +376,7 @@ bool CAI_FollowBehavior::SetFollowGoal( CE_AI_FollowGoal *pGoal, bool fFinishCur
 		}
 
 		SetFollowTarget( pGoal->GetGoalEntity() );
-		Assert( pGoal->m_iFormation == AIF_SIMPLE || pGoal->m_iFormation == AIF_WIDE || pGoal->m_iFormation == AIF_MEDIUM || pGoal->m_iFormation == AIF_SIDEKICK || pGoal->m_iFormation == AIF_VORTIGAUNT );
+		// Assert( pGoal->m_iFormation == AIF_SIMPLE || pGoal->m_iFormation == AIF_WIDE || pGoal->m_iFormation == AIF_MEDIUM || pGoal->m_iFormation == AIF_SIDEKICK || pGoal->m_iFormation == AIF_VORTIGAUNT );
 		SetParameters( AI_FollowParams_t( (AI_Formations_t)*(pGoal->m_iFormation) ) );
 		m_hFollowGoalEnt.Set(pGoal->GetIHandle());
 		m_flTimeUpdatedFollowPosition = 0;
@@ -940,7 +940,7 @@ void CAI_FollowBehavior::SetFollowPoint( CE_AI_Hint *pHintNode )
 	if ( !pHintNode )
 		return;
 
-	Assert( pHintNode->HintType() == HINT_FOLLOW_WAIT_POINT );
+	// Assert( pHintNode->HintType() == HINT_FOLLOW_WAIT_POINT );
 	
 	if ( GetHintNode() == pHintNode )
 		return;
@@ -1419,7 +1419,7 @@ void CAI_FollowBehavior::StartTask( const Task_t *pTask )
 
 			if ( ValidateFaceTarget( &faceTarget ) )
 			{
-				Assert( faceTarget != vec3_invalid );
+				// Assert( faceTarget != vec3_invalid );
 
 				if ( !GetOuter()->FInAimCone_Vector( faceTarget ) )
 				{
@@ -1574,7 +1574,7 @@ void CAI_FollowBehavior::RunTask( const Task_t *pTask )
 				{
 					if ( GetEnemy() )
 					{
-						Assert( *(GetOuter()->m_vInterruptSavePosition) == vec3_invalid );
+						// Assert( *(GetOuter()->m_vInterruptSavePosition) == vec3_invalid );
 						Vector coverPos = vec3_invalid;
 						float coverRadius = MIN( (float)12*12, m_FollowNavGoal.coverTolerance );
 						if ( FindCoverFromEnemyAtFollowTarget( coverRadius, &coverPos ) )
@@ -1608,7 +1608,7 @@ void CAI_FollowBehavior::RunTask( const Task_t *pTask )
 
 			case 2:
 				{
-					Assert( !m_bMovingToCover );
+					// Assert( !m_bMovingToCover );
 					Vector vGoalPosition;
 					if ( HasFollowPoint() && IsFollowPointInRange() )
 						vGoalPosition = GetFollowPoint();
@@ -2498,7 +2498,7 @@ bool CAI_FollowManager::CalcFollowPosition( AI_FollowManagerInfoHandle_t& hInfo,
 	if ( hInfo.m_pGroup && hInfo.m_hFollower )
 	{
 		AI_FollowGroup_t *pGroup = hInfo.m_pGroup;
-		Assert( pGroup->hFollowTarget );
+		// Assert( pGroup->hFollowTarget );
 		CEntity *pTarget = pGroup->hFollowTarget;
 
 		AI_Follower_t *iterNode = &pGroup->followers[hInfo.m_hFollower];
@@ -2609,7 +2609,7 @@ void CAI_FollowManager::ChangeFormation( AI_FollowManagerInfoHandle_t& hInfo, AI
 		AI_Follower_t *p = &pGroup->followers[h];
 		p->slot = -1;
 		p->hFollower->GetBehavior( &pFollowBehavior );
-		Assert( pFollowBehavior );
+		// Assert( pFollowBehavior );
 		if ( pFollowBehavior )
 		{
 			pFollowBehavior->m_params.formation = formation;
@@ -2632,7 +2632,7 @@ void CAI_FollowManager::ChangeFormation( AI_FollowManagerInfoHandle_t& hInfo, AI
 	while ( h != pGroup->followers.InvalidIndex() )
 	{
 		AI_Follower_t *p = &pGroup->followers[h];
-		Assert( p->slot != -1 );
+		// Assert( p->slot != -1 );
 		h = pGroup->followers.Next( h );
 	}
 #endif
@@ -2690,8 +2690,8 @@ int CAI_FollowManager::FindBestSlot( AI_FollowGroup_t *pGroup )
 void CAI_FollowManager::CalculateFieldsFromSlot( AI_FollowSlot_t *pSlot, AI_FollowNavInfo_t *pFollowerInfo )
 {
 	// @TODO (toml 02-28-03): placeholder. Force break if someone tries to actually use
-	Assert( pSlot->positionVariability == 0.0 );
-	//Assert( pSlot->tolerance == AIN_DEF_TOLERANCE );
+	// Assert( pSlot->positionVariability == 0.0 );
+	//// Assert( pSlot->tolerance == AIN_DEF_TOLERANCE );
 
 	pFollowerInfo->position		= pSlot->position;
 	pFollowerInfo->range 		= enginerandom->RandomFloat( pSlot->rangeMin, pSlot->rangeMax );

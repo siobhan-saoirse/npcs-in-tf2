@@ -380,7 +380,7 @@ public:
 
 
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_antlionguard, cycler, CNPC_AntlionGuard );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_antlionguard, monster_generic, CNPC_AntlionGuard );
 
 
 
@@ -688,7 +688,7 @@ void CNPC_AntlionGuard::CreateGlow( CE_CSprite **pSprite, const char *pAttachNam
 
 	// Create the glow sprite
 	*pSprite = CE_CSprite::SpriteCreate( "sprites/grubflare1.vmt", GetLocalOrigin(), false );
-	Assert( *pSprite );
+	// Assert( *pSprite );
 	if ( *pSprite == NULL )
 		return;
 
@@ -1469,7 +1469,7 @@ public:
 void CNPC_AntlionGuard::Footstep( bool bHeavy )
 {
 	CPlayer *pPlayer = UTIL_GetNearestPlayer(GetAbsOrigin());
-	Assert( pPlayer != NULL );
+	// Assert( pPlayer != NULL );
 	if ( pPlayer == NULL )
 		return;
 
@@ -2391,7 +2391,7 @@ void ApplyChargeDamage( CEntity *pAntlionGuard, CEntity *pTarget, float flDamage
 
 #if HL2_EPISODIC
 	// If I am a cavern guard attacking the player, and he still lives, then poison him too.
-	Assert( dynamic_cast<CNPC_AntlionGuard *>(pAntlionGuard) );
+	// Assert( dynamic_cast<CNPC_AntlionGuard *>(pAntlionGuard) );
 
 	if ( static_cast<CNPC_AntlionGuard *>(pAntlionGuard)->IsInCavern() && pTarget->IsPlayer() && pTarget->IsAlive() && pTarget->m_iHealth > ANTLIONGUARD_POISON_TO)
 	{
@@ -2435,7 +2435,7 @@ public:
 			if ( !pEntity->IsNPC() && pEntity->GetMoveType() == MOVETYPE_VPHYSICS )
 			{
 				IPhysicsObject *pPhysics = pEntity->VPhysicsGetObject();
-				Assert(pPhysics);
+				// Assert(pPhysics);
 				if ( pPhysics->IsMoveable() && pPhysics->GetMass() < m_minMass )
 					return false;
 			}
@@ -3449,7 +3449,7 @@ bool CNPC_AntlionGuard::IsUnreachable(CBaseEntity *pEntity)
 	// as long as I iterate backwards and remove them using FastRemove
 
 	CUtlVector<UnreachableEnt_t> *data = m_UnreachableEnts;
-	for (int i=data->Size()-1;i>=0;i--)
+	for (int i=data->Count()-1;i>=0;i--)
 	{
 		// Remove any dead elements
 		if (data->Element(i).hUnreachableEnt == NULL)
@@ -4076,7 +4076,7 @@ bool CNPC_AntlionGuard::IsLightDamage( const CTakeDamageInfo &info )
 void CNPC_AntlionGuard::InputSummonedAntlionDied( inputdata_t &inputdata )
 {
 	m_iNumLiveAntlions--;
-	Assert( m_iNumLiveAntlions >= 0 );
+	// Assert( m_iNumLiveAntlions >= 0 );
 }
 
 bool CNPC_AntlionGuard::QueryHearSound( CSound *pSound )

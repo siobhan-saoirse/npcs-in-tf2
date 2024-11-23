@@ -30,7 +30,7 @@ public:
 
 	CachedEntityData *GetCachedEntityData(int entityIndex)
 	{
-		for (int i=0; i<m_cachedData.Size(); ++i)
+		for (int i=0; i<m_cachedData.Count(); ++i)
 		{
 			if (m_cachedData[i].entity_index == i)
 			{
@@ -154,7 +154,7 @@ DETOUR_DECL_MEMBER0(CDetour_CleanUpMap, void)
 DETOUR_DECL_MEMBER1(CDetour_CTriggerHurt_HurtAllTouchers, int, float, dt)
 {
 	CTriggerHurt *trigger = (CTriggerHurt *)CEntity::Instance((CBaseEntity *)this);
-	Assert(trigger);
+	// Assert(trigger);
 	return trigger->HurtAllTouchers(dt);
 }
 

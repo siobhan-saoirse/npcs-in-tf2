@@ -721,7 +721,7 @@ void CBounceBomb::UpdateLight( bool bTurnOn, unsigned int r, unsigned int g, uns
 {
 	if( bTurnOn )
 	{
-		Assert( a > 0 );
+		// Assert( a > 0 );
 
 		// Throw the old sprite away
 		if( m_hSprite )

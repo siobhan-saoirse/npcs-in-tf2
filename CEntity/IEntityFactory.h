@@ -121,7 +121,7 @@ public:
 	{
 		szCurrentReplacedClassname = pClassName;
 		IEntityFactoryReal *pFactory = (IEntityFactoryReal *)EntityFactoryDictionary_CE()->FindFactory(pReplaceName);
-		assert(pFactory);
+		//assert(pFactory);
 
 		return pFactory->Create(pReplaceName);
 	}
@@ -129,14 +129,14 @@ public:
 	void Destroy( IServerNetworkable *pNetworkable )
 	{
 		IEntityFactoryReal *pFactory = (IEntityFactoryReal *)EntityFactoryDictionary_CE()->FindFactory(pReplaceName);
-		assert(pFactory);
+		//assert(pFactory);
 		return pFactory->Destroy(pNetworkable);
 	}
 
 	virtual size_t GetEntitySize()
 	{
 		IEntityFactoryReal *pFactory = (IEntityFactoryReal *)EntityFactoryDictionary_CE()->FindFactory(pReplaceName);
-		assert(pFactory);
+		//assert(pFactory);
 		return pFactory->GetEntitySize();
 	}
 

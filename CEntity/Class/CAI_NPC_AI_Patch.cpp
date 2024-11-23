@@ -431,7 +431,7 @@ void CAI_NPC_AI_Patch::UpdateEfficiency( bool bInPVS )
 	int iPVSOffset = (bInPVS) ? 0 : NO_PVS_OFFSET;
 	int iMapping = iStateOffset + iPVSOffset + iFacingOffset + range;
 
-	Assert( iMapping < ARRAYSIZE( mappings ) );
+	// Assert( iMapping < ARRAYSIZE( mappings ) );
 
 	AI_Efficiency_t efficiency = mappings[iMapping];
 
@@ -568,7 +568,7 @@ CBaseEntity *CAI_NPC_AI_Patch::CreateCustomTarget( const Vector &vecOrigin, floa
 {
 	CNPC_Bullseye *pTarget = (CNPC_Bullseye*)CreateEntityByName( "npc_bullseye" );
 
-	Assert( pTarget != NULL );
+	// Assert( pTarget != NULL );
 
 	// Build a nonsolid bullseye and place it in the desired location
 	// The bullseye must take damage or the SetHealth 0 call will not be able

@@ -105,7 +105,7 @@ int FindTransitionSequence( CStudioHdr *pstudiohdr, int iCurrentSequence, int iG
 	if ( ( iGoalSequence < 0 ) || ( iGoalSequence >= pstudiohdr->GetNumSeq() ) )
 	{
 		// asking for a bogus sequence.  Punt.
-		Assert( 0 );
+		// Assert( 0 );
 		return iGoalSequence;
 	}
 

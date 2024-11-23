@@ -360,7 +360,7 @@ void GuessDamageForce( CTakeDamageInfo *info, const Vector &vecForceDir, const V
 {
 	if ( info->GetDamageType() & DMG_BULLET )
 	{
-		CalculateBulletDamageForce( info, GetAmmoDef()->Index("BULLET_PLAYER_762MM"), vecForceDir, vecForceOrigin, flScale );
+		CalculateBulletDamageForce( info, GetAmmoDef()->Index("TF_AMMO_PRIMARY"), vecForceDir, vecForceOrigin, flScale );
 	}
 	else if ( info->GetDamageType() & DMG_BLAST )
 	{
@@ -384,7 +384,7 @@ void CalculateBulletDamageForce( CTakeDamageInfo *info, int iBulletType, const V
 	vecForce *= phys_pushscale->GetFloat();
 	vecForce *= flScale;
 	info->SetDamageForce( vecForce );
-	Assert(vecForce!=vec3_origin);
+	// Assert(vecForce!=vec3_origin);
 }
 
 

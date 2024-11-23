@@ -332,7 +332,7 @@ protected:
 
 string_t CNPC_RollerMine::gm_iszDropshipClassname;
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_rollermine, cycler, CNPC_RollerMine );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_rollermine, monster_generic, CNPC_RollerMine );
 
 
 //-----------------------------------------------------------------------------
@@ -1093,7 +1093,7 @@ void CNPC_RollerMine::StartTask( const Task_t *pTask )
 
 			if ( pPhysicsObject == NULL )
 			{
-				assert(0);
+				//assert(0);
 				TaskFail("Roller lost internal physics object?");
 				return;
 			}
@@ -1109,7 +1109,7 @@ void CNPC_RollerMine::StartTask( const Task_t *pTask )
 			
 			if ( pPhysicsObject == NULL )
 			{
-				assert(0);
+				//assert(0);
 				TaskFail("Roller lost internal physics object?");
 				return;
 			}
@@ -1309,7 +1309,7 @@ void CNPC_RollerMine::RunTask( const Task_t *pTask )
 			
 			if ( pPhysicsObject == NULL )
 			{
-				assert(0);
+				//assert(0);
 				TaskFail("Roller lost internal physics object?");
 				return;
 			}
@@ -1429,7 +1429,7 @@ void CNPC_RollerMine::RunTask( const Task_t *pTask )
 
 			if ( pPhysicsObject == NULL )
 			{
-//				Assert(0);
+//				// Assert(0);
 				TaskFail("Roller lost internal physics object?");
 				return;
 			}
@@ -1952,7 +1952,7 @@ void CNPC_RollerMine::ShockTouch( CEntity *pOther )
 		return;
 
 	// error?
-	Assert( !m_bIsPrimed );
+	// Assert( !m_bIsPrimed );
 
 	Disposition_t disp = IRelationType(pOther->BaseEntity());
 
@@ -2160,7 +2160,7 @@ int CNPC_RollerMine::CountRollersOnMyVehicle( CUtlVector<CNPC_RollerMine*> *pRol
 		{
 			// Found another rollermine
 			CNPC_RollerMine *pMine = dynamic_cast<CNPC_RollerMine*>(pNPC);
-			Assert( pMine );
+			// Assert( pMine );
 
 			// Is he stuck to the same vehicle?
 			if ( pMine->GetVehicleStuckTo() == GetVehicleStuckTo() )
@@ -2266,7 +2266,7 @@ void CNPC_RollerMine::InputRespondToExplodeChirp( inputdata_t &inputdata )
 //-----------------------------------------------------------------------------
 void CNPC_RollerMine::InputJoltVehicle( inputdata_t &inputdata )
 {
-	Assert( GetVehicleStuckTo() );
+	// Assert( GetVehicleStuckTo() );
 
 	// First, tell all rollers on the vehicle not to fall off
 	CUtlVector<CNPC_RollerMine*> aRollersOnVehicle;

@@ -56,14 +56,14 @@ CE_CPathTrack *CE_CPathTrack::GetPrevious( void )
 //-----------------------------------------------------------------------------
 void CE_CPathTrack::BeginIteration()
 {
-	Assert( !(*(s_bIsIterating)) );
+	// Assert( !(*(s_bIsIterating)) );
 	++(*(s_nCurrIterVal));
 	*(s_bIsIterating) = true;
 }
 
 void CE_CPathTrack::EndIteration()
 {
-	Assert( *(s_bIsIterating) );
+	// Assert( *(s_bIsIterating) );
 	*(s_bIsIterating) = false;
 }
 

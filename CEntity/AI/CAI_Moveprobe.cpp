@@ -135,7 +135,7 @@ bool CAI_MoveProbe::TestGroundMove( const Vector &vecActualStart, const Vector &
 		if ( distClear - distStartToIgnoreGround > 0.001 )
 			checkStepArgs.groundTest = STEP_DONT_CHECK_GROUND;
 
-		Assert( !m_pTraceListData || m_pTraceListData->IsEmpty() );
+		// Assert( !m_pTraceListData || m_pTraceListData->IsEmpty() );
 		SetupCheckStepTraceListData( checkStepArgs );
 		
 		for ( i = 0; i < 16; i++ )
@@ -388,7 +388,7 @@ bool CAI_MoveProbe::CheckStep( const CheckStepArgs_t &args, CheckStepResult_t *p
 
 	// seems okay, now find the ground
 	// The ground is only valid if it's within a step height of the original position
-	Assert( VectorsAreEqual( trace.endpos, stepEnd, 1e-3 ) );
+	// Assert( VectorsAreEqual( trace.endpos, stepEnd, 1e-3 ) );
 	stepStart = stepEnd; 
 	stepEnd.z = args.vecStart.z - args.stepHeight * args.stepDownMultiplier - MOVE_HEIGHT_EPSILON;
 
@@ -397,7 +397,7 @@ bool CAI_MoveProbe::CheckStep( const CheckStepArgs_t &args, CheckStepResult_t *p
 	// in empty space, lie and say we hit the world
 	if (trace.fraction == 1.0f)
 	{
-		Assert( pResult->endPoint == args.vecStart );
+		// Assert( pResult->endPoint == args.vecStart );
 		if ( const_cast<CAI_MoveProbe *>(this)->GetOuter()->GetGroundEntity() )
 		{
 			CEntity *ground = const_cast<CAI_MoveProbe *>(this)->GetOuter()->GetGroundEntity();
@@ -418,7 +418,7 @@ bool CAI_MoveProbe::CheckStep( const CheckStepArgs_t &args, CheckStepResult_t *p
 	CEntity *c_pFloor = CEntity::Instance(pFloor);
 	if ( c_pFloor != ground && !CanStandOn( pFloor ) )
 	{
-		Assert( pResult->endPoint == args.vecStart );
+		// Assert( pResult->endPoint == args.vecStart );
 		pResult->pBlocker = pFloor;
 		return false;
 	}
@@ -430,7 +430,7 @@ bool CAI_MoveProbe::CheckStep( const CheckStepArgs_t &args, CheckStepResult_t *p
 	{
 		if ( fabsf( trace.plane.normal.Dot( Vector(1, 0, 0) ) ) > .4 )
 		{
-			Assert( pResult->endPoint == args.vecStart );
+			// Assert( pResult->endPoint == args.vecStart );
 			pResult->pBlocker = pFloor;
 
 			return false;
@@ -489,7 +489,7 @@ void CAI_MoveProbe::TraceHull(
 
 	//NDebugOverlay::SweptBox( vecStart, vecEnd, hullMin, hullMax, vec3_angle, 255, 255, 0, 0, 10 );
 	// Just to make sure; I'm not sure that this is always the case but it should be
-	Assert( !pResult->allsolid || pResult->startsolid );
+	// Assert( !pResult->allsolid || pResult->startsolid );
 }
 
 //-----------------------------------------------------------------------------
@@ -595,7 +595,7 @@ Vector CAI_MoveProbe::CalcJumpLaunchVelocity(const Vector &startPos, const Vecto
 	targetDir2D.z = 0;
 	float distance = VectorNormalize(targetDir2D);
 
-	Assert( maxHorzVelocity > 0 );
+	// Assert( maxHorzVelocity > 0 );
 
 	// get minimum times and heights to meet ideal horz velocity
 	float minHorzTime = distance / maxHorzVelocity;

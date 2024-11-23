@@ -173,7 +173,7 @@ LINK_ENTITY_TO_CUSTOM_CLASS( info_target_helicopter_crash, info_target, CE_InfoT
 //------------------------------------------------------------------------------
 static inline float ClampSplineRemapVal( float flValue, float flMinValue, float flMaxValue, float flOutMin, float flOutMax )
 {
-	Assert( flMinValue <= flMaxValue );
+	// Assert( flMinValue <= flMaxValue );
 	float flClampedVal = clamp( flValue, flMinValue, flMaxValue );
 	return SimpleSplineRemapVal( flClampedVal, flMinValue, flMaxValue, flOutMin, flOutMax );
 }
@@ -754,7 +754,7 @@ static const char *pFollowerBoneNames[] =
 };
 #endif // HL2_EPISODIC
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_helicopter, cycler, CNPC_AttackHelicopter );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_helicopter, monster_generic, CNPC_AttackHelicopter );
 
 BEGIN_DATADESC( CNPC_AttackHelicopter )
 
@@ -1364,9 +1364,9 @@ void CNPC_AttackHelicopter::InitializeRotorSound( void )
 	}
 	else
 	{
-		Assert(m_pRotorSound);
-		Assert(m_pRotorBlast);
-		Assert(m_pGunFiringSound);
+		// Assert(m_pRotorSound);
+		// Assert(m_pRotorBlast);
+		// Assert(m_pGunFiringSound);
 	}
 
 
@@ -1681,7 +1681,7 @@ CEntity *CNPC_AttackHelicopter::FindTrackBlocker( const Vector &vecViewPoint, co
 
 	if ( tr.fraction != 1.0f )
 	{
-		Assert( tr.m_pEnt );
+		// Assert( tr.m_pEnt );
 	}
 
 	return (tr.fraction != 1.0f) ? CEntity::Instance(tr.m_pEnt) : NULL;
@@ -2489,7 +2489,7 @@ bool CNPC_AttackHelicopter::IsValidZapTarget( CEntity *pTarget )
 	if ( !pTarget->IsSolid() )
 		return false;
 
-	Assert( pTarget );
+	// Assert( pTarget );
 	IPhysicsObject *pList[VPHYSICS_MAX_OBJECT_LIST_COUNT];
 	int count = pTarget->VPhysicsGetObjectList( pList, ARRAYSIZE(pList) );
 	for ( int i = 0; i < count; i++ )
@@ -3693,13 +3693,13 @@ void Chopper_BecomeChunks( CEntity *pChopper )
 
 	// Constrain all the pieces together loosely
 	IPhysicsObject *pBodyObject = pBodyChunk->VPhysicsGetObject();
-	Assert( pBodyObject );
+	// Assert( pBodyObject );
 
 	IPhysicsObject *pCockpitObject = pCockpitChunk->VPhysicsGetObject();
-	Assert( pCockpitObject );
+	// Assert( pCockpitObject );
 
 	IPhysicsObject *pTailObject = pTailChunk->VPhysicsGetObject();
-	Assert( pTailObject );
+	// Assert( pTailObject );
 
 	IPhysicsConstraintGroup *pGroup = NULL;
 
@@ -4363,7 +4363,7 @@ float CNPC_AttackHelicopter::ComputeBullrushLeadingDistance( float flSpeed, floa
 		}
 	}
 
-	Assert(0);
+	// Assert(0);
 	return 0.0f;
 }
 
@@ -5783,7 +5783,7 @@ void CAvoidSphere::ComputeAvoidanceForces( CEntity *pEntity, float flEntityRadiu
 			}
 			else
 			{
-				Assert( flDist <= flTotalRadius );
+				// Assert( flDist <= flTotalRadius );
 				flDistToTravel = flTotalRadius - flDist;
 			}
 		}
@@ -5936,7 +5936,7 @@ void CAvoidBox::ComputeAvoidanceForces( CEntity *pEntity, float flEntityRadius, 
 			}
 			else
 			{
-				Assert( flDist <= flTotalRadius );
+				// Assert( flDist <= flTotalRadius );
 				flDistToTravel = flTotalRadius - flDist;
 			}
 		}

@@ -34,7 +34,7 @@ extern ConVar sk_plr_num_shotgun_pellets;
 //Whether or not the combine should spawn health on death
 ConVar	combine_spawn_health( "combine_spawn_health", "1" );
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_combine_s, cycler, CNPC_CombineS );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_combine_s, monster_generic, CNPC_CombineS );
 
 
 #define AE_SOLDIER_BLOCK_PHYSICS		20 // trying to block an incoming physics object
@@ -345,11 +345,11 @@ bool CNPC_CombineS::IsLightDamage( const CTakeDamageInfo &info )
 bool CNPC_CombineS::IsHeavyDamage( const CTakeDamageInfo &info )
 {
 	// Combine considers AR2 fire to be heavy damage
-	if ( info.GetAmmoType() == GetAmmoDef()->Index("BULLET_PLAYER_338MAG") )//ar2
+	if ( info.GetAmmoType() == GetAmmoDef()->Index("TF_AMMO_PRIMARY") )//ar2
 		return true;
 
 	// 357 rounds are heavy damage
-	if ( info.GetAmmoType() == GetAmmoDef()->Index("BULLET_PLAYER_50AE") )//357
+	if ( info.GetAmmoType() == GetAmmoDef()->Index("TF_AMMO_PRIMARY") )//357
 		return true;
 
 	// Shotgun blasts where at least half the pellets hit me are heavy damage
@@ -413,4 +413,4 @@ public:
 	}
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_combine_elite, cycler, CNPC_CombineElite );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_combine_elite, monster_generic, CNPC_CombineElite );

@@ -14,7 +14,7 @@ CUtlMemoryPool *EventQueuePrioritizedEvent_t::s_Allocator = NULL;
 
 void CEventQueue::RemoveEvent( EventQueuePrioritizedEvent_t *pe )
 {
-	Assert( pe->m_pPrev );
+	// Assert( pe->m_pPrev );
 	pe->m_pPrev->m_pNext = pe->m_pNext;
 	if ( pe->m_pNext )
 	{
@@ -111,7 +111,7 @@ void CEventQueue::AddEvent( EventQueuePrioritizedEvent_t *newEvent )
 		}
 	}
 
-	Assert( pe );
+	// Assert( pe );
 
 	// insert
 	newEvent->m_pNext = pe->m_pNext;

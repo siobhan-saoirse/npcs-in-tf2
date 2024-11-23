@@ -26,7 +26,7 @@ float CChoreoScene::FindStopTime( void )
 	for ( int i = 0; i < c ; i++ )
 	{
 		CChoreoEvent *e = m_Events[ i ];
-		Assert( e );
+		// Assert( e );
 
 		float checktime = e->HasEndTime() ? e->GetEndTime() : e->GetStartTime();
 		if ( checktime > lasttime )
@@ -66,13 +66,13 @@ void CChoreoScene::SetBackground( bool bIsBackground )
 
 int CChoreoScene::GetNumActors( void )
 {
-	return m_Actors.Size();
+	return m_Actors.Count();
 }
 
 
 bool CChoreoScene::HasUnplayedSpeech()
 {
-	for ( int i = 0; i < m_Events.Size(); i++ )
+	for ( int i = 0; i < m_Events.Count(); i++ )
 	{
 		CChoreoEvent *e = m_Events[ i ];
 		if ( e->GetType() == CChoreoEvent::SPEAK )

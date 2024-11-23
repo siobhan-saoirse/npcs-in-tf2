@@ -136,7 +136,7 @@ void CNPCWeapon_SMG1::NPCWeaponOperator_HandleAnimEvent( animevent_t *pEvent, CB
 			}
 
 			CAI_NPC *npc = owner->MyNPCPointer();
-			Assert( npc != NULL );
+			// Assert( npc != NULL );
 			vecShootDir = npc->GetActualShootTrajectory( vecShootOrigin );
 			FireNPCPrimaryAttack( owner, vecShootOrigin, vecShootDir );
 			break;

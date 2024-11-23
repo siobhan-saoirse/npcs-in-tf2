@@ -2267,7 +2267,7 @@
 			"OnMoveExecuteFailed"
 			{
 				"windows"	"8"
-				"linux"	"26"
+				"linux"	"8"
 			}
 			
 			/* CBaseFlex */
@@ -2785,7 +2785,7 @@
 			{
 				//8D 8E ? ? ? ? 85 C9 74 19, +2
 				"windows"	"2160"
-				"linux"	"2180"
+				"linux"	"2260"
 			}
 			"m_pSchedule"	// "Schedule cleared: %s\"
 			{

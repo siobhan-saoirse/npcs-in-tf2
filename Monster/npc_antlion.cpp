@@ -210,7 +210,7 @@ void CNPC_Antlion::Spawn( void )
 	{
 		SetModel( ANTLION_MODEL );
 	}
-	SetBloodColor( BLOOD_COLOR_YELLOW );
+	SetBloodColor( BLOOD_COLOR_GREEN );
 	
 	SetHullType(HULL_MEDIUM);
 	SetHullSizeNormal();

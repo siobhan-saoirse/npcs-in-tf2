@@ -597,7 +597,7 @@ void CFastZombie::Spawn( void )
 		m_fIsTorso = true;
 	}
 
-	SetBloodColor( BLOOD_COLOR_YELLOW );
+	SetBloodColor( BLOOD_COLOR_GREEN );
 
 	m_iHealth			= sk_zombie_fast_health.GetInt();
 	m_flFieldOfView		= 0.2;

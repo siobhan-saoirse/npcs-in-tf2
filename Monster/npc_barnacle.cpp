@@ -99,7 +99,7 @@ CNPC_Barnacle::CNPC_Barnacle(void)
 	m_flRestUnitsAboveGround = 16.0f;
 	m_flNextBloodTime = -1.0f;
 #ifndef _XBOX
-	m_nBloodColor = BLOOD_COLOR_YELLOW;
+	m_nBloodColor = BLOOD_COLOR_GREEN;
 #endif
 	m_bPlayerWasStanding = false;
 }
@@ -257,7 +257,7 @@ void CNPC_Barnacle::Spawn()
 #else
 	SetMoveType( MOVETYPE_NONE );
 #endif
-	SetBloodColor( BLOOD_COLOR_YELLOW );
+	SetBloodColor( BLOOD_COLOR_GREEN );
 	m_iHealth			= sk_barnacle_health.GetFloat();
 	m_flFieldOfView		= 0.5;// indicates the width of this monster's forward view cone ( as a dotproduct result )
 	m_NPCState			= NPC_STATE_NONE;
@@ -1773,7 +1773,7 @@ void CNPC_Barnacle::SprayBlood()
 		m_nBloodColor, enginerandom->RandomInt( 4, 8 ), enginerandom->RandomInt(0,2) == 0 ? FX_BLOODSPRAY_ALL : FX_BLOODSPRAY_CLOUD );
 #else
 	UTIL_BloodSpray( m_vecBloodPos + jitterPos, Vector( 0,0,-1),
-		BLOOD_COLOR_YELLOW, enginerandom->RandomInt( 4, 8 ), enginerandom->RandomInt(0,2) == 0 ? FX_BLOODSPRAY_ALL : FX_BLOODSPRAY_CLOUD );
+		BLOOD_COLOR_GREEN, enginerandom->RandomInt( 4, 8 ), enginerandom->RandomInt(0,2) == 0 ? FX_BLOODSPRAY_ALL : FX_BLOODSPRAY_CLOUD );
 #endif
 }
 
@@ -2076,7 +2076,7 @@ void CNPC_Barnacle::Event_Killed( const CTakeDamageInfo &info )
 
 	// Puke blood
 #ifdef _XBOX
-	UTIL_BloodSpray( GetAbsOrigin(), Vector(0,0,-1), BLOOD_COLOR_YELLOW, 8, FX_BLOODSPRAY_ALL );
+	UTIL_BloodSpray( GetAbsOrigin(), Vector(0,0,-1), BLOOD_COLOR_GREEN, 8, FX_BLOODSPRAY_ALL );
 #else
 	UTIL_BloodSpray( GetAbsOrigin(), Vector(0,0,-1), BLOOD_COLOR_RED, 8, FX_BLOODSPRAY_ALL );
 #endif
@@ -2088,7 +2088,7 @@ void CNPC_Barnacle::Event_Killed( const CTakeDamageInfo &info )
 	if ( bloodTrace.fraction < 1.0f )
 	{
 #ifdef _XBOX
-		UTIL_BloodDecalTrace( &bloodTrace, BLOOD_COLOR_YELLOW );
+		UTIL_BloodDecalTrace( &bloodTrace, BLOOD_COLOR_GREEN );
 #else
 		UTIL_BloodDecalTrace( &bloodTrace, BLOOD_COLOR_RED );
 #endif

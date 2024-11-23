@@ -968,7 +968,7 @@ void CNPC_BaseZombie::DieChopped( const CTakeDamageInfo &info )
 
 	}
 
-	if ( UTIL_ShouldShowBlood( BLOOD_COLOR_YELLOW ) )
+	if ( UTIL_ShouldShowBlood( BLOOD_COLOR_GREEN ) )
 	{
 		int i;
 		Vector vecSpot;
@@ -982,7 +982,7 @@ void CNPC_BaseZombie::DieChopped( const CTakeDamageInfo &info )
 			vecSpot.y += enginerandom->RandomFloat( -12, 12 ); 
 			vecSpot.z += enginerandom->RandomFloat( -4, 16 ); 
 
-			UTIL_BloodDrips( vecSpot, vec3_origin, BLOOD_COLOR_YELLOW, 50 );
+			UTIL_BloodDrips( vecSpot, vec3_origin, BLOOD_COLOR_GREEN, 50 );
 		}
 
 		for ( int i = 0 ; i < 4 ; i++ )
@@ -2074,7 +2074,7 @@ void CNPC_BaseZombie::Event_Killed( const CTakeDamageInfo &info )
 		VectorNormalize( vecDamageDir );
 
 		// Big blood splat
-		UTIL_BloodSpray( WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_YELLOW, 8, FX_BLOODSPRAY_CLOUD );
+		UTIL_BloodSpray( WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_GREEN, 8, FX_BLOODSPRAY_CLOUD );
 	}
 
    	BaseClass::Event_Killed( info );
@@ -2211,9 +2211,9 @@ void CNPC_BaseZombie::ReleaseHeadcrab( const Vector &vecOrigin, const Vector &ve
 			CopyRenderColorTo( pGib );
 
 			
-			if( UTIL_ShouldShowBlood(BLOOD_COLOR_YELLOW) )
+			if( UTIL_ShouldShowBlood(BLOOD_COLOR_GREEN) )
 			{
-				UTIL_BloodImpact( pGib->WorldSpaceCenter(), Vector(0,0,1), BLOOD_COLOR_YELLOW, 1 );
+				UTIL_BloodImpact( pGib->WorldSpaceCenter(), Vector(0,0,1), BLOOD_COLOR_GREEN, 1 );
 
 				for ( int i = 0 ; i < 3 ; i++ )
 				{
@@ -2223,7 +2223,7 @@ void CNPC_BaseZombie::ReleaseHeadcrab( const Vector &vecOrigin, const Vector &ve
 					vecSpot.y += enginerandom->RandomFloat( -8, 8 ); 
 					vecSpot.z += enginerandom->RandomFloat( -8, 8 ); 
 
-					UTIL_BloodDrips( vecSpot, vec3_origin, BLOOD_COLOR_YELLOW, 50 );
+					UTIL_BloodDrips( vecSpot, vec3_origin, BLOOD_COLOR_GREEN, 50 );
 				}
 			}
 		}

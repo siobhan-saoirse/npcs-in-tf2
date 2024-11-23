@@ -262,7 +262,7 @@ void CNPC_PoisonZombie::Spawn( void )
 
 	m_fIsTorso = m_fIsHeadless = false;
 
-	SetBloodColor( BLOOD_COLOR_YELLOW );
+	SetBloodColor( BLOOD_COLOR_GREEN );
 
 	m_iHealth = sk_zombie_poison_health.GetInt();
 	m_flFieldOfView = 0.2;

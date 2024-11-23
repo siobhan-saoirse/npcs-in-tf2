@@ -736,7 +736,7 @@ void CNPC_AntlionGuard::Spawn( void )
 	SetMoveType( MOVETYPE_STEP );
 
 	SetNavType( NAV_GROUND );
-	SetBloodColor( BLOOD_COLOR_YELLOW );
+	SetBloodColor( BLOOD_COLOR_GREEN );
 
 	m_iHealth = sk_antlionguard_health.GetInt();
 	*(m_iMaxHealth) = m_iHealth;

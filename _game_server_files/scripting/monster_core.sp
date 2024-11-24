@@ -64,5 +64,55 @@ public void OnMapStart()
 	PrecacheModel("models/props_combine/headcrabcannister01b.mdl",true);
 	PrecacheModel("models/props_combine/headcrabcannister01a_skybox.mdl",true);
 
+	ReadDownloadFile();
+
 	PrintToServer("[MONSTER] monster_core has been loaded successfully!");
+}
+
+static bool IsCommentLine(const char[] line, int maxlen)
+{
+	 int pos = 0;
+	 do {
+		if (line[pos] == '#')
+			return true;
+	 } while(line[pos++] == ' ' && pos < maxlen);
+	 return false;
+}
+
+void ReadDownloadFile()
+{
+	char path[PLATFORM_MAX_PATH];
+	BuildPath(Path_SM, path, sizeof(path), "configs/monster/downloads.txt");
+	
+	File file = OpenFile(path, "rt");
+	if (file == INVALID_HANDLE)
+		return;
+	
+	char readData[256];
+	while (!IsEndOfFile(file) && ReadFileLine(file, readData, sizeof(readData)))
+	{
+		TrimString(readData);
+		int length = strlen(readData);
+		if (length >= 4)
+		{
+			if (IsCommentLine(readData, sizeof(readData)))
+			{
+				continue;
+			}
+		  
+			if (!FileExists(readData))
+			{
+				PrintToServer("[MONSTER] %s Not Exist!",readData);
+				continue;
+			}
+		  
+			if (strcmp(readData[length-4],".mdl") == 0)
+			{
+				PrecacheModel(readData,true);
+			}
+				
+			AddFileToDownloadsTable(readData);
+		}
+	}
+	CloseHandle(file);
 }

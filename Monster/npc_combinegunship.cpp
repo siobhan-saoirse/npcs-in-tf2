@@ -402,7 +402,7 @@ private:
 	CEFakeHandle<CE_CSprite>		m_hFireSprite;
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_combinegunship, cycler_actor, CNPC_CombineGunship );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_combinegunship, monster_generic, CNPC_CombineGunship );
 
 
 BEGIN_DATADESC( CNPC_CombineGunship )
@@ -2289,7 +2289,7 @@ void CNPC_CombineGunship::Flight( void )
 	SetPoseParameter( m_poseFin_Sway, curFinSway );
 
 	// Add in our velocity pulse for this frame
-	ApplyAbsVelocityImpulse( vecImpulse * 0.00001 );
+	ApplyAbsVelocityImpulse( vecImpulse * 0.001 );
 }
 
 //------------------------------------------------------------------------------

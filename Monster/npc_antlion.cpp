@@ -4897,3 +4897,18 @@ bool IsAntlion( CEntity *pEntity )
 			 dynamic_cast<CNPC_Antlion *>(pEntity) != NULL );	// Save this as the last step
 }
 
+
+// CE - custom entity so its easier to spawn elite soldiers.
+class CNPC_AntlionWorker: public CNPC_Antlion
+{
+public:
+	CE_DECLARE_CLASS(CNPC_AntlionWorker, CNPC_Antlion);
+
+	void Spawn() override
+	{
+		AddSpawnFlags( SF_ANTLION_WORKER );
+		BaseClass::Spawn();
+	}
+};
+
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_antlion_worker, cycler_actor, CNPC_AntlionWorker );

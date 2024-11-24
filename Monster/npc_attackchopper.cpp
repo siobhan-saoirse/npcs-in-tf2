@@ -4027,7 +4027,7 @@ void CNPC_AttackHelicopter::ComputeVelocity( const Vector &vecTargetPosition,
 	}
 
 	// Add in our velocity pulse for this frame
-	ApplyAbsVelocityImpulse( vecImpulse * 0.00001 );
+	ApplyAbsVelocityImpulse( vecImpulse * 0.001 );
 }
 
 

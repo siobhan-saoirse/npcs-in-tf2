@@ -18,7 +18,7 @@ void ExpandBBox(Vector &vecMins, Vector &vecMaxs);
 virtual void NullThink( void );
 #endif //0
 
-#define HELICOPTER_THINK_INTERVAL 0.5
+#define HELICOPTER_THINK_INTERVAL 0.1
 #define HELICOPTER_ROTORWASH_THINK_INTERVAL 0.01
 
 
@@ -216,8 +216,8 @@ void CBaseHelicopter::UpdateOnRemove()
 float CBaseHelicopter::GetMaxSpeed()
 {
 	// If our last path_track has specified a speed, use that instead of ours
-	//if ( GetPathMaxSpeed() )
-		//return GetPathMaxSpeed();
+	if ( GetPathMaxSpeed() )
+		return GetPathMaxSpeed();
 
 	return m_flMaxSpeed;
 }
@@ -228,8 +228,8 @@ float CBaseHelicopter::GetMaxSpeed()
 float CBaseHelicopter::GetMaxSpeedFiring()
 {
 	// If our last path_track has specified a speed, use that instead of ours
-	//if ( GetPathMaxSpeed() )
-		//return GetPathMaxSpeed();
+	if ( GetPathMaxSpeed() )
+		return GetPathMaxSpeed();
 
 	return m_flMaxSpeedFiring;
 }
@@ -931,7 +931,7 @@ void CBaseHelicopter::Flight( void )
 
 	// add gravity
 	vecImpulse.z -= 38.4; // 32ft/sec
-	ApplyAbsVelocityImpulse( vecImpulse );
+	ApplyAbsVelocityImpulse( vecImpulse * 0.00001 );
 
 	float flSpeed = GetAbsVelocity().Length();
 	float flDir = DotProduct( Vector( forward.x, forward.y, 0 ), Vector( GetAbsVelocity().x, GetAbsVelocity().y, 0 ) );

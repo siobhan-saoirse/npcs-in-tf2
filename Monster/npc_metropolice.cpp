@@ -568,16 +568,7 @@ bool CNPC_MetroPolice::OverrideMoveFacing( const AILocalMoveGoal_t &move, float 
 //-----------------------------------------------------------------------------
 void CNPC_MetroPolice::Precache( void )
 {
-	if ( HasSpawnFlags( SF_NPC_START_EFFICIENT ) )
-	{
-		SetModelName( AllocPooledString("models/police_cheaple.mdl" ) );
-	}
-	else
-	{
-		SetModelName( AllocPooledString("models/police.mdl") );
-	}
-
-	PrecacheModel( STRING( GetModelName() ) );
+	PrecacheModel( "models/police.mdl" );
 
 	g_helpfunc.UTIL_PrecacheOther( "npc_manhack" );
 
@@ -617,7 +608,7 @@ void CNPC_MetroPolice::Spawn( void )
 	AddSpawnFlags( SF_NPC_FADE_CORPSE );
 #endif // _XBOX
 
-	SetModel( STRING( GetModelName() ) );
+	SetModel( "models/police.mdl" );
 
 	SetHullType(HULL_HUMAN);
 	SetHullSizeNormal();
@@ -721,6 +712,13 @@ void CNPC_MetroPolice::Spawn( void )
 	{
 		SetBodygroup( METROPOLICE_BODYGROUP_MANHACK, true );
 	}
+	// hull changed size, notify vphysics
+	// UNDONE: Solve this generally, systematically so other
+	// NPCs can change size
+		if ( VPhysicsGetObject() )
+		{
+			SetupVPhysicsHull();
+		}
 }
 
 

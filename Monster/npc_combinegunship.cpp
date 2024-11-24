@@ -2289,7 +2289,7 @@ void CNPC_CombineGunship::Flight( void )
 	SetPoseParameter( m_poseFin_Sway, curFinSway );
 
 	// Add in our velocity pulse for this frame
-	ApplyAbsVelocityImpulse( vecImpulse );
+	ApplyAbsVelocityImpulse( vecImpulse * 0.00001 );
 }
 
 //------------------------------------------------------------------------------

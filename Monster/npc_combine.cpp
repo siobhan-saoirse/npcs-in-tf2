@@ -340,6 +340,13 @@ void CNPC_Combine::Spawn( void )
 	m_iNumGrenades = 4; //CE
 
 	NPCInit();
+	// hull changed size, notify vphysics
+	// UNDONE: Solve this generally, systematically so other
+	// NPCs can change size
+		if ( VPhysicsGetObject() )
+		{
+			SetupVPhysicsHull();
+		}
 }
 
 //-----------------------------------------------------------------------------

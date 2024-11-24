@@ -804,19 +804,14 @@ void CNPC_Vortigaunt::Spawn( void )
 	AddSpawnFlags( SF_NPC_NO_PLAYER_PUSHAWAY );
 #endif // HL2_EPISODIC
 
-	// Allow multiple models (for slaves), but default to vortigaunt.mdl
-	const char *szModel = (char *)STRING( GetModelName() );
-	if (!szModel || !*szModel)
-	{
-		szModel = "models/vortigaunt.mdl";
-		SetModelName( AllocPooledString(szModel) );
-	}
-
 	Precache();
 
 	SetModel("models/vortigaunt.mdl");
 
-	SetHullType(HULL_HUMAN);
+	//m_iLeftHandAttachment = LookupAttachment( VORTIGAUNT_LEFT_CLAW );
+	//m_iRightHandAttachment = LookupAttachment( VORTIGAUNT_RIGHT_CLAW );
+	
+	//SetHullType(HULL_HUMAN);
 	//SetHullSizeNormal();
 
 	SetSolid( SOLID_BBOX );
@@ -872,9 +867,6 @@ void CNPC_Vortigaunt::Spawn( void )
 
 	m_bStopLoopingSounds	= false;
 
-	m_iLeftHandAttachment = LookupAttachment( VORTIGAUNT_LEFT_CLAW );
-	m_iRightHandAttachment = LookupAttachment( VORTIGAUNT_RIGHT_CLAW );
-
 	NPCInit();
 
 	SetUse( &CNPC_Vortigaunt::Use );
@@ -892,7 +884,7 @@ void CNPC_Vortigaunt::Precache()
 {
 	//UTIL_PrecacheOther( "vort_charge_token" );
 
-	PrecacheModel( STRING( GetModelName() ) );
+	PrecacheModel( "models/vortigaunt.mdl" );
 
 	m_nLightningSprite = PrecacheModel("sprites/lgtning.vmt");
 	m_nBeamLaser = PrecacheModel("sprites/laser.vmt");
@@ -1263,17 +1255,17 @@ void CNPC_Vortigaunt::ArmBeam( int beamType, int nHand )
 	if ( flDist == 1.0 )
 		return;
 
-	Vector hand;
-	GetAttachment(VORTIGAUNT_LEFT_CLAW, hand);
+	//Vector hand;
+	//GetAttachment(VORTIGAUNT_LEFT_CLAW, hand);
 
 		
-	CBroadcastRecipientFilter filter;
-	te->BeamPoints(filter, 0, &hand, &tr.endpos, m_nBeamLaser, 0, 0, 0, 0.5f, 5.0f, 10.0f, 0, 17.0f, 100, 255, 100, 255, 20);
+	//CBroadcastRecipientFilter filter;
+	//te->BeamPoints(filter, 0, &hand, &tr.endpos, m_nBeamLaser, 0, 0, 0, 0.5f, 5.0f, 10.0f, 0, 17.0f, 100, 255, 100, 255, 20);
 	
 	
-	GetAttachment(VORTIGAUNT_RIGHT_CLAW, hand);
-	CBroadcastRecipientFilter filter2;
-	te->BeamPoints(filter2, 0, &hand, &tr.endpos, m_nBeamLaser, 0, 0, 0, 0.5f, 5.0f, 10.0f, 0, 17.0f, 100, 255, 100, 255, 20);
+	//GetAttachment(VORTIGAUNT_RIGHT_CLAW, hand);
+	//CBroadcastRecipientFilter filter2;
+	//te->BeamPoints(filter2, 0, &hand, &tr.endpos, m_nBeamLaser, 0, 0, 0, 0.5f, 5.0f, 10.0f, 0, 17.0f, 100, 255, 100, 255, 20);
 
 
 	// Tell the client to start an arm beam

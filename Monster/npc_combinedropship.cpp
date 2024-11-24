@@ -340,6 +340,10 @@ private:
 	int			m_iMachineGunRefAttachment;
 	int			m_iAttachmentTroopDeploy;
 	int			m_iAttachmentDeployStart;
+	
+	// Cached container weapon pose parameters
+	int			m_poseWeapon_Pitch;	
+	int			m_poseWeapon_Yaw;
 
 	// Sounds
 	CSoundPatch		*m_pCannonSound;
@@ -360,8 +364,7 @@ protected:
 	// Should the dropship end up having inheritors, their activate may
 	// stomp these numbers, in which case you should make these ordinary members
 	// again.
-	static int m_poseBody_Accel, m_poseBody_Sway, m_poseCargo_Body_Accel, m_poseCargo_Body_Sway,
-			m_poseWeapon_Pitch, m_poseWeapon_Yaw;
+	static int m_poseBody_Accel, m_poseBody_Sway, m_poseCargo_Body_Accel, m_poseCargo_Body_Sway;
 	static bool m_sbStaticPoseParamsLoaded;
 	virtual void	PopulatePoseParameters( void );
 };
@@ -372,8 +375,6 @@ int CNPC_CombineDropship::m_poseBody_Accel = 0;
 int CNPC_CombineDropship::m_poseBody_Sway = 0;
 int CNPC_CombineDropship::m_poseCargo_Body_Accel = 0;
 int CNPC_CombineDropship::m_poseCargo_Body_Sway = 0;
-int CNPC_CombineDropship::m_poseWeapon_Pitch = 0;
-int CNPC_CombineDropship::m_poseWeapon_Yaw = 0;
 
 
 //-----------------------------------------------------------------------------
@@ -391,6 +392,13 @@ void	CNPC_CombineDropship::PopulatePoseParameters( void )
 		m_poseWeapon_Yaw		= LookupPoseParameter( "weapon_yaw" );
 
 		m_sbStaticPoseParamsLoaded = true;
+	}
+	// Dropship has any kind of container
+	if ( m_hContainer )
+	{
+		// Restore container weapon pose parameters on load if any found
+		m_poseWeapon_Pitch = m_hContainer->LookupPoseParameter( "weapon_pitch" );
+		m_poseWeapon_Yaw = m_hContainer->LookupPoseParameter( "weapon_yaw" );
 	}
 
 	BaseClass::PopulatePoseParameters();
@@ -418,9 +426,6 @@ void CCombineDropshipContainer::Precache()
 {
 	PrecacheModel( DROPSHIP_CONTAINER_MODEL );
 
-	// Set this here to quiet base prop warnings
-	SetModel( DROPSHIP_CONTAINER_MODEL );
-
 	BaseClass::Precache();
 
 	int i;
@@ -443,7 +448,7 @@ void CCombineDropshipContainer::Precache()
 //-----------------------------------------------------------------------------
 void CCombineDropshipContainer::Spawn()
 {
-	// NOTE: Model must be set before spawn
+	// Set this here to quiet base prop warnings
 	SetModel( DROPSHIP_CONTAINER_MODEL );
 	SetSolid( SOLID_VPHYSICS );
 
@@ -859,6 +864,8 @@ void CNPC_CombineDropship::Spawn( void )
 	m_iMachineGunRefAttachment = -1;
 	m_iAttachmentTroopDeploy = -1;
 	m_iAttachmentDeployStart = -1;
+	m_poseWeapon_Pitch = -1;
+	m_poseWeapon_Yaw = -1;
 
 	CAnimating *p_m_hContainer = NULL;
 	// create the correct bin for the ship to carry
@@ -896,6 +903,9 @@ void CNPC_CombineDropship::Spawn( void )
 				m_iMachineGunBaseAttachment = p_m_hContainer->LookupAttachment( "gun_base" );
 				// NOTE: gun_ref must have the same position as gun_base, but rotates with the gun
 				m_iMachineGunRefAttachment = p_m_hContainer->LookupAttachment( "gun_ref" );
+				// Store spawned container weapon pitch and yaw pose parameters to allow weapon point to the player
+				m_poseWeapon_Pitch = m_hContainer->LookupPoseParameter( "weapon_pitch" );
+				m_poseWeapon_Yaw = m_hContainer->LookupPoseParameter( "weapon_yaw" );
 			}
 			break;
 
@@ -1373,18 +1383,18 @@ void CNPC_CombineDropship::Flight( void )
 	float finAccelBlend = SimpleSplineRemapVal( finspeed, -60, 60, -1, 1 );
 	float curFinAccel = GetPoseParameter( poseBodyAccel );
 	curFinAccel = UTIL_Approach( finAccelBlend, curFinAccel, 0.1f );
-	SetPoseParameter( poseBodyAccel, EdgeLimitPoseParameter( poseBodyAccel, curFinAccel ) );
+	//SetPoseParameter( poseBodyAccel, EdgeLimitPoseParameter( poseBodyAccel, curFinAccel ) );
 
 	// Apply the spin sway to the fins
 	float finSwayBlend = SimpleSplineRemapVal( swayspeed, -60, 60, -1, 1 );
 	float curFinSway = GetPoseParameter( poseBodySway );
 	curFinSway = UTIL_Approach( finSwayBlend, curFinSway, 0.1f );
-	SetPoseParameter( poseBodySway, EdgeLimitPoseParameter( poseBodySway, curFinSway ) );
+	//SetPoseParameter( poseBodySway, EdgeLimitPoseParameter( poseBodySway, curFinSway ) );
 
 	if ( bRunFlight )
 	{
 		// Add in our velocity pulse for this frame
-		ApplyAbsVelocityImpulse( vecImpulse );
+		ApplyAbsVelocityImpulse( vecImpulse * 0.00001 );
 	}
 
 	//DevMsg("curFinAccel: %f, curFinSway: %f\n", curFinAccel, curFinSway );

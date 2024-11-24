@@ -48,7 +48,7 @@ extern Activity ACT_WALK_MARCH;
 void CNPC_CombineS::Spawn( void )
 {
 	Precache();
-	SetModel( STRING( GetModelName() ) );
+	SetModel( CombineModelSoldier );
 
 	if( IsElite() )
 	{
@@ -99,7 +99,8 @@ void CNPC_CombineS::Precache()
 		SetModelName( MAKE_STRING( CombineModelSoldier ) );
 	}
 
-	PrecacheModel( STRING( GetModelName() ) );
+	PrecacheModel( "models/combine_super_soldier.mdl" );
+	PrecacheModel( "models/combine_soldier.mdl" );
 
 	g_helpfunc.UTIL_PrecacheOther( "item_healthvial" );
 	g_helpfunc.UTIL_PrecacheOther( "prop_combine_ball" );
@@ -217,7 +218,7 @@ void CNPC_CombineS::OnChangeActivity( Activity eNewActivity )
 	// pose param gets overwritten.
 	if (m_iUseMarch)
 	{
-		SetPoseParameter("casual", RandomFloat());
+		//SetPoseParameter("casual", RandomFloat());
 	}
 }
 
@@ -407,9 +408,9 @@ public:
 
 	void Spawn() override
 	{
-		SetModelName( MAKE_STRING( CombineModelElite ) );
-
 		BaseClass::Spawn();
+		
+		SetModel( "models/combine_super_soldier.mdl" );
 	}
 };
 

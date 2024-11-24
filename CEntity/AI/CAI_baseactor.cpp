@@ -184,7 +184,7 @@ bool CAI_BaseActor::IsServerSideFlexController( char const *szName )
 void CAI_BaseActor::SetModel( const char *szModelName )
 {
 	BaseClass::SetModel( szModelName );
-
+	/*
 	//Init( m_ParameterBodyTransY, "body_trans_Y" );
 	//Init( m_ParameterBodyTransX, "body_trans_X" );
 	//Init( m_ParameterBodyLift, "body_lift" );
@@ -217,6 +217,7 @@ void CAI_BaseActor::SetModel( const char *szModelName )
 	Init( m_ParameterGestureWidth, "gesture_width" );
 	Init( m_FlexweightGestureUpDown, "gesture_updown" );
 	Init( m_FlexweightGestureRightLeft, "gesture_rightleft" );
+	*/
 }
 
 
@@ -727,7 +728,7 @@ void CAI_BaseActor::UpdateLatchedValues( )
 //-----------------------------------------------------------------------------
 Vector CAI_BaseActor::EyePosition( )
 {
-	UpdateLatchedValues();
+	//UpdateLatchedValues();
 
 	return m_latchedEyeOrigin;
 }
@@ -836,7 +837,8 @@ void CAI_BaseActor::SetHeadDirection( const Vector &vTargetPos, float flInterval
 
 float CAI_BaseActor::ClampWithBias( PoseParameter_t index, float value, float base )
 {
-	return EdgeLimitPoseParameter( (int)index, value, base );
+	//return EdgeLimitPoseParameter( (int)index, value, base );
+	return 0.0f;
 }
 
 
@@ -1438,7 +1440,7 @@ void CAI_BaseActor::MaintainLookTargets( float flInterval )
 	ProcessSceneEvents( );
 	MaintainTurnActivity( );
 	DoBodyLean( );
-	UpdateBodyControl( );
+	//UpdateBodyControl( );
 	InvalidateBoneCache();
 
 	// cached versions of the current eye position
@@ -1581,7 +1583,7 @@ void CAI_BaseActor::MaintainLookTargets( float flInterval )
 	// turn head toward target
 	if (bValidHeadTarget)
 	{
-		UpdateHeadControl( vEyePosition + vHead * 100, flHeadInfluence );
+		//UpdateHeadControl( vEyePosition + vHead * 100, flHeadInfluence );
 		m_goalHeadDirection = vHead;
 		m_goalHeadInfluence = flHeadInfluence;
 	}
@@ -1593,7 +1595,7 @@ void CAI_BaseActor::MaintainLookTargets( float flInterval )
 		m_goalHeadInfluence = MAX( m_goalHeadInfluence - 0.2, 0 );
 
 		VectorNormalize( m_goalHeadDirection );
-		UpdateHeadControl( vEyePosition + m_goalHeadDirection * 100, m_goalHeadInfluence );
+		//UpdateHeadControl( vEyePosition + m_goalHeadDirection * 100, m_goalHeadInfluence );
 		// NDebugOverlay::Line( vEyePosition, vEyePosition + m_goalHeadDirection * 100, 255,0,0, false, 0.1);
 	}
 

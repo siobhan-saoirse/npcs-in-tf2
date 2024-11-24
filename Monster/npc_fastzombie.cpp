@@ -683,7 +683,7 @@ void CFastZombie::SetZombieModel( void )
 
 	if ( m_fIsTorso )
 	{
-		SetModel( "models/zombie/fast.mdl" );
+		SetModel( "models/zombie/fast_torso.mdl" );
 		SetHullType(HULL_HUMAN);
 	}
 	else

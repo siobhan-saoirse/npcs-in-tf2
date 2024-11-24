@@ -64,7 +64,7 @@ public:
 	}
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_gman, cycler_actor, NPC_Gman);
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_gman, monster_generic, NPC_Gman);
 
 
 class NPC_Alyx : public CE_Temp_NPC
@@ -80,7 +80,7 @@ public:
 	}
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_alyx, cycler_actor, NPC_Alyx);
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_alyx, monster_generic, NPC_Alyx);
 
 class NPC_Barney : public CE_Temp_NPC
 {
@@ -108,7 +108,7 @@ BEGIN_DATADESC( NPC_Barney )
 	DEFINE_OUTPUT( m_OnPlayerUse, "OnPlayerUse" ),
 END_DATADESC()
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_barney, cycler_actor, NPC_Barney);
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_barney, monster_generic, NPC_Barney);
 
 class NPC_Monk : public CE_Temp_NPC //set idle_slam?
 {
@@ -123,5 +123,5 @@ public:
 	}
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_monk, cycler_actor, NPC_Monk);
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_monk, monster_generic, NPC_Monk);
 

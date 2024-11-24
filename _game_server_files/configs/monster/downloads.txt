@@ -35,7 +35,13 @@ models/spitball_small.mdl
 models/spitball_small.phy
 models/spitball_small.sw.vtx
 models/spitball_small.vvd
-
+models/zombie/fast_torso.ani
+models/zombie/fast_torso.dx80.vtx
+models/zombie/fast_torso.dx90.vtx
+models/zombie/fast_torso.mdl
+models/zombie/fast_torso.phy
+models/zombie/fast_torso.sw.vtx
+models/zombie/fast_torso.vvd
 sound/npc/antlion/antlion_poisonball1.wav
 sound/npc/antlion/antlion_poisonball2.wav
 sound/npc/antlion/antlion_shoot1.wav

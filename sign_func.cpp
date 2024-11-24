@@ -2715,6 +2715,8 @@ bool HelperFunction::CAI_Navigator_UpdateGoalPos(void *ptr, const Vector &goalPo
 
 bool HelperFunction::CAI_Navigator_SetGoal(void *ptr, const AI_NavGoal_t &goal, unsigned flags)
 {
+	return false;
+	/*
 	static void *func = NULL;
 	if(!func)
 	{
@@ -2727,6 +2729,7 @@ bool HelperFunction::CAI_Navigator_SetGoal(void *ptr, const AI_NavGoal_t &goal, 
 	typedef bool (__fastcall *_func)(void *,int, const AI_NavGoal_t &, unsigned);
 	_func thisfunc = (_func)(func);
 	return (thisfunc)(ptr,0, goal, flags);
+	*/
 }
 
 /*void PostSimulation_SetVelocityEvent( IPhysicsObject *pPhysicsObject, const Vector &vecVelocity )

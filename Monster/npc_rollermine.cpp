@@ -1876,7 +1876,7 @@ void CNPC_RollerMine::ShockTarget( CEntity *pOther )
 	int startAttach = -1;
 
 	CAnimating *pAnimating = dynamic_cast<CAnimating *>(pOther);
-
+/*
 	if ( pBeam != NULL )
 	{
 		pBeam->EntsInit( pOther, this );
@@ -1907,14 +1907,14 @@ void CNPC_RollerMine::ShockTarget( CEntity *pOther )
 		pBeam->SetColor( 255, 255, 255 );
 		pBeam->RelinkBeam();
 	}
-	
-	Vector shockPos = pOther->WorldSpaceCenter();
 
 	if ( startAttach > 0 && pAnimating )
 	{
 		pAnimating->GetAttachment( startAttach, shockPos );
 	}
 
+	*/
+	Vector shockPos = pOther->WorldSpaceCenter();
 	Vector shockDir = ( GetAbsOrigin() - shockPos );
 	VectorNormalize( shockDir );
 

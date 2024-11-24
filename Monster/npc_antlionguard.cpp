@@ -1735,19 +1735,11 @@ void CNPC_AntlionGuard::HandleAnimEvent( animevent_t *pEvent )
 	{
 		if ( HasSpawnFlags(SF_ANTLIONGUARD_INSIDE_FOOTSTEPS) )
 		{
-#if HL2_EPISODIC
 			Footstep( false );
-#else 
-			EmitSound("NPC_AntlionGuard.Inside.StepLight", pEvent->eventtime );
-#endif // HL2_EPISODIC
 		}
 		else
 		{
-#if HL2_EPISODIC
 			Footstep( false );
-#else 
-			EmitSound("NPC_AntlionGuard.StepLight", pEvent->eventtime );
-#endif // HL2_EPISODIC
 		}
 		return;
 	}
@@ -1756,19 +1748,11 @@ void CNPC_AntlionGuard::HandleAnimEvent( animevent_t *pEvent )
 	{
 		if ( HasSpawnFlags(SF_ANTLIONGUARD_INSIDE_FOOTSTEPS) )
 		{
-#if HL2_EPISODIC
 			Footstep( true );
-#else 
-			EmitSound( "NPC_AntlionGuard.Inside.StepHeavy", pEvent->eventtime );
-#endif // HL2_EPISODIC
 		}
 		else
 		{
-#if HL2_EPISODIC
 			Footstep( true );
-#else 
-			EmitSound( "NPC_AntlionGuard.StepHeavy", pEvent->eventtime );
-#endif // HL2_EPISODIC
 		}
 		return;
 	}

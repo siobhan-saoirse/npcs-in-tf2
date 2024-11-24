@@ -1236,12 +1236,12 @@
 			"StartTask"
 			{
 				"windows"	"364"
-				"linux"	"365"
+				"linux"	"355"
 			}
 			"RunTask"
 			{
 				"windows"	"365"
-				"linux"	"366"
+				"linux"	"356"
 			}
 			"IsInterruptable"
 			{
@@ -2582,7 +2582,7 @@
 			"m_Activity" // CBaseCombatWeapon::SetIdealActivity
 			{
 				// TODO: "windows"
-				"linux"	"316"
+				"linux"	"2436" 
 			}
 			/* End CBaseCombatWeapon */
 

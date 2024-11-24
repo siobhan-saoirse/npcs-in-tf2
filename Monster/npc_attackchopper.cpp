@@ -754,7 +754,7 @@ static const char *pFollowerBoneNames[] =
 };
 #endif // HL2_EPISODIC
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_helicopter, monster_generic, CNPC_AttackHelicopter );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_helicopter, cycler_actor, CNPC_AttackHelicopter );
 
 BEGIN_DATADESC( CNPC_AttackHelicopter )
 

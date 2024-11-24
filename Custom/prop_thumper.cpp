@@ -115,16 +115,11 @@ void CPropThumper::Spawn( void )
 	SetThink( &CPropThumper::MyThink );
 	SetNextThink( gpGlobals->curtime + 1.0f );
 
-	int iSequence = SelectHeaviestSequence ( ACT_IDLE );
+	SetSequence( 0 );
+	ResetSequenceInfo();
 
-	if ( iSequence != ACT_INVALID )
-	{
-		SetSequence( iSequence );
-		ResetSequenceInfo();
-
-		//Do this so we get the nice ramp-up effect.
-		m_flPlaybackRate = enginerandom->RandomFloat( 0.0f, 1.0f);
-	}
+	//Do this so we get the nice ramp-up effect.
+	m_flPlaybackRate = enginerandom->RandomFloat( 0.0f, 1.0f);
 
 	m_iHammerAttachment = LookupAttachment( "hammer" );
 

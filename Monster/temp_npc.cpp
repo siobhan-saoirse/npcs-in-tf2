@@ -13,6 +13,7 @@ public:
 	{
 		Precache();
 		BaseClass::Spawn();
+		m_iHealth = 100;
 		SetModel(STRING(GetModelName()));
 
 		SetHullType(HULL_HUMAN);
@@ -21,32 +22,22 @@ public:
 		SetSolid( SOLID_BBOX );
 		AddSolidFlags( FSOLID_NOT_STANDABLE );
 		SetMoveType( MOVETYPE_STEP );
-		SetBloodColor( DONT_BLEED );
+		SetBloodColor( BLOOD_COLOR_RED );
 
-		m_NPCState			= NPC_STATE_NONE;
 		SetImpactEnergyScale( 0.0f ); 
 
 		CapabilitiesClear();
+		
+		CapabilitiesAdd( bits_CAP_USE_WEAPONS );
+		CapabilitiesAdd( bits_CAP_TURN_HEAD | bits_CAP_MOVE_GROUND );
+		CapabilitiesAdd( bits_CAP_AIM_GUN );
+		
 		NPCInit();
 	}
 
 	virtual Class_T	Classify ( void )
 	{
 		return CLASS_PLAYER_ALLY_VITAL;
-	}
-
-	virtual int OnTakeDamage(const CTakeDamageInfo& info)
-	{
-		return 0;
-	}
-
-	virtual float MaxYawSpeed( void )
-	{
-		return 0.0f;
-	}
-	virtual bool CanBeAnEnemyOf( CBaseEntity *pEnemy )
-	{
-		return false;
 	}
 
 };
@@ -64,7 +55,43 @@ public:
 	}
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_gman, monster_generic, NPC_Gman);
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_gman, cycler_actor, NPC_Gman);
+
+
+class NPC_Dog : public CE_Temp_NPC
+{
+public:
+	CE_DECLARE_CLASS(NPC_Dog, CE_Temp_NPC);
+
+	virtual void Spawn()
+	{
+		BaseClass::Spawn();
+		m_iHealth = 1000;
+	}
+	void Precache()
+	{
+		PrecacheModel("models/dpg.mdl");
+		SetModelName(AllocPooledString("models/dog.mdl"));
+		BaseClass::Precache();
+	}
+};
+
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_dog, cycler_actor, NPC_Dog);
+
+class NPC_Kleiner : public CE_Temp_NPC
+{
+public:
+	CE_DECLARE_CLASS(NPC_Kleiner, CE_Temp_NPC);
+
+	void Precache()
+	{
+		PrecacheModel("models/kleiner.mdl");
+		SetModelName(AllocPooledString("models/kleiner.mdl"));
+		BaseClass::Precache();
+	}
+};
+
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_kleiner, cycler_actor, NPC_Kleiner);
 
 
 class NPC_Alyx : public CE_Temp_NPC
@@ -80,7 +107,7 @@ public:
 	}
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_alyx, monster_generic, NPC_Alyx);
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_alyx, cycler_actor, NPC_Alyx);
 
 class NPC_Barney : public CE_Temp_NPC
 {
@@ -108,7 +135,7 @@ BEGIN_DATADESC( NPC_Barney )
 	DEFINE_OUTPUT( m_OnPlayerUse, "OnPlayerUse" ),
 END_DATADESC()
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_barney, monster_generic, NPC_Barney);
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_barney, cycler_actor, NPC_Barney);
 
 class NPC_Monk : public CE_Temp_NPC //set idle_slam?
 {
@@ -123,5 +150,5 @@ public:
 	}
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_monk, monster_generic, NPC_Monk);
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_monk, cycler_actor, NPC_Monk);
 

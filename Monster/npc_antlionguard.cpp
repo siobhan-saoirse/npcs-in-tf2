@@ -1736,10 +1736,12 @@ void CNPC_AntlionGuard::HandleAnimEvent( animevent_t *pEvent )
 		if ( HasSpawnFlags(SF_ANTLIONGUARD_INSIDE_FOOTSTEPS) )
 		{
 			Footstep( false );
+			EmitSound("NPC_AntlionGuard.NearStepLight", pEvent->eventtime );
 		}
 		else
 		{
 			Footstep( false );
+			EmitSound("NPC_AntlionGuard.NearStepLight", pEvent->eventtime );
 		}
 		return;
 	}
@@ -1749,10 +1751,12 @@ void CNPC_AntlionGuard::HandleAnimEvent( animevent_t *pEvent )
 		if ( HasSpawnFlags(SF_ANTLIONGUARD_INSIDE_FOOTSTEPS) )
 		{
 			Footstep( true );
+			EmitSound("NPC_AntlionGuard.NearStepHeavy", pEvent->eventtime );
 		}
 		else
 		{
 			Footstep( true );
+			EmitSound("NPC_AntlionGuard.NearStepHeavy", pEvent->eventtime );
 		}
 		return;
 	}

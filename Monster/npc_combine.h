@@ -20,13 +20,14 @@
 #include <CAI_behavior_follow.h>
 #include <CAI_behavior_assault.h>
 #include <CAI_behavior_rappel.h>
+#include "temp_npc.h"
 
 // Used when only what combine to react to what the spotlight sees
 #define SF_COMBINE_NO_LOOK	(1 << 16)
 #define SF_COMBINE_NO_GRENADEDROP ( 1 << 17 )
 #define SF_COMBINE_NO_AR2DROP ( 1 << 18 )
 
-typedef CAI_BehaviorHost<CE_Cycler_Fix> CAI_BaseActorBase;
+typedef CAI_BehaviorHost<CE_Temp_NPC> CAI_BaseActorBase;
 
 class CGenericActor_Fix : public CAI_BaseActorBase
 {

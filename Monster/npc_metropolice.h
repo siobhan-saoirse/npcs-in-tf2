@@ -17,12 +17,13 @@
 #include "CAI_behavior_police.h"
 #include "CAI_behavior_follow.h"
 #include "CAI_Sentence.h"
+#include "temp_npc.h"
 
 
 class CNPC_MetroPolice;
 class CE_CPhysicsProp;
 
-typedef CAI_BehaviorHost<CE_Cycler_Fix> CAI_BaseActorBase2;
+typedef CAI_BehaviorHost<CE_Temp_NPC> CAI_BaseActorBase2;
 
 class CNPC_MetroPolice : public CAI_BaseActorBase2
 {

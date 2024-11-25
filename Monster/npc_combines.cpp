@@ -48,7 +48,6 @@ extern Activity ACT_WALK_MARCH;
 void CNPC_CombineS::Spawn( void )
 {
 	Precache();
-	SetModel( CombineModelSoldier );
 
 	if( IsElite() )
 	{
@@ -101,6 +100,7 @@ void CNPC_CombineS::Precache()
 
 	PrecacheModel( "models/combine_super_soldier.mdl" );
 	PrecacheModel( "models/combine_soldier.mdl" );
+	SetModel( CombineModelSoldier );
 
 	g_helpfunc.UTIL_PrecacheOther( "item_healthvial" );
 	g_helpfunc.UTIL_PrecacheOther( "prop_combine_ball" );
@@ -319,7 +319,7 @@ void CNPC_CombineS::Event_Killed( const CTakeDamageInfo &info )
 			//if ( pHL2GameRules->NPC_ShouldDropGrenade( pPlayer ) )
 			if(m_iNumGrenades > 0)
 			{
-				DropItem( "weapon_hegrenade", WorldSpaceCenter()+RandomVector(-4,4), RandomAngle(0,360) );
+				//DropItem( "weapon_hegrenade", WorldSpaceCenter()+RandomVector(-4,4), RandomAngle(0,360) );
 				//pHL2GameRules->NPC_DroppedGrenade();
 			}
 		}
@@ -406,11 +406,12 @@ class CNPC_CombineElite: public CNPC_CombineS
 public:
 	CE_DECLARE_CLASS(CNPC_CombineElite, CNPC_CombineS);
 
-	void Spawn() override
+	void Precache() override
 	{
-		BaseClass::Spawn();
-		
+		BaseClass::Precache();
+
 		SetModel( "models/combine_super_soldier.mdl" );
+		m_fIsElite = true;
 	}
 };
 

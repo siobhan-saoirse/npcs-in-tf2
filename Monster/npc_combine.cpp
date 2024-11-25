@@ -1226,9 +1226,7 @@ void CNPC_Combine::Event_Killed( const CTakeDamageInfo &info )
 		{
 			// Drop the grenade as an item.
 			Vector vecStart;
-			GetAttachment( "lefthand", vecStart );
-
-			CEntity *pItem = DropItem( "weapon_hegrenade", vecStart, RandomAngle(0,360) );
+			CEntity *pItem = DropItem( "weapon_hegrenade", GetAbsOrigin(), RandomAngle(0,360) );
 
 			if ( pItem )
 			{

@@ -346,7 +346,7 @@ void CNPC_Combine::Spawn( void )
 		{
 			SetupVPhysicsHull();
 		}
-		
+
 	NPCInit();
 }
 
@@ -2395,8 +2395,6 @@ void CNPC_Combine::HandleAnimEvent( animevent_t *pEvent )
 				vecSpin.y = enginerandom->RandomFloat( -1000.0, 1000.0 );
 				vecSpin.z = enginerandom->RandomFloat( -1000.0, 1000.0 );
 
-				Vector vecStart;
-				GetAttachment( "lefthand", vecStart );
 
 				if( m_NPCState == NPC_STATE_SCRIPT )
 				{
@@ -2406,12 +2404,12 @@ void CNPC_Combine::HandleAnimEvent( animevent_t *pEvent )
 
 					GetVectors( &forward, NULL, &up );
 					vecThrow = forward * 750 + up * 175;
-					Fraggrenade_Create( vecStart, vec3_angle, vecThrow, vecSpin, BaseEntity(), COMBINE_GRENADE_TIMER, true );
+					Fraggrenade_Create( GetAbsOrigin(), vec3_angle, vecThrow, vecSpin, BaseEntity(), COMBINE_GRENADE_TIMER, true );
 				}
 				else
 				{
 					// Use the Velocity that AI gave us.
-					Fraggrenade_Create( vecStart, vec3_angle, m_vecTossVelocity, vecSpin, BaseEntity(), COMBINE_GRENADE_TIMER, true );
+					Fraggrenade_Create( GetAbsOrigin(), vec3_angle, m_vecTossVelocity, vecSpin, BaseEntity(), COMBINE_GRENADE_TIMER, true );
 					m_iNumGrenades--;
 				}
 
@@ -2443,9 +2441,8 @@ void CNPC_Combine::HandleAnimEvent( animevent_t *pEvent )
 		case COMBINE_AE_GREN_DROP:
 			{
 				Vector vecStart;
-				GetAttachment( "lefthand", vecStart );
 
-				Fraggrenade_Create( vecStart, vec3_angle, m_vecTossVelocity, vec3_origin, BaseEntity(), COMBINE_GRENADE_TIMER, true );
+				Fraggrenade_Create( GetAbsOrigin(), vec3_angle, m_vecTossVelocity, vec3_origin, BaseEntity(), COMBINE_GRENADE_TIMER, true );
 				m_iNumGrenades--;
 			}
 			handledEvent = true;

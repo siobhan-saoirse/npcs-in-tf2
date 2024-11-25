@@ -2756,14 +2756,7 @@ void CNPC_MetroPolice::OnAnimEventStartDeployManhack( void )
 	// Create the manhack to throw
 	CNPC_Manhack *pManhack = (CNPC_Manhack *)CreateEntityByName( "npc_manhack" );
 
-	Vector	vecOrigin;
-	QAngle	vecAngles;
-
-	int handAttachment = LookupAttachment( "LHand" );
-	GetAttachment( handAttachment, vecOrigin, vecAngles );
-
-	pManhack->SetLocalOrigin( vecOrigin );
-	pManhack->SetLocalAngles( vecAngles );
+	pManhack->SetLocalOrigin( GetAbsOrigin() );
 	pManhack->AddSpawnFlags( (SF_MANHACK_PACKED_UP|SF_MANHACK_CARRIED|SF_NPC_WAIT_FOR_SCRIPT) );
 
 	// Also fade if our parent is marked to do it
@@ -2773,9 +2766,6 @@ void CNPC_MetroPolice::OnAnimEventStartDeployManhack( void )
 	}
 
 	pManhack->Spawn();
-
-	// Make us move with his hand until we're deployed
-	pManhack->SetParent( BaseEntity(), handAttachment );
 
 	m_hManhack.Set(pManhack->BaseEntity());
 }

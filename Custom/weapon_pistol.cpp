@@ -97,7 +97,7 @@ void CNPCWeapon_Pistol::NPCWeaponOperator_HandleAnimEvent( animevent_t *pEvent, 
 
 			g_helpfunc.CSoundEnt_InsertSound( SOUND_COMBAT|SOUND_CONTEXT_GUNFIRE, owner->GetAbsOrigin(), SOUNDENT_VOLUME_PISTOL, 0.2, pOperator, SOUNDENT_CHANNEL_WEAPON, owner->CB_GetEnemy() );
 
-			CustomWeaponSound(owner->entindex(), vecShootOrigin, "Weapon_Pistol.Single");
+			CustomWeaponSound(owner->entindex(), vecShootOrigin, "Weapon_Pistol.NPC_Single");
 
 			owner->FireBullets( 1, vecShootOrigin, vecShootDir, VECTOR_CONE_PRECALCULATED, MAX_TRACE_LENGTH, m_iPrimaryAmmoType, 2, entindex(), 0, 12.0f );
 			owner->DoMuzzleFlash();

@@ -53,6 +53,10 @@ public:
 		//	CapabilitiesAdd( bits_CAP_TURN_HEAD | bits_CAP_MOVE_GROUND | bits_CAP_MOVE_JUMP | bits_CAP_MOVE_CLIMB);
 		// JAY: Disabled jump for now - hard to compare to HL1
 		CapabilitiesAdd( bits_CAP_TURN_HEAD | bits_CAP_MOVE_GROUND );
+		CapabilitiesAdd( bits_CAP_ANIMATEDFACE | bits_CAP_TURN_HEAD );
+		CapabilitiesAdd( bits_CAP_USE_WEAPONS | bits_CAP_AIM_GUN | bits_CAP_MOVE_SHOOT );
+		CapabilitiesAdd( bits_CAP_DUCK | bits_CAP_DOORS_GROUP );
+		CapabilitiesAdd( bits_CAP_USE_SHOT_REGULATOR );
 
 		CapabilitiesAdd( bits_CAP_AIM_GUN );
 		CapabilitiesAdd( bits_CAP_NO_HIT_PLAYER | bits_CAP_NO_HIT_SQUADMATES | bits_CAP_FRIENDLY_DMG_IMMUNE );
@@ -64,7 +68,7 @@ public:
 		//CapabilitiesAdd(bits_CAP_INNATE_MELEE_ATTACK1 );
 
 		// Can be in a squad
-		//CapabilitiesAdd( bits_CAP_SQUAD);
+		CapabilitiesAdd( bits_CAP_SQUAD);
 		CapabilitiesAdd( bits_CAP_USE_WEAPONS );
 
 		CapabilitiesAdd( bits_CAP_DUCK );				// In reloading and cover
@@ -89,7 +93,6 @@ public:
 		return CLASS_PLAYER_ALLY_VITAL;
 	}
 
-public:
 	bool HandleInteraction(int interactionType, void *data, CBaseEntity* sourceEnt);
 
 	// Tasks

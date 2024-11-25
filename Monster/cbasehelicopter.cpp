@@ -653,7 +653,7 @@ void CBaseHelicopter::UpdateEnemy()
 				}
 
 				m_flLastSeen = gpGlobals->curtime;
-				m_vecTargetPosition = pEnemy->WorldSpaceCenter();
+				m_vecTargetPosition = pEnemy->GetAbsOrigin();
 			}
 		}
 		else
@@ -685,7 +685,7 @@ void CBaseHelicopter::UpdateFacingDirection()
 	if ( 1 )
 	{
 		Vector targetDir = m_vecTargetPosition - GetAbsOrigin();
-		Vector desiredDir = GetDesiredPosition() - GetAbsOrigin();
+		Vector desiredDir = m_vecTargetPosition - GetAbsOrigin();
 
 		VectorNormalize( targetDir ); 
 		VectorNormalize( desiredDir ); 
@@ -843,7 +843,7 @@ void CBaseHelicopter::ComputeActualTargetPosition( float flSpeed, float flTime, 
 		return;
 	}
 
-	*pDest = GetDesiredPosition() - GetAbsOrigin();
+	*pDest = m_vecTargetPosition - GetAbsOrigin();
 	float flDistToDesired = pDest->Length();
 	if (flDistToDesired > flSpeed * flTime)
 	{
@@ -940,10 +940,10 @@ void CBaseHelicopter::Flight( void )
 		flSpeed = -flSpeed;
 	}
 
-	float flDist = DotProduct( GetDesiredPosition() - vecEst, forward );
+	float flDist = DotProduct( m_vecTargetPosition - vecEst, forward );
 
 	// float flSlip = DotProduct( GetAbsVelocity(), right );
-	float flSlip = -DotProduct( GetDesiredPosition() - vecEst, right );
+	float flSlip = -DotProduct( m_vecTargetPosition - vecEst, right );
 
 	// fly sideways
 	if (flSlip > 0)
@@ -973,13 +973,13 @@ void CBaseHelicopter::Flight( void )
 #define FORCE_POSDELTA	12	
 #define FORCE_NEGDELTA	8
 
-	if (m_flForce < MAX_FORCE && vecEst.z < GetDesiredPosition().z) 
+	if (m_flForce < MAX_FORCE && vecEst.z < m_vecTargetPosition.z) 
 	{
 		m_flForce += FORCE_POSDELTA;
 	}
 	else if (m_flForce > 30)
 	{
-		if (vecEst.z > GetDesiredPosition().z) 
+		if (vecEst.z > m_vecTargetPosition.z) 
 			m_flForce -= FORCE_NEGDELTA;
 	}
 	

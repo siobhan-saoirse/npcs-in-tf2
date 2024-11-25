@@ -95,6 +95,10 @@ public:
 
 	bool HandleInteraction(int interactionType, void *data, CBaseEntity* sourceEnt);
 
+	// Set up the shot regulator based on the equipped weapon
+	virtual void OnUpdateShotRegulator( );
+	virtual int TranslateSchedule( int scheduleType );
+
 	// Tasks
 	virtual void StartTask( const Task_t *pTask );
 	virtual void RunTask( const Task_t *pTask );
@@ -117,6 +121,62 @@ public:
 };
 
 
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+#define PC_LARGER_BURST_RANGE	(12.0f * 10.0f) // If an enemy is this close, player companions fire larger continuous bursts.
+void CE_Temp_NPC::OnUpdateShotRegulator()
+{
+	BaseClass::OnUpdateShotRegulator();
+
+	if( GetEnemy() && HasCondition(COND_CAN_RANGE_ATTACK1) )
+	{
+		if( GetAbsOrigin().DistTo( GetEnemy()->GetAbsOrigin() ) <= PC_LARGER_BURST_RANGE )
+		{
+				// Longer burst
+				int longBurst = enginerandom->RandomInt( 10, 15 );
+				GetShotRegulator()->SetBurstShotsRemaining( longBurst );
+				GetShotRegulator()->SetRestInterval( 0.1, 0.2 );
+		}
+	}
+}
+
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+int CE_Temp_NPC::TranslateSchedule( int scheduleType ) 
+{
+	switch( scheduleType )
+	{
+	case SCHED_CHASE_ENEMY:
+		if ( GetEnemy() && FClassnameIs( GetEnemy(), "npc_combinegunship" ) )
+			return SCHED_ESTABLISH_LINE_OF_FIRE;
+		break;
+
+	case SCHED_ESTABLISH_LINE_OF_FIRE_FALLBACK:
+		// If we're fighting a gunship, try again
+		if ( GetEnemy() && FClassnameIs( GetEnemy(), "npc_combinegunship" ) )
+			return SCHED_ESTABLISH_LINE_OF_FIRE;
+		break;
+
+	case SCHED_RANGE_ATTACK1:
+		if ( GetShotRegulator()->IsInRestInterval() )
+			return SCHED_STANDOFF;
+
+		if( !OccupyStrategySlotRange( SQUAD_SLOT_ATTACK1, SQUAD_SLOT_ATTACK2 ) )
+			return SCHED_STANDOFF;
+		break;
+
+	case SCHED_RUN_FROM_ENEMY_FALLBACK:
+		{
+			if ( HasCondition( COND_CAN_RANGE_ATTACK1 ) )
+			{
+				return SCHED_RANGE_ATTACK1;
+			}
+			break;
+		}
+	}
+
+	return BaseClass::TranslateSchedule( scheduleType );
+}
 
 void CE_Temp_NPC::CheckAmmo( void )
 {

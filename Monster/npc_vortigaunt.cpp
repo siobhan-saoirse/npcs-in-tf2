@@ -161,58 +161,7 @@ m_flAimDelay( 0.0f )
 //-----------------------------------------------------------------------------
 void CNPC_Vortigaunt::StartTask( const Task_t *pTask )
 {
-	switch ( pTask->iTask)
-	{
-
-	case TASK_ANNOUNCE_ATTACK:
-	{
-		BaseClass::StartTask( pTask );
-		break;
-	}
-	
-	case TASK_VORTIGAUNT_EXTRACT_WARMUP:
-	{
-		ResetIdealActivity( (Activity) ACT_VORTIGAUNT_TO_ACTION );
-		break;
-	}
-
-	case TASK_VORTIGAUNT_EXTRACT:
-	{
-		SetActivity( (Activity) ACT_RANGE_ATTACK1 );
-		break;
-	}
-
-	case TASK_VORTIGAUNT_EXTRACT_COOLDOWN:
-	{
-		ResetIdealActivity( (Activity)ACT_VORTIGAUNT_TO_IDLE );
-		break;
-	}
-
-	case TASK_VORTIGAUNT_FIRE_EXTRACT_OUTPUT:
-	{
-		// Cheat, and fire both outputs
-		TaskComplete();
-		break;
-	}
-
-	case TASK_VORTIGAUNT_WAIT_FOR_PLAYER:
-	{
-		// Wait for the player to get near (before starting the bugbait sequence)
-		break;
-	}
-
-	case TASK_VORTIGAUNT_DISPEL_ANTLIONS:
-	{
-		ResetIdealActivity( (Activity) ACT_VORTIGAUNT_DISPEL );
-		break;
-	}
-
-	default:
-		{
-			BaseClass::StartTask( pTask );	
-			break;
-		}
-	}
+	BaseClass::StartTask( pTask );	
 }
 
 //-----------------------------------------------------------------------------
@@ -276,7 +225,7 @@ void CNPC_Vortigaunt::RunTask( const Task_t *pTask )
 		if ( pPlayer != NULL )
 		{
 			GetMotor()->SetIdealYawToTargetAndUpdate( pPlayer->GetAbsOrigin(), AI_KEEP_YAW_SPEED );
-			SetTurnActivity();
+			//SetTurnActivity();
 			if ( GetMotor()->DeltaIdealYaw() < 10 )
 			{
 				// Wait for the player to get close enough
@@ -744,30 +693,6 @@ void CNPC_Vortigaunt::InputTurnBlack( inputdata_t &data )
 //------------------------------------------------------------------------------
 Activity CNPC_Vortigaunt::NPC_TranslateActivity( Activity eNewActivity )
 {
-	// This is a hack solution for the Vort carrying Alyx in Ep2
-	if ( IsCarryingNPC() )
-	{
-		if ( eNewActivity == ACT_IDLE )
-			return ACT_IDLE_CARRY;
-
-		if ( eNewActivity == ACT_WALK || eNewActivity == ACT_WALK_AIM || eNewActivity == ACT_RUN || eNewActivity == ACT_RUN_AIM )
-			return ACT_WALK_CARRY;
-	}
-
-	// NOTE: This is a stand-in until the readiness system can handle non-weapon holding NPC's
-	if ( eNewActivity == ACT_IDLE )
-	{
-		//CE_TODO
-		// More than relaxed means we're stimulated
-		//if ( GetReadinessLevel() >= AIRL_STIMULATED )
-		//	return ACT_IDLE_STIMULATED;
-
-		return ACT_IDLE_STIMULATED;
-	}
-
-	if ( eNewActivity == ACT_RANGE_ATTACK2 )
-		return (Activity) ACT_VORTIGAUNT_DISPEL;
-
 	return BaseClass::NPC_TranslateActivity( eNewActivity );
 }
 
@@ -805,8 +730,6 @@ void CNPC_Vortigaunt::Spawn( void )
 #endif // HL2_EPISODIC
 
 	Precache();
-
-	SetModel("models/vortigaunt.mdl");
 
 	//m_iLeftHandAttachment = LookupAttachment( VORTIGAUNT_LEFT_CLAW );
 	//m_iRightHandAttachment = LookupAttachment( VORTIGAUNT_RIGHT_CLAW );
@@ -884,7 +807,8 @@ void CNPC_Vortigaunt::Precache()
 {
 	//UTIL_PrecacheOther( "vort_charge_token" );
 
-	PrecacheModel( "models/vortigaunt.mdl" );
+	PrecacheModel( "models/ep2/vortigaunt.mdl" );
+	SetModel("models/ep2/vortigaunt.mdl");
 
 	m_nLightningSprite = PrecacheModel("sprites/lgtning.vmt");
 	m_nBeamLaser = PrecacheModel("sprites/laser.vmt");
@@ -992,10 +916,6 @@ int CNPC_Vortigaunt::TranslateSchedule( int scheduleType )
 		break;
 
 	case SCHED_TAKE_COVER_FROM_BEST_SOUND:
-		
-		// Stand still if we're in the middle of an attack.  Failing to do so can make us miss our shot!
-		if ( IsPlayingGesture( ACT_GESTURE_RANGE_ATTACK1 ) )
-			return SCHED_COMBAT_FACE;
 
 		return SCHED_VORT_FLEE_FROM_BEST_SOUND;
 		break;
@@ -1006,10 +926,6 @@ int CNPC_Vortigaunt::TranslateSchedule( int scheduleType )
 		break;
 
 	case SCHED_RANGE_ATTACK1:
-		
-		// If we're told to fire when we're already firing, just face our target.  If we don't do this, we get a bizarre double-shot
-		if ( IsPlayingGesture( ACT_GESTURE_RANGE_ATTACK1 ) )
-			return SCHED_COMBAT_FACE;
 
 		// Otherwise we use our own schedule to attack
 		return SCHED_VORTIGAUNT_RANGE_ATTACK;
@@ -1298,6 +1214,7 @@ void CNPC_Vortigaunt::StartHandGlow( int beamType, int nHand )
 	case VORTIGAUNT_BEAM_DISPEL:
 	case VORTIGAUNT_BEAM_ZAP:
 		{
+			/*
 			if ( nHand >= (int)ARRAYSIZE( m_pHandGlow ) )
 				return;
 
@@ -1310,7 +1227,7 @@ void CNPC_Vortigaunt::StartHandGlow( int beamType, int nHand )
 			m_pLightGlow->SetScale( 0.1f );
 
 			m_pHandGlow[nHand] = m_pLightGlow;
-
+			*/
 		}
 		break;
 
@@ -1415,12 +1332,12 @@ void CNPC_Vortigaunt::ZapBeam( int nHand )
 	trace_t tr;
 
 	UTIL_TraceLine( vecSrc, vecSrc + ( vecAim * InnateRange1MaxRange() ), MASK_SHOT, BaseEntity(), COLLISION_GROUP_NONE, &tr);
-
+/*
 	Vector hand;
 	GetAttachment((nHand==HAND_LEFT) ? VORTIGAUNT_LEFT_CLAW : VORTIGAUNT_RIGHT_CLAW, hand);
 	CBroadcastRecipientFilter filter;
 	te->BeamPoints(filter, 0, &hand, &tr.endpos, m_nBeamLaser, 0, 0, 0, 0.5f, 5.0f, 10.0f, 0, 4.0f, 100, 255, 100, 255, 20);
-	
+*/	
 	// Send a message to the client to create a "zap" beam
 	//unsigned char uchAttachment = (nHand==HAND_LEFT) ? m_iLeftHandAttachment : m_iRightHandAttachment;
 	//CE_
@@ -2102,3 +2019,20 @@ AI_BEGIN_CUSTOM_NPC( npc_vortigaunt, CNPC_Vortigaunt )
 		);
 AI_END_CUSTOM_NPC()
 
+// CE - custom entity so its easier to spawn elite soldiers.
+class CNPC_VortigauntSlave: public CNPC_Vortigaunt
+{
+public:
+	CE_DECLARE_CLASS(CNPC_VortigauntSlave, CNPC_Vortigaunt);
+
+	void Spawn() override
+	{
+		BaseClass::Spawn();
+		
+		SetModel( "models/vortigaunt_slave.mdl" );
+	}
+
+	virtual Class_T		Classify ( void ) { return CLASS_COMBINE; }
+};
+
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_vortigaunt_slave, cycler_actor, CNPC_VortigauntSlave );

@@ -8,6 +8,7 @@
 #include "CAI_Behavior.h"
 #include "CAI_Blended_Movement.h"
 #include "CAI_basehumanoid.h"
+#include "temp_npc.h"
 
 #define		VORTIGAUNT_MAX_BEAMS				8
 
@@ -19,13 +20,15 @@ class CE_CSprite;
 
 extern ConVar sk_vortigaunt_zap_range;
 
+typedef CAI_BlendingHost< CAI_BehaviorHost<CE_Temp_NPC> > CAI_VortigauntBase;
+
 //=========================================================
 //	>> CNPC_Vortigaunt
 //=========================================================
-class CNPC_Vortigaunt : public CAI_BaseHumanoid
+class CNPC_Vortigaunt : public CAI_VortigauntBase
 {
 public:
-	CE_DECLARE_CLASS( CNPC_Vortigaunt, CAI_BaseHumanoid );
+	CE_DECLARE_CLASS( CNPC_Vortigaunt, CAI_VortigauntBase );
 
 public:
 	CNPC_Vortigaunt( void );

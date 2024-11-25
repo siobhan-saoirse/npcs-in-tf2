@@ -22,10 +22,12 @@
 class CNPC_MetroPolice;
 class CE_CPhysicsProp;
 
-class CNPC_MetroPolice : public CAI_BaseActor
+typedef CAI_BehaviorHost<CE_Cycler_Fix> CAI_BaseActorBase2;
+
+class CNPC_MetroPolice : public CAI_BaseActorBase2
 {
 public:
-	CE_DECLARE_CLASS( CNPC_MetroPolice, CAI_BaseActor );
+	CE_DECLARE_CLASS( CNPC_MetroPolice, CAI_BaseActorBase2 );
 	DECLARE_DATADESC();
 
 	CNPC_MetroPolice();
@@ -41,7 +43,7 @@ public:
 	void		HandleAnimEvent( animevent_t *pEvent );
 	Activity NPC_TranslateActivity( Activity newActivity );
 
-	Vector		EyeDirection3D( void )	{ return CAI_BaseHumanoid::EyeDirection3D(); } // cops don't have eyes
+	//Vector		EyeDirection3D( void )	{ return CAI_BaseHumanoid::EyeDirection3D(); } // cops don't have eyes
 
 	virtual void Event_Killed( const CTakeDamageInfo &info );
 

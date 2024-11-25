@@ -861,7 +861,7 @@ void CBaseHelicopter::ComputeActualTargetPosition( float flSpeed, float flTime, 
 		VectorMA( *pDest, flTime * flBlendFactor, vecDestVelocity, *pDest );
 	}
 
-	*pDest += GetAbsOrigin();
+	//*pDest += GetAbsOrigin();
 
 	if ( bApplyNoise )
 	{
@@ -931,7 +931,7 @@ void CBaseHelicopter::Flight( void )
 
 	// add gravity
 	vecImpulse.z -= 38.4; // 32ft/sec
-	ApplyAbsVelocityImpulse( vecImpulse * 0.001 );
+	ApplyAbsVelocityImpulse( vecImpulse );
 
 	float flSpeed = GetAbsVelocity().Length();
 	float flDir = DotProduct( Vector( forward.x, forward.y, 0 ), Vector( GetAbsVelocity().x, GetAbsVelocity().y, 0 ) );

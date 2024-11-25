@@ -20,7 +20,7 @@ class CE_CSprite;
 
 extern ConVar sk_vortigaunt_zap_range;
 
-typedef CAI_BlendingHost< CAI_BehaviorHost<CE_Temp_NPC> > CAI_VortigauntBase;
+typedef CAI_BehaviorHost<CE_Cycler_Fix> CAI_VortigauntBase;
 
 //=========================================================
 //	>> CNPC_Vortigaunt

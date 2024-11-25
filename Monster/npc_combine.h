@@ -26,10 +26,12 @@
 #define SF_COMBINE_NO_GRENADEDROP ( 1 << 17 )
 #define SF_COMBINE_NO_AR2DROP ( 1 << 18 )
 
-class CGenericActor_Fix : public CAI_BaseActor
+typedef CAI_BehaviorHost<CE_Cycler_Fix> CAI_BaseActorBase;
+
+class CGenericActor_Fix : public CAI_BaseActorBase
 {
 public:
-	CE_DECLARE_CLASS( CGenericActor_Fix, CAI_BaseActor );
+	CE_DECLARE_CLASS( CGenericActor_Fix, CAI_BaseActorBase );
 
 };
 

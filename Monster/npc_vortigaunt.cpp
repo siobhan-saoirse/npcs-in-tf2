@@ -807,8 +807,8 @@ void CNPC_Vortigaunt::Precache()
 {
 	//UTIL_PrecacheOther( "vort_charge_token" );
 
-	PrecacheModel( "models/ep2/vortigaunt.mdl" );
-	SetModel("models/ep2/vortigaunt.mdl");
+	PrecacheModel( "models/vortigaunt.mdl" );
+	SetModel("models/vortigaunt.mdl");
 
 	m_nLightningSprite = PrecacheModel("sprites/lgtning.vmt");
 	m_nBeamLaser = PrecacheModel("sprites/laser.vmt");
@@ -2025,9 +2025,9 @@ class CNPC_VortigauntSlave: public CNPC_Vortigaunt
 public:
 	CE_DECLARE_CLASS(CNPC_VortigauntSlave, CNPC_Vortigaunt);
 
-	void Spawn() override
+	void Precache() override
 	{
-		BaseClass::Spawn();
+		BaseClass::Precache();
 		
 		SetModel( "models/vortigaunt_slave.mdl" );
 	}

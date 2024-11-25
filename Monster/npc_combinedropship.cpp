@@ -1394,7 +1394,7 @@ void CNPC_CombineDropship::Flight( void )
 	if ( bRunFlight )
 	{
 		// Add in our velocity pulse for this frame
-		ApplyAbsVelocityImpulse( vecImpulse * 0.001 );
+		ApplyAbsVelocityImpulse( vecImpulse );
 	}
 
 	//DevMsg("curFinAccel: %f, curFinSway: %f\n", curFinAccel, curFinSway );

@@ -208,7 +208,7 @@ void CAI_BaseHumanoid::BuildScheduleTestBits( )
 			ClearCustomInterruptCondition( COND_CAN_RANGE_ATTACK1 );
 		}
 	}
-}
+} 
 
 //-----------------------------------------------------------------------------
 // Starting Tasks

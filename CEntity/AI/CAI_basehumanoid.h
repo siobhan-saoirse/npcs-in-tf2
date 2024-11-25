@@ -30,7 +30,7 @@ public:
 	virtual void StartTask( const Task_t *pTask );
 	virtual void RunTask( const Task_t *pTask );
 	virtual void BuildScheduleTestBits( );
-
+ 
 	// Navigation
 	bool OnMoveBlocked( AIMoveResult_t *pResult );
 

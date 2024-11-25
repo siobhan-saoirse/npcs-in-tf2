@@ -242,7 +242,7 @@ bool CBaseHelicopter::GetTrackPatherTarget( Vector *pPos )
 { 
 	if ( GetEnemy() ) 
 	{ 
-		*pPos = GetEnemy()->BodyTarget( GetAbsOrigin(), false ); 
+		*pPos = GetEnemy()->GetAbsOrigin(); 
 		return true; 
 	}
 	
@@ -861,7 +861,7 @@ void CBaseHelicopter::ComputeActualTargetPosition( float flSpeed, float flTime, 
 		VectorMA( *pDest, flTime * flBlendFactor, vecDestVelocity, *pDest );
 	}
 
-	//*pDest += GetAbsOrigin();
+	*pDest += GetAbsOrigin();
 
 	if ( bApplyNoise )
 	{

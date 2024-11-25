@@ -994,6 +994,7 @@ public:
 	virtual bool IsMedic();
 	virtual void SetCommandGoal( const Vector &vecGoal );
 	virtual CSound *GetBestScent();
+	void			Activate();
 
 public: // sign
 	void CallNPCThink();

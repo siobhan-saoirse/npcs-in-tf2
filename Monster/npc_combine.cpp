@@ -281,6 +281,7 @@ void CNPC_Combine::Precache()
 void CNPC_Combine::Activate()
 {
 	s_iszShotgunClassname = FindPooledString( "weapon_shotgun" );
+	
 	BaseClass::Activate();
 }
 

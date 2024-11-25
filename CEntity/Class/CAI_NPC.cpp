@@ -1576,6 +1576,26 @@ bool CAI_NPC::LoadedSchedules(void)
 	return true;
 }
 
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+void CAI_NPC::Activate()
+{
+	// Handle all clients
+	for ( int i = 1; i <= gpGlobals->maxClients; i++ )
+	{
+		CPlayer *pPlayer = UTIL_PlayerByIndex( i );
+
+		if ( pPlayer != NULL && pPlayer->GetTeamNumber() == 3)
+		{	
+			if (Classify() == CLASS_COMBINE || Classify() == CLASS_SCANNER || Classify() == CLASS_MANHACK || Classify() == CLASS_METROPOLICE || Classify() == CLASS_COMBINE_HUNTER || Classify() == CLASS_COMBINE_GUNSHIP) {
+				AddEntityRelationship( pPlayer->BaseEntity(), D_LI, 99 );
+			} else {
+				AddEntityRelationship( pPlayer->BaseEntity(), D_HT, 99 );
+			}
+		}
+	}
+	BaseClass::Activate();
+}
 
 void CAI_NPC::AddActivityToSR(const char *actName, int actID)
 {

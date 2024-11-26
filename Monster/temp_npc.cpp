@@ -440,7 +440,7 @@ public:
 	}
 	void Precache()
 	{
-		PrecacheModel("models/dpg.mdl");
+		PrecacheModel("models/dog.mdl");
 		SetModelName(AllocPooledString("models/dog.mdl"));
 		BaseClass::Precache();
 	}

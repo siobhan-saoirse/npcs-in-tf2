@@ -166,7 +166,11 @@ void CNPCWeapon_AR2::FireNPCPrimaryAttack( CCombatCharacter *pOperator, bool bUs
 	g_helpfunc.CSoundEnt_InsertSound( SOUND_COMBAT|SOUND_CONTEXT_GUNFIRE, pOperator->GetAbsOrigin(), SOUNDENT_VOLUME_MACHINEGUN, 0.2, pOperator->BaseEntity(), SOUNDENT_CHANNEL_WEAPON, pOperator->CB_GetEnemy() );
 
 	pOperator->FireBullets( 1, vecShootOrigin, vecShootDir, VECTOR_CONE_PRECALCULATED, MAX_TRACE_LENGTH, m_iPrimaryAmmoType, 1, entindex(), 0, 11.0f );
-
+	
+	if ( m_axe )
+	{
+		m_axe->SetActivity(ACT_RANGE_ATTACK_AR2)
+	}
 	// NOTENOTE: This is overriden on the client-side
 	// pOperator->DoMuzzleFlash();
 

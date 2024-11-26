@@ -198,7 +198,7 @@ void CNPCWeapon_AR2::FireNPCSecondaryAttack( CCombatCharacter *pOperator, bool b
 		vecShootOrigin = pOperator->Weapon_ShootPosition();
 	}
 
-	CustomWeaponSound(pOperator->entindex(), vecShootOrigin, "Weapon_AR2.NPC_Double");
+	CustomWeaponSound(pOperator->entindex(), vecShootOrigin, "Weapon_IRifle.Single");
 
 
 	// Fire!

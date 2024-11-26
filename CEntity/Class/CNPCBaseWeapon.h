@@ -3,7 +3,9 @@
 #define _INCLUDE_CNPCWEAPON_H
 
 #include "CEntity.h"
+#include "CAnimating.h"
 #include "CCombatWeapon.h"
+#include "GameSystem.h"
 
 abstract_class CNPCBaseWeapon : public CCombatWeapon
 {
@@ -41,6 +43,7 @@ public:
 protected:
 	bool m_bIsNPCUsing;
 	int m_iWeaponModel;
+	CAnimating *m_axe;
 
 private:
 	static acttable_t m_acttable[];

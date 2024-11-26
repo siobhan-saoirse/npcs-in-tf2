@@ -388,15 +388,6 @@ CNPCMaker::CNPCMaker( void )
 void CNPCMaker::Spawn( void )
 {
 	BaseClass::Spawn();
-}
-
-
-//-----------------------------------------------------------------------------
-// Purpose: Precache the target NPC
-//-----------------------------------------------------------------------------
-void CNPCMaker::Precache( void )
-{
-	BaseClass::Precache();
 
 	const char *pszNPCName = STRING( m_iszNPCClassname );
 	if ( !pszNPCName || !pszNPCName[0] )
@@ -407,6 +398,15 @@ void CNPCMaker::Precache( void )
 	{
 		g_helpfunc.UTIL_PrecacheOther( pszNPCName );
 	}
+}
+
+
+//-----------------------------------------------------------------------------
+// Purpose: Precache the target NPC
+//-----------------------------------------------------------------------------
+void CNPCMaker::Precache( void )
+{
+	BaseClass::Precache();
 }
 
 
@@ -586,19 +586,10 @@ CTemplateNPCMaker::CTemplateNPCMaker( void )
 	m_iszTemplateData = NULL_STRING;
 }
 
-//-----------------------------------------------------------------------------
-// A hook that lets derived NPC makers do special stuff when precaching.
-//-----------------------------------------------------------------------------
-void CTemplateNPCMaker::PrecacheTemplateEntity( CEntity *pEntity )
+void CTemplateNPCMaker::Spawn( void )
 {
-	pEntity->Precache();
-}
-
-
-void CTemplateNPCMaker::Precache()
-{
-	BaseClass::Precache();
-
+	BaseClass::Spawn();
+	
 	if ( !m_iszTemplateData )
 	{
 		//
@@ -637,6 +628,19 @@ void CTemplateNPCMaker::Precache()
 			g_helpfunc.UTIL_RemoveImmediate( pEntity->BaseEntity() );
 		}
 	}
+}
+//-----------------------------------------------------------------------------
+// A hook that lets derived NPC makers do special stuff when precaching.
+//-----------------------------------------------------------------------------
+void CTemplateNPCMaker::PrecacheTemplateEntity( CEntity *pEntity )
+{
+	pEntity->Precache();
+}
+
+
+void CTemplateNPCMaker::Precache()
+{
+	BaseClass::Precache();
 }
 
 #define MAX_DESTINATION_ENTS	100

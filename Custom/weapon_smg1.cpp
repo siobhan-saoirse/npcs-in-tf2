@@ -62,6 +62,7 @@ acttable_t CNPCWeapon_SMG1::m_acttable[] =
 void CNPCWeapon_SMG1::Spawn()
 {
 	m_iWeaponModel = PrecacheModel("models/weapons/w_smg1.mdl");
+	
 	BaseClass::Spawn();
 }
 

@@ -10,7 +10,6 @@
 #include "pickup.h"
 
 
-CE_LINK_ENTITY_TO_CLASS( tf_weapon_mechanical_arm, CWeaponPhysCannon );
 
 
 extern CSoundEnvelopeController *g_SoundController;

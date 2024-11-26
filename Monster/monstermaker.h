@@ -133,6 +133,7 @@ public:
 
 	CTemplateNPCMaker();
 
+	void Spawn( void );
 	virtual void Precache();
 
 	virtual CNPCSpawnDestination *FindSpawnDestination();

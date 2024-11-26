@@ -2,6 +2,7 @@
 #include "CE_recipientfilter.h"
 #include "CAI_NPC.h"
 #include "npc_combine.h"
+#include "CEntity/CEntity.h"
 
 
 // memdbgon must be the last include file in a .cpp file!!!
@@ -58,6 +59,13 @@ void CNPCBaseWeapon::Equip( CBaseEntity *pOwner )
 	if(m_bIsNPCUsing)
 	{
 		m_iWorldModelIndex = m_iWeaponModel;
+	}
+	
+	m_axe = (CAnimating *)CreateEntityByName( "prop_dynamic" );
+	if ( m_axe )
+	{
+		m_axe->SetModel( NPCWeaponGetWorldModel() );
+		m_axe->FollowEntity( pOwner, true );
 	}
 }
 

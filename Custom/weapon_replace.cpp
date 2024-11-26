@@ -23,7 +23,7 @@ public:
 		AddReplace("weapon_smg1","tf_weapon_syringegun_medic");
 		AddReplace("weapon_shotgun","tf_weapon_sentry_revenge");
 		AddReplace("weapon_ar2","tf_weapon_charged_smg");
-		AddReplace("weapon_357", "tf_weapon_revolver");
+		AddReplace("weapon_357", "tf_weapon_revolver"); 
 		AddReplace("weapon_crossbow","tf_weapon_jar_gas");
 		AddReplace("weapon_rpg","tf_weapon_rocketlauncher_fireball");
 		AddReplace("weapon_slam","tf_weapon_stickbomb");

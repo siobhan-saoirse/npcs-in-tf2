@@ -33,7 +33,6 @@ private:
 
 };
 
-
 static CEntityFactory_CE<CNPCWeapon_AR2> WEAPON_AR2_REPLACE(WEAPON_AR2_REPLACE_NAME);
 
 

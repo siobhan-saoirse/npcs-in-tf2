@@ -7,10 +7,10 @@
 
 
 
-CE_LINK_ENTITY_TO_CLASS( flashbang_projectile, CE_FlashbangProjectile );
+CE_LINK_ENTITY_TO_CLASS( tf_projectile_balloffire, CE_FlashbangProjectile );
 
 
-CE_LINK_ENTITY_TO_CLASS( weapon_flashbang, CWeaponRPG );
+CE_LINK_ENTITY_TO_CLASS( tf_weapon_rocketlauncher_fireball, CWeaponRPG );
 
 
 CWeaponRPG *CE_FlashbangProjectile::CURRENT_RPG = NULL;

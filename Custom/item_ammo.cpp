@@ -70,7 +70,11 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 10, "TF_AMMO_PRIMARY"))
+		if (ITEM_GiveAmmo(pPlayer, 10, "TF_AMMO_PRIMARY") ||
+			ITEM_GiveAmmo(pPlayer, 10, "TF_AMMO_SECONDARY") ||
+			ITEM_GiveAmmo(pPlayer, 10, "TF_AMMO_METAL") ||
+			ITEM_GiveAmmo(pPlayer, 10, "TF_AMMO_GRENADES1") ||
+			ITEM_GiveAmmo(pPlayer, 10, "TF_AMMO_GRENADES2"))
 			return this;
 		return nullptr;
 	}
@@ -95,7 +99,11 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 13, "TF_AMMO_PRIMARY"))
+		if (ITEM_GiveAmmo(pPlayer, 13, "TF_AMMO_PRIMARY") ||
+			ITEM_GiveAmmo(pPlayer, 13, "TF_AMMO_SECONDARY") ||
+			ITEM_GiveAmmo(pPlayer, 13, "TF_AMMO_METAL") ||
+			ITEM_GiveAmmo(pPlayer, 13, "TF_AMMO_GRENADES1") ||
+			ITEM_GiveAmmo(pPlayer, 13, "TF_AMMO_GRENADES2"))
 			return this;
 		return nullptr;
 	}
@@ -120,7 +128,11 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_PRIMARY"))
+		if (ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_PRIMARY") ||
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_SECONDARY") ||
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_METAL") ||
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_GRENADES1") ||
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_GRENADES2"))
 			return this;
 		return nullptr;
 	}
@@ -145,7 +157,11 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 7, "TF_AMMO_PRIMARY"))
+		if (ITEM_GiveAmmo(pPlayer, 7, "TF_AMMO_PRIMARY") ||
+			ITEM_GiveAmmo(pPlayer, 7, "TF_AMMO_SECONDARY") ||
+			ITEM_GiveAmmo(pPlayer, 7, "TF_AMMO_METAL") ||
+			ITEM_GiveAmmo(pPlayer, 7, "TF_AMMO_GRENADES1") ||
+			ITEM_GiveAmmo(pPlayer, 7, "TF_AMMO_GRENADES2"))
 			return this;
 		return nullptr;
 	}
@@ -170,7 +186,11 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_PRIMARY"))
+		if (ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_PRIMARY") ||
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_SECONDARY") ||
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_METAL") ||
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_GRENADES1") || 
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_GRENADES2"))
 			return this;
 		return nullptr;
 	}
@@ -195,7 +215,11 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 50, "TF_AMMO_PRIMARY"))
+		if (ITEM_GiveAmmo(pPlayer, 50, "TF_AMMO_PRIMARY") ||
+			ITEM_GiveAmmo(pPlayer, 50, "TF_AMMO_SECONDARY") || 
+			ITEM_GiveAmmo(pPlayer, 50, "TF_AMMO_METAL") || 
+			ITEM_GiveAmmo(pPlayer, 50, "TF_AMMO_GRENADES1") || 
+			ITEM_GiveAmmo(pPlayer, 50, "TF_AMMO_GRENADES2"))
 			return this;
 		return nullptr;
 	}
@@ -209,7 +233,11 @@ public:
 public:
 	 CEntity* MyTouch( CPlayer *pPlayer )
 	 {
-		if (ITEM_GiveAmmo(pPlayer, 50, "TF_AMMO_PRIMARY"))
+		if (ITEM_GiveAmmo(pPlayer, 50, "TF_AMMO_PRIMARY") ||
+			ITEM_GiveAmmo(pPlayer, 50, "TF_AMMO_SECONDARY") || 
+			ITEM_GiveAmmo(pPlayer, 50, "TF_AMMO_METAL") || 
+			ITEM_GiveAmmo(pPlayer, 50, "TF_AMMO_GRENADES1") || 
+			ITEM_GiveAmmo(pPlayer, 50, "TF_AMMO_GRENADES2"))
 			return this;
 		return nullptr;
 	 }
@@ -234,7 +262,11 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_PRIMARY"))
+		if (ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_PRIMARY") ||
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_SECONDARY") || 
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_METAL") || 
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_GRENADES1") || 
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_GRENADES2"))
 			return this;
 		return nullptr;
 	}
@@ -259,7 +291,11 @@ public:
 	}
 	CEntity* MyTouch( CPlayer *pPlayer )
 	{
-		if (ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_PRIMARY"))
+		if (ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_PRIMARY") ||
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_SECONDARY") || 
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_METAL") || 
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_GRENADES1") || 
+			ITEM_GiveAmmo(pPlayer, 30, "TF_AMMO_GRENADES1"))
 			return this;
 		return nullptr;
 	}
@@ -312,7 +348,7 @@ public:
 	{
 		if(pPlayer->m_bHaveRPG)
 		{
-			int iAmmoType = GetAmmoDef()->Index("AMMO_TYPE_FLASHBANG");
+			int iAmmoType = GetAmmoDef()->Index("TF_AMMO_PRIMARY");
 			if (iAmmoType != -1)
 			{
 				bool ret = false;

@@ -177,7 +177,7 @@ void CNPCWeapon_ShotGun::FireNPCPrimaryAttack( CCombatCharacter *pOperator, bool
 
 	if ( m_axe )
 	{
-		m_axe->SetActivity(ACT_RANGE_ATTACK_SHOTGUN)
+		m_axe->SetActivity(ACT_RANGE_ATTACK_SHOTGUN);
 	}
 
 	CustomWeaponSound(pOperator->entindex(), vecShootOrigin, "Weapon_Shotgun.NPC_Single");

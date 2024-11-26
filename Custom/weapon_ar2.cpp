@@ -169,7 +169,7 @@ void CNPCWeapon_AR2::FireNPCPrimaryAttack( CCombatCharacter *pOperator, bool bUs
 	
 	if ( m_axe )
 	{
-		m_axe->SetActivity(ACT_RANGE_ATTACK_AR2)
+		m_axe->SetActivity(ACT_RANGE_ATTACK_AR2);
 	}
 	// NOTENOTE: This is overriden on the client-side
 	// pOperator->DoMuzzleFlash();

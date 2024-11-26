@@ -119,7 +119,7 @@ void CNPCWeapon_SMG1::FireNPCPrimaryAttack( CCombatCharacter *pOperator, Vector 
 	
 	if ( m_axe )
 	{
-		m_axe->SetActivity(ACT_RANGE_ATTACK_SMG1)
+		m_axe->SetActivity(ACT_RANGE_ATTACK_SMG1);
 	}
 
 	m_iClip1 = *(m_iClip1) - 1;

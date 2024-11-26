@@ -9,6 +9,7 @@ ConVar	pistol_use_new_accuracy( "pistol_use_new_accuracy", "1" );
 
 
 static CEntityFactory_CE<CNPCWeapon_Pistol> WEAPON_PISTOL_REPLACE(WEAPON_PISTOL_REPLACE_NAME);
+static CEntityFactory_CE<CNPCWeapon_Pistol> WEAPON_ALYXGUN_REPLACE(WEAPON_ALYXGUN_REPLACE_NAME);
 
 
 acttable_t	CNPCWeapon_Pistol::m_acttable[] =

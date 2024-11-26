@@ -436,6 +436,7 @@ public:
 	{
 		BaseClass::Spawn();
 		m_iHealth = 1000;
+		SetBloodColor(BLOOD_COLOR_MECH);
 	}
 	void Precache()
 	{

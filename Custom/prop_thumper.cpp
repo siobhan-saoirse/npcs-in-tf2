@@ -115,7 +115,7 @@ void CPropThumper::Spawn( void )
 	SetThink( &CPropThumper::MyThink );
 	SetNextThink( gpGlobals->curtime + 1.0f );
 
-	SetSequence( 0 );
+	ResetSequence( LookupSequence( "Idle" ) );
 	ResetSequenceInfo();
 
 	//Do this so we get the nice ramp-up effect.

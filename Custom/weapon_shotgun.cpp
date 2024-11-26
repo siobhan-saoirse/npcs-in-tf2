@@ -34,6 +34,7 @@ private:
 
 
 static CEntityFactory_CE<CNPCWeapon_ShotGun> WEAPON_SHOTGUN_REPLACE(WEAPON_SHOTGUN_REPLACE_NAME);
+static CEntityFactory_CE<CNPCWeapon_ShotGun> WEAPON_ANNABELLE_REPLACE(WEAPON_ANNABELLE_REPLACE_NAME);
 
 
 acttable_t	CNPCWeapon_ShotGun::m_acttable[] =

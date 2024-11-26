@@ -11,6 +11,7 @@ class CCombatWeapon;
 #define WEAPON_STUNSTICK_REPLACE	tf_weapon_breakable_sign
 #define WEAPON_ALYXGUN_REPLACE		tf_weapon_pep_brawler_blaster
 #define WEAPON_PISTOL_REPLACE		tf_weapon_raygun
+#define WEAPON_ANNABELLE_REPLACE		tf_weapon_shotgun_hwg
 
 #define WEAPON_SMG1_REPLACE_NAME		"tf_weapon_syringegun_medic"
 #define WEAPON_AR2_REPLACE_NAME			"tf_weapon_charged_smg"
@@ -19,6 +20,7 @@ class CCombatWeapon;
 #define WEAPON_STUNSTICK_REPLACE_NAME	"tf_weapon_breakable_sign"
 #define WEAPON_ALYXGUN_REPLACE_NAME		"tf_weapon_pep_brawler_blaster"
 #define WEAPON_PISTOL_REPLACE_NAME		"tf_weapon_raygun"
+#define WEAPON_ANNABELLE_REPLACE_NAME		"tf_weapon_shotgun_hwg"
 
 const char *GetWeaponReplaceName(const char *name);
 const char *NPC_WeaponReplace(const char *classname);

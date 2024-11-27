@@ -71,6 +71,7 @@ public:
 	virtual void StartTask( const Task_t *pTask );
 	virtual void RunTask( const Task_t *pTask );
 	virtual void BuildScheduleTestBits( );
+	virtual void		AimGun();
  
 	// Navigation
 	bool OnMoveBlocked( AIMoveResult_t *pResult );

@@ -218,6 +218,10 @@ void CNPC_FloorTurret::Precache( void )
 	}
 
 	// Activities
+	ADD_CUSTOM_ACTIVITY( CNPC_FloorTurret, ACT_FLOOR_TURRET_OPEN );
+	ADD_CUSTOM_ACTIVITY( CNPC_FloorTurret, ACT_FLOOR_TURRET_CLOSE );
+	ADD_CUSTOM_ACTIVITY( CNPC_FloorTurret, ACT_FLOOR_TURRET_CLOSED_IDLE );
+	ADD_CUSTOM_ACTIVITY( CNPC_FloorTurret, ACT_FLOOR_TURRET_OPEN_IDLE );
 	//ADD_CUSTOM_ACTIVITY( CNPC_FloorTurret, ACT_FLOOR_TURRET_FIRE );
 	
 	PrecacheScriptSound( "NPC_FloorTurret.Retire" );
@@ -477,7 +481,7 @@ void CNPC_FloorTurret::OnPhysGunPickup( CBaseEntity *pPhysGunUser, PhysGunPickup
 	// Drop our mass a lot so that we can be moved easily with +USE
 	if ( reason != PUNTED_BY_CANNON )
 	{
-		// Assert( VPhysicsGetObject() );
+		//Assert( VPhysicsGetObject() );
 
 		m_bCarriedByPlayer = true;
 		m_OnPhysGunPickup.FireOutput( this, this );
@@ -528,7 +532,7 @@ void CNPC_FloorTurret::OnPhysGunDrop( CBaseEntity *pPhysGunUser, PhysGunDrop_t R
 	}
 
 	// Restore our mass to the original value
-	// Assert( VPhysicsGetObject() );
+	//Assert( VPhysicsGetObject() );
 }
 
 //-----------------------------------------------------------------------------
@@ -2202,11 +2206,6 @@ bool CTurretTipController::Enabled( void )
 AI_BEGIN_CUSTOM_NPC( npc_turret_floor, CNPC_FloorTurret )
 
 	DECLARE_INTERACTION( g_interactionTurretStillStanding );	
-	
-	DECLARE_ACTIVITY( ACT_FLOOR_TURRET_OPEN );
-	DECLARE_ACTIVITY( ACT_FLOOR_TURRET_CLOSE );
-	DECLARE_ACTIVITY( ACT_FLOOR_TURRET_CLOSED_IDLE );
-	DECLARE_ACTIVITY( ACT_FLOOR_TURRET_OPEN_IDLE );
 
 AI_END_CUSTOM_NPC()
 

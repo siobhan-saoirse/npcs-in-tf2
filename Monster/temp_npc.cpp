@@ -39,6 +39,33 @@ static const char *g_ppszModelLocs[] =
 #define IsExcludedHead( type, bMedic, iHead) false // see XBox codeline for an implementation
 
 
+//-----------------------------------------------------------------------------
+void CE_Temp_NPC::AimGun()
+{
+	if (GetEnemy())
+	{
+		Vector vecShootOrigin;
+
+		vecShootOrigin = Weapon_ShootPosition();
+		Vector vecShootDir = GetShootEnemyDir( vecShootOrigin, false );
+
+		SetAim( vecShootDir );
+	}
+	else
+	{
+		RelaxAim( );
+	}
+	Activity NewActivity = NPC_TranslateActivity(GetActivity());
+
+	//Don't set the ideal activity to an activity that might not be there.
+	if ( SelectWeightedSequence( NewActivity ) == ACT_INVALID )
+		return;
+
+	if (NewActivity != GetActivity() )
+	{
+		SetIdealActivity( NewActivity );
+	}
+}
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------

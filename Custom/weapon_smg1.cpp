@@ -116,11 +116,6 @@ void CNPCWeapon_SMG1::FireNPCPrimaryAttack( CCombatCharacter *pOperator, Vector 
 							MAX_TRACE_LENGTH, m_iPrimaryAmmoType, 1, entindex(), 0, 5.0f );
 
 	pOperator->DoMuzzleFlash();
-	
-	if ( m_axe )
-	{
-		m_axe->SetActivity(ACT_RANGE_ATTACK_SMG1);
-	}
 
 	m_iClip1 = *(m_iClip1) - 1;
 }

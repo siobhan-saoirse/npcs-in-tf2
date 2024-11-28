@@ -61,7 +61,7 @@ CMAKE_SOURCE_DIR = /home/siobhan/npcs-in-tf2
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/siobhan/npcs-in-tf2
-CFLAGS=-DNDEBUG
+
 #=============================================================================
 # Targets provided globally by CMake.
 

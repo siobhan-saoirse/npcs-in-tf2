@@ -409,6 +409,7 @@ void Monster::Precache()
 	soundemitterbase->AddSoundOverrides("scripts/sm_monster/npc_sounds_barnacle.txt", false);
 	soundemitterbase->AddSoundOverrides("scripts/sm_monster/npc_sounds_stalker.txt", false);
 	soundemitterbase->AddSoundOverrides("scripts/sm_monster/npc_sounds_houndeye.txt", false);
+	soundemitterbase->AddSoundOverrides("scripts/sm_monster/npc_sounds_bullsquid.txt", false);
 	soundemitterbase->AddSoundOverrides("scripts/sm_monster/npc_sounds_scanner.txt", false);
 	soundemitterbase->AddSoundOverrides("scripts/sm_monster/npc_sounds_soldier.txt", false);
 	soundemitterbase->AddSoundOverrides("scripts/sm_monster/npc_sounds_combine_ball.txt", false);

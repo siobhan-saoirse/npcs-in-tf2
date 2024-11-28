@@ -142,8 +142,6 @@ void CNPC_Houndeye::InitCustomSchedules(void)
 
 LINK_ENTITY_TO_CUSTOM_CLASS( npc_houndeye, monster_generic, CNPC_Houndeye );
 IMPLEMENT_CUSTOM_AI( npc_houndeye, CNPC_Houndeye );
-LINK_ENTITY_TO_CUSTOM_CLASS( monster_houndeye, monster_generic, CNPC_Houndeye );
-IMPLEMENT_CUSTOM_AI( monster_houndeye, CNPC_Houndeye );
 
 BEGIN_DATADESC( CNPC_Houndeye )
 

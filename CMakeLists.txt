@@ -323,6 +323,8 @@ add_library(npcs-in-tf2
         Monster/npc_headcrab.cpp
         Monster/npc_houndeye.cpp
         Monster/npc_houndeye.h
+        Monster/npc_bullsquid.cpp
+        Monster/npc_bullsquid.h
         Monster/npc_manhack.cpp
         Monster/npc_manhack.h
         Monster/npc_PoisonZombie.cpp

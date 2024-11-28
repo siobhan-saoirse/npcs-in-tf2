@@ -4521,6 +4521,30 @@ Monster/npc_bullseye.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/npcs-in-tf2.dir/build.make CMakeFiles/npcs-in-tf2.dir/Monster/npc_bullseye.cpp.s
 .PHONY : Monster/npc_bullseye.cpp.s
 
+Monster/npc_bullsquid.o: Monster/npc_bullsquid.cpp.o
+.PHONY : Monster/npc_bullsquid.o
+
+# target to build an object file
+Monster/npc_bullsquid.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/npcs-in-tf2.dir/build.make CMakeFiles/npcs-in-tf2.dir/Monster/npc_bullsquid.cpp.o
+.PHONY : Monster/npc_bullsquid.cpp.o
+
+Monster/npc_bullsquid.i: Monster/npc_bullsquid.cpp.i
+.PHONY : Monster/npc_bullsquid.i
+
+# target to preprocess a source file
+Monster/npc_bullsquid.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/npcs-in-tf2.dir/build.make CMakeFiles/npcs-in-tf2.dir/Monster/npc_bullsquid.cpp.i
+.PHONY : Monster/npc_bullsquid.cpp.i
+
+Monster/npc_bullsquid.s: Monster/npc_bullsquid.cpp.s
+.PHONY : Monster/npc_bullsquid.s
+
+# target to generate assembly for a file
+Monster/npc_bullsquid.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/npcs-in-tf2.dir/build.make CMakeFiles/npcs-in-tf2.dir/Monster/npc_bullsquid.cpp.s
+.PHONY : Monster/npc_bullsquid.cpp.s
+
 Monster/npc_combine.o: Monster/npc_combine.cpp.o
 .PHONY : Monster/npc_combine.o
 
@@ -5751,6 +5775,9 @@ help:
 	@echo "... Monster/npc_bullseye.o"
 	@echo "... Monster/npc_bullseye.i"
 	@echo "... Monster/npc_bullseye.s"
+	@echo "... Monster/npc_bullsquid.o"
+	@echo "... Monster/npc_bullsquid.i"
+	@echo "... Monster/npc_bullsquid.s"
 	@echo "... Monster/npc_combine.o"
 	@echo "... Monster/npc_combine.i"
 	@echo "... Monster/npc_combine.s"

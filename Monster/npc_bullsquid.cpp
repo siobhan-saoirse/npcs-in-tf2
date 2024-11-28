@@ -71,7 +71,7 @@ int	g_interactionBullsquidThrow		= 0;
 #define		BSQUID_AE_WHIP_SND	( 7 )
 #define		BSQUID_AE_TAILWHIP	( 8 )
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_bullsquid, monster_generic, CNPC_Bullsquid );
+LINK_ENTITY_TO_CUSTOM_CLASS( monster_bullchicken, monster_generic, CNPC_Bullsquid );
 
 int ACT_SQUID_EXCITED;
 int ACT_SQUID_EAT;
@@ -371,9 +371,7 @@ void CNPC_Bullsquid::HandleAnimEvent( animevent_t *pEvent )
 		{
 			if ( GetEnemy() )
 			{
-				Vector vSpitPos;
-
-				GetAttachment( "Mouth", vSpitPos );
+				Vector vSpitPos = GetAbsOrigin() + Vector(0,0,30);
 				
 				Vector			vTarget = GetEnemy()->GetAbsOrigin();
 				Vector			vToss;
@@ -413,7 +411,7 @@ void CNPC_Bullsquid::HandleAnimEvent( animevent_t *pEvent )
 				AngleVectors( GetAbsAngles(), &forward, NULL, &up );
 				pHurt->ApplyAbsVelocityImpulse( 100 * (up-forward) );
 				pHurt->SetGroundEntity( NULL );
-				EmitSound( "NPC_Bullsquid.Eat" );
+				EmitSound( "NPC_AntlionGuard.Shove" );
 			}
 		}
 		break;
@@ -941,7 +939,7 @@ NPC_STATE CNPC_Bullsquid::SelectIdealState( void )
 //
 //------------------------------------------------------------------------------
 
-AI_BEGIN_CUSTOM_NPC( npc_bullsquid, CNPC_Bullsquid )
+AI_BEGIN_CUSTOM_NPC( monster_bullchicken, CNPC_Bullsquid )
 
 	DECLARE_TASK( TASK_SQUID_HOPTURN )
 	DECLARE_TASK( TASK_SQUID_EAT )

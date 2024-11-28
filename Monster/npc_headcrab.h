@@ -179,6 +179,15 @@ public:
 };
 
 
+class CHL1Headcrab : public CHeadcrab
+{
+public:
+	CE_DECLARE_CLASS(CHL1Headcrab, CHeadcrab);
+
+	void Precache( void );
+	void Spawn( void );
+}
+
 //=========================================================
 //=========================================================
 // The spindly, fast headcrab

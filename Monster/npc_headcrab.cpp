@@ -2327,6 +2327,43 @@ void CBaseHeadcrab::BuildScheduleTestBits( void )
 
 
 
+// HL1 Headcrab
+LINK_ENTITY_TO_CUSTOM_CLASS(monster_headcrab, monster_generic, CHL1Headcrab);
+
+void CHeadcrab::Precache(void)
+{
+	PrecacheModel( "models/hl1hcrab.mdl" );
+
+	PrecacheScriptSound( "NPC_HeadCrab.Gib" );
+	PrecacheScriptSound( "NPC_HeadCrab.Idle" );
+	PrecacheScriptSound( "NPC_HeadCrab.Alert" );
+	PrecacheScriptSound( "NPC_HeadCrab.Pain" );
+	PrecacheScriptSound( "NPC_HeadCrab.Die" );
+	PrecacheScriptSound( "NPC_HeadCrab.Attack" );
+	PrecacheScriptSound( "NPC_HeadCrab.Bite" );
+	PrecacheScriptSound( "NPC_Headcrab.BurrowIn" );
+	PrecacheScriptSound( "NPC_Headcrab.BurrowOut" );
+
+	BaseClass::Precache();
+}
+
+void CHeadcrab::Spawn(void)
+{
+	Precache();
+
+	SetModel("models/hl1hcrab.mdl");
+
+	BaseClass::Spawn();
+
+	m_iHealth = sk_headcrab_health.GetInt();
+	m_flBurrowTime = 0.0f;
+	m_bCrawlFromCanister = false;
+	m_bMidJump = false;
+
+	NPCInit();
+	HeadcrabInit();
+}
+
 // Headcrab
 LINK_ENTITY_TO_CUSTOM_CLASS(npc_headcrab, cycler_actor, CHeadcrab);
 
@@ -2483,7 +2520,7 @@ float CHeadcrab::MaxYawSpeed ( void )
 
 
 // Fast Headcrab
-LINK_ENTITY_TO_CUSTOM_CLASS(npc_headcrab_fast, cycler_actor, CFastHeadcrab);
+LINK_ENTITY_TO_CUSTOM_CLASS(npc_headcrab_fast, monster_generic, CFastHeadcrab);
 
 
 //-----------------------------------------------------------------------------

@@ -2330,7 +2330,7 @@ void CBaseHeadcrab::BuildScheduleTestBits( void )
 // HL1 Headcrab
 LINK_ENTITY_TO_CUSTOM_CLASS(monster_headcrab, monster_generic, CHL1Headcrab);
 
-void CHeadcrab::Precache(void)
+void CHL1Headcrab::Precache(void)
 {
 	PrecacheModel( "models/hl1hcrab.mdl" );
 
@@ -2347,7 +2347,7 @@ void CHeadcrab::Precache(void)
 	BaseClass::Precache();
 }
 
-void CHeadcrab::Spawn(void)
+void CHL1Headcrab::Spawn(void)
 {
 	Precache();
 

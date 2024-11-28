@@ -184,9 +184,9 @@ class CHL1Headcrab : public CHeadcrab
 public:
 	CE_DECLARE_CLASS(CHL1Headcrab, CHeadcrab);
 
-	void Precache( void );
-	void Spawn( void );
-}
+	virtual void Precache( void );
+	virtual void Spawn( void );
+};
 
 //=========================================================
 //=========================================================

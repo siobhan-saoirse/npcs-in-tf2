@@ -179,13 +179,108 @@ public:
 };
 
 
-class CHL1Headcrab : public CHeadcrab
+class CHL1Headcrab : public CBaseHeadcrab
 {
 public:
-	CE_DECLARE_CLASS(CHL1Headcrab, CHeadcrab);
+	CE_DECLARE_CLASS(CHL1Headcrab, CBaseHeadcrab);
 
 	virtual void Precache( void );
 	virtual void Spawn( void );
+		
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
+	void IdleSound( void )
+	{
+		EmitSound( "NPC_HeadCrab.Idle" );
+	}
+
+
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
+	void AlertSound( void )
+	{
+		EmitSound( "NPC_HeadCrab.Alert" );
+	}
+
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
+	void PainSound( const CTakeDamageInfo &info )
+	{
+		EmitSound( "NPC_HeadCrab.Pain" );
+	}
+
+
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
+	void DeathSound( const CTakeDamageInfo &info )
+	{
+		EmitSound( "NPC_HeadCrab.Die" );
+	}
+
+
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
+	void TelegraphSound( void )
+	{
+		//FIXME: Need a real one
+		EmitSound( "NPC_HeadCrab.Alert" );
+	}
+
+
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
+	void AttackSound( void )
+	{
+		EmitSound( "NPC_Headcrab.Attack" );
+	}
+
+
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
+	void BiteSound( void )
+	{
+		EmitSound( "NPC_HeadCrab.Bite" );
+	}
+
+
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	// Input  :
+	// Output : 
+	//-----------------------------------------------------------------------------
+	float MaxYawSpeed ( void )
+	{
+		switch ( GetActivity() )
+		{
+		case ACT_IDLE:			
+			return 30;
+
+		case ACT_RUN:			
+		case ACT_WALK:			
+			return 20;
+
+		case ACT_TURN_LEFT:
+		case ACT_TURN_RIGHT:
+			return 15;
+
+		case ACT_RANGE_ATTACK1:
+			return 30;
+
+		default:
+			return 30;
+		}
+	}
+	eHeadcrabType GetHeadcrabType() const
+	{
+		return Headcrab_Normal;
+	}
 };
 
 //=========================================================

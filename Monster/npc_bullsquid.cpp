@@ -143,6 +143,10 @@ void CNPC_Bullsquid::Precache()
 	PrecacheScriptSound( "NPC_Bullsquid.Attack1" );
 	PrecacheScriptSound( "NPC_Bullsquid.Growl" );
 	PrecacheScriptSound( "NPC_Bullsquid.TailWhip");
+	PrecacheScriptSound( "NPC_AntlionGuard.Shove");
+	PrecacheScriptSound( "NPC_Vortigaunt.Claw");
+	PrecacheScriptSound( "NPC_Antlion.PoisonShoot" );
+	PrecacheScriptSound( "NPC_Antlion.PoisonBall" );
 
 	BaseClass::Precache();
 }

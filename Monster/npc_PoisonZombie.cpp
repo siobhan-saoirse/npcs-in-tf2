@@ -206,7 +206,7 @@ private:
 	int m_nThrowCrab;				// The crab we are about to throw.
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_poisonzombie, cycler_actor, CNPC_PoisonZombie );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_poisonzombie, monster_generic, CNPC_PoisonZombie );
 
 BEGIN_DATADESC( CNPC_PoisonZombie )
 

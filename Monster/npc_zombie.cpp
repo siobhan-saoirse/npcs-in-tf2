@@ -999,3 +999,261 @@ AI_END_CUSTOM_NPC()
 
 
 
+
+
+class CHL1Zombie : public CNPC_BaseZombie
+{
+public:
+	CE_DECLARE_CLASS( CHL1Zombie, CNPC_BaseZombie );
+	void Spawn( void );
+	void Precache( void );
+
+	
+	void SetZombieModel( void );
+
+	//-----------------------------------------------------------------------------
+	// Purpose: Sound of a footstep
+	//-----------------------------------------------------------------------------
+	void FootstepSound( bool fRightFoot );
+
+	//-----------------------------------------------------------------------------
+	// Purpose: Sound of a foot sliding/scraping
+	//-----------------------------------------------------------------------------
+	void FootscuffSound( bool fRightFoot );
+
+	//-----------------------------------------------------------------------------
+	// Purpose: Play a random attack hit sound
+	//-----------------------------------------------------------------------------
+	void AttackHitSound( void );
+
+	//-----------------------------------------------------------------------------
+	// Purpose: Play a random attack miss sound
+	//-----------------------------------------------------------------------------
+	void AttackMissSound( void );
+
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
+	void PainSound( const CTakeDamageInfo &info );
+
+	//-----------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------
+	void DeathSound( const CTakeDamageInfo &info );
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
+	void AlertSound( void );
+	//-----------------------------------------------------------------------------
+	// Purpose: Play a random attack sound.
+	//-----------------------------------------------------------------------------
+	void AttackSound( void );
+	void IdleSound( void );
+
+	//-----------------------------------------------------------------------------
+	// Purpose: Returns the classname (ie "npc_headcrab") to spawn when our headcrab bails.
+	//-----------------------------------------------------------------------------
+	const char *GetHeadcrabClassname( void );
+
+	//-----------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------
+	const char *GetHeadcrabModel( void );
+	//-----------------------------------------------------------------------------
+	// Purpose: Returns a moan sound for this class of zombie.
+	//-----------------------------------------------------------------------------
+	const char *GetMoanSound( int nSound ); 
+	virtual const char *GetLegsModel( void ) { return "models/zombie.mdl"; }
+	virtual const char *GetTorsoModel( void ) { return "models/zombie.mdl"; }
+};
+void CHL1Zombie::Spawn( void )
+	{
+		Precache();
+
+		m_fIsTorso = false;
+
+		m_fIsHeadless = false;
+
+		SetBloodColor( BLOOD_COLOR_GREEN );
+
+		m_iHealth			= sk_zombie_health.GetInt();
+		m_flFieldOfView		= 0.2;
+
+		CapabilitiesClear();
+
+		//GetNavigator()->SetRememberStaleNodes( false );
+
+		BaseClass::Spawn();
+
+		m_flNextMoanSound = gpGlobals->curtime + enginerandom->RandomFloat( 1.0, 4.0 );
+	}
+	void CHL1Zombie::Precache( void )
+	{
+		BaseClass::Precache();
+
+		PrecacheModel( "models/zombie.mdl" );
+
+		PrecacheScriptSound( "HL1_Zombie.AttackHit" );
+		PrecacheScriptSound( "HL1_Zombie.AttackMiss" );
+		PrecacheScriptSound( "HL1_Zombie.Pain" );
+		PrecacheScriptSound( "HL1_Zombie.Die" );
+		PrecacheScriptSound( "HL1_Zombie.Alert" );
+		PrecacheScriptSound( "HL1_Zombie.Idle" );
+		PrecacheScriptSound( "HL1_Zombie.Attack" );
+
+		PrecacheScriptSound( "NPC_BaseZombie.Moan1" );
+		PrecacheScriptSound( "NPC_BaseZombie.Moan2" );
+		PrecacheScriptSound( "NPC_BaseZombie.Moan3" );
+		PrecacheScriptSound( "NPC_BaseZombie.Moan4" );
+	}
+
+	
+	void CHL1Zombie::SetZombieModel( void )
+	{
+		Hull_t lastHull = GetHullType();
+
+		SetModel( "models/zombie.mdl" );
+		SetHullType( HULL_HUMAN );
+
+		SetHullSizeNormal( true );
+		SetDefaultEyeOffset();
+		SetActivity( ACT_IDLE );
+
+		// hull changed size, notify vphysics
+		// UNDONE: Solve this generally, systematically so other
+		// NPCs can change size
+		if ( lastHull != GetHullType() )
+		{
+			if ( VPhysicsGetObject() )
+			{
+				SetupVPhysicsHull();
+			}
+		}
+	}
+
+	//-----------------------------------------------------------------------------
+	// Purpose: Sound of a footstep
+	//-----------------------------------------------------------------------------
+	void CHL1Zombie::FootstepSound( bool fRightFoot )
+	{
+		if( fRightFoot )
+		{
+			EmitSound(  "Zombie.FootstepRight" );
+		}
+		else
+		{
+			EmitSound( "Zombie.FootstepLeft" );
+		}
+	}
+
+	//-----------------------------------------------------------------------------
+	// Purpose: Sound of a foot sliding/scraping
+	//-----------------------------------------------------------------------------
+	void CHL1Zombie::FootscuffSound( bool fRightFoot )
+	{
+		if( fRightFoot )
+		{
+			EmitSound( "Zombie.ScuffRight" );
+		}
+		else
+		{
+			EmitSound( "Zombie.ScuffLeft" );
+		}
+	}
+
+	//-----------------------------------------------------------------------------
+	// Purpose: Play a random attack hit sound
+	//-----------------------------------------------------------------------------
+	void CHL1Zombie::AttackHitSound( void )
+	{
+		EmitSound( "HL1_Zombie.AttackHit" );
+	}
+
+	//-----------------------------------------------------------------------------
+	// Purpose: Play a random attack miss sound
+	//-----------------------------------------------------------------------------
+	void CHL1Zombie::AttackMissSound( void )
+	{
+		// Play a random attack miss sound
+		EmitSound( "HL1_Zombie.AttackMiss" );
+	}
+
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
+	void CHL1Zombie::PainSound( const CTakeDamageInfo &info )
+	{
+		// We're constantly taking damage when we are on fire. Don't make all those noises!
+		if ( IsOnFire() )
+		{
+			return;
+		}
+
+		EmitSound( "HL1_Zombie.Pain" );
+	}
+
+	//-----------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------
+	void CHL1Zombie::DeathSound( const CTakeDamageInfo &info ) 
+	{
+		
+	}
+
+	//-----------------------------------------------------------------------------
+	// Purpose: 
+	//-----------------------------------------------------------------------------
+	void CHL1Zombie::AlertSound( void )
+	{
+		EmitSound( "HL1_Zombie.Alert" );
+
+		// Don't let a moan sound cut off the alert sound.
+		m_flNextMoanSound += enginerandom->RandomFloat( 2.0, 4.0 );
+	}
+	//-----------------------------------------------------------------------------
+	// Purpose: Play a random attack sound.
+	//-----------------------------------------------------------------------------
+	void CHL1Zombie::AttackSound( void )
+	{
+		EmitSound( "HL1_Zombie.Attack" );
+	}
+
+	//-----------------------------------------------------------------------------
+	// Purpose: Returns the classname (ie "npc_headcrab") to spawn when our headcrab bails.
+	//-----------------------------------------------------------------------------
+	const char *CHL1Zombie::GetHeadcrabClassname( void )
+	{
+		return "monster_headcrab";
+	}
+
+	//-----------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------
+	const char *CHL1Zombie::GetHeadcrabModel( void )
+	{
+		return "models/hl1hcrab.mdl";
+	}
+	//-----------------------------------------------------------------------------
+	// Purpose: Returns a moan sound for this class of zombie.
+	//-----------------------------------------------------------------------------
+	const char *CHL1Zombie::GetMoanSound( int nSound )
+	{
+		return "NPC_FastZombie.Gurgle";
+	}
+	
+//-----------------------------------------------------------------------------
+// Purpose: Play a random idle sound.
+//-----------------------------------------------------------------------------
+void CHL1Zombie::IdleSound( void )
+{
+	if( GetState() == NPC_STATE_IDLE && enginerandom->RandomFloat( 0, 1 ) == 0 )
+	{
+		// Moan infrequently in IDLE state.
+		return;
+	}
+
+	if( IsSlumped() )
+	{
+		// Sleeping zombies are quiet.
+		return;
+	}
+
+	EmitSound( "HL1_Zombie.Idle" );
+}
+LINK_ENTITY_TO_CUSTOM_CLASS( monster_zombie, monster_generic, CHL1Zombie );

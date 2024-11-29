@@ -259,7 +259,7 @@ enum
 
 //-------------------------------------
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_strider, cycler_actor, CNPC_Strider );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_strider, monster_generic, CNPC_Strider );
 
 //-------------------------------------
 

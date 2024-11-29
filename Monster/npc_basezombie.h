@@ -100,7 +100,7 @@ enum Zombie_Conds
 
 
 
-typedef CAI_BlendingHost< CAI_BehaviorHost<CE_Cycler_Fix> > CAI_BaseZombieBase;
+typedef CAI_BehaviorHost<CE_Cycler_Fix> CAI_BaseZombieBase;
 
 
 abstract_class CNPC_BaseZombie : public CAI_BaseZombieBase

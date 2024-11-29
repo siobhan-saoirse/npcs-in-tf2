@@ -11,7 +11,7 @@
 #include "antlion_maker.h"
 #include "globalstate.h"
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_antlion, cycler_actor, CNPC_Antlion );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_antlion, monster_generic, CNPC_Antlion );
 
 ConVar	sk_antlion_health( "sk_antlion_health", "0" );
 ConVar	sk_antlion_swipe_damage( "sk_antlion_swipe_damage", "0" );
@@ -4911,4 +4911,4 @@ public:
 	}
 };
 
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_antlion_worker, cycler_actor, CNPC_AntlionWorker );
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_antlion_worker, monster_generic, CNPC_AntlionWorker );

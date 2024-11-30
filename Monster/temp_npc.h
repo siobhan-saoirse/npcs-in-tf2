@@ -14,28 +14,20 @@ public:
 	{
 		Precache();
 		BaseClass::Spawn();
-		m_iHealth = 100;
+		m_iHealth = 175;
 		SetModel(STRING(GetModelName()));
 
 
-		//	CapabilitiesAdd( bits_CAP_TURN_HEAD | bits_CAP_MOVE_GROUND | bits_CAP_MOVE_JUMP | bits_CAP_MOVE_CLIMB);
 		// JAY: Disabled jump for now - hard to compare to HL1
-		CapabilitiesAdd( bits_CAP_TURN_HEAD | bits_CAP_MOVE_GROUND );
-		CapabilitiesAdd( bits_CAP_ANIMATEDFACE | bits_CAP_TURN_HEAD );
+		CapabilitiesAdd( bits_CAP_TURN_HEAD | bits_CAP_MOVE_GROUND | bits_CAP_MOVE_JUMP | bits_CAP_MOVE_CLIMB );
+		CapabilitiesAdd( bits_CAP_ANIMATEDFACE );
 		CapabilitiesAdd( bits_CAP_USE_WEAPONS | bits_CAP_AIM_GUN | bits_CAP_MOVE_SHOOT );
 		CapabilitiesAdd( bits_CAP_DUCK | bits_CAP_DOORS_GROUP );
 		CapabilitiesAdd( bits_CAP_USE_SHOT_REGULATOR );
 
 		CapabilitiesAdd( bits_CAP_AIM_GUN );
-		CapabilitiesAdd( bits_CAP_NO_HIT_PLAYER | bits_CAP_NO_HIT_SQUADMATES | bits_CAP_FRIENDLY_DMG_IMMUNE );
+		CapabilitiesAdd( bits_CAP_NO_HIT_PLAYER | bits_CAP_NO_HIT_SQUADMATES );
 
-		// Innate range attack for grenade
-		// CapabilitiesAdd(bits_CAP_INNATE_RANGE_ATTACK2 );
-
-		// Innate range attack for kicking
-		//CapabilitiesAdd(bits_CAP_INNATE_MELEE_ATTACK1 );
-
-		// Can be in a squad
 		CapabilitiesAdd( bits_CAP_SQUAD);
 		CapabilitiesAdd( bits_CAP_USE_WEAPONS );
 
@@ -56,6 +48,33 @@ public:
 		NPCInit();
 	}
 
+	//-----------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------
+	virtual int OnTakeDamage_Alive( const CTakeDamageInfo &info )
+	{
+		CTakeDamageInfo subInfo = info;
+		// Vital allies never take more than 25% of their health in a single hit (except for physics damage)
+		// Don't do damage reduction for DMG_GENERIC. This allows SetHealth inputs to still do full damage.
+		if ( subInfo.GetDamageType() != DMG_GENERIC )
+		{
+			if ( Classify() == CLASS_PLAYER_ALLY_VITAL && !(subInfo.GetDamageType() & DMG_CRUSH) )
+			{
+				float flDamage = subInfo.GetDamage();
+				if ( flDamage > ( GetMaxHealth() * 0.25 ) )
+				{
+					flDamage = ( GetMaxHealth() * 0.25 );
+					subInfo.SetDamage( flDamage );
+				}
+				CEntity *attacker = CEntity::Instance(info.GetAttacker());
+				if (attacker->GetFlags() & FL_CLIENT && attacker->GetTeamNumber() == 2) {
+					flDamage = 0;	
+					subInfo.SetDamage( flDamage );
+				}
+			}
+		}
+
+		return BaseClass::OnTakeDamage_Alive( subInfo );
+	}
 	virtual Class_T	Classify ( void )
 	{
 		return CLASS_PLAYER_ALLY_VITAL;

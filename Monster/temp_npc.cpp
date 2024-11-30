@@ -7,7 +7,9 @@
 #include "CCombatWeapon.h"
 #include "CPropDoor.h"
 #include "temp_npc.h"
-
+#include "sign_func.h"
+#include "ammodef.h"
+#include "CE_recipientfilter.h"
 
 static const char *g_ppszRandomHeads[] = 
 {
@@ -559,6 +561,13 @@ public:
 		BaseClass::Precache();
 	}
 	
+
+	virtual Class_T	Classify ( void )
+	{
+		return CLASS_PLAYER_ALLY;
+	}
+
+
 	//-----------------------------------------------------------------------------
 	//-----------------------------------------------------------------------------
 	void DeathSound( const CTakeDamageInfo &info )
@@ -581,8 +590,25 @@ public:
 };
 
 
+class NPC_Odessa : public NPC_Citizen
+{
+public:
+	CE_DECLARE_CLASS(NPC_Odessa, NPC_Citizen);
+
+	void Precache()
+	{
+		PrecacheScriptSound( "NPC_Citizen.FootstepLeft" );
+		PrecacheScriptSound( "NPC_Citizen.FootstepRight" );
+		PrecacheScriptSound( "NPC_Citizen.Die" );
+
+		PrecacheModel("models/odessa.mdl");
+		SetModelName( AllocPooledString( "models/odessa.mdl" ) );
+		BaseClass::Precache();
+	}
+}
 
 LINK_ENTITY_TO_CUSTOM_CLASS( npc_citizen, cycler_actor, NPC_Citizen);
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_odessa, cycler_actor, NPC_Odessa);
 
 
 class NPC_Alyx : public CE_Temp_NPC
@@ -618,7 +644,6 @@ public:
 		BaseClass::Use(pActivator, pCaller, useType, value);
 		m_OnPlayerUse.FireOutput( pActivator, pCaller );
 	}
-
 	COutputEvent				m_OnPlayerUse;
 };
 
@@ -643,3 +668,802 @@ public:
 
 LINK_ENTITY_TO_CUSTOM_CLASS( npc_monk, cycler_actor, NPC_Monk);
 
+class NPC_Mossman : public CE_Temp_NPC //set idle_slam?
+{
+public:
+	CE_DECLARE_CLASS(NPC_Mossman, CE_Temp_NPC);
+
+	void Precache()
+	{
+		PrecacheModel("models/mossman.mdl");
+		SetModelName(AllocPooledString("models/mossman.mdl"));
+		BaseClass::Precache();
+	}
+};
+
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_mossman, cycler_actor, NPC_Mossman);
+
+class NPC_Breen : public CE_Temp_NPC //set idle_slam?
+{
+public:
+	CE_DECLARE_CLASS(NPC_Breen, CE_Temp_NPC);
+
+	void Precache()
+	{
+		PrecacheModel("models/breen.mdl");
+		SetModelName(AllocPooledString("models/breen.mdl"));
+		BaseClass::Precache();
+	}
+};
+
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_breen, cycler_actor, NPC_Breen);
+
+#define		NUM_SCIENTIST_HEADS		4 // four heads available for scientist model
+enum { HEAD_GLASSES = 0, HEAD_EINSTEIN = 1, HEAD_LUTHER = 2, HEAD_SLICK = 3 };
+
+class CNPC_Scientist : public CE_Temp_NPC //set idle_slam?
+{
+public:
+	CE_DECLARE_CLASS(CNPC_Scientist, CE_Temp_NPC);
+
+	void Spawn()
+	{
+		BaseClass::Spawn();
+		
+		CapabilitiesClear();
+		CapabilitiesAdd( bits_CAP_MOVE_GROUND | bits_CAP_OPEN_DOORS | bits_CAP_AUTO_DOORS | bits_CAP_USE );
+		CapabilitiesAdd( bits_CAP_TURN_HEAD | bits_CAP_ANIMATEDFACE );
+
+		//Select the body first if it's going to be random cause we set his voice pitch in Precache.
+		m_nBody = enginerandom->RandomInt( 0, NUM_SCIENTIST_HEADS-1 );// pick a head, any head
+
+		// White hands
+		m_nSkin = 0;
+
+		
+		// Luther is black, make his hands black
+		if ( m_nBody == HEAD_LUTHER )
+			m_nSkin = 1;
+	}
+	void Precache()
+	{
+		PrecacheModel("models/scientist.mdl");
+		SetModelName(AllocPooledString("models/scientist.mdl"));
+		PrecacheScriptSound( "Scientist.Pain" );
+		BaseClass::Precache();
+	}
+	int		SelectSchedule( void );
+
+	enum
+	{
+		SCHED_SCI_HEAL = BaseClass::NEXT_SCHEDULE,
+		SCHED_SCI_FOLLOWTARGET,
+		SCHED_SCI_STOPFOLLOWING,
+		SCHED_SCI_FACETARGET,
+		SCHED_SCI_COVER,
+		SCHED_SCI_HIDE,
+		SCHED_SCI_IDLESTAND,
+		SCHED_SCI_PANIC,
+		SCHED_SCI_FOLLOWSCARED,
+		SCHED_SCI_FACETARGETSCARED,
+		SCHED_SCI_FEAR,
+		SCHED_SCI_STARTLE,
+	};
+
+	enum
+	{
+		TASK_SAY_HEAL = BaseClass::NEXT_TASK,
+		TASK_HEAL,
+		TASK_SAY_FEAR,
+		TASK_RUN_PATH_SCARED,
+		TASK_SCREAM,
+		TASK_RANDOM_SCREAM,
+		TASK_MOVE_TO_TARGET_RANGE_SCARED,
+	};
+
+
+	//-----------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------
+	void DeathSound( const CTakeDamageInfo &info )
+	{
+		// Sentences don't play on dead NPCs
+		SentenceStop();
+
+		EmitSound( "Scientist.Pain" );
+	}
+	
+	//-----------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------
+	void PainSound( const CTakeDamageInfo &info )
+	{
+		// Sentences don't play on dead NPCs
+		SentenceStop();
+
+		EmitSound( "Scientist.Pain" );
+	}
+
+	DEFINE_CUSTOM_AI;
+};
+
+
+LINK_ENTITY_TO_CUSTOM_CLASS( monster_scientist, generic_actor, CNPC_Scientist);
+
+int ACT_EXCITED;
+
+//=========================================================
+// Monster's Anim Events Go Here
+//=========================================================
+#define		SCIENTIST_AE_HEAL		( 1 )
+#define		SCIENTIST_AE_NEEDLEON	( 2 )
+#define		SCIENTIST_AE_NEEDLEOFF	( 3 )
+
+//------------------------------------------------------------------------------
+//
+// Schedules
+//
+//------------------------------------------------------------------------------
+
+AI_BEGIN_CUSTOM_NPC( monster_scientist, CNPC_Scientist )
+
+	DECLARE_TASK( TASK_SAY_HEAL )
+	DECLARE_TASK( TASK_HEAL )
+	DECLARE_TASK( TASK_SAY_FEAR )
+	DECLARE_TASK( TASK_RUN_PATH_SCARED )
+	DECLARE_TASK( TASK_SCREAM )
+	DECLARE_TASK( TASK_RANDOM_SCREAM )
+	DECLARE_TASK( TASK_MOVE_TO_TARGET_RANGE_SCARED )
+	
+	DECLARE_ACTIVITY( ACT_EXCITED )
+
+	//=========================================================
+	// > SCHED_SCI_HEAL
+	//=========================================================
+	DEFINE_SCHEDULE
+	(
+		SCHED_SCI_HEAL,
+
+		"	Tasks"
+		"		TASK_GET_PATH_TO_TARGET				0"
+		"		TASK_MOVE_TO_TARGET_RANGE			50"
+		"		TASK_SET_FAIL_SCHEDULE				SCHEDULE:SCHED_SCI_FOLLOWTARGET"
+		"		TASK_FACE_IDEAL						0"
+		"		TASK_SAY_HEAL						0"
+		"		TASK_PLAY_SEQUENCE_FACE_TARGET		ACTIVITY:ACT_ARM"
+		"		TASK_HEAL							0"
+		"		TASK_PLAY_SEQUENCE_FACE_TARGET		ACTIVITY:ACT_DISARM"
+		"	"
+		"	Interrupts"
+	)
+
+	//=========================================================
+	// > SCHED_SCI_FOLLOWTARGET
+	//=========================================================
+	DEFINE_SCHEDULE
+	(
+		SCHED_SCI_FOLLOWTARGET,
+
+		"	Tasks"
+//		"		TASK_SET_FAIL_SCHEDULE			SCHEDULE:SCHED_SCI_STOPFOLLOWING"
+		"		TASK_GET_PATH_TO_TARGET			0"
+		"		TASK_MOVE_TO_TARGET_RANGE		128"
+		"		TASK_SET_SCHEDULE				SCHEDULE:SCHED_TARGET_FACE"	
+		"	"
+		"	Interrupts"
+		"		COND_NEW_ENEMY"
+		"		COND_LIGHT_DAMAGE"
+		"		COND_HEAVY_DAMAGE"
+		"		COND_HEAR_DANGER"
+		"		COND_HEAR_COMBAT"
+	)
+
+	//=========================================================
+	// > SCHED_SCI_STOPFOLLOWING
+	//=========================================================
+//	DEFINE_SCHEDULE
+//	(
+//		SCHED_SCI_STOPFOLLOWING,
+//
+//		"	Tasks"
+//		"		TASK_TALKER_CANT_FOLLOW			0"
+//		"	"
+//		"	Interrupts"
+//	)
+
+	//=========================================================
+	// > SCHED_SCI_FACETARGET
+	//=========================================================
+	DEFINE_SCHEDULE
+	(
+		SCHED_SCI_FACETARGET,
+
+		"	Tasks"
+		"		TASK_STOP_MOVING			0"
+		"		TASK_FACE_TARGET			0"
+		"		TASK_SET_ACTIVITY			ACTIVITY:ACT_IDLE"
+		"		TASK_SET_SCHEDULE			SCHEDULE:SCHED_SCI_FOLLOWTARGET"
+		"	"
+		"	Interrupts"
+		"		COND_NEW_ENEMY"
+		"		COND_HEAR_DANGER"
+		"		COND_HEAR_COMBAT"
+		"		COND_GIVE_WAY"
+	)
+
+	//=========================================================
+	// > SCHED_SCI_COVER
+	//=========================================================
+	DEFINE_SCHEDULE
+	(
+		SCHED_SCI_COVER,
+
+		"	Tasks"
+		"		TASK_SET_FAIL_SCHEDULE			SCHEDULE:SCHED_SCI_PANIC"
+		"		TASK_STOP_MOVING				0"
+		"		TASK_FIND_COVER_FROM_ENEMY		0"
+		"		TASK_RUN_PATH_SCARED			0"
+		"		TASK_TURN_LEFT					179"
+		"		TASK_SET_SCHEDULE				SCHEDULE:SCHED_SCI_HIDE"
+		"	"
+		"	Interrupts"
+		"		COND_NEW_ENEMY"
+	)
+
+	//=========================================================
+	// > SCHED_SCI_HIDE
+	//=========================================================
+	DEFINE_SCHEDULE
+	(
+		SCHED_SCI_HIDE,
+
+		"	Tasks"
+		"		TASK_SET_FAIL_SCHEDULE		SCHEDULE:SCHED_SCI_PANIC"
+		"		TASK_STOP_MOVING			0"
+		"		TASK_PLAY_SEQUENCE			ACTIVITY:ACT_CROUCHIDLE"
+		"		TASK_SET_ACTIVITY			ACTIVITY:ACT_CROUCHIDLE"
+		"		TASK_WAIT_RANDOM			10"
+		"	"
+		"	Interrupts"
+		"		COND_NEW_ENEMY"
+		"		COND_SEE_ENEMY"
+		"		COND_SEE_HATE"
+		"		COND_SEE_FEAR"
+		"		COND_SEE_DISLIKE"
+		"		COND_HEAR_DANGER"
+	)
+
+	//=========================================================
+	// > SCHED_SCI_IDLESTAND
+	//=========================================================
+	DEFINE_SCHEDULE
+	(
+		SCHED_SCI_IDLESTAND,
+
+		"	Tasks"
+		"		TASK_STOP_MOVING			0"
+		"		TASK_SET_ACTIVITY			ACTIVITY:ACT_IDLE"
+		"		TASK_WAIT					2"
+		"		TASK_TALKER_HEADRESET		0"
+		"	"
+		"	Interrupts"
+		"		COND_NEW_ENEMY"
+		"		COND_LIGHT_DAMAGE"
+		"		COND_HEAVY_DAMAGE"
+		"		COND_SMELL"
+		"		COND_PROVOKED"
+		"		COND_HEAR_COMBAT"
+		"		COND_GIVE_WAY"
+	)
+
+	//=========================================================
+	// > SCHED_SCI_PANIC
+	//=========================================================
+	DEFINE_SCHEDULE
+	(
+		SCHED_SCI_PANIC,
+
+		"	Tasks"
+		"		TASK_STOP_MOVING					0"
+		"		TASK_FACE_ENEMY						0"
+		"		TASK_SCREAM							0"
+		"		TASK_PLAY_SEQUENCE_FACE_ENEMY		ACTIVITY:ACT_EXCITED"
+		"		TASK_SET_ACTIVITY					ACTIVITY:ACT_IDLE"
+		"	"
+		"	Interrupts"
+	)
+
+	//=========================================================
+	// > SCHED_SCI_FOLLOWSCARED
+	//=========================================================
+	DEFINE_SCHEDULE
+	(
+		SCHED_SCI_FOLLOWSCARED,
+
+		"	Tasks"
+		"		TASK_GET_PATH_TO_TARGET				0"
+		"		TASK_SET_FAIL_SCHEDULE				SCHEDULE:SCHED_SCI_FOLLOWTARGET"	
+		"		TASK_MOVE_TO_TARGET_RANGE_SCARED	128"
+		"	"
+		"	Interrupts"
+		"		COND_NEW_ENEMY"
+		"		COND_LIGHT_DAMAGE"
+		"		COND_HEAVY_DAMAGE"
+		"		COND_HEAR_DANGER"
+	)
+
+	//=========================================================
+	// > SCHED_SCI_FACETARGETSCARED
+	//=========================================================
+	DEFINE_SCHEDULE
+	(
+		SCHED_SCI_FACETARGETSCARED,
+
+		"	Tasks"
+		"	TASK_FACE_TARGET				0"
+		"		TASK_SET_ACTIVITY			ACTIVITY:ACT_CROUCHIDLE"
+		"		TASK_SET_SCHEDULE			SCHEDULE:SCHED_SCI_FOLLOWSCARED"
+		"	"
+		"	Interrupts"
+		"		COND_NEW_ENEMY"
+		"		COND_HEAR_DANGER"
+	)
+
+	//=========================================================
+	// > SCHED_FEAR
+	//=========================================================
+	DEFINE_SCHEDULE
+	(
+		SCHED_SCI_FEAR,
+
+		"	Tasks"
+		"		TASK_STOP_MOVING			0"
+		"		TASK_FACE_ENEMY				0"
+		"		TASK_SAY_FEAR				0"
+		"	"
+		"	Interrupts"
+		"		COND_NEW_ENEMY"
+	)
+
+	//=========================================================
+	// > SCHED_SCI_STARTLE
+	//=========================================================
+	DEFINE_SCHEDULE
+	(
+		SCHED_SCI_STARTLE,
+
+		"	Tasks"
+		"		TASK_SET_FAIL_SCHEDULE				SCHEDULE:SCHED_SCI_PANIC"
+		"		TASK_RANDOM_SCREAM					0.3"
+		"		TASK_STOP_MOVING					0"
+		"		TASK_PLAY_SEQUENCE_FACE_ENEMY		ACTIVITY:ACT_CROUCH"
+		"		TASK_RANDOM_SCREAM					0.1"
+		"		TASK_PLAY_SEQUENCE_FACE_ENEMY		ACTIVITY:ACT_CROUCHIDLE"
+		"		TASK_WAIT_RANDOM					1"
+		"	"
+		"	Interrupts"
+		"		COND_NEW_ENEMY"
+		"		COND_SEE_ENEMY"
+		"		COND_SEE_HATE"
+		"		COND_SEE_FEAR"
+		"		COND_SEE_DISLIKE"
+	)
+
+AI_END_CUSTOM_NPC()
+
+int CNPC_Scientist::SelectSchedule( void )
+{
+	if( m_NPCState == NPC_STATE_PRONE )
+	{
+		// Immediately call up to the talker code. Barnacle death is priority schedule.
+		return BaseClass::SelectSchedule();
+	}
+
+	
+	
+	if ( HasCondition( COND_HEAR_DANGER ) && m_NPCState != NPC_STATE_PRONE )
+	{
+		CSound *pSound;
+		pSound = GetBestSound();
+
+		if ( pSound && pSound->IsSoundType(SOUND_DANGER) )
+			return SCHED_TAKE_COVER_FROM_BEST_SOUND;
+	}
+
+	switch( m_NPCState )
+	{
+
+	case NPC_STATE_ALERT:	
+	case NPC_STATE_IDLE:
+
+		// Cower when you hear something scary
+		if ( HasCondition( COND_HEAR_DANGER ) || HasCondition( COND_HEAR_COMBAT ) ) 
+		{
+			CSound *pSound;
+			pSound = GetBestSound();
+		
+			if ( pSound )
+			{
+				if ( pSound->IsSoundType(SOUND_DANGER | SOUND_COMBAT) )
+				{
+				}
+			}
+		}
+		break;
+
+
+	case NPC_STATE_COMBAT:
+
+		if ( HasCondition( COND_NEW_ENEMY ) )
+			return SCHED_SCI_FEAR;					// Point and scream!
+		if ( HasCondition( COND_SEE_ENEMY ) )
+			return SCHED_SCI_COVER;		// Take Cover
+		
+		if ( HasCondition( COND_HEAR_COMBAT ) || HasCondition( COND_HEAR_DANGER ) )
+			 return SCHED_TAKE_COVER_FROM_BEST_SOUND;	// Cower and panic from the scary sound!
+	
+		return SCHED_SCI_COVER;			// Run & Cower
+		break;
+	}
+
+	return BaseClass::SelectSchedule();
+}
+
+//=========================================================
+// Monster's Anim Events Go Here
+//=========================================================
+// first flag is barney dying for scripted sequences?
+#define		BARNEY_AE_DRAW		( 2 )
+#define		BARNEY_AE_SHOOT		( 3 )
+#define		BARNEY_AE_HOLSTER	( 4 )
+
+#define		BARNEY_BODY_GUNHOLSTERED	0
+#define		BARNEY_BODY_GUNDRAWN		1
+#define		BARNEY_BODY_GUNGONE			2
+
+class CNPC_Barney : public CE_Temp_NPC //set idle_slam?
+{
+public:
+	CE_DECLARE_CLASS(CNPC_Barney, CE_Temp_NPC);	
+	DECLARE_DATADESC();
+
+
+	void Spawn()
+	{
+		BaseClass::Spawn();
+		
+		CapabilitiesClear();
+		CapabilitiesAdd( bits_CAP_MOVE_GROUND | bits_CAP_OPEN_DOORS | bits_CAP_AUTO_DOORS | bits_CAP_USE | bits_CAP_DOORS_GROUP);
+		CapabilitiesAdd( bits_CAP_INNATE_RANGE_ATTACK1 | bits_CAP_TURN_HEAD | bits_CAP_ANIMATEDFACE );
+		
+		SetBodygroup( 1, 1 );
+	}
+	void Precache()
+	{
+		PrecacheModel("models/hl1bar.mdl");
+		SetModelName(AllocPooledString("models/hl1bar.mdl"));
+		PrecacheScriptSound( "Barney.FirePistol" );
+		PrecacheScriptSound( "Barney.Pain" );
+		PrecacheScriptSound( "Barney.Die" );
+		BaseClass::Precache();
+	}
+
+	//-----------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------
+	void DeathSound( const CTakeDamageInfo &info )
+	{
+		// Sentences don't play on dead NPCs
+		SentenceStop();
+
+		EmitSound( "Barney.Die" );
+	}
+	
+	//-----------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------
+	void PainSound( const CTakeDamageInfo &info )
+	{
+		// Sentences don't play on dead NPCs
+		SentenceStop();
+
+		EmitSound( "Barney.Pain" );
+	}
+	void    BarneyFirePistol ( void );
+	void	HandleAnimEvent( animevent_t *pEvent );
+	int		TranslateSchedule( int scheduleType );
+	bool    CheckRangeAttack1 ( float flDot, float flDist );
+	int		RangeAttack1Conditions( float flDot, float flDist );
+	float	m_flCheckAttackTime;
+	bool	m_fLastAttackCheck;
+
+	enum
+	{
+		SCHED_BARNEY_FOLLOW = BaseClass::NEXT_SCHEDULE,
+		SCHED_BARNEY_ENEMY_DRAW,
+		SCHED_BARNEY_FACE_TARGET,
+		SCHED_BARNEY_IDLE_STAND,
+		SCHED_BARNEY_STOP_FOLLOWING,
+	};
+
+	DEFINE_CUSTOM_AI;
+};
+
+//---------------------------------------------------------
+// Save/Restore
+//---------------------------------------------------------
+BEGIN_DATADESC( CNPC_Barney )
+	DEFINE_FIELD( m_flCheckAttackTime, FIELD_TIME ),
+	DEFINE_FIELD( m_fLastAttackCheck, FIELD_BOOLEAN ),
+END_DATADESC()
+
+//------------------------------------------------------------------------------
+//
+// Schedules
+//
+//------------------------------------------------------------------------------
+
+AI_BEGIN_CUSTOM_NPC( monster_barney, CNPC_Barney )
+
+	//=========================================================
+	// > SCHED_BARNEY_FOLLOW
+	//=========================================================
+	DEFINE_SCHEDULE
+	(
+		SCHED_BARNEY_FOLLOW,
+	
+		"	Tasks"
+//		"		TASK_SET_FAIL_SCHEDULE			SCHEDULE:SCHED_BARNEY_STOP_FOLLOWING"
+		"		TASK_GET_PATH_TO_TARGET			0"
+		"		TASK_MOVE_TO_TARGET_RANGE		180"
+		"		TASK_SET_SCHEDULE				SCHEDULE:SCHED_TARGET_FACE"
+		"	"
+		"	Interrupts"
+		"			COND_NEW_ENEMY"
+		"			COND_LIGHT_DAMAGE"
+		"			COND_HEAVY_DAMAGE"
+		"			COND_HEAR_DANGER"
+		"			COND_PROVOKED"
+	)
+	
+	//=========================================================
+	// > SCHED_BARNEY_ENEMY_DRAW
+	//=========================================================
+	DEFINE_SCHEDULE
+	(
+		SCHED_BARNEY_ENEMY_DRAW,
+	
+		"	Tasks"
+		"		TASK_STOP_MOVING			0"
+		"		TASK_FACE_ENEMY				0"
+		"		TASK_PLAY_SEQUENCE_FACE_ENEMY		ACTIVITY:ACT_ARM"
+		"	"
+		"	Interrupts"
+	)
+	
+	//=========================================================
+	// > SCHED_BARNEY_FACE_TARGET
+	//=========================================================
+	DEFINE_SCHEDULE
+	(
+		SCHED_BARNEY_FACE_TARGET,
+	
+		"	Tasks"
+		"		TASK_SET_ACTIVITY			ACTIVITY:ACT_IDLE"
+		"		TASK_FACE_TARGET			0"
+		"		TASK_SET_ACTIVITY			ACTIVITY:ACT_IDLE"
+		"		TASK_SET_SCHEDULE			SCHEDULE:SCHED_BARNEY_FOLLOW"
+		"	"
+		"	Interrupts"
+		"		COND_GIVE_WAY"
+		"		COND_NEW_ENEMY"
+		"		COND_LIGHT_DAMAGE"
+		"		COND_HEAVY_DAMAGE"
+		"		COND_PROVOKED"
+		"		COND_HEAR_DANGER"
+	)
+	
+	//=========================================================
+	// > SCHED_BARNEY_IDLE_STAND
+	//=========================================================
+	DEFINE_SCHEDULE
+	(
+		SCHED_BARNEY_IDLE_STAND,
+	
+		"	Tasks"
+		"		TASK_STOP_MOVING			0"
+		"		TASK_SET_ACTIVITY			ACTIVITY:ACT_IDLE"
+		"		TASK_WAIT					2"
+		"		TASK_TALKER_HEADRESET		0"
+		"	"
+		"	Interrupts"
+		"		COND_NEW_ENEMY"
+		"		COND_LIGHT_DAMAGE"
+		"		COND_HEAVY_DAMAGE"
+		"		COND_PROVOKED"
+		"		COND_HEAR_COMBAT"
+		"		COND_SMELL"
+	)
+		
+AI_END_CUSTOM_NPC()
+
+
+//------------------------------------------------------------------------------
+// Purpose : For innate range attack
+// Input   :
+// Output  :
+//------------------------------------------------------------------------------
+int CNPC_Barney::RangeAttack1Conditions( float flDot, float flDist )
+{
+	if (GetEnemy() == NULL)
+	{
+		return( COND_NONE );
+	}
+	
+	else if ( flDist > 1024 )
+	{
+		return( COND_TOO_FAR_TO_ATTACK );
+	}
+	else if ( flDot < 0.5 )
+	{
+		return( COND_NOT_FACING_ATTACK );
+	}
+
+	if ( CheckRangeAttack1 ( flDot, flDist ) )
+		return( COND_CAN_RANGE_ATTACK1 );
+
+	return COND_NONE;
+}
+
+//=========================================================
+// CheckRangeAttack1
+//=========================================================
+bool CNPC_Barney::CheckRangeAttack1( float flDot, float flDist )
+{
+	if ( gpGlobals->curtime > m_flCheckAttackTime )
+	{
+		m_flCheckAttackTime = gpGlobals->curtime + 1;
+		m_fLastAttackCheck = TRUE;
+		m_flCheckAttackTime = gpGlobals->curtime + 1.5;
+	}
+	
+	return m_fLastAttackCheck;
+}
+
+//=========================================================
+// BarneyFirePistol - shoots one round from the pistol at
+// the enemy barney is facing.
+//=========================================================
+void CNPC_Barney::BarneyFirePistol( void )
+{
+	Vector vecShootOrigin;
+	
+	vecShootOrigin = GetAbsOrigin() + Vector( 0, 0, 55 );
+	Vector vecShootDir = GetShootEnemyDir( vecShootOrigin );
+
+	QAngle angDir;
+	
+	VectorAngles( vecShootDir, angDir );
+//	SetBlending( 0, angDir.x );
+	DoMuzzleFlash();
+
+	CAI_NPC::FireBullets(1, vecShootOrigin, vecShootDir, VECTOR_CONE_2DEGREES, 1024, g_helpfunc.GetAmmoDef()->Index("Pistol") );
+	
+	int pitchShift = enginerandom->RandomInt( 0, 20 );
+	
+	// Only shift about half the time
+	if ( pitchShift > 10 )
+		pitchShift = 0;
+	else
+		pitchShift -= 5;
+
+	CPASAttenuationFilter filter( this );
+
+	EmitSound_t params;
+	params.m_pSoundName = "Barney.FirePistol";
+	params.m_flVolume = 1;
+	params.m_nChannel= CHAN_WEAPON;
+	params.m_SoundLevel = SNDLVL_NORM;
+	params.m_nPitch = 100 + pitchShift;
+	EmitSound( filter, entindex(), params );
+
+	g_helpfunc.CSoundEnt_InsertSound( SOUND_COMBAT, GetAbsOrigin(), 384, 0.3 );
+}
+
+//=========================================================
+// HandleAnimEvent - catches the monster-specific messages
+// that occur when tagged animation frames are played.
+//
+// Returns number of events handled, 0 if none.
+//=========================================================
+void CNPC_Barney::HandleAnimEvent( animevent_t *pEvent )
+{
+	switch( pEvent->event )
+	{
+	case BARNEY_AE_SHOOT:
+		BarneyFirePistol();
+		break;
+
+	case BARNEY_AE_DRAW:
+		// barney's bodygroup switches here so he can pull gun from holster
+		SetBodygroup( 1, BARNEY_BODY_GUNDRAWN);
+		break;
+
+	case BARNEY_AE_HOLSTER:
+		// change bodygroup to replace gun in holster
+		SetBodygroup( 1, BARNEY_BODY_GUNHOLSTERED);
+		break;
+
+	default:
+		BaseClass::HandleAnimEvent( pEvent );
+	}
+}
+
+//=======================================================
+// AI Schedules Specific to this monster
+//=========================================================
+
+int CNPC_Barney::TranslateSchedule( int scheduleType )
+{
+	switch( scheduleType )
+	{
+	case SCHED_ARM_WEAPON:
+		if ( GetEnemy() != NULL )
+		{
+			// face enemy, then draw.
+			return SCHED_BARNEY_ENEMY_DRAW;
+		}
+		break;
+
+	// Hook these to make a looping schedule
+	case SCHED_TARGET_FACE:
+		{
+			int	baseType;
+
+			// call base class default so that scientist will talk
+			// when 'used' 
+			baseType = BaseClass::TranslateSchedule( scheduleType );
+			
+			if ( baseType == SCHED_IDLE_STAND )
+				return SCHED_BARNEY_FACE_TARGET;
+			else
+				return baseType;
+		}
+		break;
+
+	case SCHED_TARGET_CHASE:
+	{
+		return SCHED_BARNEY_FOLLOW;
+		break;
+	}
+
+	case SCHED_IDLE_STAND:
+		{
+			int	baseType;
+
+			// call base class default so that scientist will talk
+			// when 'used' 
+			baseType = BaseClass::TranslateSchedule( scheduleType );
+			
+			if ( baseType == SCHED_IDLE_STAND )
+				return SCHED_BARNEY_IDLE_STAND;
+			else
+				return baseType;
+		}
+		break;
+
+	case SCHED_TAKE_COVER_FROM_ENEMY:
+	case SCHED_CHASE_ENEMY:
+		{
+			if ( HasCondition( COND_HEAVY_DAMAGE ) )
+				 return SCHED_TAKE_COVER_FROM_ENEMY;
+
+			// No need to take cover since I can see him
+			// SHOOT!
+			if ( HasCondition( COND_CAN_RANGE_ATTACK1 ) )
+				 return SCHED_RANGE_ATTACK1;
+		}
+		break;
+	}
+
+	return BaseClass::TranslateSchedule( scheduleType );
+}
+
+
+LINK_ENTITY_TO_CUSTOM_CLASS( monster_barney, generic_actor, CNPC_Barney);

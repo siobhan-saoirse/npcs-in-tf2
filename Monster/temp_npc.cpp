@@ -10,6 +10,13 @@
 #include "sign_func.h"
 #include "ammodef.h"
 #include "CE_recipientfilter.h"
+#include "CAI_Navigator.h"
+
+#define SC_PLFEAR	"SC_PLFEAR"
+#define SC_FEAR		"SC_FEAR"
+#define SC_HEAL		"SC_HEAL"
+#define SC_SCREAM	"SC_SCREAM"
+#define SC_POK		"SC_POK"
 
 static const char *g_ppszRandomHeads[] = 
 {
@@ -733,6 +740,9 @@ public:
 		BaseClass::Precache();
 	}
 	int		SelectSchedule( void );
+	// Tasks
+	virtual void StartTask( const Task_t *pTask );
+	virtual void RunTask( const Task_t *pTask );
 
 	enum
 	{
@@ -782,11 +792,16 @@ public:
 		EmitSound( "Scientist.Pain" );
 	}
 
+	virtual Class_T	Classify ( void )
+	{
+		return CLASS_PLAYER_ALLY;
+	}
+
 	DEFINE_CUSTOM_AI;
 };
 
 
-LINK_ENTITY_TO_CUSTOM_CLASS( monster_scientist, generic_actor, CNPC_Scientist);
+LINK_ENTITY_TO_CUSTOM_CLASS( monster_scientist, monster_generic, CNPC_Scientist);
 
 int ACT_EXCITED;
 
@@ -898,11 +913,8 @@ AI_BEGIN_CUSTOM_NPC( monster_scientist, CNPC_Scientist )
 
 		"	Tasks"
 		"		TASK_SET_FAIL_SCHEDULE			SCHEDULE:SCHED_SCI_PANIC"
-		"		TASK_STOP_MOVING				0"
 		"		TASK_FIND_COVER_FROM_ENEMY		0"
 		"		TASK_RUN_PATH_SCARED			0"
-		"		TASK_TURN_LEFT					179"
-		"		TASK_SET_SCHEDULE				SCHEDULE:SCHED_SCI_HIDE"
 		"	"
 		"	Interrupts"
 		"		COND_NEW_ENEMY"
@@ -1107,6 +1119,131 @@ int CNPC_Scientist::SelectSchedule( void )
 	return BaseClass::SelectSchedule();
 }
 
+void CNPC_Scientist::StartTask( const Task_t *pTask )
+{
+	switch( pTask->iTask )
+	{
+	case TASK_SAY_HEAL:
+
+		//GetExpresser()->BlockSpeechUntil( gpGlobals->curtime + 2 );
+		//SetSpeechTarget( GetTarget() );
+		//Speak( SC_HEAL );
+
+		TaskComplete();
+		break;
+	 
+	case TASK_SCREAM:
+		//Scream();
+		TaskComplete();
+		break;
+
+	case TASK_RANDOM_SCREAM:
+		//if ( random->RandomFloat( 0, 1 ) < pTask->flTaskData )
+			//Scream();
+		TaskComplete();
+		break;
+
+	case TASK_SAY_FEAR:
+		/*
+		if ( IsOkToSpeak() )
+		{
+			GetExpresser()->BlockSpeechUntil( gpGlobals->curtime + 2 );
+			SetSpeechTarget( GetEnemy() );
+			if ( GetEnemy() && GetEnemy()->IsPlayer() )
+				Speak( SC_PLFEAR );
+			else
+				Speak( SC_FEAR );
+		}
+		*/
+		TaskComplete();
+		break;
+
+	case TASK_HEAL:
+		SetIdealActivity( ACT_MELEE_ATTACK1 );
+		break;
+
+	case TASK_RUN_PATH_SCARED:
+		GetNavigator()->SetMovementActivity( ACT_RUN_SCARED );
+		break;
+
+	case TASK_MOVE_TO_TARGET_RANGE_SCARED:
+		{
+			if ( GetTarget() == NULL)
+			{
+				TaskFail(FAIL_NO_TARGET);
+			}
+			else if ( (GetTarget()->GetAbsOrigin() - GetAbsOrigin()).Length() < 1 )
+			{
+				TaskComplete();
+			}
+		}
+		break;
+
+	default:
+		BaseClass::StartTask( pTask );
+		break;
+	}
+}
+
+void CNPC_Scientist::RunTask( const Task_t *pTask )
+{
+	switch ( pTask->iTask )
+	{
+	case TASK_RUN_PATH_SCARED:
+		if ( !IsMoving() )
+			TaskComplete();
+		//if ( random->RandomInt(0,31) < 8 )
+			//Scream();
+		break;
+
+	case TASK_MOVE_TO_TARGET_RANGE_SCARED:
+		{
+			float distance;
+
+			if ( GetTarget() == NULL )
+			{
+				TaskFail(FAIL_NO_TARGET);
+			}
+			else
+			{
+				/*
+				distance = ( GetNavigator()->GetPath()->ActualGoalPosition() - GetAbsOrigin() ).Length2D();
+				
+				// Re-evaluate when you think your finished, or the target has moved too far
+				if ( (distance < pTask->flTaskData) || (GetNavigator()->GetPath()->ActualGoalPosition() - GetTarget()->GetAbsOrigin()).Length() > pTask->flTaskData * 0.5 )
+				{
+					GetNavigator()->GetPath()->ResetGoalPosition(GetTarget()->GetAbsOrigin());
+					distance = ( GetNavigator()->GetPath()->ActualGoalPosition() - GetAbsOrigin() ).Length2D();
+//					GetNavigator()->GetPath()->Find();
+					GetNavigator()->SetGoal( GOALTYPE_TARGETENT );
+				}
+
+				// Set the appropriate activity based on an overlapping range
+				// overlap the range to prevent oscillation
+				// BUGBUG: this is checking linear distance (ie. through walls) and not path distance or even visibility
+				if ( distance < pTask->flTaskData )
+				{
+					TaskComplete();
+					GetNavigator()->GetPath()->Clear();		// Stop moving
+				}
+				else
+				{
+					if ( distance < 190 && GetNavigator()->GetMovementActivity() != ACT_WALK_SCARED )
+						GetNavigator()->SetMovementActivity( ACT_WALK_SCARED );
+					else if ( distance >= 270 && GetNavigator()->GetMovementActivity() != ACT_RUN_SCARED )
+						GetNavigator()->SetMovementActivity( ACT_RUN_SCARED );
+				}*/
+				if (GetNavigator()->GetMovementActivity() != ACT_RUN_SCARED )
+					GetNavigator()->SetMovementActivity( ACT_RUN_SCARED );
+			}
+		}
+		break;
+	default:
+		BaseClass::RunTask( pTask );
+		break;
+	}
+}
+
 //=========================================================
 // Monster's Anim Events Go Here
 //=========================================================
@@ -1165,6 +1302,12 @@ public:
 
 		EmitSound( "Barney.Pain" );
 	}
+
+	virtual Class_T	Classify ( void )
+	{
+		return CLASS_PLAYER_ALLY;
+	}
+
 	void    BarneyFirePistol ( void );
 	void	HandleAnimEvent( animevent_t *pEvent );
 	int		TranslateSchedule( int scheduleType );
@@ -1343,25 +1486,11 @@ void CNPC_Barney::BarneyFirePistol( void )
 //	SetBlending( 0, angDir.x );
 	DoMuzzleFlash();
 
-	CAI_NPC::FireBullets(1, vecShootOrigin, vecShootDir, VECTOR_CONE_2DEGREES, 1024, g_helpfunc.GetAmmoDef()->Index("Pistol") );
+	CAI_NPC::FireBullets(1, vecShootOrigin, vecShootDir, VECTOR_CONE_2DEGREES, 1024, GetAmmoDef()->Index("AR2") );
 	
 	int pitchShift = enginerandom->RandomInt( 0, 20 );
 	
-	// Only shift about half the time
-	if ( pitchShift > 10 )
-		pitchShift = 0;
-	else
-		pitchShift -= 5;
-
-	CPASAttenuationFilter filter( this );
-
-	EmitSound_t params;
-	params.m_pSoundName = "Barney.FirePistol";
-	params.m_flVolume = 1;
-	params.m_nChannel= CHAN_WEAPON;
-	params.m_SoundLevel = SNDLVL_NORM;
-	params.m_nPitch = 100 + pitchShift;
-	EmitSound( filter, entindex(), params );
+	EmitSound( "Barney.FirePistol" );
 
 	g_helpfunc.CSoundEnt_InsertSound( SOUND_COMBAT, GetAbsOrigin(), 384, 0.3 );
 }
@@ -1466,4 +1595,4 @@ int CNPC_Barney::TranslateSchedule( int scheduleType )
 }
 
 
-LINK_ENTITY_TO_CUSTOM_CLASS( monster_barney, generic_actor, CNPC_Barney);
+LINK_ENTITY_TO_CUSTOM_CLASS( monster_barney, monster_generic, CNPC_Barney);

@@ -57,17 +57,19 @@ public:
 		// Don't do damage reduction for DMG_GENERIC. This allows SetHealth inputs to still do full damage.
 		if ( subInfo.GetDamageType() != DMG_GENERIC )
 		{
-			if ( Classify() == CLASS_PLAYER_ALLY_VITAL && !(subInfo.GetDamageType() & DMG_CRUSH) )
-			{
-				float flDamage = subInfo.GetDamage();
-				if ( flDamage > ( GetMaxHealth() * 0.25 ) )
-				{
-					flDamage = ( GetMaxHealth() * 0.25 );
-					subInfo.SetDamage( flDamage );
-				}
+			float flDamage = subInfo.GetDamage();
+			if ( Classify() == CLASS_PLAYER_ALLY_VITAL || Classify() == CLASS_PLAYER_ALLY ) {
 				CEntity *attacker = CEntity::Instance(info.GetAttacker());
 				if (attacker->GetFlags() & FL_CLIENT && attacker->GetTeamNumber() == 2) {
 					flDamage = 0;	
+					subInfo.SetDamage( flDamage );
+				}
+			}
+			if ( Classify() == CLASS_PLAYER_ALLY_VITAL && !(subInfo.GetDamageType() & DMG_CRUSH) )
+			{
+				if ( flDamage > ( GetMaxHealth() * 0.25 ) )
+				{
+					flDamage = ( GetMaxHealth() * 0.25 );
 					subInfo.SetDamage( flDamage );
 				}
 			}

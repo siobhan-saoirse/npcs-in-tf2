@@ -134,6 +134,10 @@ void CPlayer::Spawn()
 	m_bHaveRPG = false;
 	m_nVehicleViewSavedFrame = 0;
 	BaseClass::Spawn();
+
+	GiveNamedItem("item_kevlar");
+	GiveNamedItem("item_assaultsuit");
+	
 	SetArmorValue(0);
 	SetMuzzleFlashTime(0);
 }

@@ -12,7 +12,7 @@
 Monster g_Monster;
 
 bool g_bUseNetworkVars = false;
-
+ 
 SMEXT_LINK(&g_Monster);
 
 IServerPluginCallbacks *vsp_callbacks = NULL;

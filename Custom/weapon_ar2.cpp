@@ -22,6 +22,8 @@ public:
 	void OnNPCEquip(CCombatCharacter *owner);
 
 	float	GetFireRate( void );
+	int		GetMinBurst() { return 2; }
+	int		GetMaxBurst() { return 5; }
 
 private:
 	void FireNPCPrimaryAttack( CCombatCharacter *pOperator, bool bUseWeaponAngles );

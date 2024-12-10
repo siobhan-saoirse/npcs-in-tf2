@@ -1733,7 +1733,7 @@ bool CFastZombie::ShouldBecomeTorso( const CTakeDamageInfo &info, float flDamage
 	// Take half or more of max health in DMG_BLAST
 	if( (info.GetDamageType() & DMG_BLAST) && m_iHealth <= 0 )
 	{
-		return true;
+		return false;
 	}
 
 	return false;

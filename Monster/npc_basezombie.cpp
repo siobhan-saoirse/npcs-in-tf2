@@ -600,27 +600,6 @@ void CNPC_BaseZombie::TraceAttack( const CTakeDamageInfo &info, const Vector &ve
 //-----------------------------------------------------------------------------
 bool CNPC_BaseZombie::ShouldBecomeTorso( const CTakeDamageInfo &info, float flDamageThreshold )
 {
-	if ( info.GetDamageType() & DMG_REMOVENORAGDOLL )
-		return false;
-
-	if ( m_fIsTorso )
-	{
-		// Already split.
-		return false;
-	}
-
-	// Not if we're in a dss
-	if ( IsRunningDynamicInteraction() )
-		return false;
-
-	// Break in half IF:
-	// 
-	// Take half or more of max health in DMG_BLAST
-	if( (info.GetDamageType() & DMG_BLAST) && flDamageThreshold >= 0.5 )
-	{
-		return true;
-	}
-
 	return false;
 }
 

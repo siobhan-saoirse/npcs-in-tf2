@@ -85,13 +85,15 @@ void CE_Temp_NPC::OnUpdateShotRegulator()
 
 	if( GetEnemy() && HasCondition(COND_CAN_RANGE_ATTACK1) )
 	{
-		if( GetAbsOrigin().DistTo( GetEnemy()->GetAbsOrigin() ) <= PC_LARGER_BURST_RANGE )
+		/*if( GetAbsOrigin().DistTo( GetEnemy()->GetAbsOrigin() ) <= PC_LARGER_BURST_RANGE )
 		{
-				// Longer burst
-				int longBurst = enginerandom->RandomInt( 10, 15 );
-				GetShotRegulator()->SetBurstShotsRemaining( longBurst );
-				GetShotRegulator()->SetRestInterval( 0.1, 0.2 );
-		}
+			// Longer burst
+			int longBurst = enginerandom->RandomInt( 10, 15 );
+			GetShotRegulator()->SetBurstShotsRemaining( longBurst );
+			GetShotRegulator()->SetRestInterval( 0.1, 0.2 );
+		} else {*/
+			GetShotRegulator()->SetBurstShotCountRange(GetActiveWeapon()->GetMinBurst(), GetActiveWeapon()->GetMaxBurst() );
+		//}
 	}
 }
 
@@ -596,6 +598,169 @@ public:
 	}
 };
 
+class NPC_CitizenRefugee : public CE_Temp_NPC
+{
+public:
+	CE_DECLARE_CLASS(NPC_CitizenRefugee, CE_Temp_NPC);
+
+	void Precache()
+	{
+		PrecacheScriptSound( "NPC_Citizen.FootstepLeft" );
+		PrecacheScriptSound( "NPC_Citizen.FootstepRight" );
+		PrecacheScriptSound( "NPC_Citizen.Die" );
+
+		int nHeads = ARRAYSIZE( g_ppszRandomHeads );
+		int i;
+		for ( i = 0; i < nHeads; ++i )
+		{
+			if ( !IsExcludedHead( type, false, i ) )
+			{
+				PrecacheModel( CFmtStr( "models/Humans/Group01/%s", g_ppszRandomHeads[i] ) );
+				PrecacheModel( CFmtStr( "models/Humans/Group02/%s", g_ppszRandomHeads[i] ) );
+				PrecacheModel( CFmtStr( "models/Humans/Group03/%s", g_ppszRandomHeads[i] ) );
+				PrecacheModel( CFmtStr( "models/Humans/Group03m/%s", g_ppszRandomHeads[i] ) );
+			}
+		}
+		const char *pszModelName = NULL;
+
+			int headCounts[ARRAYSIZE(g_ppszRandomHeads)] = { 0 };
+			// Find all candidates
+			CUtlVectorFixed<HeadCandidate_t, ARRAYSIZE(g_ppszRandomHeads)> candidates;
+
+			for ( i = 0; i < ARRAYSIZE(g_ppszRandomHeads); i++ )
+			{
+						HeadCandidate_t candidate = { i, headCounts[i] };
+						candidates.AddToTail( candidate );
+			}
+
+			Assert( candidates.Count() );
+			candidates.Sort( &HeadCandidate_t::Sort );
+
+			int iSmallestCount = candidates[0].nHeads;
+			int iLimit;
+
+			for ( iLimit = 0; iLimit < candidates.Count(); iLimit++ )
+			{
+				if ( candidates[iLimit].nHeads > iSmallestCount )
+					break;
+			}
+
+			int m_iHead = candidates[enginerandom->RandomInt( 0, iLimit - 1 )].iHead;
+			pszModelName = g_ppszRandomHeads[m_iHead];
+			
+		SetModelName( AllocPooledString( CFmtStr( "models/Humans/Group02/%s", pszModelName ) ) );
+		BaseClass::Precache();
+	}
+	
+
+	virtual Class_T	Classify ( void )
+	{
+		return CLASS_PLAYER_ALLY;
+	}
+
+
+	//-----------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------
+	void DeathSound( const CTakeDamageInfo &info )
+	{
+		// Sentences don't play on dead NPCs
+		SentenceStop();
+
+		EmitSound( "NPC_Citizen.Die" );
+	}
+	
+	//-----------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------
+	void PainSound( const CTakeDamageInfo &info )
+	{
+		// Sentences don't play on dead NPCs
+		SentenceStop();
+
+		EmitSound( "NPC_Citizen.Die" );
+	}
+};
+
+class NPC_CitizenRebel : public CE_Temp_NPC
+{
+public:
+	CE_DECLARE_CLASS(NPC_CitizenRebel, CE_Temp_NPC);
+
+	void Precache()
+	{
+		PrecacheScriptSound( "NPC_Citizen.FootstepLeft" );
+		PrecacheScriptSound( "NPC_Citizen.FootstepRight" );
+		PrecacheScriptSound( "NPC_Citizen.Die" );
+
+		int nHeads = ARRAYSIZE( g_ppszRandomHeads );
+		int i;
+		for ( i = 0; i < nHeads; ++i )
+		{
+			if ( !IsExcludedHead( type, false, i ) )
+			{
+				PrecacheModel( CFmtStr( "models/Humans/Group01/%s", g_ppszRandomHeads[i] ) );
+				PrecacheModel( CFmtStr( "models/Humans/Group02/%s", g_ppszRandomHeads[i] ) );
+				PrecacheModel( CFmtStr( "models/Humans/Group03/%s", g_ppszRandomHeads[i] ) );
+				PrecacheModel( CFmtStr( "models/Humans/Group03m/%s", g_ppszRandomHeads[i] ) );
+			}
+		}
+		const char *pszModelName = NULL;
+
+			int headCounts[ARRAYSIZE(g_ppszRandomHeads)] = { 0 };
+			// Find all candidates
+			CUtlVectorFixed<HeadCandidate_t, ARRAYSIZE(g_ppszRandomHeads)> candidates;
+
+			for ( i = 0; i < ARRAYSIZE(g_ppszRandomHeads); i++ )
+			{
+						HeadCandidate_t candidate = { i, headCounts[i] };
+						candidates.AddToTail( candidate );
+			}
+
+			Assert( candidates.Count() );
+			candidates.Sort( &HeadCandidate_t::Sort );
+
+			int iSmallestCount = candidates[0].nHeads;
+			int iLimit;
+
+			for ( iLimit = 0; iLimit < candidates.Count(); iLimit++ )
+			{
+				if ( candidates[iLimit].nHeads > iSmallestCount )
+					break;
+			}
+
+			int m_iHead = candidates[enginerandom->RandomInt( 0, iLimit - 1 )].iHead;
+			pszModelName = g_ppszRandomHeads[m_iHead];
+			
+		SetModelName( AllocPooledString( CFmtStr( "models/Humans/Group03/%s", pszModelName ) ) );
+		BaseClass::Precache();
+	}
+	
+
+	virtual Class_T	Classify ( void )
+	{
+		return CLASS_PLAYER_ALLY;
+	}
+
+
+	//-----------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------
+	void DeathSound( const CTakeDamageInfo &info )
+	{
+		// Sentences don't play on dead NPCs
+		SentenceStop();
+
+		EmitSound( "NPC_Citizen.Die" );
+	}
+	
+	//-----------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------
+	void PainSound( const CTakeDamageInfo &info )
+	{
+		// Sentences don't play on dead NPCs
+		SentenceStop();
+
+		EmitSound( "NPC_Citizen.Die" );
+	}
+};
 
 class NPC_Odessa : public NPC_Citizen
 {
@@ -604,17 +769,19 @@ public:
 
 	void Precache()
 	{
+		BaseClass::Precache();
 		PrecacheScriptSound( "NPC_Citizen.FootstepLeft" );
 		PrecacheScriptSound( "NPC_Citizen.FootstepRight" );
 		PrecacheScriptSound( "NPC_Citizen.Die" );
 
 		PrecacheModel("models/odessa.mdl");
 		SetModelName( AllocPooledString( "models/odessa.mdl" ) );
-		BaseClass::Precache();
 	}
 }
 
 LINK_ENTITY_TO_CUSTOM_CLASS( npc_citizen, cycler_actor, NPC_Citizen);
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_citizen_refugee, cycler_actor, NPC_CitizenRefugee);
+LINK_ENTITY_TO_CUSTOM_CLASS( npc_citizen_rebel, cycler_actor, NPC_CitizenRebel);
 LINK_ENTITY_TO_CUSTOM_CLASS( npc_odessa, cycler_actor, NPC_Odessa);
 
 
@@ -700,6 +867,11 @@ public:
 		PrecacheModel("models/breen.mdl");
 		SetModelName(AllocPooledString("models/breen.mdl"));
 		BaseClass::Precache();
+	}
+	
+	virtual Class_T	Classify ( void )
+	{
+		return CLASS_COMBINE;
 	}
 };
 

@@ -313,6 +313,7 @@ void CNPC_Combine::Spawn( void )
 
 	// Innate range attack for grenade
 	// CapabilitiesAdd(bits_CAP_INNATE_RANGE_ATTACK2 );
+	CapabilitiesAdd( bits_CAP_USE_SHOT_REGULATOR );
 
 	// Innate range attack for kicking
 	CapabilitiesAdd(bits_CAP_INNATE_MELEE_ATTACK1 );

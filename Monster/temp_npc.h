@@ -47,7 +47,35 @@ public:
 		
 		NPCInit();
 	}
-
+	//-----------------------------------------------------------------------------
+	// Purpose: degrees to turn in 0.1 seconds
+	//-----------------------------------------------------------------------------
+	float MaxYawSpeed( void )
+	{
+		switch( GetActivity() )
+		{
+		case ACT_TURN_LEFT:
+		case ACT_TURN_RIGHT:
+			return 45;
+			break;
+		case ACT_RUN:
+		case ACT_RUN_HURT:
+			return 15;
+			break;
+		case ACT_WALK:
+		case ACT_WALK_CROUCH:
+			return 25;
+			break;
+		case ACT_RANGE_ATTACK1:
+		case ACT_RANGE_ATTACK2:
+		case ACT_MELEE_ATTACK1:
+		case ACT_MELEE_ATTACK2:
+			return 35;
+		default:
+			return 35;
+			break;
+		}
+	}
 	//-----------------------------------------------------------------------------
 	//-----------------------------------------------------------------------------
 	virtual int OnTakeDamage_Alive( const CTakeDamageInfo &info )

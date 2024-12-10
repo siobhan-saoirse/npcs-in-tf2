@@ -21,6 +21,7 @@ public:
 	void LevelInitPreEntity()
 	{
 		AddReplace("weapon_smg1","tf_weapon_syringegun_medic");
+		AddReplace("weapon_annabelle","tf_weapon_shotgun_hwg");
 		AddReplace("weapon_shotgun","tf_weapon_sentry_revenge");
 		AddReplace("weapon_ar2","tf_weapon_charged_smg");
 		AddReplace("weapon_357", "tf_weapon_revolver"); 
@@ -31,6 +32,7 @@ public:
 		AddReplace("weapon_crowbar","tf_weapon_cleaver");
 		AddReplace("weapon_pistol","tf_weapon_raygun");
 		AddReplace("weapon_physcannon","tf_weapon_mechanical_arm");
+		AddReplace("weapon_alyxgun","tf_weapon_pep_brawler_blaster");
 	}
 
 	void LevelShutdownPostEntity()
@@ -72,6 +74,8 @@ const char *NPC_WeaponReplace(const char *szValue)
 		newszValue = WEAPON_AR2_REPLACE_NAME;
 	else if(FStrEq(szValue, "weapon_shotgun"))
 		newszValue = WEAPON_SHOTGUN_REPLACE_NAME;
+	else if(FStrEq(szValue, "weapon_annabelle"))
+		newszValue = WEAPON_ANNABELLE_REPLACE_NAME;
 	else if(FStrEq(szValue, "weapon_smg1"))
 		newszValue = WEAPON_SMG1_REPLACE_NAME;
 	else if(FStrEq(szValue, "weapon_stunstick"))

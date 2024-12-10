@@ -23,6 +23,9 @@ public:
 	void NPCWeaponOperator_ForceNPCFire( CBaseEntity  *pOperator, bool bSecondary );
 	const WeaponProficiencyInfo_t *NPCWeaponGetProficiencyValues();
 
+	int		GetMinBurst() { return 2; }
+	int		GetMaxBurst() { return 5; }
+	
 	void OnNPCEquip(CCombatCharacter *owner);
 
 private:

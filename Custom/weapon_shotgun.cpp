@@ -34,7 +34,6 @@ private:
 
 
 static CEntityFactory_CE<CNPCWeapon_ShotGun> WEAPON_SHOTGUN_REPLACE(WEAPON_SHOTGUN_REPLACE_NAME);
-static CEntityFactory_CE<CNPCWeapon_ShotGun> WEAPON_ANNABELLE_REPLACE(WEAPON_ANNABELLE_REPLACE_NAME);
 
 
 acttable_t	CNPCWeapon_ShotGun::m_acttable[] =
@@ -206,4 +205,160 @@ void CNPCWeapon_ShotGun::NPCWeaponOperator_ForceNPCFire( CBaseEntity  *pOperator
 const WeaponProficiencyInfo_t *CNPCWeapon_ShotGun::NPCWeaponGetProficiencyValues()
 {
 	return CCombatWeapon::GetProficiencyValues();
+}
+
+
+extern ConVar sk_auto_reload_time;
+
+class CWeaponAnnabelle : public CNPCBaseWeapon
+{
+public:
+	DECLARE_CLASS( CWeaponAnnabelle, CNPCBaseWeapon );
+
+public:
+	void Spawn();
+	void	Precache( void );
+
+	int CapabilitiesGet( void ) 
+	{ 	
+		if(IsNPCUsing())
+			return bits_CAP_WEAPON_RANGE_ATTACK1;
+		else
+			return BaseClass::Weapon_CapabilitiesGet();
+	}
+
+	virtual const Vector& GetBulletSpread( void )
+	{
+		static Vector cone = vec3_origin;
+		return cone;
+	}
+
+	virtual int				GetMinBurst() { return 1; }
+	virtual int				GetMaxBurst() { return 3; }
+	virtual float GetFireRate( void ) { return 1.5; };
+	virtual float			GetMinRestTime() { return 1.0; }
+	virtual float			GetMaxRestTime() { return 1.5; }
+
+	const char *NPCWeaponGetWorldModel() const;
+	acttable_t*	NPCWeaponActivityList();
+	int	NPCWeaponActivityListCount();
+	void FireNPCPrimaryAttack( CCombatCharacter *pOperator, bool bUseWeaponAngles );
+	void NPCWeaponOperator_HandleAnimEvent( animevent_t *pEvent, CBaseEntity *pOperator );
+	void NPCWeaponOperator_ForceNPCFire( CBaseEntity  *pOperator, bool bSecondary );
+	const WeaponProficiencyInfo_t *NPCWeaponGetProficiencyValues();
+
+	void OnNPCEquip(CCombatCharacter *owner);
+private:
+	static acttable_t m_acttable[];
+};
+
+static CEntityFactory_CE<CWeaponAnnabelle> WEAPON_ANNABELLE_REPLACE(WEAPON_ANNABELLE_REPLACE_NAME);
+
+void CWeaponAnnabelle::NPCWeaponOperator_ForceNPCFire( CBaseEntity  *pOperator, bool bSecondary )
+{
+	*(m_iClip1) += 1;
+
+	FireNPCPrimaryAttack( (CCombatCharacter *)CEntity::Instance(pOperator), true );
+}
+acttable_t	CWeaponAnnabelle::m_acttable[] = 
+{
+	{ ACT_IDLE_ANGRY,				ACT_IDLE_ANGRY_SMG1,				true },
+	{ ACT_RANGE_ATTACK1,			ACT_RANGE_ATTACK_SHOTGUN,			true },
+	{ ACT_RELOAD,					ACT_RELOAD_SMG1,					true },
+	{ ACT_WALK,						ACT_WALK_RIFLE,						true },
+	{ ACT_WALK_AIM,					ACT_WALK_AIM_RIFLE,					true },
+	{ ACT_WALK_CROUCH,				ACT_WALK_CROUCH_RIFLE,				false },
+	{ ACT_WALK_CROUCH_AIM,			ACT_WALK_CROUCH_AIM_RIFLE,			false },
+	{ ACT_RUN,						ACT_RUN_RIFLE,						true },
+	{ ACT_RUN_AIM,					ACT_RUN_AIM_RIFLE,					true },
+	{ ACT_RUN_CROUCH,				ACT_RUN_CROUCH_RIFLE,				false },
+	{ ACT_RUN_CROUCH_AIM,			ACT_RUN_CROUCH_AIM_RIFLE,			false },
+	{ ACT_GESTURE_RANGE_ATTACK1,	ACT_GESTURE_RANGE_ATTACK_SHOTGUN,	true },
+	{ ACT_RELOAD_LOW,				ACT_RELOAD_SMG1_LOW,				false },
+	{ ACT_GESTURE_RELOAD,			ACT_GESTURE_RELOAD_SMG1,			false },
+};
+
+acttable_t*	CWeaponAnnabelle::NPCWeaponActivityList()
+{
+	return m_acttable;
+}
+
+int	CWeaponAnnabelle::NPCWeaponActivityListCount()
+{
+	return ARRAYSIZE(m_acttable);
+}
+
+void CWeaponAnnabelle::Spawn()
+{
+	m_iWeaponModel = PrecacheModel("models/weapons/w_annabelle.mdl");
+
+	BaseClass::Spawn();
+}
+void CWeaponAnnabelle::Precache( void )
+{
+	BaseClass::Precache();
+}
+
+//-----------------------------------------------------------------------------
+// Purpose:
+// Input  :
+// Output :
+//-----------------------------------------------------------------------------
+void CWeaponAnnabelle::NPCWeaponOperator_HandleAnimEvent( animevent_t *pEvent, CBaseEntity *pOperator )
+{
+	switch( pEvent->event )
+	{
+		case EVENT_WEAPON_SHOTGUN_FIRE:
+		{
+			FireNPCPrimaryAttack( (CCombatCharacter *)CEntity::Instance(pOperator), false );
+		}
+		break;
+
+		default:
+			BaseClass::Operator_HandleAnimEvent( pEvent, pOperator );
+			break;
+	}
+}
+
+void CWeaponAnnabelle::FireNPCPrimaryAttack( CCombatCharacter *pOperator, bool bUseWeaponAngles )
+{
+	Vector vecShootOrigin, vecShootDir;
+	CAI_NPC *npc = pOperator->MyNPCPointer();
+	// Assert( npc != NULL );
+
+	pOperator->DoMuzzleFlash();
+	m_iClip1 = *(m_iClip1) - 1;
+
+	if ( bUseWeaponAngles )
+	{
+		QAngle	angShootDir;
+		GetAttachment( LookupAttachment( "muzzle" ), vecShootOrigin, angShootDir );
+		AngleVectors( angShootDir, &vecShootDir );
+	}
+	else
+	{
+		vecShootOrigin = pOperator->Weapon_ShootPosition();
+		vecShootDir = npc->GetActualShootTrajectory( vecShootOrigin );
+	}
+
+	CustomWeaponSound(pOperator->entindex(), vecShootOrigin, "Weapon_Shotgun.NPC_Single");
+
+	pOperator->FireBullets( 8, vecShootOrigin, vecShootDir, GetBulletSpread(), MAX_TRACE_LENGTH, m_iPrimaryAmmoType, 1, entindex(), 0, 9.0f);
+}
+const char *CWeaponAnnabelle::NPCWeaponGetWorldModel() const
+{
+	return "models/weapons/w_annabelle.mdl";
+}
+
+const WeaponProficiencyInfo_t *CWeaponAnnabelle::NPCWeaponGetProficiencyValues()
+{
+	return CCombatWeapon::GetProficiencyValues();
+}
+
+void CWeaponAnnabelle::OnNPCEquip(CCombatCharacter *owner)
+{
+	m_fMinRange1 = 0.0;
+	m_fMaxRange1 = 500;
+	m_fMinRange2 = 0.0;
+	m_fMaxRange2 = 200;
 }

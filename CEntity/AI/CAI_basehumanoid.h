@@ -15,7 +15,7 @@
 // CLASS: CAI_BaseHumanoid
 //-----------------------------------------------------------------------------
 
-typedef CAI_BlendingHost< CAI_BehaviorHost<CE_Cycler_Fix> > CAI_BaseHumanoidBase;
+typedef CAI_BehaviorHost<CE_Cycler_Fix> CAI_BaseHumanoidBase;
 
 class CDmgAccumulator;
 

@@ -41,5 +41,19 @@ private:
 
 };
 
+class CNPCWeapon_AlyxGun : public CNPCWeapon_Pistol
+{
+public:
+	DECLARE_CLASS( CNPCWeapon_AlyxGun, CNPCWeapon_Pistol );
+
+	void Spawn()
+	{
+		BaseClass::Spawn();
+		m_iWeaponModel = PrecacheModel("models/weapons/W_Alyx_Gun.mdl");
+	}
+
+	const char *NPCWeaponGetWorldModel() { return "models/weapons/W_Alyx_Gun.mdl"; }
+};
+
 
 #endif

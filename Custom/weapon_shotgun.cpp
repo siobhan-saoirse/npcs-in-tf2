@@ -219,14 +219,6 @@ public:
 	void Spawn();
 	void	Precache( void );
 
-	int CapabilitiesGet( void ) 
-	{ 	
-		if(IsNPCUsing())
-			return bits_CAP_WEAPON_RANGE_ATTACK1;
-		else
-			return BaseClass::Weapon_CapabilitiesGet();
-	}
-
 	virtual const Vector& GetBulletSpread( void )
 	{
 		static Vector cone = vec3_origin;
@@ -246,6 +238,13 @@ public:
 	void NPCWeaponOperator_HandleAnimEvent( animevent_t *pEvent, CBaseEntity *pOperator );
 	void NPCWeaponOperator_ForceNPCFire( CBaseEntity  *pOperator, bool bSecondary );
 	const WeaponProficiencyInfo_t *NPCWeaponGetProficiencyValues();
+	int Weapon_CapabilitiesGet( void )
+	{ 	
+		if(IsNPCUsing())
+			return bits_CAP_WEAPON_RANGE_ATTACK1;
+		else
+			return BaseClass::Weapon_CapabilitiesGet();
+	}
 
 	void OnNPCEquip(CCombatCharacter *owner);
 private:
@@ -311,11 +310,10 @@ void CWeaponAnnabelle::NPCWeaponOperator_HandleAnimEvent( animevent_t *pEvent, C
 		case EVENT_WEAPON_SHOTGUN_FIRE:
 		{
 			FireNPCPrimaryAttack( (CCombatCharacter *)CEntity::Instance(pOperator), false );
+			break;
 		}
-		break;
-
 		default:
-			BaseClass::Operator_HandleAnimEvent( pEvent, pOperator );
+			CCombatWeapon::Operator_HandleAnimEvent(pEvent, pOperator);
 			break;
 	}
 }

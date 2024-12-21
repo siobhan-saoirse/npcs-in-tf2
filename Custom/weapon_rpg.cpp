@@ -1126,7 +1126,7 @@ BEGIN_DATADESC( CAPCMissile )
 
 END_DATADESC()
 
-LINK_ENTITY_TO_CUSTOM_CLASS( apc_missile, cycler_actor, CAPCMissile );
+LINK_ENTITY_TO_CUSTOM_CLASS( apc_missile, monster_generic, CAPCMissile );
 
 CAPCMissile *CAPCMissile::Create( const Vector &vecOrigin, const QAngle &vecAngles, const Vector &vecVelocity, CEntity *pOwner )
 {

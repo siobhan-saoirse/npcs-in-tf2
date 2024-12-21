@@ -14,9 +14,9 @@ static void DispatchActivate( CEntity *pEntity )
 }
 
 
-LINK_ENTITY_TO_CUSTOM_CLASS( info_npc_spawn_destination, info_target, CNPCSpawnDestination );
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_maker, info_target, CNPCMaker );
-LINK_ENTITY_TO_CUSTOM_CLASS( npc_template_maker, info_target, CTemplateNPCMaker );
+//LINK_ENTITY_TO_CUSTOM_CLASS( info_npc_spawn_destination, info_target, CNPCSpawnDestination );
+//LINK_ENTITY_TO_CUSTOM_CLASS( npc_maker, info_target, CNPCMaker );
+//LINK_ENTITY_TO_CUSTOM_CLASS( npc_template_maker, info_target, CTemplateNPCMaker );
 
 
 BEGIN_DATADESC( CNPCSpawnDestination )

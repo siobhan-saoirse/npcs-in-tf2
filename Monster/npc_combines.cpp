@@ -100,8 +100,17 @@ void CNPC_CombineS::Precache()
 
 	PrecacheModel( "models/combine_super_soldier.mdl" );
 	PrecacheModel( "models/combine_soldier.mdl" );
+	PrecacheModel( "models/combine_soldier_prisonguard.mdl" );
 	SetModel( CombineModelSoldier );
 
+	char szMapName[256];
+	Q_strncpy(szMapName, STRING(gpGlobals->mapname), sizeof(szMapName) );
+	Q_strlower(szMapName);
+
+	if( !Q_strnicmp( szMapName, "d2_coast_12", 11 ) || !Q_strnicmp( szMapName, "d2_prison", 11 ) )
+	{
+		SetModel( "models/combine_soldier_prisonguard.mdl" );
+	}
 	g_helpfunc.UTIL_PrecacheOther( "item_healthvial" );
 	g_helpfunc.UTIL_PrecacheOther( "prop_combine_ball" );
 	/////g_helpfunc.UTIL_PrecacheOther( "weapon_frag" );

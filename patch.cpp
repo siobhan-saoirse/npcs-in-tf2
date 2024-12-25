@@ -49,7 +49,7 @@ CDetour *UTIL_BloodDrips_CDetour = NULL;
 CDetour *ShouldRemoveThisRagdoll_CDetour = NULL;
 CDetour *FindInList_CDetour = NULL;
 CDetour *Pickup_ForcePlayerToDropThisObject_CDetour = NULL;
-CDetour *UTIL_GetLocalPlayer_CDetour = NULL;
+//CDetour *UTIL_GetLocalPlayer_CDetour = NULL;
 CDetour *CleanUpMap_CDetour = NULL;
 
 // raydan (https://forums.alliedmods.net/showpost.php?p=2583960&postcount=4):
@@ -125,6 +125,7 @@ DETOUR_DECL_STATIC1(CDetour_Pickup_ForcePlayerToDropThisObject, void, CBaseEntit
 }
 
 // fix All UTIL_GetLocalPlayer
+/*
 DETOUR_DECL_STATIC0(CDetour_UTIL_GetLocalPlayer, CBaseEntity *)
 {
 	for(int i=1;i<=gpGlobals->maxClients;i++)
@@ -138,6 +139,7 @@ DETOUR_DECL_STATIC0(CDetour_UTIL_GetLocalPlayer, CBaseEntity *)
 	g_pSM->LogError(myself, "UTIL_GetLocalPlayer return NULL!");
 	return NULL;
 }
+*/
 
 // fix parent entity
 DETOUR_DECL_MEMBER0(CDetour_CleanUpMap, void)
@@ -170,7 +172,7 @@ bool PatchSystem::SDKInit()
 
 	GET_DETOUR(Pickup_ForcePlayerToDropThisObject, DETOUR_CREATE_STATIC(CDetour_Pickup_ForcePlayerToDropThisObject, "Pickup_ForcePlayerToDropThisObject"));
 
-	GET_DETOUR(UTIL_GetLocalPlayer, DETOUR_CREATE_STATIC(CDetour_UTIL_GetLocalPlayer, "UTIL_GetLocalPlayer"));
+	//GET_DETOUR(UTIL_GetLocalPlayer, DETOUR_CREATE_STATIC(CDetour_UTIL_GetLocalPlayer, "UTIL_GetLocalPlayer"));
 
 	GET_DETOUR(CleanUpMap, DETOUR_CREATE_MEMBER(CDetour_CleanUpMap, "CleanUpMap"));
 
@@ -183,7 +185,7 @@ void PatchSystem::SDKShutdown()
 	DestoryDetour(ShouldRemoveThisRagdoll_CDetour);
 	DestoryDetour(FindInList_CDetour);
 	DestoryDetour(Pickup_ForcePlayerToDropThisObject_CDetour);
-	DestoryDetour(UTIL_GetLocalPlayer_CDetour);
+	//DestoryDetour(UTIL_GetLocalPlayer_CDetour);
 	DestoryDetour(CleanUpMap_CDetour);
 }
 

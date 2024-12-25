@@ -897,15 +897,15 @@ void CNPC_CombineDropship::Spawn( void )
 				p_m_hContainer->SetGroundEntity( NULL );
 
 				// Cache off container's attachment points
-				m_iAttachmentTroopDeploy = p_m_hContainer->LookupAttachment( "deploy_landpoint" );
-				m_iAttachmentDeployStart = p_m_hContainer->LookupAttachment( "Deploy_Start" );
-				m_iMuzzleAttachment = p_m_hContainer->LookupAttachment( "muzzle" );
-				m_iMachineGunBaseAttachment = p_m_hContainer->LookupAttachment( "gun_base" );
+				//m_iAttachmentTroopDeploy = p_m_hContainer->LookupAttachment( "deploy_landpoint" );
+				//m_iAttachmentDeployStart = p_m_hContainer->LookupAttachment( "Deploy_Start" );
+				//m_iMuzzleAttachment = p_m_hContainer->LookupAttachment( "muzzle" );
+				//m_iMachineGunBaseAttachment = p_m_hContainer->LookupAttachment( "gun_base" );
 				// NOTE: gun_ref must have the same position as gun_base, but rotates with the gun
-				m_iMachineGunRefAttachment = p_m_hContainer->LookupAttachment( "gun_ref" );
+				//m_iMachineGunRefAttachment = p_m_hContainer->LookupAttachment( "gun_ref" );
 				// Store spawned container weapon pitch and yaw pose parameters to allow weapon point to the player
-				m_poseWeapon_Pitch = m_hContainer->LookupPoseParameter( "weapon_pitch" );
-				m_poseWeapon_Yaw = m_hContainer->LookupPoseParameter( "weapon_yaw" );
+				m_poseWeapon_Pitch = p_m_hContainer->LookupPoseParameter( "weapon_pitch" );
+				m_poseWeapon_Yaw = p_m_hContainer->LookupPoseParameter( "weapon_yaw" );
 			}
 			break;
 
@@ -2381,6 +2381,7 @@ void CNPC_CombineDropship::SpawnTroop( void )
 	if ( m_flNextTroopSpawnAttempt > gpGlobals->curtime )
 		return;
 
+/*
 	// HACK: This is a nasty piece of work. We want to make sure the deploy end is clear, and has enough
 	// room with our deploying NPC, but we don't want to create the NPC unless it's clear, and we don't
 	// know how much room he needs without spawning him.
@@ -2388,7 +2389,6 @@ void CNPC_CombineDropship::SpawnTroop( void )
 	// HACK: Add some bloat because the endpoint isn't perfectly aligned with NPC end origin
 	Vector vecNPCMins = NAI_Hull::Mins( HULL_HUMAN ) - Vector(4,4,4);
 	Vector vecNPCMaxs = NAI_Hull::Maxs( HULL_HUMAN ) + Vector(4,4,4);
-
 	// Scare NPCs away from our deploy endpoint to keep them away
 	Vector vecDeployEndPoint;
 	QAngle vecDeployEndAngles;
@@ -2457,6 +2457,7 @@ void CNPC_CombineDropship::SpawnTroop( void )
 	pSequence->AcceptInput( "BeginSequence", BaseEntity(), BaseEntity(), emptyVariant, 0 );
 
 	m_hLastTroopToLeave.Set(pNPC->BaseEntity());
+	*/
 }
 
 //-----------------------------------------------------------------------------
@@ -2770,7 +2771,7 @@ void CNPC_CombineDropship::UpdateContainerGunFacing( Vector &vecMuzzle, Vector &
 
 	// Get the desired aim vector
 	vecToTarget = GetEnemy()->WorldSpaceCenter( );
-
+/*
 	Vector vecBarrelPos, vecWorldBarrelPos;
 	QAngle worldBarrelAngle, vecAngles;
 	matrix3x4_t matRefToWorld;
@@ -2820,6 +2821,7 @@ void CNPC_CombineDropship::UpdateContainerGunFacing( Vector &vecMuzzle, Vector &
 	vecToTarget -= vecMuzzle;
 	*flTargetRange = VectorNormalize( vecToTarget );
 	AngleVectors( vecAngles, &vecAimDir );
+	*/
 }
 
 

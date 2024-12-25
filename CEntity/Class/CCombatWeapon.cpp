@@ -194,10 +194,11 @@ DECLARE_DEFAULTHANDLER(Template_CCombatWeapon, HasAnyAmmo, bool, (), ());
 SH_DECL_MANUALHOOK0_void(ItemPreFrame, 0, 0, 0);
 DECLARE_HOOK(ItemPreFrame, Template_CCombatWeapon);
 DECLARE_DEFAULTHANDLER_void(Template_CCombatWeapon, ItemPreFrame, (), ());
-
+/*
 SH_DECL_MANUALHOOK0_void(WeaponIdle, 0, 0, 0);
 DECLARE_HOOK(WeaponIdle, Template_CCombatWeapon);
 DECLARE_DEFAULTHANDLER_void(Template_CCombatWeapon, WeaponIdle, (), ());
+*/
 
 SH_DECL_MANUALHOOK1(GetViewModel, 0, 0, 0, const char *, int);
 DECLARE_HOOK(GetViewModel, Template_CCombatWeapon);

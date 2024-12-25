@@ -421,8 +421,7 @@ void CNPC_CScanner::Event_Killed( const CTakeDamageInfo &info )
 //-----------------------------------------------------------------------------
 bool CNPC_CScanner::FValidateHintType(CBaseEntity *pHint)
 {
-	CE_AI_Hint *hit = (CE_AI_Hint *)CEntity::Instance(pHint);
-	return( hit->HintType() == HINT_WORLD_WINDOW );
+	return false;
 }
 
 

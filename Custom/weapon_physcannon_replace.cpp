@@ -1103,7 +1103,7 @@ void CWeaponPhysCannon::ItemPostFrame()
 	}
 	else
 	{
-		WeaponIdle();
+		//WeaponIdle();
 	}
 }
 

@@ -11,6 +11,7 @@
 #include "ammodef.h"
 #include "CE_recipientfilter.h"
 #include "CAI_Navigator.h"
+#include "globalstate.h"
 
 #define SC_PLFEAR	"SC_PLFEAR"
 #define SC_FEAR		"SC_FEAR"
@@ -573,6 +574,12 @@ public:
 
 	virtual Class_T	Classify ( void )
 	{
+		if (GlobalEntity_GetState("gordon_precriminal") == GLOBAL_ON)
+			return CLASS_CITIZEN_PASSIVE;
+
+		if (GlobalEntity_GetState("citizens_passive") == GLOBAL_ON)
+			return CLASS_CITIZEN_PASSIVE;
+
 		return CLASS_PLAYER_ALLY;
 	}
 

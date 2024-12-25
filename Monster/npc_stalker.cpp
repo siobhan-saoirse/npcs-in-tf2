@@ -1283,8 +1283,7 @@ void CNPC_Stalker::HandleAnimEvent( animevent_t *pEvent )
 //-----------------------------------------------------------------------------
 bool CNPC_Stalker::FValidateHintType(CBaseEntity *pHint)
 {
-	CE_AI_Hint *hit = (CE_AI_Hint *)CEntity::Instance(pHint);
-	return(hit->HintType() == HINT_WORLD_WORK_POSITION);
+	return false;
 }
 
 //-----------------------------------------------------------------------------

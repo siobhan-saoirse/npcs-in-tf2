@@ -9,7 +9,7 @@
 
 
 
-CE_LINK_ENTITY_TO_CLASS(CAI_ScriptedSequence, CEAI_ScriptedSequence);
+//CE_LINK_ENTITY_TO_CLASS(CAI_ScriptedSequence, CEAI_ScriptedSequence);
 
 
 //Datamaps

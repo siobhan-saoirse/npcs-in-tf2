@@ -1084,8 +1084,7 @@ bool CNPC_Crow::BecomeRagdollOnClient( const Vector &force )
 //-----------------------------------------------------------------------------
 bool CNPC_Crow::FValidateHintType( CBaseEntity *pHint )
 {
-	CE_AI_Hint *hint = (CE_AI_Hint *)CEntity::Instance(pHint);
-	return( hint->HintType() == HINT_CROW_FLYTO_POINT );
+	return false;
 }
 
 

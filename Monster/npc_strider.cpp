@@ -413,14 +413,7 @@ void CNPC_Strider::PostConstructor()
 //---------------------------------------------------------
 void CNPC_Strider::Precache()
 {
-	if ( !GetModelName() )
-	{
-		SetModelName( MAKE_STRING( "models/combine_strider.mdl" ) );
-	}
-
-	PrecacheModel( STRING( GetModelName() ) );
-
-	PropBreakablePrecacheAll( GetModelName() );
+	PrecacheModel( "models/combine_strider.mdl" );
 
 	PrecacheScriptSound( "NPC_Strider.StriderBusterExplode" );
 	PrecacheScriptSound( "explode_5" );
@@ -467,7 +460,7 @@ void CNPC_Strider::Spawn()
 
 	EnableServerIK();
 
-	SetModel( STRING( GetModelName() ) );
+	SetModel( "models/combine_strider.mdl" );
 
 	BaseClass::Spawn();
 
@@ -846,7 +839,7 @@ void CNPC_Strider::PrescheduleThink()
 {
 	if( IsUsingAggressiveBehavior() && GetEnemy() && GetEnemy()->IsPlayer() )
 	{
-		AddFacingTarget_E_V_F_F_F( GetEnemy_CBase(), GetEnemies()->LastKnownPosition( GetEnemy_CBase() ) , 1.0, 2.0 );
+		//AddFacingTarget_E_V_F_F_F( GetEnemy_CBase(), GetEnemies()->LastKnownPosition( GetEnemy_CBase() ) , 1.0, 2.0 );
 	}
 
 	// Next missile will kill me!
@@ -1521,7 +1514,7 @@ void CNPC_Strider::StartTask( const Task_t *pTask )
 				GetNavigator()->SetArrivalDirection( vecEnemy - goal.dest );
 
 				// Add the cannon target as a high priority facing entity.
-				AddFacingTarget_E_V_F_F_F( GetCannonTarget()->BaseEntity(), GetCannonTarget()->WorldSpaceCenter(), 5.0, 5.0 );
+				//AddFacingTarget_E_V_F_F_F( GetCannonTarget()->BaseEntity(), GetCannonTarget()->WorldSpaceCenter(), 5.0, 5.0 );
 			}
 			else
 			{
@@ -2946,12 +2939,12 @@ int CNPC_Strider::OnTakeDamage_Alive( const CTakeDamageInfo &info )
 			if ( bPlayer )
 			{
 				m_PlayerFreePass.Revoke();
-				AddFacingTarget_E_V_F_F_F( info.GetAttacker(), attacker->GetAbsOrigin(), 1.0, 2.0 );
+				//AddFacingTarget_E_V_F_F_F( info.GetAttacker(), attacker->GetAbsOrigin(), 1.0, 2.0 );
 
 				UpdateEnemyMemory( info.GetAttacker(), attacker->GetAbsOrigin() );
 			}
-			else
-				AddFacingTarget_E_V_F_F_F( info.GetAttacker(), attacker->GetAbsOrigin(), 0.5, 2.0 );
+			//else
+				//AddFacingTarget_E_V_F_F_F( info.GetAttacker(), attacker->GetAbsOrigin(), 0.5, 2.0 );
 
 			// Default to NPC damage value
 			int damage = 20;
@@ -3067,7 +3060,7 @@ int CNPC_Strider::TakeDamageFromCombineBall( const CTakeDamageInfo &info )
 		//damage = g_pGameRules->AdjustPlayerDamageInflicted(damage);
 	}
 
-	AddFacingTarget_E_V_F_F_F( info.GetInflictor(), inflictor->GetAbsOrigin(), 0.5, 2.0 );
+	//AddFacingTarget_E_V_F_F_F( info.GetInflictor(), inflictor->GetAbsOrigin(), 0.5, 2.0 );
 
 	if ( !UTIL_IsAR2CombineBall( inflictor ) )
 		RestartGesture( ACT_GESTURE_BIG_FLINCH );
@@ -3385,7 +3378,7 @@ bool CNPC_Strider::OverrideMove( float flInterval )
 {
 	if ( GetCannonTarget() )
 	{
-		AddFacingTarget_E_V_F_F_F( GetCannonTarget()->BaseEntity(), GetCannonTarget()->GetAbsOrigin(), 1.0, 0.5 );
+		//AddFacingTarget_E_V_F_F_F( GetCannonTarget()->BaseEntity(), GetCannonTarget()->GetAbsOrigin(), 1.0, 0.5 );
 	}
 	else if ( GetEnemy() )
 	{
@@ -3394,7 +3387,7 @@ bool CNPC_Strider::OverrideMove( float flInterval )
 		if ( ( !bPlayer && timeSinceSeenEnemy < STRIDER_TIME_STOP_FACING_ENEMY ) ||
 			 ( bPlayer && !m_PlayerFreePass.HasPass() ) )
 		{
-			AddFacingTarget_E_V_F_F_F( GetEnemy_CBase(), GetEnemies()->LastKnownPosition( GetEnemy_CBase() ), 1.0, 0.5 );
+			//AddFacingTarget_E_V_F_F_F( GetEnemy_CBase(), GetEnemies()->LastKnownPosition( GetEnemy_CBase() ), 1.0, 0.5 );
 		}
 
 		if ( !m_bCrouchLocked && !m_hCannonTarget && GetIdealHeight() < GetMaxHeight() && timeSinceSeenEnemy > TIME_CARE_ENEMY )

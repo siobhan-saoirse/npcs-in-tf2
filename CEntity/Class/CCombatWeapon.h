@@ -88,7 +88,6 @@ public:
 
 	virtual bool			HasAnyAmmo( void );
 	virtual void			ItemPreFrame( void );
-	virtual void			WeaponIdle( void );
 	virtual const char		*GetViewModel( int viewmodelindex = 0 ) const;
 	virtual const Vector	&GetBulletSpread( void );
 	virtual int				GetMinBurst( void );
@@ -145,7 +144,6 @@ public:
 
 	DECLARE_DEFAULTHEADER(HasAnyAmmo, bool, ());
 	DECLARE_DEFAULTHEADER(ItemPreFrame, void, ());
-	DECLARE_DEFAULTHEADER(WeaponIdle, void, ());
 	DECLARE_DEFAULTHEADER(GetViewModel, const char *, (int viewmodelindex) const);
 	DECLARE_DEFAULTHEADER(GetBulletSpread, const Vector &,());
 

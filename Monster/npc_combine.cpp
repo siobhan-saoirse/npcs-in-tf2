@@ -3154,7 +3154,7 @@ void CNPC_Combine::OnEndMoveAndShoot()
 WeaponProficiency_t CNPC_Combine::CalcWeaponProficiency( CBaseEntity *pWeaponBase )
 {
 	CEntity *pWeapon = CEntity::Instance(pWeaponBase);
-	if( FClassnameIs( pWeapon, "weapon_ar2" ) )
+	if( FClassnameIs( pWeapon, "tf_weapon_charged_smg" ) )
 	{
 		if( hl2_episodic->GetBool() )
 		{
@@ -3165,7 +3165,7 @@ WeaponProficiency_t CNPC_Combine::CalcWeaponProficiency( CBaseEntity *pWeaponBas
 			return WEAPON_PROFICIENCY_GOOD;
 		}
 	}
-	else if( FClassnameIs( pWeapon, "weapon_shotgun" )	)
+	else if( FClassnameIs( pWeapon, "tf_weapon_sentry_revenge" )	)
 	{
 		if( m_nSkin != COMBINE_SKIN_SHOTGUNNER )
 		{
@@ -3174,7 +3174,7 @@ WeaponProficiency_t CNPC_Combine::CalcWeaponProficiency( CBaseEntity *pWeaponBas
 
 		return WEAPON_PROFICIENCY_PERFECT;
 	}
-	else if( FClassnameIs( pWeapon, "weapon_smg1" ) )
+	else if( FClassnameIs( pWeapon, "tf_weapon_syringegun_medic" ) )
 	{
 		return WEAPON_PROFICIENCY_GOOD;
 	}

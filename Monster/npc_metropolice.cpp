@@ -801,6 +801,7 @@ void CNPC_MetroPolice::SpeakStandoffSentence( int nSentenceType )
 //-----------------------------------------------------------------------------
 void CNPC_MetroPolice::SpeakAssaultSentence( int nSentenceType )
 {
+	/*
 	switch ( nSentenceType )
 	{
 		case ASSAULT_SENTENCE_HIT_RALLY_POINT:
@@ -833,6 +834,7 @@ void CNPC_MetroPolice::SpeakAssaultSentence( int nSentenceType )
 			m_Sentences.Speak( "METROPOLICE_GO_ALERT" );
 			break;
 	}
+	*/
 }
 
 

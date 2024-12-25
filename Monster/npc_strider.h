@@ -83,7 +83,7 @@ const int NUM_STRIDER_IK_TARGETS = 6;
 
 //---------------------------------------------------------
 
-class CNPC_Strider : public CAI_BlendingHost<CE_Cycler_Fix>,
+class CNPC_Strider : public CE_Cycler_Fix,
 					 public IStriderMinigunHost
 {
 public:

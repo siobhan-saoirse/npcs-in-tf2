@@ -5,4 +5,6 @@ Fork of NPCs in CS:S for functionality in TF2. Linux only
 - Make sure CMake and Make is installed along with it's dependencies
 - In the terminal, Type "cmake ./" and then "make" to build it.
 ### Issues
-- Variable offsets need to be updated in the gamedata. The only up to date variable offset is m_pSchedule.
+- Some variables need to be updated in the gamedata.
+- Helicopters, Gunships and Dropships fly way too fast and outside of their intended path
+- Something about pose parameters and attachments keep causing crashes

@@ -218,7 +218,7 @@ void CBaseHeadcrab::Spawn(void)
 	SetSolidFlags(FSOLID_NOT_STANDABLE);
 	SetMoveType(MOVETYPE_STEP);
 
-	SetCollisionGroup(27);
+	//SetCollisionGroup(27);
 
 	SetViewOffset(Vector(6, 0, 11));
 

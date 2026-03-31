@@ -95,49 +95,49 @@
 			"StartPlayback"
 			{
 				"windows"	"206"
-				"linux"	"211"
+				"linux"	"212"
 			}
 			"CancelPlayback"
 			{
 				"windows"	"209"
-				"linux"	"214"
+				"linux"	"215"
 			}
 			"EstimateLength"
 			{
 				"windows"	"238"
-				"linux"	"243"
+				"linux"	"244"
 			}
 			"FindNamedActor_I"
 			{
 				"windows"	"242"
-				"linux"	"245"
+				"linux"	"246"
 			}
 			
 			/* CBaseGrenade */
 			"Explode"
 			{
 				"windows"	"235"
-				"linux"	"236"
+				"linux"	"237"
 			}
 			"Detonate"
 			{
 				"windows"	"236"
-				"linux"	"237"
+				"linux"	"238"
 			}
 			"GetBlastForce"
 			{
 				"windows" "237"
-				"linux" "238"
+				"linux" "239"
 			}
 			"GetShakeAmplitude"
 			{
 				"windows"	"239"
-				"linux"	"240"
+				"linux"	"241"
 			}
 			"GetShakeRadius"
 			{
 				"windows"	"240"
-				"linux"	"241"
+				"linux"	"242"
 			}			
 			
 			/* CBaseEntity */
@@ -404,32 +404,32 @@
 			"CanStandOn" //CBaseEntity
 			{
 				"windows"	"98"
-				"linux"	"99"
+				"linux"	"100"
 			}
 			"CB_GetEnemy_const"
 			{
 				"windows"	"100"
-				"linux"	"102"
+				"linux"	"103"
 			}
 			"CB_GetEnemy"
 			{
 				"windows"	"101"
-				"linux"	"101"
+				"linux"	"102"
 			}
 			"Use"
 			{
 				"windows"	"102"
-				"linux"	"103"
+				"linux"	"104"
 			}
 			"StartTouch"
 			{
 				"windows"	"103"
-				"linux"	"104"
+				"linux"	"105"
 			}
 			"Touch"
 			{
 				"windows"	"104"
-				"linux"	"105"
+				"linux"	"106"
 			}
 			"EndTouch"
 			{
@@ -439,197 +439,197 @@
 			"PhysicsSimulate"
 			{
 				"windows"	"109"
-				"linux"	"110"
+				"linux"	"111"
 			}
 			"UpdateOnRemove"
 			{
 				"windows"	"110"
-				"linux"	"111"
+				"linux"	"112"
 			}
 			"StopLoopingSounds"
 			{
 				"windows"	"111"
-				"linux"	"112"
+				"linux"	"113"
 			}
 			"SUB_AllowedToFade"
 			{
 				"windows"	"112"
-				"linux"	"113"
+				"linux"	"114"
 			}
 			"Teleport"
 			{
 				"windows"	"113"
-				"linux"	"114"
+				"linux"	"115"
 			}
 			"MakeTracer"
 			{
 				"windows"	"115"
-				"linux"	"116"
+				"linux"	"117"
 			}
 			"FireBullets"
 			{
 				"windows"	"117"
-				"linux"	"118"
+				"linux"	"119"
 			}
 			"DoImpactEffect"
 			{
 				"windows"	"118"
-				"linux"	"119"
+				"linux"	"120"
 			}
 			"ModifyOrAppendCriteria"
 			{
 				"windows"	"123"
-				"linux"	"124"
+				"linux"	"125"
 			}
 			"GetDamage"
 			{
 				"windows"	"134"
-				"linux"	"135"
+				"linux"	"136"
 			}
 			"SetDamage"
 			{
 				"windows"	"135"
-				"linux"	"136"
+				"linux"	"137"
 			}
 			"EyePosition"
 			{
 				"windows"	"136"
-				"linux"	"137"
+				"linux"	"138"
 			}
 			"EyeAngles"
 			{
 				"windows"	"137"
-				"linux"	"138"
+				"linux"	"139"
 			}
 			"EarPosition"
 			{
 				"windows"	"139"
-				"linux"	"140" 
+				"linux"	"141" 
 			}
 			"BodyTarget"
 			{
 				"windows"	"140"
-				"linux"	"141"
+				"linux"	"142"
 			}
 			"HeadTarget"
 			{
 				"windows"	"141"
-				"linux"	"142"
+				"linux"	"143"
 			}
 			"GetViewOffset"
 			{
 				"windows"	"143"
-				"linux"	"144"
+				"linux"	"145"
 			}
 			"GetSmoothedVelocity"
 			{
 				"windows"	"145"
-				"linux"	"146"
+				"linux"	"147"
 			}
 			"GetVelocity"
 			{
 				"windows"	"146"
-				"linux"	"147"
+				"linux"	"148"
 			}
 			"FVisible_Vector"
 			{
 				"windows"	"147"
-				"linux"	"149"
+				"linux"	"150"
 			}
 			"FVisible_Entity"
 			{
 				"windows"	"148"
-				"linux"	"148"
+				"linux"	"149"
 			}
 			"CanBeSeenBy"
 			{
 				"windows"	"149"
-				"linux"	"150"
+				"linux"	"151"
 			}
 			"GetAttackDamageScale"
 			{
 				"windows"	"150"
-				"linux"	"151"
+				"linux"	"152"
 			}
 			"Splash"
 			{
 				"windows"	"154"
-				"linux"	"155"
+				"linux"	"156"
 			}
 			"WorldSpaceCenter"
 			{
 				"windows"	"155"
-				"linux"	"156"
+				"linux"	"157"
 			}
 			"GetSoundEmissionOrigin"
 			{
 				"windows"	"157"
-				"linux"	"157"
+				"linux"	"158"
 			}
 			"CreateVPhysics"
 			{
 				"windows"	"160"
-				"linux"	"161"
+				"linux"	"162"
 			}
 			"VPhysicsDestroyObject"
 			{
 				"windows"	"162"
-				"linux"	"163"
+				"linux"	"164"
 			}
 			"VPhysicsUpdate"
 			{
 				"windows"	"163"
-				"linux"	"164"
+				"linux"	"165"
 			}
 			"VPhysicsTakeDamage"
 			{
 				"windows"	"164"
-				"linux"	"165"
+				"linux"	"166"
 			}
 			"VPhysicsShadowCollision"
 			{
 				"windows"	"165"
-				"linux"	"166"
+				"linux"	"167"
 			}
 			"VPhysicsShadowUpdate"
 			{
 				"windows"	"166"
-				"linux"	"167"
+				"linux"	"168"
 			}
 			"VPhysicsCollision"
 			{
 				"windows"	"167"
-				"linux"	"168"
+				"linux"	"169"
 			}
 			"UpdatePhysicsShadowToCurrentPosition"
 			{
 				"windows"	"169"
-				"linux"	"170"
+				"linux"	"171"
 			}
 			"VPhysicsGetObjectList"
 			{
 				"windows"	"170"
-				"linux"	"171"
+				"linux"	"172"
 			}
 			"VPhysicsIsFlesh"
 			{
 				"windows"	"171"
-				"linux"	"172"
+				"linux"	"173"
 			}
 			"HasPhysicsAttacker"
 			{
 				"windows"	"172"
-				"linux"	"173"
+				"linux"	"174"
 			}
 			"PhysicsSolidMaskForEntity"
 			{
 				"windows"	"173"
-				"linux"	"174"
+				"linux"	"175"
 			}
 			"ResolveFlyCollisionCustom"
 			{
 				"windows"	"174"
-				"linux"	"175"
+				"linux"	"176"
 			}
 			/* End CBaseEntity */ 
 			
@@ -638,7 +638,7 @@
 			"PassesTriggerFilters"
 			{
 				"windows"	"207"
-				"linux"	"208"
+				"linux"	"209"
 			}
 			/* End CBaseTrigger */
 			
@@ -646,97 +646,97 @@
 			"GetIdealSpeed"
 			{
 				"windows"	"198"
-				"linux"	"199"
+				"linux"	"200"
 			}
 			"GetIdealAccel"
 			{
 				"windows"	"199"
-				"linux"	"200"
+				"linux"	"201"
 			}
 			"StudioFrameAdvance"
 			{
 				"windows"	"200"
-				"linux"	"201"
+				"linux"	"202"
 			}
 			"IsActivityFinished"
 			{
 				"windows"	"202"
-				"linux"	"203"
+				"linux"	"204"
 			}
 			"GetSequenceGroundSpeed"
 			{
 				"windows"	"203"
-				"linux"	"204"
+				"linux"	"205"
 			}
 			"ClampRagdollForce"
 			{
 				"windows"	"204"
-				"linux"	"205"
+				"linux"	"206"
 			}
 			"BecomeRagdollOnClient"
 			{
 				"windows"	"205"
-				"linux"	"206"
+				"linux"	"207"
 			}
 			"CanBecomeRagdoll"
 			{
 				"windows"	"207"
-				"linux"	"208"
+				"linux"	"209"
 			}
 			"SetupBones"
 			{
 				"windows"	"210"
-				"linux"	"211"
+				"linux"	"212"
 			}
 			"CalculateIKLocks"
 			{
 				"windows"	"201"
-				"linux"	"212"
+				"linux"	"213"
 			}
 			"DispatchAnimEvents"
 			{
 				"windows"	"212"
-				"linux"	"213"
+				"linux"	"214"
 			}
 			"HandleAnimEvent"
 			{
 				"windows"	"213"
-				"linux"	"214"
+				"linux"	"215"
 			}
 			"PopulatePoseParameters"
 			{
 				"windows"	"214"
-				"linux"	"215"
+				"linux"	"216"
 			}
 			"GetAttachment"
 			{
 				"windows"	"215"
-				"linux"	"216"
+				"linux"	"217"
 			}
 			"InitBoneControllers"
 			{
 				"windows"	"216"
-				"linux"	"217"
+				"linux"	"218"
 			}
 			"GetGroundSpeedVelocity"
 			{
 				"windows"	"217"
-				"linux"	"218"
+				"linux"	"219"
 			}
 			"Ignite" //Ignite(float, bool, float, bool)
 			{
 				"windows"	"219"
-				"linux"	"220"
+				"linux"	"221"
 			}
 			"Extinguish"
 			{
 				"windows"	"223"
-				"linux"	"224"
+				"linux"	"225"
 			}
 			"m_nHitboxSet"
 			{
 				"windows"   "860"
-				"linux" "956"
+				"linux" "957"
 			}
 			/* End CBaseAnimating */
 			
@@ -746,177 +746,172 @@
 			"GetPhysicsImpactDamageTable"
 			{
 				"windows"	"235"
-				"linux"	"236"
+				"linux"	"237"
 			}
 			"FInViewCone_Vector"
 			{
 				"windows"	"236"
-				"linux"	"238"
+				"linux"	"239"
 			}
 			"FInViewCone_Entity"
 			{
 				"windows"	"237"
-				"linux"	"237"
+				"linux"	"238"
 			}
 			"FInAimCone_Vector"
 			{
 				"windows"	"238"
-				"linux"	"238"
-			}
-			"FInAimCone_Entity"
-			{
-				"windows"	"239"
 				"linux"	"239"
 			}
 			"ShouldShootMissTarget"
 			{
 				"windows"	"240"
-				"linux"	"241"
+				"linux"	"242"
 			}
 			"FindMissTarget"
 			{
 				"windows"	"241"
-				"linux"	"242"
+				"linux"	"243"
 			}
 			"HandleInteraction"
 			{
 				"windows"	"242"
-				"linux"	"243"
+				"linux"	"244"
 			}
 			"BodyAngles"
 			{
 				"windows"	"243"
-				"linux"	"244"
+				"linux"	"245"
 			}
 			"BodyDirection2D"
 			{
 				"windows"	"234"
-				"linux"	"245"
+				"linux"	"246"
 			}
 			"BodyDirection3D"
 			{
 				"windows"	"245"
-				"linux"	"246"
+				"linux"	"247"
 			}
 			"HeadDirection2D"
 			{
 				"windows"	"246"
-				"linux"	"247"
+				"linux"	"248"
 			}
 			"HeadDirection3D"
 			{
 				"windows"	"247"
-				"linux"	"248"
+				"linux"	"249"
 			}
 			"EyeDirection2D"
 			{
 				"windows"	"248"
-				"linux"	"249"
+				"linux"	"250"
 			}
 			"EyeDirection3D"
 			{
 				"windows"	"249"
-				"linux"	"250"
+				"linux"	"251"
 			}
 			"GiveAmmo"
 			{
 				"windows"	"262"
-				"linux"	"263"
+				"linux"	"264"
 			}
 			"NPC_TranslateActivity"
 			{
 				"windows"	"266"
-				"linux"	"267"
+				"linux"	"268"
 			}
 			"RemoveAmmo" //int,char*
 			{
 				"windows"	"263"
-				"linux"	"265"
+				"linux"	"266"
 			}
 			"GetAmmoCount"
 			{
 				"windows"	"265"
-				"linux"	"266"
+				"linux"	"267"
 			}
 			"Weapon_TranslateActivity"
 			{
 				"windows"	"267"
-				"linux"	"268"
+				"linux"	"269"
 			}
 			"Weapon_CanUse"
 			{
 				"windows"	"270"
-				"linux"	"271"
+				"linux"	"272"
 			}
 			"Weapon_Equip"
 			{
 				"windows"	"271"
-				"linux"	"272"
+				"linux"	"273"
 			}
 			"Weapon_Drop"
 			{
 				"windows"	"273"
-				"linux"	"274"
+				"linux"	"275"
 			}
 			"Weapon_Switch"
 			{
 				"windows"	"274"
-				"linux"	"275"
+				"linux"	"276"
 			}
 			"Weapon_ShootPosition"
 			{
 				"windows"	"275"
-				"linux"	"276"
+				"linux"	"277"
 			}
 			"Weapon_CanSwitchTo"
 			{
 				"windows"	"276"
-				"linux"	"277"
+				"linux"	"278"
 			}
 			"Weapon_GetSlot"
 			{
 				"windows"	"278"
-				"linux"	"279"
+				"linux"	"280"
 			}
 			"CanBecomeServerRagdoll"
 			{
 				"windows"	"281"
-				"linux"	"282"
+				"linux"	"283"
 			}
 			"OnTakeDamage_Alive"
 			{
 				"windows"	"282"
-				"linux"		"283"
+				"linux"		"284"
 			}
 			"OnTakeDamage_Dying"
 			{
 				"windows"	"283"
-				"linux"	"284"
+				"linux"	"285"
 			}
 			"OnTakeDamage_Dead"
 			{
 				"windows"	"284"
-				"linux"	"285"
+				"linux"	"286"
 			}
 			"OnFriendDamaged"
 			{
 				"windows"	"286"
-				"linux"	"287"
+				"linux"	"288"
 			}
 			"NotifyFriendsOfDamage"
 			{
 				"windows"	"287"
-				"linux"	"288"
+				"linux"	"289"
 			}
 			"OnPlayerKilledOther"
 			{
 				"windows"	"290"
-				"linux"	"291"
+				"linux"	"292"
 			}
 			"CorpseGib"
 			{
 				"windows"	"292"
-				"linux"	"293"
+				"linux"	"294"
 			}
 			"ShouldGib"
 			{
@@ -926,102 +921,102 @@
 			"OnKilledNPC"
 			{
 				"windows"	"297"
-				"linux"	"298"
+				"linux"	"299"
 			}
 			"Event_Gibbed"
 			{
 				"windows"	"288"
-				"linux"	"289"
+				"linux"	"300"
 			}
 			"Event_Dying"//void
 			{
 				"windows"	"299"
-				"linux"	"301"
+				"linux"	"302"
 			}
 			"BecomeRagdoll"
 			{
 				"windows"	"301"
-				"linux"	"302"
+				"linux"	"303"
 			}
 			"BecomeRagdollBoogie"
 			{
 				"windows"	"303"
-				"linux"	"304"
+				"linux"	"305"
 			}
 			"CheckTraceHullAttack_Vector"
 			{
 				"windows"	"304"
-				"linux"	"306"
+				"linux"	"307"
 			}
 			"CheckTraceHullAttack_Float"
 			{
 				"windows"	"305"
-				"linux"	"305"
+				"linux"	"306"
 			}
 			"IRelationType"
 			{
 				"windows"	"307"
-				"linux"	"308"
+				"linux"	"309"
 			}
 			"IRelationPriority"
 			{
 				"windows"	"308"
-				"linux"	"309"
+				"linux"	"310"
 			}
 			"IsInAVehicle"
 			{
 				"windows"	"309"
-				"linux"	"310"
+				"linux"	"311"
 			}
 			"GetVehicle"
 			{
 				"windows"	"310"
-				"linux"	"311"
+				"linux"	"312"
 			}
 			"GetVehicleEntity"
 			{
 				"windows"	"311"
-				"linux"	"312"
+				"linux"	"313"
 			}
 			"CalcWeaponProficiency"
 			{
 				"windows"	"314"
-				"linux"	"315"
+				"linux"	"316"
 			}
 			"GetAttackSpread"
 			{
 				"windows"	"315"
-				"linux"	"316"
+				"linux"	"317"
 			}
 			"GetSpreadBias"
 			{
 				"windows"	"316"
-				"linux"	"317"
+				"linux"	"318"
 			}
 			"DoMuzzleFlash"
 			{
 				"windows"	"317"
-				"linux"	"318"
+				"linux"	"319"
 			}
 			"AddEntityRelationship"
 			{
 				"windows"	"318"
-				"linux"	"319"
+				"linux"	"320"
 			}
 			"RemoveEntityRelationship"
 			{
 				"windows"	"319"
-				"linux"	"320"
+				"linux"	"321"
 			}
 			"AddClassRelationship"
 			{
 				"windows"	"320"
-				"linux"	"321"
+				"linux"	"322"
 			}
 			"OnChangeActiveWeapon"
 			{
 				"windows"	"21"
-				"linux"	"322"
+				"linux"	"323"
 			}
 			/* End CBaseCombatCharacter */
 			
@@ -1031,97 +1026,97 @@
 			"PreThink"
 			{
 				"windows"	"342"
-				"linux"	"343"
+				"linux"	"345"
 			}
 			"PostThink"
 			{
 				"windows"	"343"
-				"linux"	"344"
+				"linux"	"346"
 			}
 			"FlashlightIsOn"
 			{
 				"windows"	"364"
-				"linux"	"365"
+				"linux"	"366"
 			}
 			"IsIlluminatedByFlashlight"
 			{
 				"windows"	"367"
-				"linux"	"368"
+				"linux"	"369"
 			}
 			"SetAnimation"
 			{
 				"windows"	"376"
-				"linux"	"377"
+				"linux"	"378"
 			}
 			"EntSelectSpawnPoint"
 			{
 				"windows"	"403"
-				"linux"	"404"
+				"linux"	"405"
 			}
 			"GetInVehicle"
 			{
 				"windows"	"404"
-				"linux"	"405"
+				"linux"	"406"
 			}
 			"LeaveVehicle"
 			{
 				"windows"	"405"
-				"linux"	"406"
+				"linux"	"407"
 			}
 			"BumpWeapon"
 			{
 				"windows"	"408"
-				"linux"	"409"
+				"linux"	"410"
 			}
 			"GiveNamedItem"
 			{
 				"windows"	"412"
-				"linux"	"413"
+				"linux"	"414"
 			}
 			"FindUseEntity"
 			{
 				"windows"	"418"
-				"linux"	"419"
+				"linux"	"420"
 			}
 			"IsUseableEntity"
 			{
 				"windows"	"419"
-				"linux"	"420"
+				"linux"	"421"
 			}
 			"PickupObject"
 			{
 				"windows"	"420"
-				"linux"	"421"
+				"linux"	"422"
 			}
 			"ForceDropOfCarriedPhysObjects"
 			{
 				"windows"	"421"
-				"linux"	"422"
+				"linux"	"423"
 			}
 			"GetAutoaimVector_Float" // CBasePlayer::GetAutoaimVector(float)
 			{
 				"windows"	"426"
-				"linux"	"425"
+				"linux"	"426"
 			}
 			"PlayerRunCommand"
 			{
 				"windows"	"430"
-				"linux"	"431"
+				"linux"	"432"
 			}
 			"ModifyOrAppendPlayerCriteria"
 			{
 				"windows"	"434"
-				"linux"	"435"
+				"linux"	"436"
 			}
 			"CreateRagdollEntity"
 			{
 				"windows"	"436"
-				"linux"	"437"
+				"linux"	"438"
 			}
 			"IsFollowingPhysics"
 			{
 				"windows"	"440"
-				"linux"	"441"
+				"linux"	"442"
 			}
 			/* End CBasePlayer */
 			
@@ -1131,223 +1126,223 @@
 			"NPCInit"
 			{
 				"windows"	"332"
-				"linux"	"333"
+				"linux"	"334"
 			}
 			"PostNPCInit"
 			{
 				"windows"	"333"
-				"linux"	"334"
+				"linux"	"335"
 			}
 			"StartNPC"
 			{
 				"windows"	"334"
-				"linux"	"335"
+				"linux"	"336"
 			}
 			"CleanupOnDeath"
 			{
 				"windows"	"335"
-				"linux"	"336"
+				"linux"	"337"
 			}
 			"CreateComponents"
 			{
 				"windows"	"336"
-				"linux"	"337"
+				"linux"	"338"
 			}
 			"CreateSenses"
 			{
 				"windows"	"337"
-				"linux"	"338"
+				"linux"	"339"
 			}
 			"CreateMoveProbe"
 			{
 				"windows"	"338"
-				"linux"	"339"
+				"linux"	"340"
 			}
 			"CreateMotor"
 			{
 				"windows"	"339"
-				"linux"	"340"
+				"linux"	"341"
 			}
 			"CreateLocalNavigator"
 			{
 				"windows"	"340"
-				"linux"	"341"
+				"linux"	"342"
 			}
 			"CreateNavigator"
 			{
 				"windows"	"341"
-				"linux"	"342"
+				"linux"	"343"
 			}
 			"CreatePathfinder"
 			{
 				"windows"	"342"
-				"linux"	"343"
+				"linux"	"344"
 			}
 			"CreateTacticalServices"
 			{
 				"windows"	"343"
-				"linux"	"344"
+				"linux"	"345"
 			}
 			"NPCThink"
 			{
 				"windows"	"344"
-				"linux"	"345"
+				"linux"	"346"
 			}
 			"RunAI"
 			{
 				"windows"	"345"
-				"linux"	"346"
+				"linux"	"347"
 			}
 			"GatherConditions"
 			{
 				"windows"	"346"
-				"linux"	"347"
+				"linux"	"348"
 			}
 			"PrescheduleThink"
 			{
 				"windows"	"347"
-				"linux"	"348"
+				"linux"	"349"
 			}
 			"OnScheduleChange"
 			{
 				"windows"	"349"
-				"linux"	"350"
+				"linux"	"351"
 			}
 			"OnStartSchedule"
 			{
 				"windows"	"350"
-				"linux"	"351"
+				"linux"	"352"
 			}
 			"SelectSchedule"
 			{
 				"windows"	"351"
-				"linux"	"352"
+				"linux"	"353"
 			}
 			"SelectFailSchedule"
 			{
 				"windows"	"352"
-				"linux"	"353"
+				"linux"	"354"
 			}
 			"TranslateSchedule"
 			{
 				"windows"	"353"
-				"linux"	"354"
+				"linux"	"355"
 			}
 			"StartTask"
 			{
 				"windows"	"364"
-				"linux"	"355"
+				"linux"	"356"
 			}
 			"RunTask"
 			{
 				"windows"	"365"
-				"linux"	"356"
+				"linux"	"357"
 			}
 			"IsInterruptable"
 			{
 				"windows"	"356"
-				"linux"	"357"
+				"linux"	"358"
 			}
 			"OnStartScene" //CAI_BaseNPC::OnStartScene(void) - nullsub
 			{
 				//FF 90 ? ? ? ? 83 BF ? ? ? ? ? 8B CF 0F 95 C0 88 83 - displ is our offs
 				"windows"	"357"
-				"linux"	"358"
+				"linux"	"359"
 			}
 			"ShouldPlayerAvoid"
 			{
 				"windows"	"358"
-				"linux"	"359"
+				"linux"	"360"
 			}
 			"ShouldAlwaysThink"
 			{
 				"windows"	"361"
-				"linux"	"362"
+				"linux"	"363"
 			}
 			"PostRunStopMoving"
 			{
 				"windows"	"363"
-				"linux"	"364"
+				"linux"	"365"
 			}
 			"GetSchedule"
 			{
 				"windows"	"366"
-				"linux"	"367"
+				"linux"	"368"
 			}
 			"GetGlobalScheduleId"
 			{
 				"windows"	"368"
-				"linux"	"369"
+				"linux"	"370"
 			}
 			"TaskFail"
 			{
 				"windows"	"369"
-				"linux"	"370"
+				"linux"	"371"
 			}
 			"TaskName"
 			{
 				"windows"	"370"
-				"linux"	"371"
+				"linux"	"372"
 			}
 			"GetSchedulingErrorName"
 			{
 				"windows"	"372"
-				"linux"	"373"
+				"linux"	"374"
 			}
 			"BuildScheduleTestBits"
 			{
 				"windows"	"374"
-				"linux"	"375"
+				"linux"	"376"
 			}
 			"GetNewSchedule"
 			{
 				"windows"	"375"
-				"linux"	"376"
+				"linux"	"377"
 			}
 			"GetFailSchedule"
 			{
 				"windows"	"376"
-				"linux"	"377"
+				"linux"	"378"
 			}
 			"CanFlinch"
 			{
 				"windows"	"377"
-				"linux"	"378"
+				"linux"	"379"
 			}
 			"CheckFlinches"
 			{
 				"windows"	"378"
-				"linux"	"379"
+				"linux"	"380"
 			}
 			"PlayFlinchGesture"
 			{
 				"windows"	"379"
-				"linux"	"380"
+				"linux"	"381"
 			}
 			"GetRunningBehavior"
 			{
 				"windows"	"382"
-				"linux"	"383"
+				"linux"	"384"
 			}
 			"ShouldAcceptGoal"
 			{
 				"windows"	"383"
-				"linux"	"384"
+				"linux"	"385"
 			}
 			"OnClearGoal"
 			{
 				"windows"	"373"
-				"linux"	"374"
+				"linux"	"375"
 			}
 			"OnBehaviorChangeStatus"
 			{
 				"windows"	"384"
-				"linux"	"385"
+				"linux"	"386"
 			}
 			"AccessBehaviors"
 			{
 				"windows"	"386"
-				"linux"	"387"
+				"linux"	"388"
 			}
 			"NumBehaviors"
 			{
@@ -1357,67 +1352,67 @@
 			"SelectIdealState"
 			{
 				"windows"	"390"
-				"linux"	"391"
+				"linux"	"392"
 			}
 			"OnStateChange"
 			{
 				"windows"	"392"
-				"linux"	"393"
+				"linux"	"394"
 			}
 			"UpdateEfficiency"
 			{
 				"windows"	"393"
-				"linux"	"394"
+				"linux"	"395"
 			}
 			"Wake"
 			{
 				"windows"	"394"
-				"linux"	"395"
+				"linux"	"396"
 			}
 			"SetActivity"
 			{
 				"windows"	"395"
-				"linux"	"396"
+				"linux"	"397"
 			}
 			"IsActivityMovementPhased"
 			{
 				"windows"	"396"
-				"linux"	"397"
+				"linux"	"398"
 			}
 			"OnChangeActivity"
 			{
 				"windows"	"397"
-				"linux"	"398"
+				"linux"	"399"
 			}
 			"QueryHearSound"
 			{
 				"windows"	"398"
-				"linux"	"399"
+				"linux"	"400"
 			}
 			"QuerySeeEntity"
 			{
 				"windows"	"399"
-				"linux"	"400"
+				"linux"	"401"
 			}
 			"OnLooked"
 			{
 				"windows"	"400"
-				"linux"	"401"
+				"linux"	"402"
 			}
 			"OnListened"
 			{
 				"windows"	"401"
-				"linux"	"402"
+				"linux"	"403"
 			}
 			"OnSeeEntity"
 			{
 				"windows"	"402"
-				"linux"	"403"
+				"linux"	"404"
 			}
 			"ShouldNotDistanceCull"
 			{
 				"windows"	"403"
-				"linux"	"404"
+				"linux"	"405"
 			}
 			"GetSoundInterests"
 			{
@@ -1427,192 +1422,192 @@
 			"GetSoundPriority"
 			{
 				"windows"	"405"
-				"linux"	"406"
+				"linux"	"407"
 			}
 			"GetBestSound"
 			{
 				"windows"	"406"
-				"linux"	"407"
+				"linux"	"408"
 			}
 			"GetBestScent"
 			{
 				"windows"	"407"
-				"linux"	"408"
+				"linux"	"409"
 			}
 			"HearingSensitivity"
 			{
 				"windows"	"408"
-				"linux"	"409"
+				"linux"	"410"
 			}
 			"ShouldIgnoreSound"
 			{
 				"windows"	"409"
-				"linux"	"410"
+				"linux"	"411"
 			}
 			"ClearSenseConditions"
 			{
 				"windows"	"410"
-				"linux"	"411"
+				"linux"	"412"
 			}
 			"BestEnemy"
 			{
 				"windows"	"411"
-				"linux"	"412"
+				"linux"	"413"
 			}
 			"IsValidEnemy"
 			{
 				"windows"	"412"
-				"linux"	"413"
+				"linux"	"414"
 			}
 			"CanBeAnEnemyOf"
 			{
 				"windows"	"413"
-				"linux"	"414"
+				"linux"	"415"
 			}
 			"ShouldChooseNewEnemy"
 			{
 				"windows"	"414"
-				"linux"	"415"
+				"linux"	"416"
 			}
 			"GatherEnemyConditions"
 			{
 				"windows"	"415"
-				"linux"	"416"
+				"linux"	"417"
 			}
 			"StartTargetHandling"
 			{
 				"windows"	"417"
-				"linux"	"418"
+				"linux"	"419"
 			}
 			"CreateCustomTarget"
 			{
 				"windows"	"418"
-				"linux"	"419"
+				"linux"	"420"
 			}
 			"AllowedToIgnite"
 			{
 				"windows"	"420"
-				"linux"	"421"
+				"linux"	"422"
 			}
 			"IsCommandable"
 			{
 				"windows"	"422"
-				"linux"	"423"
+				"linux"	"424"
 			}
 			"IsPlayerAlly"
 			{
 				"windows"	"423"
-				"linux"	"424"
+				"linux"	"425"
 			}
 			"IsMedic"
 			{
 				"windows"	"424"
-				"linux"	"425"
+				"linux"	"426"
 			}
 			"IsCommandMoving"
 			{
 				"windows"	"425"
-				"linux"	"426"
+				"linux"	"427"
 			}
 			"ShouldAutoSummon"
 			{
 				"windows"	"426"
-				"linux"	"427"
+				"linux"	"428"
 			}
 			"SetCommandGoal"
 			{
 				"windows"	"427"
-				"linux"	"428"
+				"linux"	"429"
 			}
 			"ClearCommandGoal"
 			{
 				"windows"	"428"
-				"linux"	"429"
+				"linux"	"430"
 			}
 			"OnMoveOrder"
 			{
 				"windows"	"430"
-				"linux"	"431"
+				"linux"	"432"
 			}
 			"IsValidCommandTarget"
 			{
 				"windows"	"431"
-				"linux"	"432"
+				"linux"	"433"
 			}
 			"OnMoveToCommandGoalFailed"
 			{
 				"windows"	"432"
-				"linux"	"433"
+				"linux"	"434"
 			}
 			"GetSquadCommandRepresentative"
 			{
 				"windows"	"433"
-				"linux"	"434"
+				"linux"	"435"
 			}
 			"TargetOrder"
 			{
 				"windows"	"434"
-				"linux"	"435"
+				"linux"	"436"
 			}
 			"MoveOrder"
 			{
 				"windows"	"435"
-				"linux"	"436"
+				"linux"	"437"
 			}
 			"CanBeUsedAsAFriend"
 			{
 				"windows"	"436"
-				"linux"	"437"
+				"linux"	"438"
 			}
 			"CanRunAScriptedNPCInteraction"
 			{
 				"windows"	"437"
-				"linux"	"438"
+				"linux"	"439"
 			}
 			"CanPlaySentence"
 			{
 				"windows"	"439"
-				"linux"	"440"
+				"linux"	"441"
 			}
 			"PlayScriptedSentence"
 			{
 				"windows"	"440"
-				"linux"	"441"
+				"linux"	"442"
 			}
 			"FOkToMakeSound"
 			{
 				"windows"	"442"
-				"linux"	"443"
+				"linux"	"444"
 			}
 			"JustMadeSound"
 			{
 				"windows"	"443"
-				"linux"	"444"
+				"linux"	"445"
 			}
 			"DeathSound"
 			{
 				"windows"	"444"
-				"linux"	"445"
+				"linux"	"446"
 			}
 			"AlertSound"
 			{
 				"windows"	"445"
-				"linux"	"446"
+				"linux"	"447"
 			}
 			"IdleSound"
 			{
 				"windows"	"446"
-				"linux"	"447"
+				"linux"	"448"
 			}
 			"PainSound"
 			{
 				"windows"	"447"
-				"linux"	"448"
+				"linux"	"449"
 			}
 			"FearSound"
 			{
 				"windows"	"448"
-				"linux"	"449"
+				"linux"	"450"
 			}
 			"LostEnemySound"
 			{
@@ -1622,627 +1617,627 @@
 			"FoundEnemySound"
 			{
 				"windows"	"450"
-				"linux"	"451"
+				"linux"	"452"
 			}
 			"BarnacleDeathSound"
 			{
 				"windows"	"451"
-				"linux"	"452"
+				"linux"	"453"
 			}
 			"SpeakSentence"
 			{
 				"windows"	"452"
-				"linux"	"453"
+				"linux"	"454"
 			}
 			"ShouldPlayIdleSound"
 			{
 				"windows"	"453"
-				"linux"	"454"
+				"linux"	"455"
 			}
 			"MakeAIFootstepSound"
 			{
 				"windows"	"454"
-				"linux"	"455"
+				"linux"	"456"
 			}
 			"GetExpresser"
 			{
 				"windows"	"455"
-				"linux"	"456"
+				"linux"	"457"
 			}
 			"CanRespondToEvent"
 			{
 				"windows"	"456"
-				"linux"	"457"
+				"linux"	"458"
 			}
 			"RespondedTo"
 			{
 				"windows"	"457"
-				"linux"	"458"
+				"linux"	"459"
 			}
 			"PlayerHasIlluminatedNPC"
 			{
 				"windows"	"458"
-				"linux"	"459"
+				"linux"	"460"
 			}
 			"CapabilitiesGet"
 			{
 				"windows"	"459"
-				"linux"	"460"
+				"linux"	"461"
 			}
 			"IsNavigationUrgent"
 			{
 				"windows"	"460"
-				"linux"	"461"
+				"linux"	"462"
 			}
 			"ShouldFailNav"
 			{
 				"windows"	"461"
-				"linux"	"462"
+				"linux"	"463"
 			}
 			"ShouldBruteForceFailedNav"
 			{
 				"windows"	"462"
-				"linux"	"463"
+				"linux"	"464"
 			}
 			"GetTimeToNavGoal"
 			{
 				"windows"	"463"
-				"linux"	"464"
+				"linux"	"465"
 			}
 			"MovementCost"
 			{
 				"windows"	"464"
-				"linux"	"465"
+				"linux"	"466"
 			}
 			"CalcIdealYaw"
 			{
 				"windows"	"465"
-				"linux"	"466"
+				"linux"	"467"
 			}
 			"MaxYawSpeed"
 			{
 				"windows"	"466"
-				"linux"	"467"
+				"linux"	"468"
 			}
 			"AddFacingTarget_E_V_F_F_F"
 			{
 				"windows"	"467"
-				"linux"	"470"
+				"linux"	"471"
 			}
 			"AddFacingTarget_V_F_F_F"
 			{
 				"windows"	"468"
-				"linux"	"469"
+				"linux"	"470"
 			}
 			"AddFacingTarget_E_F_F_F"
 			{
 				"windows"	"469"
-				"linux"	"468"
+				"linux"	"469"
 			}
 			"IsJumpLegal"
 			{
 				"windows"	"471"
-				"linux"	"472"
+				"linux"	"473"
 			}
 			"StepHeight"
 			{
 				"windows"	"472"
-				"linux"	"473"
+				"linux"	"474"
 			}
 			"GetJumpGravity"
 			{
 				"windows"	"474"
-				"linux"	"475"
+				"linux"	"476"
 			}
 			"OverrideMove"
 			{
 				"windows"	"475"
-				"linux"	"476"
+				"linux"	"477"
 			}
 			"OverrideMoveFacing"
 			{
 				"windows"	"476"
-				"linux"	"477"
+				"linux"	"478"
 			}
 			"IsUnusableNode"
 			{
 				"windows"	"477"
-				"linux"	"478"
+				"linux"	"479"
 			}
 			"ValidateNavGoal"
 			{
 				"windows"	"478"
-				"linux"	"479"
+				"linux"	"480"
 			}
 			"IsCurTaskContinuousMove"
 			{
 				"windows"	"479"
-				"linux"	"480"
+				"linux"	"481"
 			}
 			"IsValidMoveAwayDest"
 			{
 				"windows"	"480"
-				"linux"	"481"
+				"linux"	"482"
 			}
 			"OnMovementFailed"
 			{
 				"windows"	"481"
-				"linux"	"482"
+				"linux"	"483"
 			}
 			"OnMovementComplete"
 			{
 				"windows"	"482"
-				"linux"	"483"
+				"linux"	"484"
 			}
 			"IsUnreachable"
 			{
 				"windows"	"483"
-				"linux"	"484"
+				"linux"	"485"
 			}
 			"OnObstructingDoor"
 			{
 				"windows"	"484"
-				"linux"	"488"
+				"linux"	"489"
 			}
 			"GetNodeViewOffset"
 			{
 				"windows"	"486"
-				"linux"	"490"
+				"linux"	"491"
 			}
 			"EyeOffset"
 			{
 				"windows"	"487"
-				"linux"	"491"
+				"linux"	"492"
 			}
 			"EyeLookTarget"
 			{
 				"windows"	"477"
-				"linux"	"492"
+				"linux"	"493"
 			}
 			"AddLookTarget_V"
 			{
 				"windows"	"478"
-				"linux"	"494"
+				"linux"	"495"
 			}
 			"AddLookTarget_E"
 			{
 				"windows"	"479"
-				"linux"	"493"
+				"linux"	"494"
 			}
 			"SetHeadDirection"
 			{
 				"windows"	"480"
-				"linux"	"495"
+				"linux"	"496"
 			}
 			"MaintainLookTargets"
 			{
 				"windows"	"481"
-				"linux"	"496"
+				"linux"	"497"
 			}
 			"ValidEyeTarget"
 			{
 				"windows"	"482"
-				"linux"	"497"
+				"linux"	"498"
 			}
 			"FacingPosition"
 			{
 				"windows"	"483"
-				"linux"	"498"
+				"linux"	"499"
 			}
 			"MaintainTurnActivity"
 			{
 				"windows"	"484"
-				"linux"	"499"
+				"linux"	"500"
 			}
 			"AimGun"
 			{
 				"windows"	"485"
-				"linux"	"500"
+				"linux"	"501"
 			}
 			"SetAim"
 			{
 				"windows"	"486"
-				"linux"	"501"
+				"linux"	"502"
 			}
 			"RelaxAim"
 			{
 				"windows"	"487"
-				"linux"	"502"
+				"linux"	"503"
 			}
 			"GetAlternateMoveShootTarget"
 			{
 				"windows"	"488"
-				"linux"	"503"
+				"linux"	"504"
 			}
 			"InputOutsideTransition"
 			{
 				"windows"	"489"
-				"linux"	"505"
+				"linux"	"506"
 			}
 			"InputInsideTransition"
 			{
 				"windows"	"490"
-				"linux"	"505"
+				"linux"	"506"
 			}
 			"SetScriptedScheduleIgnoreConditions"
 			{
 				"windows"	"491"
-				"linux"	"506"
+				"linux"	"507"
 			}
 			"ScheduledMoveToGoalEntity"
 			{
 				"windows"	"492"
-				"linux"	"507"
+				"linux"	"508"
 			}
 			"ScheduledFollowPath"
 			{
 				"windows"	"493"
-				"linux"	"508"
+				"linux"	"509"
 			}
 			"GetEnemies"
 			{
 				"windows"	"494"
-				"linux"	"509"
+				"linux"	"510"
 			}
 			"UpdateEnemyMemory"
 			{
 				"windows"	"496"
-				"linux"	"511"
+				"linux"	"512"
 			}
 			"GetReactionDelay"
 			{
 				"windows"	"497"
-				"linux"	"512"
+				"linux"	"513"
 			}
 			"CanHolsterWeapon"
 			{
 				"windows"	"498"
-				"linux"	"513"
+				"linux"	"514"
 			}
 			"HolsterWeapon"
 			{
 				"windows"	"499"
-				"linux"	"514"
+				"linux"	"515"
 			}
 			"UnholsterWeapon"
 			{
 				"windows"	"500"
-				"linux"	"515"
+				"linux"	"516"
 			}
 			"OnRangeAttack1"
 			{
 				"windows"	"501"
-				"linux"	"516"
+				"linux"	"517"
 			}
 			"OnUpdateShotRegulator"
 			{
 				"windows"	"502"
-				"linux"	"517"
+				"linux"	"518"
 			}
 			"SquadSlotName"
 			{
 				"windows"	"504"
-				"linux"	"519"
+				"linux"	"520"
 			}
 			"SetSquad"
 			{
 				"windows"	"505"
-				"linux"	"520"
+				"linux"	"521"
 			}
 			"IsSilentSquadMember"
 			{
 				"windows"	"506"
-				"linux"	"521"
+				"linux"	"522"
 			}
 			"FindCoverPos_Entity"
 			{
 				"windows"	"507"
-				"linux"	"522"
+				"linux"	"523"
 			}
 			"FindCoverPos_Sound"
 			{
 				"windows"	"509"
-				"linux"	"524"
+				"linux"	"525"
 			}
 			"FindCoverPosInRadius"
 			{
 				"windows"	"508"
-				"linux"	"523"
+				"linux"	"524"
 			}
 			"IsValidCover"
 			{
 				"windows"	"510"
-				"linux"	"525"
+				"linux"	"526"
 			}
 			"IsValidShootPosition"
 			{
 				"windows"	"511"
-				"linux"	"526"
+				"linux"	"527"
 			}
 			"TestShootPosition"
 			{
 				"windows"	"512"
-				"linux"	"527"
+				"linux"	"528"
 			}
 			"IsCoverPosition"
 			{
 				"windows"	"513"
-				"linux"	"528"
+				"linux"	"529"
 			}
 			"CoverRadius"
 			{
 				"windows"	"514"
-				"linux"	"529"
+				"linux"	"530"
 			}
 			"GetMaxTacticalLateralMovement"
 			{
 				"windows"	"515"
-				"linux"	"530"
+				"linux"	"531"
 			}
 			"OnChangeHintGroup"
 			{
 				"windows"	"516"
-				"linux"	"531"
+				"linux"	"532"
 			}
 			"RangeAttack1Conditions"
 			{
 				"windows"	"518"
-				"linux"	"533"
+				"linux"	"534"
 			}
 			"RangeAttack2Conditions"
 			{
 				"windows"	"519"
-				"linux"	"534"
+				"linux"	"535"
 			}
 			"MeleeAttack1Conditions"
 			{
 				"windows"	"520"
-				"linux"	"535"
+				"linux"	"536"
 			}
 			"MeleeAttack2Conditions"
 			{
 				"windows"	"521"
-				"linux"	"536"
+				"linux"	"537"
 			}
 			"InnateRange1MinRange"
 			{
 				"windows"	"522"
-				"linux"	"537"
+				"linux"	"538"
 			}
 			"InnateRange1MaxRange"
 			{
 				"windows"	"523"
-				"linux"	"538"
+				"linux"	"539"
 			}
 			"OnBeginMoveAndShoot"
 			{
 				"windows"	"524"
-				"linux"	"539"
+				"linux"	"540"
 			}
 			"OnEndMoveAndShoot"
 			{
 				"windows"	"524"
-				"linux"	"540"
+				"linux"	"541"
 			}
 			"UseAttackSquadSlots"
 			{
 				"windows"	"526"
-				"linux"	"541"
+				"linux"	"542"
 			}
 			"FindNamedEntity"
 			{
 				"windows"	"527"
-				"linux"	"542"
+				"linux"	"543"
 			}
 			"ClearAttackConditions"
 			{
 				"windows"	"528"
-				"linux"	"543"
+				"linux"	"544"
 			}
 			"ShouldLookForBetterWeapon"
 			{
 				"windows"	"529"
-				"linux"	"544"
+				"linux"	"545"
 			}
 			"GiveWeapon"
 			{
 				"windows"	"530"
-				"linux"	"545"
+				"linux"	"546"
 			}
 			"OnGivenWeapon"
 			{
 				"windows"	"531"
-				"linux"	"546"
+				"linux"	"547"
 			}
 			"WeaponLOSCondition"
 			{
 				"windows"	"532"
-				"linux"	"547"
+				"linux"	"548"
 			}
 			"CurrentWeaponLOSCondition"
 			{
 				"windows"	"533"
-				"linux"	"548"
+				"linux"	"549"
 			}
 			"IsWaitingToRappel"
 			{
 				"windows"	"534"
-				"linux"	"549"
+				"linux"	"550"
 			}
 			"BeginRappel"
 			{
 				"windows"	"535"
-				"linux"	"550"
+				"linux"	"551"
 			}
 			"TranslateNavGoal"
 			{
 				"windows"	"536"
-				"linux"	"551"
+				"linux"	"552"
 			}
 			"GetDefaultNavGoalTolerance"
 			{
 				"windows"	"537"
-				"linux"	"552"
+				"linux"	"553"
 			}
 			"FCanCheckAttacks"
 			{
 				"windows"	"538"
-				"linux"	"553"
+				"linux"	"554"
 			}
 			"CheckAmmo"
 			{
 				"windows"	"539"
-				"linux"	"554"
+				"linux"	"555"
 			}
 			"FValidateHintType"
 			{
 				"windows"	"540"
-				"linux"	"555"
+				"linux"	"556"
 			}
 			"GetHintActivity"
 			{
 				"windows"	"541"
-				"linux"	"556"
+				"linux"	"557"
 			}
 			"GetHintDelay"
 			{
 				"windows"	"542"
-				"linux"	"557"
+				"linux"	"558"
 			}
 			"GetCoverActivity"
 			{
 				"windows"	"543"
-				"linux"	"558"
+				"linux"	"559"
 			}
 			"SetTurnActivity"
 			{
 				"windows"	"545"
-				"linux"	"560"
+				"linux"	"561"
 			}
 			"GetHitgroupDamageMultiplier"
 			{
 				"windows"	"546"
-				"linux"	"561"
+				"linux"	"562"
 			}
 			"PlayerInSpread"
 			{
 				"windows"	"547"
-				"linux"	"562"
+				"linux"	"563"
 			}
 			"InnateWeaponLOSCondition"
 			{
 				"windows"	"548"
-				"linux"	"563"
+				"linux"	"564"
 			}
 			"GetFlinchActivity"
 			{
 				"windows"	"549"
-				"linux"	"564"
+				"linux"	"565"
 			}
 			"GetShootEnemyDir"
 			{
 				"windows"	"550"
-				"linux"	"565"
+				"linux"	"566"
 			}
 			"CollectShotStats"
 			{
 				"windows"	"551"
-				"linux"	"566"
+				"linux"	"567"
 			}
 			"ShouldMoveAndShoot"
 			{
 				"windows"	"552"
-				"linux"	"567"
+				"linux"	"568"
 			}
 			"IsLightDamage"
 			{
 				"windows"	"553"
-				"linux"	"568"
+				"linux"	"569"
 			}
 			"IsHeavyDamage"
 			{
 				"windows"	"554"
-				"linux"	"569"
+				"linux"	"570"
 			}
 			"PickupWeapon"
 			{
 				"windows"	"555"
-				"linux"	"570"
+				"linux"	"571"
 			}
 			"PickupItem"
 			{
 				"windows"	"556"
-				"linux"	"571"
+				"linux"	"572"
 			}
 			"NotifyDeadFriend"
 			{
 				"windows"	"557"
-				"linux"	"572"
+				"linux"	"573"
 			}
 			"IsValidReasonableFacing"
 			{
 				"windows"	"559"
-				"linux"	"574"
+				"linux"	"575"
 			}
 			"GetReasonableFacingDist"
 			{
 				"windows"	"560"
-				"linux"	"575"
+				"linux"	"576"
 			}
 			"GetClassScheduleIdSpace"
 			{
 				"windows"	"561"
-				"linux"	"576"
+				"linux"	"577"
 			}
 			"GetSquadSlotDebugName"
 			{
 				"windows"	"562"
-				"linux"	"577"
+				"linux"	"578"
 			}
 			"IsCrouching"
 			{
 				"windows"	"563"
-				"linux"	"578"
+				"linux"	"579"
 			}
 			"Crouch"
 			{
 				"windows"	"564"
-				"linux"	"579"
+				"linux"	"580"
 			}
 			"Stand"
 			{
 				"windows"	"565"
-				"linux"	"580"
+				"linux"	"581"
 			}
 			"DesireCrouch"
 			{
 				"windows"	"566"
-				"linux"	"581"
+				"linux"	"582"
 			}
 			"IsCrouchedActivity"
 			{
 				"windows"	"567"
-				"linux"	"582"
+				"linux"	"583"
 			}
 			"ShouldProbeCollideAgainstEntity"
 			{
 				"windows"	"572"
-				"linux"	"587"
+				"linux"	"588"
 			}
 			"CalcYawSpeed"
 			{
 				"windows"	"0"
-				"linux"	"485"
+				"linux"	"486"
 			}
 			"OnCalcBaseMove"
 			{
 				"windows"	"1"
-				"linux"	"486"
+				"linux"	"487"
 			}
 			"OnObstructionPreSteer"
 			{
 				"windows"	"2"
-				"linux"	"487"
+				"linux"	"488"
 			}
 			"OnFailedSteer"
 			{
@@ -2274,42 +2269,42 @@
 			"SetViewtarget"
 			{
 				"windows"	"216"
-				"linux"	"227"
+				"linux"	"228"
 			}
 			"StartSceneEvent"
 			{
 				"windows"	"217"
-				"linux"	"228"
+				"linux"	"229"
 			}
 			"ProcessSceneEvents"
 			{
 				"windows"	"218"
-				"linux"	"229"
+				"linux"	"230"
 			}
 			"ProcessSceneEvent"
 			{
 				"windows"	"219"
-				"linux"	"230"
+				"linux"	"231"
 			}
 			"ClearSceneEvent"
 			{
 				"windows"	"220"
-				"linux"	"231"
+				"linux"	"232"
 			}
 			"CheckSceneEventCompletion"
 			{
 				"windows"	"221"
-				"linux"	"232"
+				"linux"	"233"
 			}
 			"PlayScene"
 			{
 				"windows"	"222"
-				"linux"	"233"
+				"linux"	"234"
 			}
 			"PlayAutoGeneratedSoundScene"
 			{
 				"windows"	"223"
-				"linux"	"234"
+				"linux"	"235"
 			}
 			/* End CBaseFlex */
 			
@@ -2319,7 +2314,7 @@
 			"GetOpenInterval"
 			{
 				"windows"	"223"
-				"linux"	"271"
+				"linux"	"272"
 			}
 			
 			
@@ -2328,217 +2323,217 @@
 			"Equip"
 			{
 				"windows"	"219"
-				"linux"	"239"
+				"linux"	"240"
 			}
 			"Drop"
 			{
 				"windows"	"220"
-				"linux"	"240"
+				"linux"	"241"
 			}
 			"SendWeaponAnim"
 			{
 				"windows"	"236"
-				"linux"	"255"
+				"linux"	"256"
 			}
 			"HasAnyAmmo"
 			{
 				"windows"	"242"
-				"linux"	"261"
+				"linux"	"262"
 			}
 			"HasPrimaryAmmo"
 			{
 				"windows"	"243"
-				"linux"	"262"
+				"linux"	"263"
 			}
 			"HasSecondaryAmmo"
 			{
 				"windows"	"244"
-				"linux"	"263"
+				"linux"	"264"
 			}
 			"CanHolster"
 			{
 				"windows"	"245"
-				"linux"	"264"
+				"linux"	"265"
 			}
 			"Deploy"
 			{
 				"windows"	"248"
-				"linux"	"267"
+				"linux"	"268"
 			}
 			"Holster"
 			{
 				"windows"	"249"
-				"linux"	"268"
+				"linux"	"269"
 			}
 			"ItemPreFrame"
 			{
 				"windows"	"258"
-				"linux"	"277"
+				"linux"	"278"
 			}
 			"ItemPostFrame"
 			{
 				"windows"	"259"
-				"linux"	"278"
+				"linux"	"279"
 			}
 			"WeaponIdle"
 			{
 				"windows"	"262"
-				"linux"	"281"
+				"linux"	"282"
 			}
 			"HandleFireOnEmpty"
 			{
 				"windows"   "263"
-				"linux"	"282"
+				"linux"	"283"
 			}
 			"CanPerformSecondaryAttack"
 			{
 				"windows"   "264"
-				"linux"	"283"
+				"linux"	"284"
 			}
 			"ShouldBlockPrimaryFire"
 			{
 				"windows"   "265"
-				"linux"	"284"
+				"linux"	"285"
 			}
 			"IsWeaponZoomed"
 			{
 				"windows"   "266"
-				"linux"	"285"
+				"linux"	"286"
 			}
 			"Reload"
 			{
 				"windows"   "270"
-				"linux"	"289"
+				"linux"	"290"
 			}
 			"PrimaryAttack"
 			{
 				"windows"	"273"
-				"linux"	"292"
+				"linux"	"293"
 			}
 			"SecondaryAttack"
 			{
 				"windows"	"274"
-				"linux"	"293"
+				"linux"	"294"
 			}
 			"GetPrimaryAttackActivity"
 			{
 				"windows"	"275"
-				"linux"	"294"
+				"linux"	"295"
 			}
 			"GetSecondaryAttackActivity"
 			{
 				"windows"	"276"
-				"linux"	"295"
+				"linux"	"296"
 			}
 			"GetBulletType"
 			{
 				"windows"	"279"
-				"linux"	"280"
+				"linux"	"281"
 			}
 			"GetBulletSpread"
 			{
 				"windows"	"281"
-				"linux"	"299"
+				"linux"	"300"
 			}
 			"GetFireRate"
 			{
 				"windows"	"283"
-				"linux"	"302"
+				"linux"	"303"
 			}
 			"GetMinBurst"
 			{
 				"windows"	"284"
-				"linux"	"303"
+				"linux"	"304"
 			}
 			"GetMaxBurst"
 			{
 				"windows"	"285"
-				"linux"	"304"
+				"linux"	"305"
 			}
 			"GetMinRestTime"
 			{
 				"windows"	"286"
-				"linux"	"305"
+				"linux"	"306"
 			}
 			"GetMaxRestTime"
 			{
 				"windows"	"287"
-				"linux"	"306"
+				"linux"	"307"
 			}
 			"GetRandomBurst"
 			{
 				"windows"	"288"
-				"linux"	"307"
+				"linux"	"308"
 			}
 			"WeaponSound"
 			{
 				"windows"	"289"
-				"linux"	"308"
+				"linux"	"309"
 			}
 			"AddViewKick"
 			{
 				"windows"	"298"
-				"linux"	"317"
+				"linux"	"318"
 			}
 			"GetProficiencyValues"
 			{
 				"windows"	"291"
-				"linux"	"310"
+				"linux"	"311"
 			}
 			"Weapon_SetActivity" //CBaseCombatWeapon::SetActivity
 			{
 				"windows"	"297"
-				"linux"	"316"
+				"linux"	"317"
 			}
 			"CanBePickedUpByNPCs"
 			{
 				"windows"	"306"
-				"linux"	"325"
+				"linux"	"326"
 			}
 			"GetViewModel"
 			{
 				"windows"	"308"
-				"linux"	"327"
+				"linux"	"328"
 			}
 			"GetWorldModel"
 			{
 				"windows"	"309"
-				"linux"	"328"
+				"linux"	"329"
 			}
 			"GetMaxClip1"
 			{
 				"windows"	"311"
-				"linux"	"330"
+				"linux"	"331"
 			}
 			"GetMaxClip2"
 			{
 				"windows"	"312"
-				"linux"	"331"
+				"linux"	"332"
 			}
 			"GetSlot"
 			{
 				"windows"	"320"
-				"linux"	"339"
+				"linux"	"340"
 			}
 			"UsesClipsForAmmo1"
 			{
 				"windows"	"326"
-				"linux"	"345"
+				"linux"	"346"
 			}
 			"UsesClipsForAmmo2"
 			{
 				"windows"	"327"
-				"linux"	"346"
+				"linux"	"347"
 			}
 			"ActivityOverride"
 			{
 				"windows"	"341"
-				"linux"	"360"
+				"linux"	"361"
 			}
 			"ActivityList"
 			{
 				"windows"	"342"
-				"linux"	"361"
+				"linux"	"362"
 			}
 			//"ActivityListCount" //inlined
 			//{
@@ -2547,42 +2542,42 @@
 			"Weapon_CapabilitiesGet" //CBaseCombatWeapon::CapabilitiesGet
 			{
 				"windows"	"352"
-				"linux"	"369"
+				"linux"	"370"
 			}
 			"WeaponRangeAttack1Condition"
 			{
 				"windows"	"354"
-				"linux"	"371"
+				"linux"	"372"
 			}
 			"WeaponRangeAttack2Condition"
 			{
 				"windows"	"355"
-				"linux"	"372"
+				"linux"	"373"
 			}
 			"WeaponMeleeAttack1Condition"
 			{
 				"windows"	"356"
-				"linux"	"373"
+				"linux"	"374"
 			}
 			"WeaponMeleeAttack2Condition"
 			{
 				"windows"	"357"
-				"linux"	"374"
+				"linux"	"375"
 			}
 			"Operator_HandleAnimEvent"
 			{
 				"windows"	"359"
-				"linux"	"376"
+				"linux"	"377"
 			}
 			"Operator_ForceNPCFire"
 			{
 				"windows"	"360"
-				"linux"	"377"
+				"linux"	"378"
 			}
 			"m_Activity" // CBaseCombatWeapon::SetIdealActivity
 			{
 				// TODO: "windows"
-				"linux"	"2436" 
+				"linux"	"2437" 
 			}
 			/* End CBaseCombatWeapon */
 
@@ -2590,27 +2585,27 @@
 			"InputActivate"
 			{
 				"windows"	"188"
-				"linux"	"99"
+				"linux"	"200"
 			}
 			"InputUpdateActors"
 			{
 				"windows"	"189"
-				"linux"	"200"
+				"linux"	"201"
 			}
 			"InputDeactivate"
 			{
 				"windows"	"190"
-				"linux"	"201"
+				"linux"	"202"
 			}
 			"EnableGoal"
 			{
 				"windows"	"191"
-				"linux"	"204"
+				"linux"	"205"
 			}
 			"DisableGoal"
 			{
 				"windows"	"192"
-				"linux"	"205"
+				"linux"	"206"
 			}
 
 			/* CBaseGrenadeWeapon */
@@ -2624,7 +2619,7 @@
 			"DoWashPush"
 			{
 				"windows"	"0" // TODO
-				"linux"	"200"
+				"linux"	"201"
 			}
 
 
@@ -2633,7 +2628,7 @@
 			"PassesFilterImpl"
 			{
 				"windows"	"188"
-				"linux"	"199"
+				"linux"	"200"
 			}
 
 
@@ -2642,7 +2637,7 @@
 			"OverridePropdata"
 			{
 				"windows"	"216"
-				"linux"	"227"
+				"linux"	"228"
 			}
 
 
@@ -2652,85 +2647,85 @@
 			"DriveVehicle"
 			{
 				"windows"	"222"
-				"linux"	"234"
+				"linux"	"235"
 			}
 			"DampenEyePosition"
 			{
 				"windows"	"217"
-				"linux"	"229"
+				"linux"	"230"
 			}
 			"CreateServerVehicle"
 			{
 				"windows"	"220"
-				"linux"	"232"
+				"linux"	"233"
 			}
 			"IsOverturned"
 			{
 				"windows"	"223"
-				"linux"	"235"
+				"linux"	"236"
 			}
 			"IsVehicleBodyInWater"
 			{
 				"windows"	"224"
-				"linux"	"236"
+				"linux"	"237"
 			}
 			/* CPropVehicleDriveable / IPropVehicleDriveable */
 			"GetDriver"
 			{
 				//"windows"	"0"
-				"linux"	"237"
+				"linux"	"238"
 			}
 			"SetupMove"
 			{
 				//"windows"	"2"
-				"linux"	"239"
+				"linux"	"240"
 			}
 			"ProcessMovement"
 			{
 				"windows"	"3"
-				"linux"	"240"
+				"linux"	"241"
 			}
 			"CanEnterVehicle"
 			{
 				"windows"	"5"
-				"linux"	"242"
+				"linux"	"243"
 			}
 			"CanExitVehicle"
 			{
 				"windows"	"6"
-				"linux"	"243"
+				"linux"	"244"
 			}
 			"EnterVehicle"
 			{
 				"windows"	"9"
-				"linux"	"246"
+				"linux"	"247"
 			}
 			"ExitVehicle"
 			{
 				"windows"	"11"
-				"linux"	"250"
+				"linux"	"251"
 			}
 			"AllowBlockedExit"
 			{
 				"windows"	"12"
-				"linux"	"247"
+				"linux"	"248"
 			}
 			"PassengerShouldReceiveDamage"
 			{
 				"windows"	"15"
-				"linux"	"252"
+				"linux"	"253"
 			}
 
 			/* CRagdollProp */
 			"SetDamageEntity"
 			{
 				"windows"   "216"
-				"linux"	"227"
+				"linux"	"228"
 			}
 			"m_ragdoll"
 			{
 				//TODO: "windows"   "216"
-				"linux"	"1148"
+				"linux"	"1149"
 			}
 
 			/* IDrivableVehicle */
@@ -2739,12 +2734,12 @@
 			"m_nTargetNodeID" // "Node is visible to player"
 			{
 				"windows"	"884"
-				"linux"	"980"
+				"linux"	"981"
 			}
 			"m_pNetwork" // "****** MAP CONTAINS DUPLICATE HAMMER NODE IDS! CHECK FOR PROBLEM", 8B 80 ? ? ? ? 3B 58 04 0F 8C ? ? ? ? F6 45 D9 01 
 			{
 				"windows"	"836"
-				"linux"	"856"
+				"linux"	"857"
 			}
 			
 
@@ -2753,7 +2748,7 @@
 			{
 				// sig doesn't work anymore.. but what you can try doing is find baseentity::m_target and subtract it by 4
 				"windows"	"216"
-				"linux"	"236"
+				"linux"	"237"
 			}
 
 			
@@ -2761,19 +2756,19 @@
 			"m_LocalToGlobal"	// Unable to find mapping for flexcontroller %i, settings %p on %i/
 			{
 				"windows"	"1564"
-				"linux"	"1584"
+				"linux"	"1585"
 			}
 
 			/* CSceneEntity */
 			"m_pRecipientFilter"	// "snd_mixahead", 8B 8F ? ? ? ? 89 45 08 85 C9 74 6D 
 			{
 				"windows"	"1548"
-				"linux"	"1568"
+				"linux"	"1566"
 			}
 			"m_pScene" // 83 BE ? ? ? ? ? 0F 84 ? ? ? ? 8B 86 ? ? ? ? BA ? ? ? ? D9 86 ? ? ? ? 85 C0 - first cmp
 			{
 				"windows"	"1004"
-				"linux"	"1024"
+				"linux"	"1025"
 			}
 
 
@@ -2785,14 +2780,14 @@
 			{
 				//8D 8E ? ? ? ? 85 C9 74 19, +2
 				"windows"	"2160"
-				"linux"	"2260"
+				"linux"	"2261"
 			}
 			"m_pSchedule"	// "Schedule cleared: %s\"
 			{
 				// its should be the 3rd assignment below the =256 one.
 				// alternatively, you can look into CAI_BaseNPC::SetSchedule
 				"windows"	"2092"
-				"linux"	"2192"
+				"linux"	"2193"
 			}
 			"m_pSquad" // above "*Squad Leader**"
 			{
@@ -2807,32 +2802,32 @@
 			"m_poseMove_Yaw" // move_yaw
 			{
 				"windows"	"2156"
-				"linux"	"2384"
+				"linux"	"2256"
 			}
 			"m_InverseIgnoreConditions" // 81 C6 ? ? ? ? 74 37 C7 06
 			{
 				"windows"	"2256"
-				"linux"	"2768"
+				"linux"	"2252"
 			}
 			"m_poseAim_Pitch" // aim_pitch (or - 2*sizeof(int) from m_poseMove_Yaw)
 			{
 				"windows"	"2148"
-				"linux"	"2252"
+				"linux"	"2253"
 			}
 			"m_poseAim_Yaw" // aim_yaw
 			{
 				"windows"	"2152"
-				"linux"	"2256"
+				"linux"	"2248"
 			}
 			"m_ConditionsPreIgnore" // 85 84 B7 ? ? ? ? 5F 0F 95 C0 5E  (not 100% sure)
 			{
 				"windows"	"2160"//"2220"
-				"linux"	"2320"
+				"linux"	"2324"
 			}
 			"m_bInChoreo" // not used
 			{
 				// TODO: "windows"	"2092"
-				"linux"	"2244"
+				"linux"	"2245"
 			}
 
 
@@ -2841,7 +2836,7 @@
 			"m_skyboxData"
 			{
 				"windows"	"828"
-				"linux"	"868"
+				"linux"	"992"
 			}
 
 
@@ -2859,27 +2854,27 @@
 			"m_lifeTime"
 			{
 				"windows"	"1136"
-				"linux"	"1156"
+				"linux"	"1157"
 			}
 			"m_bForceRemove"
 			{
 				"windows"	"1140"
-				"linux"	"1160"
+				"linux"	"1161"
 			}
 			"m_material"
 			{
 				"windows"	"1132"
-				"linux"	"1152"
+				"linux"	"1153"
 			}
 			"m_cBloodDecals"
 			{
 				"windows"	"1128"
-				"linux"	"1148"
+				"linux"	"1228"
 			}
 			"m_bloodColor"
 			{
 				"windows"	"1152"
-				"linux"	"1172"
+				"linux"	"1248"
 			}
 
 
@@ -2887,7 +2882,7 @@
 			"m_iVehicleAnalogBias" // below mov [blah+XXX], 0 below "PlayerEnteredVehicle"
 			{
 				// TODO: "windows"	""
-				"linux"	"2772"
+				"linux"	"3144"
 			}
 			
 			/* CCollisionProperty */
@@ -2895,7 +2890,7 @@
 			"m_flRadius"	// CCollisionProperty::m_flRadius
 			{
 				"windows"	 "404" // plain offset is "56" but i think we've to add |this|offs of CCollisionProperty
-				"linux" "366"
+				"linux" "367"
 			}
 			
 			// I BELIVE THE STUFF BELOW IS NOT REQUIRED
@@ -2914,7 +2909,7 @@
 			"m_nIterVal"
 			{
 				// TODO: "windows"	"800"
-				"linux"	"872"
+				"linux"	"924"
 			}
 
 
@@ -3093,22 +3088,22 @@
 			"m_fMinRange1"
 			{
 				"windows"   "1212"
-				"linux"   "1232"
+				"linux"   "1233"
 			}
 			"m_fMinRange2"
 			{
 				"windows"   "1216"
-				"linux"   "1236"
+				"linux"   "1237"
 			}
 			"m_fMaxRange1"
 			{
 				"windows"   "1220"
-				"linux"   "1240"
+				"linux"   "1241"
 			}
 			"m_fMaxRange2"
 			{
 				"windows"   "1224"
-				"linux"   "1244"
+				"linux"   "1245"
 			}
 		}
 	}
@@ -3120,7 +3115,7 @@
 			"EntityFactory"
 			{
 				"library"       "server"
-				"linux"         "@_ZGVZ23EntityFactoryDictionaryvE15s_EntityFactory"
+				"linux"         "@_ZZ23EntityFactoryDictionaryvE15s_EntityFactory"
 			}
 			//"SwitchTeam"
 			//{
@@ -3205,7 +3200,7 @@
 			{
 				"library"	"server"
 				"windows"   "\x55\x8B\xEC\x83\xEC\x18\x53\x56\x8B\xF1\x8A\x4E\x41"
-				"linux" "@_ZN18CCollisionProperty8SetSolidE11SolidType_t"
+				"linux" "@_ZN18CCollisionProperty8SetSolidE11SolidType_t.cold"
 			}
 			"SetSolidFlags"
 			{
@@ -3561,7 +3556,7 @@
 			{
 				"library"	"server"
 				"windows"	"\x55\x8B\xEC\x8B\x55\x0C\x33\xC9\x56\x8B\x75\x10\x8B\xC6\x2B\xD6"
-				"linux"	 "@_Z12UTIL_SetSizeP11CBaseEntityRK6VectorS3_"
+				"linux"	 "@_ZL13SetMinMaxSizeP11CBaseEntityRK6VectorS3_"
 			}
 			"VPhysicsInitShadow" // "SetParent on static object, all constra"
 			{
